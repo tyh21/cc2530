@@ -1,9 +1,9 @@
 #include "fonts.h"
 //#include <avr/pgmspace.h>
 
-//
+// 
 //  Font data for Courier New 12pt
-//
+// 
 
 __code const uint8 Font16_Table[] = 
 {
@@ -1719,7 +1719,7 @@ __code const uint8 Font16_Table[] =
 };
 
 sFONT Font16 = {
-  (const uint8 *)Font16_Table,
+  (const uint8 __code *)Font16_Table,
   11, /* Width */
   16, /* Height */
 };

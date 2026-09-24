@@ -8,6 +8,7 @@
  * 局刷序列: Waveshare epd2in13_V2 (板上实测兼容)
  */
 #include "epd2in9.h"
+#include "fonts.h"
 
 /* ---------------- 局刷 LUT (epd2in13_V2, 70 字节) ----------------
  * LUT0 BB / LUT1 BW / LUT2 WB / LUT3 WW / LUT4 VCOM 各 7 字节,
@@ -553,5 +554,37 @@ void EPD_DrawFilledCircle(int xc, int yc, int r, uint8 black)
         if (e2 <= y) { err += ++y * 2 + 1; if (-x == y && e2 <= x) e2 = 0; }
         if (e2 > x)  { err += ++x * 2 + 1; }
     } while (x <= 0);
+}
+
+/* ---------------- 字符绘制 (横屏坐标, 用 __code 字模) ---------------- */
+void EPD_DrawChar(uint16 x, uint16 y, char ch, const sFONT *font, uint8 black)
+{
+    uint16 i, j;
+    uint16 offset = (uint16)(ch - ' ') * font->Height * (font->Width / 8 + (font->Width % 8 ? 1 : 0));
+    const uint8 __code *ptr = (const uint8 __code *)font->table + offset;
+
+    for (j = 0; j < font->Height; j++)
+    {
+        for (i = 0; i < font->Width; i++)
+        {
+            if (*ptr & (0x80 >> (i % 8)))
+                EPD_SetPixel(x + i, y + j, black);
+            if (i % 8 == 7)
+                ptr++;
+        }
+        if (font->Width % 8 != 0)
+            ptr++;
+    }
+}
+
+void EPD_DrawString(uint16 x, uint16 y, const char *text, const sFONT *font, uint8 black)
+{
+    uint16 w = font->Width;
+    while (*text)
+    {
+        EPD_DrawChar(x, y, *text, font, black);
+        x = (uint16)(x + w);
+        text++;
+    }
 }
 

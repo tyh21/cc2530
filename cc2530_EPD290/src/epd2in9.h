@@ -14,9 +14,16 @@
 #define __EPD2IN9_H__
 
 #include <ioCC2530.h>
+#include "fonts.h"
 
+#ifndef _UINT8_T_DEFINED
+#define _UINT8_T_DEFINED
 typedef unsigned char  uint8;
+#endif
+#ifndef _UINT16_T_DEFINED
+#define _UINT16_T_DEFINED
 typedef unsigned short uint16;
+#endif
 
 /* 面板物理分辨率 (不可变): 296 条 gate 线 x 128 个 source 位
  * 帧缓冲按面板原生布局: 每行 16 字节 x 296 行 = 4736 字节 */
@@ -95,5 +102,9 @@ void EPD_DrawRect(int x0, int y0, int x1, int y1, uint8 black);
 void EPD_DrawFilledRect(int x0, int y0, int x1, int y1, uint8 black);
 void EPD_DrawCircle(int xc, int yc, int r, uint8 black);
 void EPD_DrawFilledCircle(int xc, int yc, int r, uint8 black);
+/* 字符绘制 (横屏坐标) */
+void EPD_DrawChar(uint16 x, uint16 y, char ch, const sFONT *font, uint8 black);
+void EPD_DrawString(uint16 x, uint16 y, const char *text, const sFONT *font, uint8 black);
 
 #endif /* __EPD2IN9_H__ */
+

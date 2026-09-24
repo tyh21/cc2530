@@ -1,45 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
     <fileVersion>2</fileVersion>
-    <fileChecksum>3858955163</fileChecksum>
+    <fileChecksum>2791149480</fileChecksum>
     <configuration>
         <name>Debug</name>
         <outputs>
+            <file>$PROJ_DIR$\Debug\Obj\main.r51</file>
             <file>$PROJ_DIR$\Debug\Exe\project.hex</file>
+            <file>$PROJ_DIR$\src\font16.c</file>
+            <file>$PROJ_DIR$\src\epd2in9.c</file>
+            <file>$PROJ_DIR$\src\font24.c</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Product.h</file>
             <file>$PROJ_DIR$\Debug\Obj\project.pbd</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\ycheck.h</file>
+            <file>$PROJ_DIR$\src\main.c</file>
+            <file>$PROJ_DIR$\src\font8.c</file>
+            <file>$TOOLKIT_DIR$\lib\dlib\dl8051Normal.h</file>
+            <file>$PROJ_DIR$\src\fonts.h</file>
+            <file>$PROJ_DIR$\src\epd2in9.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\xencoding_limits.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\epd2in9.r51</file>
+            <file>$PROJ_DIR$\Debug\Obj\font16.r51</file>
+            <file>$PROJ_DIR$\Debug\Obj\font24.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\font8.pbi</file>
+            <file>$TOOLKIT_DIR$\inc\ioCC2530.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\font8.r51</file>
+            <file>$PROJ_DIR$\Debug\Obj\epd2in9.pbi</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Defaults.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\font24.r51</file>
             <file>$TOOLKIT_DIR$\inc\dlib\c\stdint.h</file>
             <file>$TOOLKIT_DIR$\inc\dlib\c\yvals.h</file>
-            <file>$PROJ_DIR$\src\epd2in9.h</file>
-            <file>$PROJ_DIR$\src\epd2in9.c</file>
-            <file>$PROJ_DIR$\Debug\Obj\main.r51</file>
-            <file>$PROJ_DIR$\src\main.c</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\xencoding_limits.h</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\ycheck.h</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Product.h</file>
-            <file>$TOOLKIT_DIR$\lib\dlib\dl8051Normal.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\epd2in9.pbi</file>
-            <file>$TOOLKIT_DIR$\inc\ioCC2530.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\epd2in9.r51</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Threads.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\font16.pbi</file>
             <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Defaults.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Threads.h</file>
         </outputs>
         <file>
-            <name>$PROJ_DIR$\src\epd2in9.c</name>
+            <name>[ROOT_NODE]</name>
             <outputs>
                 <tool>
-                    <name>ICC8051</name>
-                    <file> 14</file>
+                    <name>XLINK</name>
+                    <file> 1</file>
                 </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\font16.c</name>
+            <outputs>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 12</file>
+                    <file> 25</file>
+                </tool>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 15</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 13 4</file>
+                    <file> 18 11</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\epd2in9.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 20</file>
+                </tool>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 14</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 18 11 12</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\font24.c</name>
+            <outputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 16</file>
+                </tool>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 22</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 18 11</file>
                 </tool>
             </inputs>
         </file>
@@ -47,29 +104,39 @@
             <name>$PROJ_DIR$\src\main.c</name>
             <outputs>
                 <tool>
-                    <name>ICC8051</name>
-                    <file> 6</file>
+                    <name>BICOMP</name>
+                    <file> 26</file>
                 </tool>
                 <tool>
-                    <name>BICOMP</name>
-                    <file> 16</file>
+                    <name>ICC8051</name>
+                    <file> 0</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 10 4 9 2 8 11 13 3 17 15</file>
+                    <file> 7 13 12 10 18 23 5 11 24 21 27</file>
                 </tool>
             </inputs>
         </file>
         <file>
-            <name>[ROOT_NODE]</name>
+            <name>$PROJ_DIR$\src\font8.c</name>
             <outputs>
                 <tool>
-                    <name>XLINK</name>
-                    <file> 0</file>
+                    <name>BICOMP</name>
+                    <file> 17</file>
+                </tool>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 19</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 18 11</file>
+                </tool>
+            </inputs>
         </file>
         <forcedrebuild>
             <name>[REBUILD_ALL]</name>

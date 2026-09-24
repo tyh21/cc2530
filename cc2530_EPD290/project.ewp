@@ -2226,6 +2226,18 @@
     <group>
         <name>app</name>
         <file>
+            <name>$PROJ_DIR$\src\font8.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\font16.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\font24.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\fonts.h</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\src\epd2in9.c</name>
         </file>
         <file>

@@ -99,6 +99,7 @@ int main(void)
 {
     uint16 counter = 0;
     uint8  digit;
+    uint8  relay_state = 0;
 
     clock_init();
     led_init();
@@ -118,22 +119,34 @@ int main(void)
          */
         EPD_FrameClear(0xFF);
 
-         /* 画矩形边框 (左上) + 填充矩形 (左下) */
-        EPD_DrawRect(10, 10, 60, 45, 1);
-        EPD_DrawFilledRect(10, 80, 60, 115, 1);
+        /* 静态图形: 矩形边框 / 填充矩形 / 圆 / 填充圆 */
+        EPD_DrawRect(8, 8, 55, 50, 1);
+        EPD_DrawFilledRect(8, 70, 55, 112, 1);
+        EPD_DrawCircle(268, 28, 18, 1);
+        EPD_DrawFilledCircle(268, 100, 18, 1);
 
-        /* 画圆 (右上) + 填充圆 (右下) */
-        EPD_DrawCircle(245, 28, 18, 1);
-        EPD_DrawFilledCircle(245, 98, 18, 1);
-        
-        digit = (uint8)((counter / 1000U) % 10U);
-        draw_digit_land(digit, 132U, 56U);
-        digit = (uint8)((counter / 100U) % 10U);
-        draw_digit_land(digit, 140U, 56U);
-        digit = (uint8)((counter / 10U) % 10U);
-        draw_digit_land(digit, 148U, 56U);
-        digit = (uint8)(counter % 10U);
-        draw_digit_land(digit, 156U, 56U);
+        /* 时钟 MM:SS (Font24) */
+        {
+            char tbuf[6];
+            tbuf[0] = (char)((counter / 600U) % 10U + '0');
+            tbuf[1] = (char)((counter / 60U) % 10U + '0');
+            tbuf[2] = ':';
+            tbuf[3] = (char)((counter / 10U) % 6U + '0');
+            tbuf[4] = (char)(counter % 10U + '0');
+            tbuf[5] = '\0';
+            EPD_DrawString(105, 10, tbuf, &Font24, 1);
+        }
+
+        /* Relay 状态 (Font16) - 从 code 拷到 RAM, 避免 code 指针死机 */
+        {
+            char rbuf[11];
+            rbuf[0]='R'; rbuf[1]='e'; rbuf[2]='l'; rbuf[3]='a'; rbuf[4]='y';
+            rbuf[5]=':'; rbuf[6]=' ';
+            if (relay_state) { rbuf[7]='O'; rbuf[8]='N'; rbuf[9]=' '; }
+            else             { rbuf[7]='O'; rbuf[8]='F'; rbuf[9]='F'; }
+            rbuf[10] = '\0';
+            EPD_DrawString(90, 90, rbuf, &Font16, 1);
+        }
 
         /* 局刷: 只写 0x24 + 0x0C 快刷 */
         set_led(0, 0, 1);          /* 蓝: 局刷中 */
@@ -142,8 +155,10 @@ int main(void)
         set_led(0, 1, 0);          /* 绿: 空闲 1 秒 */
         DelayMS(10000);
         counter++;
-        if (counter >= 10000U)
+        if (counter >= 6000U) {        /* 60 秒翻转一次 Relay */
             counter = 0;
+            relay_state = !relay_state;
+        }
 
         /* 每 30 帧做一次全刷去残影 */
         if ((counter % 10U) == 0U)
@@ -153,3 +168,5 @@ int main(void)
         }
     }
 }
+
+

@@ -2476,7 +2476,7 @@ __code const uint8 Font24_Table [] =
 };
 
 sFONT Font24 = {
-  (const uint8 *)Font24_Table,
+  (const uint8 __code *)Font24_Table,
   17, /* Width */
   24, /* Height */
 };

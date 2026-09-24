@@ -1,29 +1,25 @@
-
 #ifndef __FONTS_H
 #define __FONTS_H
 
-/* Max size of bitmap will based on a font24 (17x24) */
-#define MAX_HEIGHT_FONT         24
-#define MAX_WIDTH_FONT          17
-#define OFFSET_BITMAP           54
+#include <ioCC2530.h>
 
-/* Includes ------------------------------------------------------------------*/
-#include <stdint.h>
-#ifndef __EPD2IN9_H__
+#ifndef _UINT8_T_DEFINED
+#define _UINT8_T_DEFINED
 typedef unsigned char  uint8;
+#endif
+#ifndef _UINT16_T_DEFINED
+#define _UINT16_T_DEFINED
 typedef unsigned short uint16;
 #endif
 
-typedef struct {
-  const uint8 *table;
+typedef struct sFONT_tag {
+  const uint8 __code *table;   /* 字模在 CODE 区 */
   uint16 Width;
   uint16 Height;
 } sFONT;
 
 extern sFONT Font24;
-extern sFONT Font20;
 extern sFONT Font16;
-extern sFONT Font12;
 extern sFONT Font8;
 
 #endif /* __FONTS_H */
