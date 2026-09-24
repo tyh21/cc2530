@@ -19,9 +19,9 @@
 #define LED_ON   0
 #define LED_OFF  1
 
-#define RED_PIN    P0_0
+#define RED_PIN    P0_1
 #define GREEN_PIN  P0_2
-#define BLUE_PIN   P0_1
+#define BLUE_PIN   P0_0
 
 /* uint8/uint16 类型已在 epd2in9.h 中定义 */
 
@@ -95,30 +95,13 @@ static void draw_digit_land(uint8 d, uint16 x, uint8 y)
     }
 }
 
-/* ---------------- Timer1: 250ms 中断 ---------------- */
-static volatile uint8  tick250 = 0;
-static volatile uint8  minute_flag = 0;
-static volatile uint16 isr_cnt = 0;
-static uint8 bl = 0;
-
-#pragma vector=T1_VECTOR
-__interrupt void T1_ISR(void)
-{
-    T1STAT &= ~0x01;           /* 清 CH0IF (bit0) */
-    if (++isr_cnt >= 240) { isr_cnt = 0; minute_flag = 1; bl ^= 1; BLUE_PIN = bl; }
-}
-
+/* ---------------- Timer1: 250ms (仅定义, 未调用) ---------------- */
 static void timer_init(void)
 {
     T1CTL = 0x0C;              /* 128 分频 */
-    T1CC0H = (31248 >> 8);     /* 60s */
-
-    T1CC0L = (31248 & 0xFF);
-    T1CCTL0 = 0x44;            /* 通道0 比较模式 + 中断使能 */
-    T1STAT = 0x00;             /* 清所有 T1 标志 */
+    T1CC0H = (62500 >> 8);     /* 250ms */
+    T1CC0L = (62500 & 0xFF);
     T1CTL = 0x0E;              /* 模模式 + 128分频, 启动 */
-    IEN1 |= 0x02;              /* T1IE=1 (bit1) */
-    EA = 1;                    /* 全局中断 */
 }
 
 int main(void)
@@ -129,13 +112,12 @@ int main(void)
 
     clock_init();
     led_init();
-    timer_init();
 
-
+    set_led(1, 0, 0);              /* 红: 初始化 */
     EPD_Init();
 
     /* 全刷白底打底 (old RAM 也写白, 局刷参考) */
-
+    set_led(1, 0, 0);
     EPD_DisplayBase((void *)0);    /* NULL = 全白, 内部已切回局刷 LUT */
 
     while (1)
@@ -155,13 +137,11 @@ int main(void)
         /* 时钟 MM:SS (Font24) */
         {
             char tbuf[6];
-            uint16 hh = (counter / 60U) % 100U;   /* 小时 0-99 */
-            uint16 mm = counter % 60U;            /* 分钟 0-59 */
-            tbuf[0] = (char)(hh / 10U + '0');
-            tbuf[1] = (char)(hh % 10U + '0');
+            tbuf[0] = (char)((counter / 600U) % 10U + '0');
+            tbuf[1] = (char)((counter / 60U) % 10U + '0');
             tbuf[2] = ':';
-            tbuf[3] = (char)(mm / 10U + '0');
-            tbuf[4] = (char)(mm % 10U + '0');
+            tbuf[3] = (char)((counter / 10U) % 6U + '0');
+            tbuf[4] = (char)(counter % 10U + '0');
             tbuf[5] = '\0';
             EPD_DrawString(105, 10, tbuf, &Font24, 1);
         }
@@ -178,21 +158,13 @@ int main(void)
         }
 
         /* 局刷: 只写 0x24 + 0x0C 快刷 */
-
+        set_led(0, 0, 1);          /* 蓝: 局刷中 */
         EPD_ShowFrame();
 
-        /* [诊断] LED 交替, 看程序是否活 */
-
-        DelayMS(200);
-
-        DelayMS(200);
-
-        /* 等 60 秒 (Timer1 置 minute_flag) */
-        while (!minute_flag) ;
-        minute_flag = 0;
-
-        counter++;                     /* 每分钟 +1 */
-        if (counter >= 6000U) {        /* 100 小时翻转 Relay */
+        set_led(0, 1, 0);          /* 绿: 空闲 1 秒 */
+        DelayMS(10000);
+        counter++;
+        if (counter >= 6000U) {        /* 60 秒翻转一次 Relay */
             counter = 0;
             relay_state = !relay_state;
         }
@@ -200,14 +172,11 @@ int main(void)
         /* 每 30 帧做一次全刷去残影 */
         if ((counter % 10U) == 0U)
         {
-
+            set_led(1, 0, 0);
             EPD_DisplayBase((void *)0);   /* 内部全刷 + 切回局刷 LUT */
         }
     }
 }
-
-
-
 
 
 
