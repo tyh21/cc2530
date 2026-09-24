@@ -117,15 +117,6 @@ int main(void)
          * 字高 16, y=(128-16)/2=56
          */
         EPD_FrameClear(0xFF);
-
-         /* 画矩形边框 (左上) + 填充矩形 (左下) */
-        EPD_DrawRect(10, 10, 60, 45, 1);
-        EPD_DrawFilledRect(10, 80, 60, 115, 1);
-
-        /* 画圆 (右上) + 填充圆 (右下) */
-        EPD_DrawCircle(245, 28, 18, 1);
-        EPD_DrawFilledCircle(245, 98, 18, 1);
-        
         digit = (uint8)((counter / 1000U) % 10U);
         draw_digit_land(digit, 132U, 56U);
         digit = (uint8)((counter / 100U) % 10U);

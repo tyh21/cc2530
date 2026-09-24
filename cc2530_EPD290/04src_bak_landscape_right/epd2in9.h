@@ -89,11 +89,5 @@ extern __xdata uint8 EPD_Frame[EPD_IMG_BYTES];   /* 帧缓冲 (面板原生布�
 void EPD_FrameClear(uint8 color);                  /* 帧清为 color (0xFF=白) */
 void EPD_SetPixel(uint16 x, uint8 y, uint8 black); /* 横屏画点: x0-295, y0-127, black:1=黑 */
 void EPD_ShowFrame(void);                          /* 局刷显示 EPD_Frame (0x0C) */
-/* 画图 API (横屏坐标) */
-void EPD_DrawLine(int x0, int y0, int x1, int y1, uint8 black);
-void EPD_DrawRect(int x0, int y0, int x1, int y1, uint8 black);
-void EPD_DrawFilledRect(int x0, int y0, int x1, int y1, uint8 black);
-void EPD_DrawCircle(int xc, int yc, int r, uint8 black);
-void EPD_DrawFilledCircle(int xc, int yc, int r, uint8 black);
 
 #endif /* __EPD2IN9_H__ */

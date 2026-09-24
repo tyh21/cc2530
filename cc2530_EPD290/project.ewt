@@ -2156,6 +2156,12 @@
     <group>
         <name>app</name>
         <file>
+            <name>$PROJ_DIR$\src\epd2in9.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\epd2in9.h</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\src\main.c</name>
         </file>
     </group>
