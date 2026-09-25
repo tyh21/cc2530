@@ -101,26 +101,11 @@ def image_to_bits(path: str) -> bytes:
 class Gateway:
     def __init__(self, port: str, baud: int = 115200):
         self.ser = serial.Serial(port, baud, timeout=ACK_TIMEOUT)
-        self._log = bytearray()          # 网关 ASCII 日志行缓冲
-
-    def _gw_log(self, b: int):
-        """透传打印网关文本日志 (按行, 推图时可实时观察 RF 诊断信息)"""
-        if 0x20 <= b < 0x7F:
-            self._log.append(b)
-        elif b == 0x0A:
-            line = self._log.decode('ascii', 'replace').strip()
-            if line:
-                # 网关日志本身已带 [GW] 前缀, 不再重复添加
-                print(f"      {line}")
-            self._log.clear()
-        elif b == 0x0D:
-            pass
-        else:
-            self._log.clear()             # 其他控制字节截断当前行
 
     def _read_frame(self, timeout: float):
-        """读一帧, 返回 (type, payload) 或 None; 网关 ASCII 日志透传打印"""
+        """读一帧, 返回 (type, payload) 或 None"""
         deadline = time.time() + timeout
+        buf = bytearray()
         prev = 0
         while time.time() < deadline:
             self.ser.timeout = max(0.05, deadline - time.time())
@@ -144,10 +129,6 @@ class Gateway:
                     return hdr[2], pay
                 prev = 0
                 continue
-            if b == U_SYNC_H:                             # 潜在同步头, 缓存
-                prev = b
-                continue
-            self._gw_log(b)                               # 非帧字节 = 网关日志
             prev = b
         return None
 

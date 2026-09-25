@@ -26,6 +26,7 @@
 #define PL_CHUNK        96                                          /* 每包图数据 */
 #define PL_N_CHUNKS     ((PL_IMG_BYTES + PL_CHUNK - 1) / PL_CHUNK)  /* 29 */
 #define PL_LAST_LEN     (PL_IMG_BYTES - (PL_N_CHUNKS - 1) * PL_CHUNK) /* 68 */
+#define PL_ALL_MAP      ((uint32)0x1FFFFFFF)  /* 29 包位图全 1 (节点收满判据) */
 
 /* ==================== UART 帧 (PC <-> 网关, 115200 8N1) ====================
  * 格式: A5 5A | LEN_H LEN_L | TYPE | PAYLOAD(LEN 字节) | CRC_H CRC_L

@@ -72,14 +72,11 @@ static void EPD_DelayMS(uint16 ms)
         for (j = 0; j < 535; j++);
 }
 
-/* ---------------- 电源控制: P0.7 -> MOS 管开关 (高电平上电) ----------------
- * 实测教训: 深睡 (0x07 0xA5) 后热复位唤不醒 SSD1680, 必须电源循环。
- * 所以每次 EPD_Init 都做完整的 断电->上电 冷启动序列, 不做任何"已上电"捷径。
- */
+/* ---------------- 电源控制: P0.7 -> MOS 管开关 (高电平上电) ---------------- */
 void EPD_PowerOn(void)
 {
-    EPD_PWR = EPD_PWR_OFF_LVL;         /* 强制断电 */
-    EPD_DelayMS(200);                  /* 放电: 让控制器彻底掉电复位 */
+    EPD_PWR = EPD_PWR_OFF_LVL;         /* 先确保断电 */
+    EPD_DelayMS(100);
     EPD_PWR = EPD_PWR_ON_LVL;          /* 上电 (原固件 0x11735) */
     EPD_DelayMS(100);                  /* 供电稳定 */
 }
@@ -408,13 +405,16 @@ void EPD_DisplayPartialD(const uint8 *old_img, const uint8 *new_img)
     EPD_WaitBusy(5000);
 }
 
-/* ---------------- 休眠: 纯断电 (实测深睡热唤醒不可靠, 弃用) ----------------
- * 深睡 (0x07 0xA5) 后必须冷启动才能复位控制器, RST 脉冲唤不醒;
- * 干脆只断电 P0.7, 下次 EPD_Init() 走完整 断电->上电->复位 冷序列。
- */
+/* ---------------- 深度睡眠 + 断电 (微雪 Sleep + 原固件断电) ---------------- */
 void EPD_Sleep(void)
 {
-    EPD_PowerOff();                    /* P0.7 断电, 控制器彻底复位 */
+    EPD_SendCommand(0x50);             /* VCOM: 局刷边框保持 */
+    EPD_SendData(0xF7);
+    EPD_SendCommand(0x02);             /* power off */
+    EPD_WaitBusy(5000);
+    EPD_SendCommand(0x07);             /* deep sleep */
+    EPD_SendData(0xA5);
+    EPD_PowerOff();                    /* P0.7 断电 (原固件 0x11766) */
 }
 
 /* ==================================================================
