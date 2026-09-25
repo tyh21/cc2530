@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <fileVersion>2</fileVersion>
+    <fileChecksum>967779311</fileChecksum>
+    <configuration>
+        <name>Debug</name>
+        <outputs>
+            <file>$PROJ_DIR$\src\epd2in9.c</file>
+            <file>$PROJ_DIR$\src\main.c</file>
+            <file>$PROJ_DIR$\src\pl_proto.h</file>
+            <file>$PROJ_DIR$\src\pl_node.c</file>
+            <file>$PROJ_DIR$\src\pl_node.h</file>
+            <file>$PROJ_DIR$\src\pl_proto.c</file>
+            <file>$PROJ_DIR$\src\basicrf\basic_rf.c</file>
+            <file>$PROJ_DIR$\src\epd2in9.h</file>
+            <file>$PROJ_DIR$\src\basicrf\hal_int.c</file>
+            <file>$PROJ_DIR$\Debug\Obj\pl_node.r51</file>
+            <file>$PROJ_DIR$\src\basicrf\hal_rf.h</file>
+            <file>$PROJ_DIR$\src\basicrf\clock.c</file>
+            <file>$PROJ_DIR$\src\basicrf\hal_int.h</file>
+            <file>$PROJ_DIR$\src\basicrf\basic_rf.h</file>
+            <file>$PROJ_DIR$\src\basicrf\util.c</file>
+            <file>$PROJ_DIR$\Debug\Obj\project.pbd</file>
+            <file>$PROJ_DIR$\src\basicrf\hal_mcu.c</file>
+            <file>$PROJ_DIR$\src\basicrf\hal_rf.c</file>
+            <file>$PROJ_DIR$\Debug\Obj\basic_rf.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\util.r51</file>
+            <file>$PROJ_DIR$\src\basicrf\hal_types.h</file>
+            <file>$PROJ_DIR$\src\basicrf\hal_mcu.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\epd2in9.pbi</file>
+            <file>$PROJ_DIR$\src\basicrf\util.h</file>
+            <file>$PROJ_DIR$\src\basicrf\hal_assert.c</file>
+            <file>$PROJ_DIR$\Debug\Obj\clock.r51</file>
+            <file>$TOOLKIT_DIR$\lib\dlib\dl8051Normal.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\epd2in9.r51</file>
+            <file>$PROJ_DIR$\src\basicrf\hal_defs.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Product.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.r51</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\ycheck.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\clock.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\util.pbi</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Threads.h</file>
+            <file>$PROJ_DIR$\Debug\Exe\project.hex</file>
+            <file>$PROJ_DIR$\Debug\Obj\hal_mcu.r51</file>
+            <file>$PROJ_DIR$\Debug\Obj\hal_assert.pbi</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\string.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\pl_node.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\hal_rf.pbi</file>
+            <file>$TOOLKIT_DIR$\inc\ioCC2530.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\yvals.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\pl_proto.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\hal_int.r51</file>
+            <file>$PROJ_DIR$\Debug\Obj\hal_mcu.pbi</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\xencoding_limits.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\hal_int.pbi</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\ysizet.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\hal_rf.r51</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Defaults.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\hal_assert.r51</file>
+            <file>$PROJ_DIR$\Debug\Obj\basic_rf.r51</file>
+            <file>$PROJ_DIR$\Debug\Obj\pl_proto.r51</file>
+        </outputs>
+        <file>
+            <name>[ROOT_NODE]</name>
+            <outputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 36</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\epd2in9.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 27</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 22</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 20 7 42</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\main.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 30</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 32</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 20 4 2 13 7 42 28</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\pl_node.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 9</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 40</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\pl_proto.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 54</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 44</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\basicrf\basic_rf.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 53</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 18</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 31 28 20 26 23 43 10 49 47 29 21 13 39 51 35 12</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\basicrf\hal_int.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 45</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 48</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\basicrf\clock.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 25</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 33</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\basicrf\util.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 19</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 34</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\basicrf\hal_mcu.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 37</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 46</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\basicrf\hal_rf.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 50</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 41</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\basicrf\hal_assert.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 52</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 38</file>
+                </tool>
+            </outputs>
+        </file>
+    </configuration>
+    <configuration>
+        <name>Release</name>
+        <outputs>
+            <file>$PROJ_DIR$\src\epd2in9.c</file>
+            <file>$PROJ_DIR$\src\main.c</file>
+            <file>$PROJ_DIR$\src\pl_proto.h</file>
+            <file>$PROJ_DIR$\src\pl_node.c</file>
+            <file>$PROJ_DIR$\src\pl_node.h</file>
+            <file>$PROJ_DIR$\src\pl_proto.c</file>
+            <file>$PROJ_DIR$\src\basicrf\basic_rf.c</file>
+            <file>$PROJ_DIR$\src\epd2in9.h</file>
+            <file>$PROJ_DIR$\Release\Obj\pl_node.__cstat.et</file>
+            <file>$PROJ_DIR$\Release\Obj\basic_rf.__cstat.et</file>
+            <file>$PROJ_DIR$\Release\Obj\main.r51</file>
+            <file>$PROJ_DIR$\Release\Obj\hal_mcu.r51</file>
+            <file>$PROJ_DIR$\Release\Obj\pl_proto.__cstat.et</file>
+            <file>$PROJ_DIR$\Release\Obj\pl_proto.r51</file>
+            <file>$PROJ_DIR$\Release\Obj\main.__cstat.et</file>
+            <file>$PROJ_DIR$\Release\Obj\basic_rf.r51</file>
+            <file>$PROJ_DIR$\Release\Obj\hal_rf.r51</file>
+            <file>$PROJ_DIR$\Release\Obj\hal_assert.r51</file>
+            <file>$PROJ_DIR$\Release\Obj\hal_rf.__cstat.et</file>
+            <file>$PROJ_DIR$\Release\Obj\pl_node.r51</file>
+            <file>$PROJ_DIR$\Release\Obj\util.__cstat.et</file>
+            <file>$PROJ_DIR$\Release\Obj\epd2in9.__cstat.et</file>
+            <file>$PROJ_DIR$\Release\Obj\hal_int.__cstat.et</file>
+            <file>$PROJ_DIR$\Release\Obj\epd2in9.r51</file>
+            <file>$PROJ_DIR$\Release\Obj\util.r51</file>
+            <file>$PROJ_DIR$\Release\Obj\clock.r51</file>
+            <file>$PROJ_DIR$\Release\List\project.map</file>
+            <file>$PROJ_DIR$\Release\Exe\project.a51</file>
+            <file>$PROJ_DIR$\Release\Obj\hal_int.r51</file>
+            <file>$PROJ_DIR$\Release\Obj\clock.__cstat.et</file>
+            <file>$PROJ_DIR$\Release\Obj\hal_assert.__cstat.et</file>
+            <file>$PROJ_DIR$\Release\Obj\hal_mcu.__cstat.et</file>
+            <file>$PROJ_DIR$\src\basicrf\hal_int.c</file>
+            <file>$PROJ_DIR$\src\basicrf\clock.h</file>
+            <file>$PROJ_DIR$\src\basicrf\hal_rf.h</file>
+            <file>$PROJ_DIR$\src\basicrf\clock.c</file>
+            <file>$PROJ_DIR$\src\basicrf\hal_int.h</file>
+            <file>$PROJ_DIR$\src\basicrf\basic_rf.h</file>
+            <file>$PROJ_DIR$\src\basicrf\util.c</file>
+            <file>$PROJ_DIR$\src\basicrf\hal_mcu.c</file>
+            <file>$PROJ_DIR$\src\basicrf\hal_rf.c</file>
+            <file>$PROJ_DIR$\src\basicrf\hal_types.h</file>
+            <file>$PROJ_DIR$\src\basicrf\hal_mcu.h</file>
+            <file>$PROJ_DIR$\src\basicrf\util.h</file>
+            <file>$PROJ_DIR$\src\basicrf\hal_assert.c</file>
+            <file>$TOOLKIT_DIR$\lib\dlib\dl8051Normal.h</file>
+            <file>$TOOLKIT_DIR$\config\devices\_generic\lnk51ew_8052.xcl</file>
+            <file>$PROJ_DIR$\src\basicrf\hal_assert.h</file>
+            <file>$PROJ_DIR$\src\basicrf\hal_defs.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Product.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\ycheck.h</file>
+            <file>$TOOLKIT_DIR$\lib\dlib\dl-pli-nlpd-1e16x01n.r51</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Threads.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\string.h</file>
+            <file>$TOOLKIT_DIR$\inc\ioCC2530.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\yvals.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\xencoding_limits.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\ysizet.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Defaults.h</file>
+        </outputs>
+        <file>
+            <name>[ROOT_NODE]</name>
+            <outputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 27 26</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\epd2in9.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 23</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 21</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 7 54 41</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\main.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 10</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 14</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 54 37 41 48 4 2 7</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\pl_node.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 19</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 8</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 54 4 2 41 37 48 7</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\pl_proto.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 13</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 12</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 2 41 7 54</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\basicrf\basic_rf.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 15</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 9</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 36 41 42 34 37 48 43 53 50 55 58 45 49 56 52 57</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\Release\Exe\project.a51</name>
+            <outputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 26</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 46 15 25 23 17 28 11 16 10 19 13 24 51</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\basicrf\hal_int.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 28</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 22</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 41 48 36 54</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\basicrf\clock.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 25</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 29</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 33 41 48 54 42</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\basicrf\util.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 24</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 20</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 43 41 48 34</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\basicrf\hal_mcu.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 11</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 31</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 41 42 33 48 54 47</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\basicrf\hal_rf.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 16</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 18</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 54 42 41 36 47 48 34 43</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\basicrf\hal_assert.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 17</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 30</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 47 48 42 41</file>
+                </tool>
+            </inputs>
+        </file>
+    </configuration>
+</project>

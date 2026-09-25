@@ -61,26 +61,32 @@ static uint8 gw_wait_frame(uint8 *ptype, uint8 *plen)
     for (;;) {
         if (!gw_read_byte(800, &b))
             return 0;
-        if (prev == PL_U_SYNC_H && b == PL_U_SYNC_L)
+        if (prev == PL_U_SYNC_H && b == PL_U_SYNC_L) {
+            uart0_puts("[GW] sync\r\n");
             break;
+        }
         prev = b;
     }
 
     /* 长度 */
-    if (!gw_read_byte(50, &b))  return 0;
+    if (!gw_read_byte(50, &b)) { uart0_puts("[GW] tmo:len\r\n");  return 0; }
     len = (uint16)(b << 8);
-    if (!gw_read_byte(50, &b))  return 0;
+    if (!gw_read_byte(50, &b)) { uart0_puts("[GW] tmo:len\r\n");  return 0; }
     len |= b;
-    if (len == 0 || len > PL_U_MAX_PAY)
+    if (len > PL_U_MAX_PAY) {           /* len==0 合法: END 是零长帧, 勿拒! */
+        uart0_puts("[GW] bad len\r\n");
         return 0;
+    }
 
     /* 类型 */
-    if (!gw_read_byte(50, ptype)) return 0;
+    if (!gw_read_byte(50, ptype)) { uart0_puts("[GW] tmo:type\r\n"); return 0; }
 
     /* payload */
     for (i = 0; i < len; i++) {
-        if (!gw_read_byte(50, (uint8 *)&paybuf[i]))
+        if (!gw_read_byte(50, (uint8 *)&paybuf[i])) {
+            uart0_puts("[GW] tmo:data\r\n");
             return 0;
+        }
     }
 
     /* CRC (覆盖 TYPE+PAYLOAD) */
@@ -88,13 +94,21 @@ static uint8 gw_wait_frame(uint8 *ptype, uint8 *plen)
     memcpy((void *)&crcbuf[1], (void const *)paybuf, len);
     crc_calc = pl_crc16((const uint8 *)crcbuf, (uint16)(len + 1));
 
-    if (!gw_read_byte(50, &b)) return 0;
+    if (!gw_read_byte(50, &b)) { uart0_puts("[GW] tmo:crc\r\n");  return 0; }
     crc_rx = (uint16)(b << 8);
-    if (!gw_read_byte(50, &b)) return 0;
+    if (!gw_read_byte(50, &b)) { uart0_puts("[GW] tmo:crc\r\n");  return 0; }
     crc_rx |= b;
 
-    if (crc_calc != crc_rx)
+    if (crc_calc != crc_rx) {
+        uart0_puts("[GW] CRC err\r\n");
         return 0;
+    }
+
+    uart0_puts("[GW] RX t=");
+    uart0_put_hex2(*ptype);
+    uart0_puts(" n=");
+    uart0_put_hex2((uint8)len);
+    uart0_puts("\r\n");
 
     *plen = (uint8)len;
     return 1;
@@ -161,18 +175,29 @@ void pl_gateway_run(void)
 
     for (;;) {
         /* ---- 1. START ---- */
-        if (!gw_wait_frame(&type, &plen) || type != PL_U_START || plen != 2)
+        if (!gw_wait_frame(&type, &plen))
             continue;
-        if (((uint16)paybuf[0] << 8 | paybuf[1]) != PL_IMG_BYTES)
+        if (type != PL_U_START || plen != 2) {
+            uart0_puts("[GW] want START\r\n");
             continue;
+        }
+        if (((uint16)paybuf[0] << 8 | paybuf[1]) != PL_IMG_BYTES) {
+            uart0_puts("[GW] bad img size\r\n");
+            continue;
+        }
 
+        uart0_puts("[GW] START ok -> RF fwd + ACK\r\n");
         gw_rf_send(PL_R_START, 0, paybuf, 2);
         gw_send_ack(0xFFFF);
 
         /* ---- 2. DATA x 29 (停等) ---- */
         for (seq = 0; seq < PL_N_CHUNKS; seq++) {
-            if (!gw_wait_frame(&type, &plen) || type != PL_U_DATA)
+            if (!gw_wait_frame(&type, &plen))
                 goto drop;
+            if (type != PL_U_DATA) {
+                uart0_puts("[GW] want DATA\r\n");
+                goto drop;
+            }
             /* payload: SEQ_H SEQ_L LEN DATA.. CRC_H CRC_L */
             if (plen < 5)
                 goto drop;
@@ -193,11 +218,19 @@ void pl_gateway_run(void)
             memcpy((void *)&imgbuf[seq * PL_CHUNK], (void const *)&paybuf[3], clen);
             gw_rf_send(PL_R_DATA, seq, &paybuf[2], (uint8)(clen + 1));
             gw_send_ack(seq);
+            uart0_puts("[GW] D=");
+            uart0_put_hex2((uint8)seq);
+            uart0_puts("\r\n");
         }
 
         /* ---- 3. END ---- */
-        if (!gw_wait_frame(&type, &plen) || type != PL_U_END || plen != 0)
+        if (!gw_wait_frame(&type, &plen))
             continue;
+        if (type != PL_U_END || plen != 0) {
+            uart0_puts("[GW] want END\r\n");
+            continue;
+        }
+        uart0_puts("[GW] END ok -> display ~15s\r\n");
         gw_rf_send(PL_R_END, 0, paybuf, 0);
         gw_send_ack(0xFFFF);
 
@@ -211,6 +244,7 @@ void pl_gateway_run(void)
         continue;
 
 drop:
+        uart0_puts("[GW] DROP, wait START\r\n");
         gw_delay_ms(20);        /* 让 PC 超时重发, 本图作废 */
     }
 }

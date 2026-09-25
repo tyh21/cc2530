@@ -5,63 +5,76 @@
     <configuration>
         <name>Debug</name>
         <outputs>
+            <file>$PROJ_DIR$\src\basicrf\basic_rf.c</file>
             <file>$PROJ_DIR$\src\epd2in9.c</file>
+            <file>$PROJ_DIR$\src\font8.c</file>
+            <file>$PROJ_DIR$\src\font24.c</file>
+            <file>$PROJ_DIR$\src\main.c</file>
+            <file>$PROJ_DIR$\src\fonts.h</file>
             <file>$PROJ_DIR$\src\pl_proto.c</file>
             <file>$PROJ_DIR$\src\font16.c</file>
-            <file>$PROJ_DIR$\src\font24.c</file>
-            <file>$PROJ_DIR$\src\font8.c</file>
-            <file>$PROJ_DIR$\src\main.c</file>
             <file>$PROJ_DIR$\src\uart0.c</file>
-            <file>$PROJ_DIR$\src\pl_gateway.c</file>
-            <file>$PROJ_DIR$\src\fonts.h</file>
-            <file>$PROJ_DIR$\src\basicrf\basic_rf.c</file>
-            <file>$PROJ_DIR$\src\epd2in9.h</file>
             <file>$PROJ_DIR$\src\basicrf\hal_rf.c</file>
-            <file>$PROJ_DIR$\src\basicrf\hal_mcu.c</file>
+            <file>$PROJ_DIR$\src\epd2in9.h</file>
+            <file>$PROJ_DIR$\src\pl_gateway.c</file>
+            <file>$PROJ_DIR$\Debug\Obj\hal_int.pbi</file>
             <file>$PROJ_DIR$\Debug\Obj\epd2in9.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\font16.r51</file>
             <file>$TOOLKIT_DIR$\inc\ioCC2530.h</file>
             <file>$PROJ_DIR$\Debug\Obj\basic_rf.r51</file>
-            <file>$PROJ_DIR$\Debug\Obj\util.pbi</file>
-            <file>$PROJ_DIR$\Debug\Obj\hal_int.r51</file>
-            <file>$PROJ_DIR$\Debug\Obj\epd2in9.r51</file>
-            <file>$PROJ_DIR$\Debug\Obj\font24.r51</file>
-            <file>$PROJ_DIR$\Debug\Obj\hal_rf.pbi</file>
-            <file>$PROJ_DIR$\Debug\Obj\font16.r51</file>
-            <file>$PROJ_DIR$\Debug\Obj\main.r51</file>
-            <file>$PROJ_DIR$\Debug\Obj\uart0.pbi</file>
-            <file>$PROJ_DIR$\Debug\Obj\pl_proto.pbi</file>
-            <file>$PROJ_DIR$\Debug\Obj\font8.r51</file>
-            <file>$PROJ_DIR$\Debug\Obj\basic_rf.pbi</file>
-            <file>$PROJ_DIR$\src\basicrf\hal_assert.c</file>
-            <file>$PROJ_DIR$\Debug\Obj\hal_assert.pbi</file>
-            <file>$PROJ_DIR$\Debug\Obj\hal_mcu.pbi</file>
-            <file>$PROJ_DIR$\Debug\Obj\uart0.r51</file>
-            <file>$PROJ_DIR$\Debug\Obj\clock.r51</file>
-            <file>$PROJ_DIR$\Debug\Obj\clock.pbi</file>
-            <file>$PROJ_DIR$\src\basicrf\hal_int.c</file>
-            <file>$PROJ_DIR$\Debug\Obj\hal_rf.r51</file>
-            <file>$PROJ_DIR$\src\basicrf\clock.c</file>
-            <file>$PROJ_DIR$\src\basicrf\util.c</file>
-            <file>$PROJ_DIR$\Debug\Obj\hal_int.pbi</file>
-            <file>$PROJ_DIR$\Debug\Obj\pl_gateway.r51</file>
-            <file>$PROJ_DIR$\Debug\Obj\util.r51</file>
-            <file>$PROJ_DIR$\Debug\Obj\pl_proto.r51</file>
-            <file>$PROJ_DIR$\Debug\Exe\project.hex</file>
             <file>$PROJ_DIR$\Debug\Obj\hal_mcu.r51</file>
-            <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
-            <file>$PROJ_DIR$\Debug\Obj\pl_gateway.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\font8.r51</file>
             <file>$PROJ_DIR$\Debug\Obj\font16.pbi</file>
-            <file>$PROJ_DIR$\Debug\Obj\project.pbd</file>
+            <file>$PROJ_DIR$\Debug\Obj\font24.r51</file>
+            <file>$PROJ_DIR$\Debug\Obj\util.r51</file>
+            <file>$PROJ_DIR$\Debug\Obj\hal_rf.r51</file>
+            <file>$PROJ_DIR$\Debug\Obj\pl_gateway.r51</file>
+            <file>$PROJ_DIR$\Debug\Obj\util.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\epd2in9.r51</file>
+            <file>$PROJ_DIR$\Debug\Obj\pl_proto.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\uart0.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\uart0.r51</file>
             <file>$PROJ_DIR$\Debug\Obj\font8.pbi</file>
             <file>$PROJ_DIR$\Debug\Obj\font24.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\clock.r51</file>
+            <file>$PROJ_DIR$\Debug\Obj\pl_gateway.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\hal_mcu.pbi</file>
+            <file>$PROJ_DIR$\Debug\Exe\project.hex</file>
             <file>$PROJ_DIR$\Debug\Obj\hal_assert.r51</file>
+            <file>$PROJ_DIR$\src\basicrf\hal_mcu.c</file>
+            <file>$PROJ_DIR$\src\basicrf\clock.c</file>
+            <file>$PROJ_DIR$\Debug\Obj\clock.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\hal_int.r51</file>
+            <file>$PROJ_DIR$\src\basicrf\util.c</file>
+            <file>$PROJ_DIR$\Debug\Obj\project.pbd</file>
+            <file>$PROJ_DIR$\Debug\Obj\basic_rf.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\hal_rf.pbi</file>
+            <file>$PROJ_DIR$\src\basicrf\hal_assert.c</file>
+            <file>$PROJ_DIR$\src\basicrf\hal_int.c</file>
+            <file>$PROJ_DIR$\Debug\Obj\pl_proto.r51</file>
+            <file>$PROJ_DIR$\Debug\Obj\hal_assert.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.r51</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
         </outputs>
         <file>
             <name>[ROOT_NODE]</name>
             <outputs>
                 <tool>
                     <name>XLINK</name>
-                    <file> 41</file>
+                    <file> 34</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\basicrf\basic_rf.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 16</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 42</file>
                 </tool>
             </outputs>
         </file>
@@ -70,7 +83,7 @@
             <outputs>
                 <tool>
                     <name>ICC8051</name>
-                    <file> 18</file>
+                    <file> 25</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
@@ -80,20 +93,59 @@
             <inputs>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 8 14 10</file>
+                    <file> 5 15 10</file>
                 </tool>
             </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\font8.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 18</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 29</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\font24.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 20</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 30</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\main.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 48</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 49</file>
+                </tool>
+            </outputs>
         </file>
         <file>
             <name>$PROJ_DIR$\src\pl_proto.c</name>
             <outputs>
                 <tool>
                     <name>ICC8051</name>
-                    <file> 40</file>
+                    <file> 46</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 24</file>
+                    <file> 26</file>
                 </tool>
             </outputs>
         </file>
@@ -102,48 +154,35 @@
             <outputs>
                 <tool>
                     <name>ICC8051</name>
-                    <file> 21</file>
+                    <file> 14</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 45</file>
+                    <file> 19</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 14 8</file>
+                    <file> 15 5</file>
                 </tool>
             </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\src\font24.c</name>
+            <name>$PROJ_DIR$\src\uart0.c</name>
             <outputs>
                 <tool>
                     <name>ICC8051</name>
-                    <file> 19</file>
+                    <file> 28</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 48</file>
+                    <file> 27</file>
                 </tool>
             </outputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\src\font8.c</name>
-            <outputs>
-                <tool>
-                    <name>ICC8051</name>
-                    <file> 25</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 47</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\src\main.c</name>
+            <name>$PROJ_DIR$\src\basicrf\hal_rf.c</name>
             <outputs>
                 <tool>
                     <name>ICC8051</name>
@@ -156,54 +195,15 @@
             </outputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\src\uart0.c</name>
-            <outputs>
-                <tool>
-                    <name>ICC8051</name>
-                    <file> 30</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 23</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
             <name>$PROJ_DIR$\src\pl_gateway.c</name>
             <outputs>
                 <tool>
                     <name>ICC8051</name>
-                    <file> 38</file>
+                    <file> 23</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 44</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\src\basicrf\basic_rf.c</name>
-            <outputs>
-                <tool>
-                    <name>ICC8051</name>
-                    <file> 15</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 26</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\src\basicrf\hal_rf.c</name>
-            <outputs>
-                <tool>
-                    <name>ICC8051</name>
-                    <file> 34</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 20</file>
+                    <file> 32</file>
                 </tool>
             </outputs>
         </file>
@@ -212,37 +212,11 @@
             <outputs>
                 <tool>
                     <name>ICC8051</name>
-                    <file> 42</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 29</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\src\basicrf\hal_assert.c</name>
-            <outputs>
-                <tool>
-                    <name>ICC8051</name>
-                    <file> 49</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 28</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\src\basicrf\hal_int.c</name>
-            <outputs>
-                <tool>
-                    <name>ICC8051</name>
                     <file> 17</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 37</file>
+                    <file> 33</file>
                 </tool>
             </outputs>
         </file>
@@ -255,7 +229,7 @@
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 32</file>
+                    <file> 38</file>
                 </tool>
             </outputs>
         </file>
@@ -264,11 +238,37 @@
             <outputs>
                 <tool>
                     <name>ICC8051</name>
+                    <file> 21</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 24</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\basicrf\hal_assert.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 35</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 47</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\basicrf\hal_int.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
                     <file> 39</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 16</file>
+                    <file> 12</file>
                 </tool>
             </outputs>
         </file>
@@ -279,162 +279,124 @@
     <configuration>
         <name>Release</name>
         <outputs>
+            <file>$PROJ_DIR$\src\uart0.h</file>
+            <file>$PROJ_DIR$\src\basicrf\basic_rf.c</file>
             <file>$PROJ_DIR$\src\epd2in9.c</file>
+            <file>$PROJ_DIR$\src\font8.c</file>
+            <file>$PROJ_DIR$\src\font24.c</file>
+            <file>$PROJ_DIR$\src\main.c</file>
+            <file>$PROJ_DIR$\src\fonts.h</file>
             <file>$PROJ_DIR$\src\pl_proto.c</file>
             <file>$PROJ_DIR$\src\pl_proto.h</file>
             <file>$PROJ_DIR$\src\font16.c</file>
-            <file>$PROJ_DIR$\src\font24.c</file>
-            <file>$PROJ_DIR$\src\uart0.h</file>
-            <file>$PROJ_DIR$\src\font8.c</file>
-            <file>$PROJ_DIR$\src\main.c</file>
             <file>$PROJ_DIR$\src\uart0.c</file>
-            <file>$PROJ_DIR$\src\pl_gateway.c</file>
             <file>$PROJ_DIR$\src\pl_gateway.h</file>
-            <file>$PROJ_DIR$\src\fonts.h</file>
-            <file>$PROJ_DIR$\src\basicrf\basic_rf.c</file>
             <file>$PROJ_DIR$\src\basicrf\basic_rf.h</file>
-            <file>$PROJ_DIR$\src\epd2in9.h</file>
             <file>$PROJ_DIR$\src\basicrf\hal_rf.c</file>
-            <file>$PROJ_DIR$\src\basicrf\hal_mcu.h</file>
-            <file>$PROJ_DIR$\src\basicrf\hal_rf.h</file>
-            <file>$PROJ_DIR$\src\basicrf\hal_mcu.c</file>
-            <file>$PROJ_DIR$\Release\Obj\font24.__cstat.et</file>
+            <file>$PROJ_DIR$\src\epd2in9.h</file>
+            <file>$PROJ_DIR$\src\pl_gateway.c</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\xencoding_limits.h</file>
+            <file>$TOOLKIT_DIR$\inc\ioCC2530.h</file>
+            <file>$TOOLKIT_DIR$\lib\dlib\dl8051Normal.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\ycheck.h</file>
+            <file>$TOOLKIT_DIR$\lib\dlib\dl-pli-nlpd-1e16x01n.r51</file>
+            <file>$TOOLKIT_DIR$\config\devices\_generic\lnk51ew_8052.xcl</file>
+            <file>$PROJ_DIR$\Release\Obj\pl_proto.__cstat.et</file>
+            <file>$PROJ_DIR$\Release\Obj\main.r51</file>
+            <file>$PROJ_DIR$\Release\Obj\pl_proto.r51</file>
+            <file>$PROJ_DIR$\Release\Obj\main.__cstat.et</file>
             <file>$PROJ_DIR$\Release\Obj\basic_rf.__cstat.et</file>
-            <file>$PROJ_DIR$\Release\Obj\util.r51</file>
+            <file>$PROJ_DIR$\Release\Obj\pl_gateway.r51</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Threads.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\yvals.h</file>
+            <file>$PROJ_DIR$\Release\Obj\util.__cstat.et</file>
+            <file>$PROJ_DIR$\Release\Obj\hal_rf.r51</file>
+            <file>$PROJ_DIR$\Release\Obj\hal_int.__cstat.et</file>
+            <file>$PROJ_DIR$\Release\Obj\font24.__cstat.et</file>
+            <file>$PROJ_DIR$\Release\Obj\font16.r51</file>
+            <file>$PROJ_DIR$\Release\Obj\hal_mcu.r51</file>
+            <file>$PROJ_DIR$\Release\Obj\basic_rf.r51</file>
+            <file>$PROJ_DIR$\Release\Obj\hal_assert.r51</file>
             <file>$PROJ_DIR$\Release\Obj\hal_mcu.__cstat.et</file>
             <file>$PROJ_DIR$\Release\Obj\epd2in9.__cstat.et</file>
-            <file>$PROJ_DIR$\Release\Obj\clock.__cstat.et</file>
-            <file>$PROJ_DIR$\Release\Obj\font16.__cstat.et</file>
-            <file>$PROJ_DIR$\Release\Exe\project.a51</file>
-            <file>$PROJ_DIR$\Release\Obj\font8.__cstat.et</file>
-            <file>$TOOLKIT_DIR$\lib\dlib\dl8051Normal.h</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Threads.h</file>
-            <file>$TOOLKIT_DIR$\config\devices\_generic\lnk51ew_8052.xcl</file>
-            <file>$TOOLKIT_DIR$\inc\ioCC2530.h</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\string.h</file>
-            <file>$TOOLKIT_DIR$\lib\dlib\dl-pli-nlpd-1e16x01n.r51</file>
-            <file>$PROJ_DIR$\src\basicrf\hal_int.h</file>
-            <file>$PROJ_DIR$\src\basicrf\hal_assert.c</file>
-            <file>$PROJ_DIR$\src\basicrf\hal_defs.h</file>
-            <file>$PROJ_DIR$\src\basicrf\clock.h</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\yvals.h</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Product.h</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\ycheck.h</file>
-            <file>$PROJ_DIR$\src\basicrf\hal_assert.h</file>
-            <file>$PROJ_DIR$\src\basicrf\hal_types.h</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\xencoding_limits.h</file>
-            <file>$PROJ_DIR$\src\basicrf\hal_int.c</file>
-            <file>$PROJ_DIR$\src\basicrf\util.h</file>
-            <file>$PROJ_DIR$\src\basicrf\clock.c</file>
-            <file>$PROJ_DIR$\src\basicrf\util.c</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Defaults.h</file>
-            <file>$PROJ_DIR$\Release\Obj\uart0.r51</file>
-            <file>$PROJ_DIR$\Release\Obj\hal_rf.__cstat.et</file>
-            <file>$PROJ_DIR$\Release\List\project.map</file>
             <file>$PROJ_DIR$\Release\Obj\hal_int.r51</file>
-            <file>$PROJ_DIR$\Release\Obj\pl_proto.r51</file>
-            <file>$PROJ_DIR$\Release\Obj\hal_int.__cstat.et</file>
-            <file>$PROJ_DIR$\Release\Obj\hal_mcu.r51</file>
-            <file>$PROJ_DIR$\Release\Obj\epd2in9.r51</file>
-            <file>$PROJ_DIR$\Release\Obj\pl_gateway.r51</file>
-            <file>$PROJ_DIR$\Release\Obj\main.__cstat.et</file>
-            <file>$PROJ_DIR$\Release\Obj\util.__cstat.et</file>
-            <file>$PROJ_DIR$\Release\Obj\hal_assert.__cstat.et</file>
-            <file>$PROJ_DIR$\Release\Obj\pl_gateway.__cstat.et</file>
-            <file>$PROJ_DIR$\Release\Obj\pl_proto.__cstat.et</file>
-            <file>$PROJ_DIR$\Release\Obj\hal_assert.r51</file>
-            <file>$PROJ_DIR$\Release\Obj\main.r51</file>
-            <file>$PROJ_DIR$\Release\Obj\hal_rf.r51</file>
-            <file>$PROJ_DIR$\Release\Obj\clock.r51</file>
-            <file>$PROJ_DIR$\Release\Obj\basic_rf.r51</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\ysizet.h</file>
-            <file>$PROJ_DIR$\Release\Obj\uart0.__cstat.et</file>
+            <file>$PROJ_DIR$\Release\Exe\project.a51</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Product.h</file>
+            <file>$PROJ_DIR$\Release\Obj\uart0.r51</file>
+            <file>$PROJ_DIR$\Release\List\project.map</file>
             <file>$PROJ_DIR$\Release\Obj\font24.r51</file>
+            <file>$PROJ_DIR$\Release\Obj\clock.__cstat.et</file>
+            <file>$PROJ_DIR$\Release\Obj\hal_rf.__cstat.et</file>
+            <file>$PROJ_DIR$\Release\Obj\util.r51</file>
+            <file>$PROJ_DIR$\Release\Obj\uart0.__cstat.et</file>
+            <file>$PROJ_DIR$\Release\Obj\font16.__cstat.et</file>
+            <file>$PROJ_DIR$\Release\Obj\hal_assert.__cstat.et</file>
+            <file>$PROJ_DIR$\Release\Obj\epd2in9.r51</file>
+            <file>$PROJ_DIR$\Release\Obj\font8.__cstat.et</file>
+            <file>$PROJ_DIR$\Release\Obj\pl_gateway.__cstat.et</file>
+            <file>$PROJ_DIR$\Release\Obj\clock.r51</file>
             <file>$PROJ_DIR$\Release\Obj\font8.r51</file>
-            <file>$PROJ_DIR$\Release\Obj\font16.r51</file>
+            <file>$PROJ_DIR$\src\basicrf\hal_defs.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\ysizet.h</file>
+            <file>$PROJ_DIR$\src\basicrf\hal_mcu.h</file>
+            <file>$PROJ_DIR$\src\basicrf\hal_mcu.c</file>
+            <file>$PROJ_DIR$\src\basicrf\clock.h</file>
+            <file>$PROJ_DIR$\src\basicrf\clock.c</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\string.h</file>
+            <file>$PROJ_DIR$\src\basicrf\util.c</file>
+            <file>$PROJ_DIR$\src\basicrf\hal_types.h</file>
+            <file>$PROJ_DIR$\src\basicrf\hal_int.h</file>
+            <file>$PROJ_DIR$\src\basicrf\hal_rf.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Defaults.h</file>
+            <file>$PROJ_DIR$\src\basicrf\hal_assert.c</file>
+            <file>$PROJ_DIR$\src\basicrf\util.h</file>
+            <file>$PROJ_DIR$\src\basicrf\hal_int.c</file>
+            <file>$PROJ_DIR$\src\basicrf\hal_assert.h</file>
         </outputs>
         <file>
             <name>[ROOT_NODE]</name>
             <outputs>
                 <tool>
                     <name>XLINK</name>
-                    <file> 26 51</file>
+                    <file> 41 44</file>
                 </tool>
             </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\basicrf\basic_rf.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 36</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 26</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 66 65 59 67 12 57 70 63 19 29 68 18 42 16 28 58</file>
+                </tool>
+            </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\src\epd2in9.c</name>
             <outputs>
                 <tool>
-                    <name>__cstat</name>
-                    <file> 23</file>
+                    <name>ICC8051</name>
+                    <file> 52</file>
                 </tool>
                 <tool>
-                    <name>ICC8051</name>
-                    <file> 56</file>
+                    <name>__cstat</name>
+                    <file> 39</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICC8051</name>
-                    <file> 14 31 11</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\src\pl_proto.c</name>
-            <outputs>
-                <tool>
-                    <name>__cstat</name>
-                    <file> 62</file>
-                </tool>
-                <tool>
-                    <name>ICC8051</name>
-                    <file> 53</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICC8051</name>
-                    <file> 2 42 14 31 11</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\src\font16.c</name>
-            <outputs>
-                <tool>
-                    <name>__cstat</name>
-                    <file> 25</file>
-                </tool>
-                <tool>
-                    <name>ICC8051</name>
-                    <file> 72</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICC8051</name>
-                    <file> 11 31</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\src\font24.c</name>
-            <outputs>
-                <tool>
-                    <name>__cstat</name>
-                    <file> 19</file>
-                </tool>
-                <tool>
-                    <name>ICC8051</name>
-                    <file> 70</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICC8051</name>
-                    <file> 11 31</file>
+                    <file> 14 17 6</file>
                 </tool>
             </inputs>
         </file>
@@ -442,18 +404,37 @@
             <name>$PROJ_DIR$\src\font8.c</name>
             <outputs>
                 <tool>
-                    <name>__cstat</name>
-                    <file> 27</file>
+                    <name>ICC8051</name>
+                    <file> 56</file>
                 </tool>
                 <tool>
-                    <name>ICC8051</name>
-                    <file> 71</file>
+                    <name>__cstat</name>
+                    <file> 53</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICC8051</name>
-                    <file> 11 31</file>
+                    <file> 6 17</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\font24.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 45</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 33</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 6 17</file>
                 </tool>
             </inputs>
         </file>
@@ -461,18 +442,56 @@
             <name>$PROJ_DIR$\src\main.c</name>
             <outputs>
                 <tool>
-                    <name>__cstat</name>
-                    <file> 58</file>
+                    <name>ICC8051</name>
+                    <file> 23</file>
                 </tool>
                 <tool>
-                    <name>ICC8051</name>
-                    <file> 64</file>
+                    <name>__cstat</name>
+                    <file> 25</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICC8051</name>
-                    <file> 31 13 42 36 10 2 5 14 11</file>
+                    <file> 17 12 65 57 11 8 0 14 6</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\pl_proto.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 24</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 22</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 8 65 14 17 6</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\font16.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 34</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 50</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 6 17</file>
                 </tool>
             </inputs>
         </file>
@@ -480,56 +499,18 @@
             <name>$PROJ_DIR$\src\uart0.c</name>
             <outputs>
                 <tool>
-                    <name>__cstat</name>
-                    <file> 69</file>
+                    <name>ICC8051</name>
+                    <file> 43</file>
                 </tool>
                 <tool>
-                    <name>ICC8051</name>
+                    <name>__cstat</name>
                     <file> 49</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICC8051</name>
-                    <file> 31 5 42</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\src\pl_gateway.c</name>
-            <outputs>
-                <tool>
-                    <name>__cstat</name>
-                    <file> 61</file>
-                </tool>
-                <tool>
-                    <name>ICC8051</name>
-                    <file> 57</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICC8051</name>
-                    <file> 31 32 40 38 48 28 39 43 29 68 10 2 42 5 13 36 14 11</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\src\basicrf\basic_rf.c</name>
-            <outputs>
-                <tool>
-                    <name>__cstat</name>
-                    <file> 20</file>
-                </tool>
-                <tool>
-                    <name>ICC8051</name>
-                    <file> 67</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICC8051</name>
-                    <file> 34 42 16 17 13 36 45 32 40 38 48 28 39 43 29 68</file>
+                    <file> 17 0 65</file>
                 </tool>
             </inputs>
         </file>
@@ -537,37 +518,37 @@
             <name>$PROJ_DIR$\src\basicrf\hal_rf.c</name>
             <outputs>
                 <tool>
-                    <name>__cstat</name>
-                    <file> 50</file>
+                    <name>ICC8051</name>
+                    <file> 31</file>
                 </tool>
                 <tool>
-                    <name>ICC8051</name>
-                    <file> 65</file>
+                    <name>__cstat</name>
+                    <file> 47</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICC8051</name>
-                    <file> 31 16 42 34 41 36 17 45</file>
+                    <file> 17 59 65 66 72 57 67 70</file>
                 </tool>
             </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\src\basicrf\hal_mcu.c</name>
+            <name>$PROJ_DIR$\src\pl_gateway.c</name>
             <outputs>
                 <tool>
-                    <name>__cstat</name>
-                    <file> 22</file>
+                    <name>ICC8051</name>
+                    <file> 27</file>
                 </tool>
                 <tool>
-                    <name>ICC8051</name>
-                    <file> 55</file>
+                    <name>__cstat</name>
+                    <file> 54</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICC8051</name>
-                    <file> 42 16 37 36 31 41</file>
+                    <file> 17 63 19 29 68 18 42 16 28 58 11 8 65 0 12 57 14 6</file>
                 </tool>
             </inputs>
         </file>
@@ -576,51 +557,32 @@
             <outputs>
                 <tool>
                     <name>XLINK</name>
-                    <file> 51</file>
+                    <file> 44</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>XLINK</name>
-                    <file> 30 67 66 56 72 70 71 63 52 55 65 64 57 53 49 21 33</file>
+                    <file> 21 36 55 52 34 45 56 37 40 35 31 23 27 24 43 48 20</file>
                 </tool>
             </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\src\basicrf\hal_assert.c</name>
+            <name>$PROJ_DIR$\src\basicrf\hal_mcu.c</name>
             <outputs>
                 <tool>
-                    <name>__cstat</name>
-                    <file> 60</file>
+                    <name>ICC8051</name>
+                    <file> 35</file>
                 </tool>
                 <tool>
-                    <name>ICC8051</name>
-                    <file> 63</file>
+                    <name>__cstat</name>
+                    <file> 38</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICC8051</name>
-                    <file> 41 36 16 42</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\src\basicrf\hal_int.c</name>
-            <outputs>
-                <tool>
-                    <name>__cstat</name>
-                    <file> 54</file>
-                </tool>
-                <tool>
-                    <name>ICC8051</name>
-                    <file> 52</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICC8051</name>
-                    <file> 42 36 34 31</file>
+                    <file> 65 59 61 57 17 72</file>
                 </tool>
             </inputs>
         </file>
@@ -628,18 +590,18 @@
             <name>$PROJ_DIR$\src\basicrf\clock.c</name>
             <outputs>
                 <tool>
-                    <name>__cstat</name>
-                    <file> 24</file>
+                    <name>ICC8051</name>
+                    <file> 55</file>
                 </tool>
                 <tool>
-                    <name>ICC8051</name>
-                    <file> 66</file>
+                    <name>__cstat</name>
+                    <file> 46</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICC8051</name>
-                    <file> 37 42 36 31 16</file>
+                    <file> 61 65 57 17 59</file>
                 </tool>
             </inputs>
         </file>
@@ -647,18 +609,56 @@
             <name>$PROJ_DIR$\src\basicrf\util.c</name>
             <outputs>
                 <tool>
-                    <name>__cstat</name>
-                    <file> 59</file>
+                    <name>ICC8051</name>
+                    <file> 48</file>
                 </tool>
                 <tool>
-                    <name>ICC8051</name>
-                    <file> 21</file>
+                    <name>__cstat</name>
+                    <file> 30</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICC8051</name>
-                    <file> 45 42 36 17</file>
+                    <file> 70 65 57 67</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\basicrf\hal_assert.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 37</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 51</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 72 57 59 65</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\basicrf\hal_int.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 40</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 32</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 65 57 66 17</file>
                 </tool>
             </inputs>
         </file>
