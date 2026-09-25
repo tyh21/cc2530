@@ -1,0 +1,74 @@
+<style>
+  .t{font-family:var(--font-sans);font-size:14px;fill:var(--color-text-primary)}
+  .ts{font-family:var(--font-sans);font-size:12px;fill:var(--color-text-secondary)}
+  .th{font-family:var(--font-sans);font-size:14px;font-weight:500;fill:var(--color-text-primary)}
+  .tt{font-family:var(--font-sans);font-size:13px;font-weight:500;fill:var(--color-text-primary)}
+  .box{fill:var(--color-background-secondary);stroke:var(--color-border-primary);stroke-width:0.5}
+  .n-b{fill:#E6F1FB;stroke:#185FA5;stroke-width:0.5}
+  .n-g{fill:#EAF3DE;stroke:#3B6D11;stroke-width:0.5}
+  .n-a{fill:#FAEEDA;stroke:#854F0B;stroke-width:0.5}
+</style>
+<svg viewBox="0 0 680 320" width="100%" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>pic_link 三板组网推图: 链路架构与使用步骤</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <text class="th" x="40" y="24">数据链路</text>
+
+  <g>
+    <rect class="n-b" x="40" y="46" width="118" height="56" rx="8"/>
+    <text class="tt" x="99" y="66" text-anchor="middle" dominant-baseline="central">PC 推图</text>
+    <text class="ts" x="99" y="86" text-anchor="middle" dominant-baseline="central">pic_push.py</text>
+  </g>
+
+  <path class="arr" d="M162 74 L 228 74" fill="none" marker-end="url(#arrow)" stroke="#5F5E5A" stroke-width="1.5"/>
+  <text class="ts" x="195" y="62" text-anchor="middle">USB-TTL</text>
+  <text class="ts" x="195" y="94" text-anchor="middle">115200 8N1</text>
+
+  <g>
+    <rect class="n-a" x="232" y="46" width="168" height="56" rx="8"/>
+    <text class="tt" x="316" y="66" text-anchor="middle" dominant-baseline="central">LG213 网关</text>
+    <text class="ts" x="316" y="86" text-anchor="middle" dominant-baseline="central">0x1213 · 自显 2.13"</text>
+  </g>
+
+  <path d="M400 60 C 424 52, 440 52, 462 60" fill="none" stroke="#185FA5" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
+  <path d="M400 90 C 424 98, 440 98, 462 90" fill="none" stroke="#185FA5" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
+  <text class="ts" x="432" y="78" text-anchor="middle">BasicRF</text>
+
+  <g>
+    <rect class="n-g" x="466" y="30" width="174" height="44" rx="8"/>
+    <text class="tt" x="553" y="46" text-anchor="middle" dominant-baseline="central">LG290 节点</text>
+    <text class="ts" x="553" y="63" text-anchor="middle" dominant-baseline="central">0x1290 · 2.9" SSD1680</text>
+  </g>
+  <g>
+    <rect class="n-g" x="466" y="88" width="174" height="44" rx="8"/>
+    <text class="tt" x="553" y="104" text-anchor="middle" dominant-baseline="central">blozi290 节点</text>
+    <text class="ts" x="553" y="121" text-anchor="middle" dominant-baseline="central">0xB290 · 2.9" SSD1608</text>
+  </g>
+
+  <text class="th" x="40" y="168">上手三步</text>
+
+  <g>
+    <rect class="n-b" x="40" y="182" width="186" height="86" rx="8"/>
+    <text class="tt" x="62" y="204" dominant-baseline="central">1 烧录固件</text>
+    <text class="ts" x="62" y="226" dominant-baseline="central">IAR 打开各工程 eww</text>
+    <text class="ts" x="62" y="246" dominant-baseline="central">三块板各烧一份</text>
+  </g>
+  <g>
+    <rect class="n-a" x="247" y="182" width="186" height="86" rx="8"/>
+    <text class="tt" x="269" y="204" dominant-baseline="central">2 接线 (仅网关)</text>
+    <text class="ts" x="269" y="226" dominant-baseline="central">P1.7→RXD  P1.6→TXD</text>
+    <text class="ts" x="269" y="246" dominant-baseline="central">GND→GND  3V3→3V3</text>
+  </g>
+  <g>
+    <rect class="n-g" x="454" y="182" width="186" height="86" rx="8"/>
+    <text class="tt" x="476" y="204" dominant-baseline="central">3 推图</text>
+    <text class="ts" x="476" y="226" dominant-baseline="central">python pic_push.py</text>
+    <text class="ts" x="476" y="246" dominant-baseline="central">图片路径 COM口</text>
+  </g>
+
+  <text class="ts" x="40" y="300">三屏同显一张图 · 213 全刷约 15s · 290 全刷约 3s · 接收出错屏显全黑</text>
+</svg>
