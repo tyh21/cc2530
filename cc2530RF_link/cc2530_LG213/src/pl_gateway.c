@@ -145,13 +145,43 @@ static void gw_send_ack(uint16 seq)
     gw_send_frame(PL_U_ACK, p, 2);
 }
 
-/* ---------------- RF 发送 (两节点各一包) ----------------
+/* ---------------- 两节点送达失败计数 (每张图 END 时串口汇总打印) -------- */
+static uint16 gw_290_fail = 0;
+static uint16 gw_b29_fail = 0;
+
+/* ---------------- RF 发送 (两节点各一包, 各自重发) ----------------
  * RF payload: TYPE | SEQ_H SEQ_L | LEN | DATA(LEN) | CRC_H CRC_L
- * CRC 覆盖 TYPE..DATA, 最大 4+96+2 = 102 <= 103
+ * CRC 覆盖 TYPE..DATA, 最大 4+96+2 = 102 <= BASIC_RF_MAX_PAYLOAD_SIZE(105)
+ *
+ * [2026-09-25 修复 "推图时节点无反应"]
+ * BasicRF 的 MAC ACK 是硬件级可靠送达: basicRfSendPacket 返回 SUCCESS
+ * = 节点 RF 层已收到且硬件 CRC 通过。原代码 (void) 忽略返回值,
+ * 任何一包无 ACK 即静默丢包 -> 节点 END 校验失败 -> 刷全黑报错。
+ * 现在两节点各自重发, 最多 3 次; 3 连败打告警并计数。
+ * 节点已加包位图去重, 重发不会重复计数。
  */
+static void gw_rf_send_one(uint16 addr, uint8 type, uint16 seq, uint8 plen)
+{
+    uint8 try;
+    for (try = 0; try < 3; try++) {
+        if (basicRfSendPacket(addr, (uint8 *)rfbuf, plen) == SUCCESS)
+            return;                         /* MAC ACK = 已收到 */
+        gw_delay_ms(2);
+    }
+    /* 3 连败: 计数 + 告警 */
+    if (addr == PL_ADDR_NODE290) gw_290_fail++; else gw_b29_fail++;
+    uart0_puts(addr == PL_ADDR_NODE290 ? "[GW] !! 290 TX FAIL" : "[GW] !! B29 TX FAIL");
+    uart0_puts(" t=");
+    uart0_put_hex2(type);
+    uart0_puts(" s=");
+    uart0_put_hex2((uint8)seq);
+    uart0_puts("\r\n");
+}
+
 static void gw_rf_send(uint8 type, uint16 seq, const uint8 __xdata *data, uint8 len)
 {
     uint16 crc;
+    uint8  plen = (uint8)(6 + len);
 
     rfbuf[0] = type;
     rfbuf[1] = (uint8)(seq >> 8);
@@ -162,8 +192,8 @@ static void gw_rf_send(uint8 type, uint16 seq, const uint8 __xdata *data, uint8 
     rfbuf[4 + len]     = (uint8)(crc >> 8);
     rfbuf[5 + len]     = (uint8)(crc & 0xFF);
 
-    (void)basicRfSendPacket(PL_ADDR_NODE290, (uint8 *)rfbuf, (uint8)(6 + len));
-    (void)basicRfSendPacket(PL_ADDR_NODEB29, (uint8 *)rfbuf, (uint8)(6 + len));
+    gw_rf_send_one(PL_ADDR_NODE290, type, seq, plen);
+    gw_rf_send_one(PL_ADDR_NODEB29, type, seq, plen);
 }
 
 /* ==================== 网关主循环 ==================== */
@@ -187,6 +217,8 @@ void pl_gateway_run(void)
         }
 
         uart0_puts("[GW] START ok -> RF fwd + ACK\r\n");
+        gw_290_fail = 0;
+        gw_b29_fail = 0;                 /* 每张图独立统计 */
         gw_rf_send(PL_R_START, 0, paybuf, 2);
         gw_send_ack(0xFFFF);
 
@@ -214,9 +246,13 @@ void pl_gateway_run(void)
             if (crc_calc != crc_rx)
                 goto drop;
 
-            /* 存图缓冲 + RF 转发 (LEN+DATA) */
+            /* 存图缓冲 + RF 转发 (纯图数据)
+             * [2026-09-25 修复全黑 bug] 原来发 &paybuf[2]/clen+1, 把 UART 块内
+             * 的 LEN 字节也带进了 RF DATA; 节点按 "rfbuf[3]=图数据长度,
+             * rfbuf[4..]=纯图数据" 解析 -> 每包多算 1 字节, rx_bytes=2785!=2756,
+             * END 校验失败 -> 节点刷全黑报错。改发纯图数据(&paybuf[3], clen)。 */
             memcpy((void *)&imgbuf[seq * PL_CHUNK], (void const *)&paybuf[3], clen);
-            gw_rf_send(PL_R_DATA, seq, &paybuf[2], (uint8)(clen + 1));
+            gw_rf_send(PL_R_DATA, seq, &paybuf[3], clen);
             gw_send_ack(seq);
             uart0_puts("[GW] D=");
             uart0_put_hex2((uint8)seq);
@@ -233,6 +269,24 @@ void pl_gateway_run(void)
         uart0_puts("[GW] END ok -> display ~15s\r\n");
         gw_rf_send(PL_R_END, 0, paybuf, 0);
         gw_send_ack(0xFFFF);
+
+        /* 两节点送达汇总: 正常 OK, 异常打印失败次数 (查电池/距离/天线) */
+        if (gw_290_fail != 0) {
+            uart0_puts("[GW] !! 290 unreachable, TX fail x");
+            uart0_put_hex2((uint8)(gw_290_fail >> 8));
+            uart0_put_hex2((uint8)gw_290_fail);
+            uart0_puts("\r\n");
+        } else {
+            uart0_puts("[GW] 290 all MAC-ACK ok\r\n");
+        }
+        if (gw_b29_fail != 0) {
+            uart0_puts("[GW] !! B29 unreachable, TX fail x");
+            uart0_put_hex2((uint8)(gw_b29_fail >> 8));
+            uart0_put_hex2((uint8)gw_b29_fail);
+            uart0_puts("\r\n");
+        } else {
+            uart0_puts("[GW] B290 all MAC-ACK ok\r\n");
+        }
 
         /* ---- 4. 自显 (三色屏全刷 ~15s, 全刷自动清残影) ----
          * 此时 PC 已收完 ACK, 15s 刷屏不阻塞停等协议;

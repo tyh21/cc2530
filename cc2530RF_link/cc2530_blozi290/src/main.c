@@ -41,8 +41,17 @@ int main(void)
     rf.channel    = PL_CHANNEL;
     rf.ackRequest = TRUE;
     if (basicRfInit(&rf) == FAILED) {
-        while (1)
-            ;                      /* 射频初始化失败, 停机 */
+        /* [2026-09-25] RF init 失败不再无声挂死 (屏幕停在白色, 推图无任何
+         * 反应, 无法与链路问题区分): 刷黑底白 X 大叉报错画面后停机。
+         * 排查方向: 电池电压 (刷白后电压跌落致 RF 校准失败) / 32M 晶振 */
+        EPD_Init();
+        EPD_FrameClear(0x00);
+        EPD_DrawLine(10, 10, 285, 118, 0);     /* 黑底白色大 X */
+        EPD_DrawLine(10, 118, 285, 10, 0);
+        EPD_DisplayImage((const uint8 *)EPD_Frame);
+        EPD_Sleep();
+        for (;;)
+            ;
     }
     basicRfReceiveOn();
 
