@@ -1,0 +1,15 @@
+# IAR Embedded Workbench specific
+#
+# Compiled output
+/Debug/
+/Release/
+
+# Dependencies
+*.dep
+
+# Other generated files
+*.o
+*.r51
+*.a51
+*.hex
+*.out
