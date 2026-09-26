@@ -45,10 +45,10 @@ __interrupt void T1_ISR(void)
 static void timer_init(void)
 {
     T1CTL = 0x0C;              /* 128 分频 (先停表配置) */
-    /* 32MHz/128 = 250kHz; T1CC0 = 62499 -> 62500 tick = 250ms/次
+    /* 32MHz/128 = 250kHz; T1CC0 = 31248 -> 62500 tick = 250ms/次
      * 240 次 x 250ms = 60s 整 (修正旧值 31248 实为 125ms/30s 的偏差) */
-    T1CC0H = (62499 >> 8);
-    T1CC0L = (62499 & 0xFF);
+    T1CC0H = (31248 >> 8);
+    T1CC0L = (31248 & 0xFF);
     T1CCTL0 = 0x44;            /* 通道0 比较模式 + 中断使能 */
     T1STAT = 0x00;             /* 清所有 T1 标志 */
     T1CTL = 0x0E;              /* 模模式 + 128分频, 启动 */
