@@ -1,0 +1,5875 @@
+///////////////////////////////////////////////////////////////////////////////
+//
+// IAR C/C++ Compiler V10.20.1.5333 for 8051              04/Oct/2026  18:44:37
+// Copyright 2004-2018 IAR Systems AB.
+// PC-locked license - IAR Embedded Workbench for 8051
+//
+//    Core               =  plain
+//    Code model         =  near
+//    Data model         =  large
+//    Calling convention =  pdata reentrant
+//    Constant location  =  data
+//    Dptr setup         =  1,16
+//                          
+//    Source file        =  
+//        C:\Users\tyh21\Desktop\cc2530\cc2530_RF_link\cc2530_LG290_nfc\src\nfc.c
+//    Command line       =  
+//        -f C:\Users\tyh21\AppData\Local\Temp\EW548F.tmp
+//        (C:\Users\tyh21\Desktop\cc2530\cc2530_RF_link\cc2530_LG290_nfc\src\nfc.c
+//        -lB
+//        C:\Users\tyh21\Desktop\cc2530\cc2530_RF_link\cc2530_LG290_nfc\Debug\List
+//        -o
+//        C:\Users\tyh21\Desktop\cc2530\cc2530_RF_link\cc2530_LG290_nfc\Debug\Obj
+//        -e --debug --core=plain --dptr=16,1 --data_model=large
+//        --code_model=near --calling_convention=pdata_reentrant
+//        --place_constants=data --nr_virtual_regs 8 --dlib_config "C:/Program
+//        Files (x86)\IAR Systems\Embedded Workbench
+//        8.0_3\8051\LIB\DLIB\dl8051Normal.h" -Ol --no_cse --no_unroll
+//        --no_inline --no_code_motion --no_tbaa --no_cross_call)
+//    Locale             =  Chinese (Simplified)_CHN.936
+//    List file          =  
+//        C:\Users\tyh21\Desktop\cc2530\cc2530_RF_link\cc2530_LG290_nfc\Debug\List\nfc.s51
+//
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME nfc
+
+        RSEG DOVERLAY:DATA:NOROOT(0)
+        RSEG IOVERLAY:IDATA:NOROOT(0)
+        RSEG ISTACK:IDATA:NOROOT(0)
+        RSEG PSTACK:XDATA:NOROOT(0)
+        RSEG XSTACK:XDATA:NOROOT(0)
+
+        EXTERN ?V0
+        EXTERN ?V1
+        EXTERN ?V2
+        EXTERN ?V3
+        EXTERN ?V4
+        EXTERN ?V5
+        EXTERN ?V6
+        EXTERN ?V7
+        EXTERN ?FUNC_ENTER_PDATA
+        EXTERN ?FUNC_LEAVE_PDATA
+        EXTERN ?L_IOR
+        EXTERN ?L_MOV_TO_PX_A
+        EXTERN ?L_MOV_X
+        EXTERN ?L_MUL
+        EXTERN ?L_SHL
+        EXTERN ?L_SUB
+        EXTERN ?L_SUB_PX
+        EXTERN ?PSP
+        EXTERN ?PUSH_PSTACK_I_ONE
+        EXTERN ?PUSH_PSTACK_I_TWO
+        EXTERN ?SS_SHR
+        EXTERN ?S_SHL
+        EXTERN ?UL_DIV_MOD
+        EXTERN ?UL_GE_X
+        EXTERN ?UL_GT
+        EXTERN ?US_DIV_MOD
+        EXTERN _PDATA0_START
+        EXTERN __INIT_IDATA_I
+        EXTERN __INIT_IDATA_Z
+        EXTERN __INIT_XDATA_I
+        EXTERN __INIT_XDATA_Z
+
+        PUBWEAK CLKCONCMD
+        PUBLIC NFC_AckProbe
+        PUBLIC NFC_BusLevel
+        PUBLIC NFC_BusLevel2
+        PUBLIC NFC_BusOff
+        PUBLIC NFC_BusOn
+        PUBLIC NFC_BusRecover
+        PUBLIC NFC_DelayMs
+        PUBLIC NFC_DriveAndReadOther
+        PUBLIC NFC_GetBitNs
+        PUBLIC NFC_GetBitTicks
+        PUBLIC NFC_GetBitUs100
+        PUBLIC NFC_GetCalOk
+        PUBLIC NFC_GetCalSt
+        PUBLIC NFC_GetCalT1
+        PUBLIC NFC_GetTickNs
+        PUBLIC NFC_NirqLevel
+        PUBLIC NFC_NirqWatchMs
+        PUBLIC NFC_PinDrive
+        PUBLIC NFC_PinFloat
+        PUBLIC NFC_PowerOff
+        PUBLIC NFC_PowerUp
+        PUBLIC NFC_Probe
+        PUBLIC NFC_RReg
+        PUBLIC NFC_ReadMem
+        PUBLIC NFC_ReadTextEx
+        PUBLIC NFC_ScanAll
+        PUBLIC NFC_ScanRd
+        PUBLIC NFC_SclRiseUs10
+        PUBLIC NFC_ScopeTx
+        PUBLIC NFC_ScpKind
+        PUBLIC NFC_SdaFallUs10
+        PUBLIC NFC_SdaRiseUs10
+        PUBLIC NFC_SetDrive
+        PUBLIC NFC_SetOrder
+        PUBLIC NFC_SetSwap
+        PUBLIC NFC_SetTristate
+        PUBLIC NFC_StatusCmd
+        PUBLIC NFC_T1Init
+        PUBLIC NFC_T1Ok
+        PUBLIC NFC_TimebaseCal
+        PUBLIC NFC_VddAlive
+        PUBLIC NFC_VddHoldMs
+        PUBLIC NFC_WReg
+        PUBLIC NFC_WaitNirqLow
+        PUBLIC NFC_WriteMem
+        PUBLIC NFC_WriteTextEx
+        PUBWEAK P0DIR
+        PUBWEAK P0IEN
+        PUBWEAK P0INP
+        PUBWEAK P0SEL
+        PUBWEAK P1DIR
+        PUBWEAK P1IEN
+        PUBWEAK P1INP
+        PUBWEAK P1SEL
+        PUBWEAK P2DIR
+        PUBWEAK P2INP
+        PUBWEAK P2SEL
+        PUBWEAK ST0
+        PUBWEAK ST1
+        PUBWEAK ST2
+        PUBWEAK T1CNTH
+        PUBWEAK T1CNTL
+        PUBWEAK T1CTL
+        PUBWEAK _A_P0
+        PUBWEAK _A_P1
+        PUBWEAK _A_P2
+        PUBWEAK __Constant_21
+        PUBWEAK __Constant_3e8
+        PUBWEAK __Constant_4a818
+        PUBWEAK __Constant_64
+        PUBWEAK __Constant_a
+        PUBLIC g_ack_kind
+        PUBLIC g_mem
+        PUBLIC g_mem_len
+        PUBLIC g_ndef_at
+        PUBLIC g_nirq_ms
+        PUBLIC g_probe_pre
+        PUBLIC g_scp
+        PUBLIC g_scp_ack
+        PUBLIC g_scp_post
+        PUBLIC g_status
+
+// C:\Users\tyh21\Desktop\cc2530\cc2530_RF_link\cc2530_LG290_nfc\src\nfc.c
+//    1 /**
+//    2  * @file    nfc.c
+//    3  * @brief   MN63Y1213 主机侧 I2C 驱动 (v4 —— Timer1 时间基准 + 屏上示波 + 真伪 ACK)
+//    4  *
+//    5  * 协议 (手册 5.2.6 时序图, 与 v3 相同):
+//    6  *   ┌ 写命令 ─────────────────────────────────────────────┐
+//    7  *   │ START | 从地址+R/W(L) | ACK | 命令字节... | ACK | STOP │
+//    8  *   └─────────────────────────────────────────────────────┘
+//    9  *            ↓ 芯片内部处理 → NIRQ 被拉低(t2)
+//   10  *   ┌ 读响应 ─────────────────────────────────────────────┐
+//   11  *   │ START | 从地址+R/W(H) | ACK | 状态... 数据... | NACK | STOP │
+//   12  *   └─────────────────────────────────────────────────────┘
+//   13  *
+//   14  * ★★★ v4 相对 v3 的硬改动 ★★★
+//   15  *   1) 位时序不再靠"软件延时循环估" —— 全部由 **Timer1(32MHz) 计数**决定,
+//   16  *      且用 32.768kHz 睡眠定时器交叉校准, 这样"位周期/真实 kHz"是可测可信的。
+//   17  *   2) SDA 强制 **开漏语义**: 低 = 驱动, 高 = 释放(靠上拉变高)。
+//   18  *      —— 绝不在 NFC 没电时主动推高 SDA/SCL(那是之前拖垮整板的元凶)。
+//   19  *   3) 第 9 位的真伪判定增加 **SCL 下降沿之后**那一点: 真 ACK 一定在那里已松开,
+//   20  *      读到低 = 线被钉死(STUCK), 任何"ACK"都作废(专治 128 全 ACK)。
+//   21  *   4) 新增 **NFC_ScopeTx**: 主机自己发 "START+字节+第9时钟+STOP", 同时按 4us
+//   22  *      节拍把(SCL,SDA)真实电平存进 g_scp[], 直接画到墨水屏上 —— "第 9 位为什么低"
+//   23  *      从此是一幅能看的图, 不再是靠一个采样点猜。
+//   24  *   5) 新增 **上升/下降时间实测**(Timer1 纳秒级): 直接回答"外部上拉到底在不在",
+//   25  *      这是"硬件没问题"必须过的唯一量化关卡。
+//   26  */
+//   27 #include "nfc.h"
+
+        ASEGN SFR_AN:DATA:NOROOT,080H
+// union <unnamed> volatile __sfr _A_P0
+_A_P0:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,08dH
+// unsigned char volatile __sfr P1IEN
+P1IEN:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,08fH
+// unsigned char volatile __sfr P0INP
+P0INP:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,090H
+// union <unnamed> volatile __sfr _A_P1
+_A_P1:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,095H
+// unsigned char volatile __sfr ST0
+ST0:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,096H
+// unsigned char volatile __sfr ST1
+ST1:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,097H
+// unsigned char volatile __sfr ST2
+ST2:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0a0H
+// union <unnamed> volatile __sfr _A_P2
+_A_P2:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0abH
+// unsigned char volatile __sfr P0IEN
+P0IEN:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0c6H
+// unsigned char volatile __sfr CLKCONCMD
+CLKCONCMD:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0e2H
+// unsigned char volatile __sfr T1CNTL
+T1CNTL:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0e3H
+// unsigned char volatile __sfr T1CNTH
+T1CNTH:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0e4H
+// unsigned char volatile __sfr T1CTL
+T1CTL:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0f3H
+// unsigned char volatile __sfr P0SEL
+P0SEL:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0f4H
+// unsigned char volatile __sfr P1SEL
+P1SEL:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0f5H
+// unsigned char volatile __sfr P2SEL
+P2SEL:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0f6H
+// unsigned char volatile __sfr P1INP
+P1INP:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0f7H
+// unsigned char volatile __sfr P2INP
+P2INP:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0fdH
+// unsigned char volatile __sfr P0DIR
+P0DIR:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0feH
+// unsigned char volatile __sfr P1DIR
+P1DIR:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0ffH
+// unsigned char volatile __sfr P2DIR
+P2DIR:
+        DATA8
+        DS 1
+//   28 
+//   29 /* ------------------------------------------------------------ 配置 -------- */
+
+        RSEG IDATA_Z:IDATA:NOROOT(0)
+        DATA8
+//   30 static __idata uint8  swap01  = 0u;   /* 0: SDA=P0.0 SCL=P0.1 */
+swap01:
+        DS 1
+        REQUIRE __INIT_IDATA_Z
+
+        RSEG IDATA_I:IDATA:NOROOT(0)
+//   31 static __idata uint8  drv_pp  = 1u;   /* SCL 推挽(默认, 数据手册允许); SDA 恒开漏 */
+drv_pp:
+        DATA8
+        DS 1
+        REQUIRE `?<Initializer for drv_pp>`
+        REQUIRE __INIT_IDATA_I
+
+        RSEG IDATA_I:IDATA:NOROOT(0)
+//   32 static __idata uint8  ord_fac = 1u;   /* 1: 上电后打开 MCU 内部上拉做备份; 0: 纯靠外部上拉 */
+ord_fac:
+        DATA8
+        DS 1
+        REQUIRE `?<Initializer for ord_fac>`
+        REQUIRE __INIT_IDATA_I
+
+        RSEG IDATA_Z:IDATA:NOROOT(0)
+        DATA8
+//   33 static __idata uint8  in_pu_off = 0u; /* 1 = 关掉 P0.0/P0.1 内部上拉(三态), 只为测外部上拉 */
+in_pu_off:
+        DS 1
+        REQUIRE __INIT_IDATA_Z
+//   34 
+//   35 /* -------------------------------------------------- Timer1 时间基准 ------- */
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+//   36 static uint8  g_t1ok    = 0u;
+g_t1ok:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+//   37 static uint16 g_tickNs  = 31u;        /* 1 个 T1 tick = ? ns (默认按 32MHz ≈31.25) */
+g_tickNs:
+        DATA16
+        DS 2
+        REQUIRE `?<Initializer for g_tickNs>`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+//   38 static uint8  g_calOk   = 0u;         /* 1 = 睡眠定时器可用, 数据是实测的 */
+g_calOk:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA16
+//   39 static uint16 g_calT1   = 0u;         /* 参考区间的 T1 tick 数 (原始读数) */
+g_calT1:
+        DS 2
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA16
+//   40 static uint16 g_calSt   = 0u;         /* 参考区间的 ST  tick 数 (原始读数) */
+g_calSt:
+        DS 2
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+//   41 static uint16 g_us4     = 125u;       /* 4us   对应的 T1 tick 数 */
+g_us4:
+        DATA16
+        DS 2
+        REQUIRE `?<Initializer for g_us4>`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+//   42 static uint16 g_us10    = 312u;       /* 10us  对应的 T1 tick 数 */
+g_us10:
+        DATA16
+        DS 2
+        REQUIRE `?<Initializer for g_us10>`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+//   43 static uint16 g_us20    = 625u;       /* 20us  对应的 T1 tick 数 */
+g_us20:
+        DATA16
+        DS 2
+        REQUIRE `?<Initializer for g_us20>`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+//   44 static uint16 g_bitTicks= 1249u;       /* 一个位周期 = dly_s+dly_l+dly_s 的 T1 tick 数 */
+g_bitTicks:
+        DATA16
+        DS 2
+        REQUIRE `?<Initializer for g_bitTicks>`
+        REQUIRE __INIT_XDATA_I
+//   45 
+//   46 /* ------------------------------------------------------------ 诊断量 ------ */
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+//   47 uint8  g_ack_kind = NFC_ACK_NONE;
+g_ack_kind:
+        DATA8
+        DS 1
+        REQUIRE `?<Initializer for g_ack_kind>`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+//   48 uint8  g_status   = 0xFFu;
+g_status:
+        DATA8
+        DS 1
+        REQUIRE `?<Initializer for g_status>`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+//   49 uint8  g_nirq_ms  = 0xFFu;
+g_nirq_ms:
+        DATA8
+        DS 1
+        REQUIRE `?<Initializer for g_nirq_ms>`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+//   50 uint8  g_ndef_at  = 0xFFu;
+g_ndef_at:
+        DATA8
+        DS 1
+        REQUIRE `?<Initializer for g_ndef_at>`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA16
+//   51 uint16 g_mem_len  = 0u;
+g_mem_len:
+        DS 2
+        REQUIRE __INIT_XDATA_Z
+//   52 
+//   53 /* ------------------------------------------------------------ 采样示波 ---- */
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+//   54 __xdata uint8 g_scp[SCP_N];
+g_scp:
+        DS 126
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+//   55 uint8  g_scp_ack = 0u;                /* p<<3 | e<<2 | l<<1 | a */
+g_scp_ack:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+//   56 uint8  g_scp_post = 0x0Fu;            /* SCL 落之后 SDA 回到高用了几个采样点 */
+g_scp_post:
+        DATA8
+        DS 1
+        REQUIRE `?<Initializer for g_scp_post>`
+        REQUIRE __INIT_XDATA_I
+//   57 
+//   58 /* ------------------------------------------------------------ FeRAM ------- */
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+//   59 __xdata uint8 g_mem[MN63Y_FERAM_SIZE];
+g_mem:
+        DS 512
+        REQUIRE __INIT_XDATA_Z
+//   60 
+//   61 /* ===========================================================================
+//   62  *                       Timer1 / 睡眠定时器 底层
+//   63  * =========================================================================== */
+//   64 /* 读 T1 16 位计数器。CC2530: 先读 T1CNTL 会锁存 T1CNTH, 必须 L 后 H。 */
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//   65 static uint16 read_t1(void)
+read_t1:
+        CODE
+//   66 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   67     uint8 l = T1CNTL;
+        MOV       R2,0xe2+0x0
+//   68     uint8 h = T1CNTH;
+        MOV       A,0xe3+0x0
+//   69     return (uint16)(((uint16)h << 8) | (uint16)l);
+        MOV       R0,A
+        MOV       R1,#0x0
+        CLR       A
+        XCH       A,R0
+        MOV       R1,A
+        MOV       A,R2
+        MOV       R2,A
+        MOV       R3,#0x0
+        MOV       A,R0
+        ORL       A,R2
+        MOV       R2,A
+        MOV       A,R1
+        ORL       A,R3
+        MOV       R3,A
+        RET
+        REQUIRE T1CNTL
+        REQUIRE T1CNTH
+//   70 }
+//   71 
+//   72 /* 读 32.768kHz 睡眠定时器(24 位, ST0 最低) */
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//   73 static uint32 st24(void)
+st24:
+        CODE
+//   74 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        REQUIRE ?V2
+        REQUIRE ?V3
+        REQUIRE ?V4
+        REQUIRE ?V5
+        REQUIRE ?V6
+        REQUIRE ?V7
+        MOV       A,#-0xd
+        LCALL     ?FUNC_ENTER_PDATA
+        ; Saved register size: 13
+        ; Auto size: 0
+//   75     uint32 v;
+//   76     uint8  a, b, c;
+//   77     a = ST0; b = ST1; c = ST2;
+        MOV       R2,0x95+0x0
+        MOV       R1,0x96+0x0
+        MOV       A,0x97+0x0
+//   78     v = (uint32)c;
+        MOV       ?V4,A
+        CLR       A
+        MOV       ?V5,A
+        MOV       ?V6,A
+        MOV       ?V7,A
+//   79     v = (v << 8) | (uint32)b;
+        MOV       A,#0x8
+        MOV       R0,#?V4
+        LCALL     ?L_SHL
+        MOV       ?V0,R1
+        CLR       A
+        MOV       ?V1,A
+        MOV       ?V2,A
+        MOV       ?V3,A
+        MOV       R0,#?V4
+        MOV       R1,#?V0
+        LCALL     ?L_IOR
+//   80     v = (v << 8) | (uint32)a;
+        MOV       A,#0x8
+        MOV       R0,#?V4
+        LCALL     ?L_SHL
+        MOV       ?V0,R2
+        CLR       A
+        MOV       ?V1,A
+        MOV       ?V2,A
+        MOV       ?V3,A
+        MOV       R0,#?V4
+        MOV       R1,#?V0
+        LCALL     ?L_IOR
+//   81     return v;
+        MOV       R2,?V4
+        MOV       R3,?V5
+        MOV       R4,?V6
+        MOV       R5,?V7
+        MOV       R7,#0x8
+        LJMP      ?FUNC_LEAVE_PDATA
+        REQUIRE ST0
+        REQUIRE ST1
+        REQUIRE ST2
+//   82 }
+//   83 
+//   84 /* 等 T1 前进 t 个 tick (自动处理 16 位回绕) */
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//   85 static void t1_wait_ticks(uint16 t)
+t1_wait_ticks:
+        CODE
+//   86 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        REQUIRE ?V2
+        REQUIRE ?V3
+        MOV       A,#-0x9
+        LCALL     ?FUNC_ENTER_PDATA
+        ; Saved register size: 9
+        ; Auto size: 0
+        MOV       ?V0,R2
+        MOV       ?V1,R3
+//   87     uint16 s = read_t1();
+        ; Setup parameters for call to function read_t1
+        LCALL     read_t1
+        MOV       ?V2,R2
+        MOV       ?V3,R3
+        MOV       R6,?V2
+        MOV       R7,?V3
+//   88     uint16 e;
+//   89     do { e = read_t1(); } while ((uint16)(e - s) < t);
+??t1_wait_ticks_0:
+        ; Setup parameters for call to function read_t1
+        LCALL     read_t1
+        MOV       ?V2,R2
+        MOV       ?V3,R3
+        MOV       R0,?V2
+        MOV       R1,?V3
+        MOV       A,R0
+        CLR       C
+        SUBB      A,R6
+        MOV       R0,A
+        MOV       A,R1
+        SUBB      A,R7
+        MOV       R1,A
+        CLR       C
+        MOV       A,R0
+        SUBB      A,?V0
+        MOV       A,R1
+        SUBB      A,?V1
+        JC        ??t1_wait_ticks_0
+//   90 }
+        MOV       R7,#0x4
+        LJMP      ?FUNC_LEAVE_PDATA
+//   91 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//   92 void NFC_T1Init(void)
+NFC_T1Init:
+        CODE
+//   93 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        MOV       A,#-0x7
+        LCALL     ?FUNC_ENTER_PDATA
+        ; Saved register size: 7
+        ; Auto size: 0
+//   94     /* ★ v5: CC2530 复位后 CLKCONCMD.TICKSPD 默认不是 /1, 实测 T1 每 tick 是 61ns
+//   95      * (≈16.4MHz) 而不是 31.25ns(32MHz) —— 这就是屏上 "ns=061" 的来源。
+//   96      * 显式把 TICKSPD 设成 /1, 让 T1 拿到干净 32MHz, 分辨率才够量 40us 位周期
+//   97      * 和几十 ns 级的沿。位时序本身是用 tickNs 反推的, 所以设不设都不跑偏,
+//   98      * 但设了以后 "bit / kHz" 才是真的。 */
+//   99     CLKCONCMD = (uint8)(CLKCONCMD & (uint8)~0x38u);   /* TICKSPD = 000 -> 32MHz */
+        ANL       0xc6,#0xc7
+//  100     T1CTL = 0x01u;                    /* MODE=free(01), DIV=/1(00) */
+        MOV       0xe4,#0x1
+//  101     {
+//  102         uint16 a = read_t1();
+        ; Setup parameters for call to function read_t1
+        LCALL     read_t1
+        MOV       ?V0,R2
+        MOV       ?V1,R3
+        MOV       R6,?V0
+        MOV       R7,?V1
+//  103         t1_wait_ticks(50u);
+        ; Setup parameters for call to function t1_wait_ticks
+        MOV       R2,#0x32
+        MOV       R3,#0x0
+        LCALL     t1_wait_ticks
+//  104         {
+//  105             uint16 b = read_t1();
+        ; Setup parameters for call to function read_t1
+        LCALL     read_t1
+        MOV       ?V0,R2
+        MOV       ?V1,R3
+        MOV       R0,?V0
+        MOV       R1,?V1
+//  106             g_t1ok = (uint8)(((uint16)(b - a) != 0u) ? 1u : 0u);
+        MOV       A,R0
+        CLR       C
+        SUBB      A,R6
+        MOV       R0,A
+        MOV       A,R1
+        SUBB      A,R7
+        MOV       R1,A
+        MOV       A,R0
+        ORL       A,R1
+        JZ        ??NFC_T1Init_0
+        MOV       DPTR,#g_t1ok
+        MOV       A,#0x1
+        MOVX      @DPTR,A
+        SJMP      ??NFC_T1Init_1
+??NFC_T1Init_0:
+        MOV       DPTR,#g_t1ok
+        MOV       A,#0x0
+        MOVX      @DPTR,A
+//  107         }
+//  108     }
+//  109 }
+??NFC_T1Init_1:
+        MOV       R7,#0x2
+        LJMP      ?FUNC_LEAVE_PDATA
+        REQUIRE CLKCONCMD
+        REQUIRE T1CTL
+//  110 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  111 uint8 NFC_T1Ok(void) { return g_t1ok; }
+NFC_T1Ok:
+        CODE
+        ; Saved register size: 0
+        ; Auto size: 0
+        MOV       DPTR,#g_t1ok
+        MOVX      A,@DPTR
+        MOV       R1,A
+        RET
+//  112 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  113 void NFC_TimebaseCal(void)
+NFC_TimebaseCal:
+        CODE
+//  114 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        REQUIRE ?V2
+        REQUIRE ?V3
+        REQUIRE ?V4
+        REQUIRE ?V5
+        REQUIRE ?V6
+        REQUIRE ?V7
+        MOV       A,#-0xd
+        LCALL     ?FUNC_ENTER_PDATA
+        ; Saved register size: 13
+        ; Auto size: 6
+        MOV       A,?PSP
+        ADD       A,#-0x6
+        MOV       ?PSP,A
+//  115     uint16 tn0, tn1;
+//  116     uint32 st0, st1, dt_st;
+//  117     uint16 dt_t1;
+//  118     uint32 s0;
+//  119 
+//  120     /* 测量一段 ~1ms 的区间, 同时用 T1 和 ST 量(两把尺子互校)。
+//  121      * 1ms < T1 回绕周期(2.048ms), 不会跨边界。 */
+//  122     tn0 = read_t1(); st0 = st24();
+        ; Setup parameters for call to function read_t1
+        LCALL     read_t1
+        MOV       A,?PSP
+        MOV       R0,A
+        MOV       A,R2
+        MOVX      @R0,A
+        INC       R0
+        MOV       A,R3
+        MOVX      @R0,A
+        ; Setup parameters for call to function st24
+        LCALL     st24
+        MOV       ?V4,R2
+        MOV       ?V5,R3
+        MOV       ?V6,R4
+        MOV       ?V7,R5
+//  123     s0  = st24();
+        ; Setup parameters for call to function st24
+        LCALL     st24
+        MOV       ?V0,R2
+        MOV       ?V1,R3
+        MOV       ?V2,R4
+        MOV       ?V3,R5
+        MOV       A,?PSP
+        ADD       A,#0x2
+        MOV       R0,A
+        MOV       A,#?V0
+        LCALL     ?L_MOV_TO_PX_A
+//  124     while ((st24() - s0) < 33u) { /* ~1ms (33 * 30.5176us ≈ 1.007ms) */ }
+??NFC_TimebaseCal_0:
+        MOV       DPTR,#__Constant_21
+        PUSH      DPL
+        PUSH      DPH
+        ; Setup parameters for call to function st24
+        LCALL     st24
+        MOV       ?V0,R2
+        MOV       ?V1,R3
+        MOV       ?V2,R4
+        MOV       ?V3,R5
+        MOV       A,?PSP
+        ADD       A,#0x2
+        MOV       R1,A
+        MOV       R0,#?V0
+        LCALL     ?L_SUB_PX
+        POP       DPH
+        POP       DPL
+        MOV       R0,#?V0
+        LCALL     ?UL_GE_X
+        JNC       ??NFC_TimebaseCal_0
+//  125     tn1 = read_t1(); st1 = st24();
+        ; Setup parameters for call to function read_t1
+        LCALL     read_t1
+        MOV       ?V0,R2
+        MOV       ?V1,R3
+        MOV       R6,?V0
+        MOV       R7,?V1
+        ; Setup parameters for call to function st24
+        LCALL     st24
+        MOV       ?V0,R2
+        MOV       ?V1,R3
+        MOV       ?V2,R4
+        MOV       ?V3,R5
+//  126 
+//  127     dt_st = (st1 > st0) ? (st1 - st0) : 0u;
+        MOV       R0,#?V0
+        MOV       R1,#?V4
+        LCALL     ?UL_GT
+        JNC       ??NFC_TimebaseCal_1
+        MOV       R0,#?V0
+        MOV       R1,#?V4
+        LCALL     ?L_SUB
+        SJMP      ??NFC_TimebaseCal_2
+??NFC_TimebaseCal_1:
+        MOV       ?V0,#0x0
+        MOV       ?V1,#0x0
+        MOV       ?V2,#0x0
+        MOV       ?V3,#0x0
+//  128     dt_t1 = (uint16)(tn1 - tn0);
+??NFC_TimebaseCal_2:
+        MOV       A,?PSP
+        MOV       R0,A
+        MOVX      A,@R0
+        MOV       R2,A
+        INC       R0
+        MOVX      A,@R0
+        MOV       R3,A
+        MOV       A,R6
+        CLR       C
+        SUBB      A,R2
+        MOV       R2,A
+        MOV       A,R7
+        SUBB      A,R3
+        MOV       R3,A
+//  129 
+//  130     g_calT1 = dt_t1;
+        MOV       DPTR,#g_calT1
+        MOV       A,R2
+        MOVX      @DPTR,A
+        INC       DPTR
+        MOV       A,R3
+        MOVX      @DPTR,A
+//  131     g_calSt = (uint16)dt_st;
+        MOV       R0,?V0
+        MOV       R1,?V1
+        MOV       DPTR,#g_calSt
+        MOV       A,R0
+        MOVX      @DPTR,A
+        INC       DPTR
+        MOV       A,R1
+        MOVX      @DPTR,A
+//  132 
+//  133     /* ST 一拍 = 30517.578 ns。tickNs = dt_st * 30517.578 / dt_t1 */
+//  134     if (dt_t1 != 0u && dt_st != 0u) {
+        MOV       A,R2
+        ORL       A,R3
+        JZ        ??NFC_TimebaseCal_3
+        MOV       A,?V0
+        ORL       A,?V1
+        ORL       A,?V2
+        ORL       A,?V3
+        JZ        ??NFC_TimebaseCal_3
+//  135         uint32 ns_loop = (dt_st * 305176UL) / 10UL;   /* 区间总长(ns) */
+        MOV       DPTR,#__Constant_4a818
+        MOV       R0,#?V4
+        LCALL     ?L_MOV_X
+        MOV       R0,#?V0
+        MOV       R1,#?V4
+        LCALL     ?L_MUL
+        MOV       DPTR,#__Constant_a
+        MOV       R0,#?V4
+        LCALL     ?L_MOV_X
+        MOV       R0,#?V0
+        MOV       R1,#?V4
+        LCALL     ?UL_DIV_MOD
+//  136         uint32 tns     = ns_loop / (uint32)dt_t1;      /* 每 T1 tick 的 ns */
+        MOV       ?V4,R2
+        MOV       ?V5,R3
+        CLR       A
+        MOV       ?V6,A
+        MOV       ?V7,A
+        MOV       R0,#?V0
+        MOV       R1,#?V4
+        LCALL     ?UL_DIV_MOD
+//  137         if (tns > 0u && tns < 1000u) {
+        MOV       A,?V0
+        ORL       A,?V1
+        ORL       A,?V2
+        ORL       A,?V3
+        JZ        ??NFC_TimebaseCal_4
+        MOV       DPTR,#__Constant_3e8
+        MOV       R0,#?V0
+        LCALL     ?UL_GE_X
+        JC        ??NFC_TimebaseCal_4
+//  138             g_tickNs = (uint16)tns;
+        MOV       DPTR,#g_tickNs
+        MOV       A,?V0
+        MOVX      @DPTR,A
+        INC       DPTR
+        MOV       A,?V1
+        MOVX      @DPTR,A
+//  139             g_calOk  = 1u;
+        MOV       DPTR,#g_calOk
+        MOV       A,#0x1
+        MOVX      @DPTR,A
+        SJMP      ??NFC_TimebaseCal_5
+//  140         } else {
+//  141             g_tickNs = 31u; g_calOk = 0u;
+??NFC_TimebaseCal_4:
+        MOV       DPTR,#g_tickNs
+        MOV       A,#0x1f
+        MOVX      @DPTR,A
+        INC       DPTR
+        MOV       A,#0x0
+        MOVX      @DPTR,A
+        MOV       DPTR,#g_calOk
+        MOV       A,#0x0
+        MOVX      @DPTR,A
+        SJMP      ??NFC_TimebaseCal_5
+//  142         }
+//  143     } else {
+//  144         g_tickNs = 31u; g_calOk = 0u;
+??NFC_TimebaseCal_3:
+        MOV       DPTR,#g_tickNs
+        MOV       A,#0x1f
+        MOVX      @DPTR,A
+        INC       DPTR
+        MOV       A,#0x0
+        MOVX      @DPTR,A
+        MOV       DPTR,#g_calOk
+        MOV       A,#0x0
+        MOVX      @DPTR,A
+//  145     }
+//  146 
+//  147     /* 由 tickNs 反推各档位等待的 T1 tick 数 */
+//  148     g_us4  = (uint16)(4000u  / g_tickNs);
+??NFC_TimebaseCal_5:
+        MOV       R0,#-0x60
+        MOV       R1,#0xf
+        MOV       DPTR,#g_tickNs
+        MOVX      A,@DPTR
+        MOV       R2,A
+        INC       DPTR
+        MOVX      A,@DPTR
+        MOV       R3,A
+        LCALL     ?US_DIV_MOD
+        MOV       DPTR,#g_us4
+        MOV       A,R0
+        MOVX      @DPTR,A
+        INC       DPTR
+        MOV       A,R1
+        MOVX      @DPTR,A
+//  149     g_us10 = (uint16)(10000u / g_tickNs);
+        MOV       R0,#0x10
+        MOV       R1,#0x27
+        MOV       DPTR,#g_tickNs
+        MOVX      A,@DPTR
+        MOV       R2,A
+        INC       DPTR
+        MOVX      A,@DPTR
+        MOV       R3,A
+        LCALL     ?US_DIV_MOD
+        MOV       DPTR,#g_us10
+        MOV       A,R0
+        MOVX      @DPTR,A
+        INC       DPTR
+        MOV       A,R1
+        MOVX      @DPTR,A
+//  150     g_us20 = (uint16)(20000u / g_tickNs);
+        MOV       R0,#0x20
+        MOV       R1,#0x4e
+        MOV       DPTR,#g_tickNs
+        MOVX      A,@DPTR
+        MOV       R2,A
+        INC       DPTR
+        MOVX      A,@DPTR
+        MOV       R3,A
+        LCALL     ?US_DIV_MOD
+        MOV       DPTR,#g_us20
+        MOV       A,R0
+        MOVX      @DPTR,A
+        INC       DPTR
+        MOV       A,R1
+        MOVX      @DPTR,A
+//  151     g_bitTicks = (uint16)(g_us10 + g_us20 + g_us10);
+        MOV       DPTR,#g_us10
+        MOVX      A,@DPTR
+        MOV       R0,A
+        INC       DPTR
+        MOVX      A,@DPTR
+        MOV       R1,A
+        MOV       DPTR,#g_us20
+        MOVX      A,@DPTR
+        ADD       A,R0
+        MOV       R0,A
+        INC       DPTR
+        MOVX      A,@DPTR
+        ADDC      A,R1
+        MOV       R1,A
+        MOV       DPTR,#g_us10
+        MOVX      A,@DPTR
+        ADD       A,R0
+        MOV       R0,A
+        INC       DPTR
+        MOVX      A,@DPTR
+        ADDC      A,R1
+        MOV       R1,A
+        MOV       DPTR,#g_bitTicks
+        MOV       A,R0
+        MOVX      @DPTR,A
+        INC       DPTR
+        MOV       A,R1
+        MOVX      @DPTR,A
+//  152 }
+        MOV       B.0,C
+        MOV       A,?PSP
+        ADD       A,#0x6
+        MOV       ?PSP,A
+        MOV       C,B.0
+        MOV       R7,#0x8
+        LJMP      ?FUNC_LEAVE_PDATA
+//  153 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  154 uint16 NFC_GetTickNs(void)    { return g_tickNs; }
+NFC_GetTickNs:
+        CODE
+        ; Saved register size: 0
+        ; Auto size: 0
+        MOV       DPTR,#g_tickNs
+        MOVX      A,@DPTR
+        MOV       R2,A
+        INC       DPTR
+        MOVX      A,@DPTR
+        MOV       R3,A
+        RET
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  155 uint16 NFC_GetBitTicks(void)  { return g_bitTicks; }
+NFC_GetBitTicks:
+        CODE
+        ; Saved register size: 0
+        ; Auto size: 0
+        MOV       DPTR,#g_bitTicks
+        MOVX      A,@DPTR
+        MOV       R2,A
+        INC       DPTR
+        MOVX      A,@DPTR
+        MOV       R3,A
+        RET
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  156 uint16 NFC_GetCalT1(void)     { return g_calT1; }
+NFC_GetCalT1:
+        CODE
+        ; Saved register size: 0
+        ; Auto size: 0
+        MOV       DPTR,#g_calT1
+        MOVX      A,@DPTR
+        MOV       R2,A
+        INC       DPTR
+        MOVX      A,@DPTR
+        MOV       R3,A
+        RET
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  157 uint16 NFC_GetCalSt(void)     { return g_calSt; }
+NFC_GetCalSt:
+        CODE
+        ; Saved register size: 0
+        ; Auto size: 0
+        MOV       DPTR,#g_calSt
+        MOVX      A,@DPTR
+        MOV       R2,A
+        INC       DPTR
+        MOVX      A,@DPTR
+        MOV       R3,A
+        RET
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  158 uint16 NFC_GetBitNs(void)
+NFC_GetBitNs:
+        CODE
+//  159 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        PUSH      ?V0
+        PUSH      ?V1
+        ; Saved register size: 2
+        ; Auto size: 0
+//  160     return (uint16)((uint32)g_bitTicks * (uint32)g_tickNs);   /* ns */
+        MOV       DPTR,#g_bitTicks
+        MOVX      A,@DPTR
+        MOV       R2,A
+        INC       DPTR
+        MOVX      A,@DPTR
+        MOV       R3,A
+        MOV       DPTR,#g_tickNs
+        MOVX      A,@DPTR
+        MOV       ?V0,A
+        INC       DPTR
+        MOVX      A,@DPTR
+        MOV       ?V1,A
+        MOV       A,R2
+        MOV       B,?V0
+        MUL       AB
+        XCH       A,R2
+        MOV       R0,B
+        MOV       B,?V1
+        MUL       AB
+        ADD       A,R0
+        MOV       R0,A
+        MOV       B,?V0
+        MOV       A,R3
+        MUL       AB
+        ADD       A,R0
+        MOV       R3,A
+        POP       ?V1
+        POP       ?V0
+        RET
+//  161 }
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  162 uint16 NFC_GetBitUs100(void)
+NFC_GetBitUs100:
+        CODE
+//  163 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  164     /* ★ v5 修正: ns -> 0.01us 是 **除以 10**, 不是除以 100。
+//  165      *   v4 除以 100, 于是真实的 40us(25kHz) 被显示成 "0396 x0.01uS" + "kHz=251",
+//  166      *   白白让人以为跑到了 250kHz、怀疑"太快芯片不认"。实际上 25kHz 一直落在
+//  167      *   手册允许的 20~100kHz 里 —— 所以"时钟太快"这条假设可以划掉了。 */
+//  168     return (uint16)(NFC_GetBitNs() / 10UL);
+        ; Setup parameters for call to function NFC_GetBitNs
+        LCALL     NFC_GetBitNs
+        MOV       A,R2
+        MOV       R0,A
+        MOV       A,R3
+        MOV       R1,A
+        MOV       R2,#0xa
+        MOV       R3,#0x0
+        LCALL     ?US_DIV_MOD
+        MOV       A,R0
+        MOV       R2,A
+        MOV       A,R1
+        MOV       R3,A
+        RET
+//  169 }
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  170 uint8  NFC_GetCalOk(void)     { return g_calOk; }
+NFC_GetCalOk:
+        CODE
+        ; Saved register size: 0
+        ; Auto size: 0
+        MOV       DPTR,#g_calOk
+        MOVX      A,@DPTR
+        MOV       R1,A
+        RET
+//  171 
+//  172 /* 微秒级延时(由 T1 决定) */
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  173 static void dly_s(void) { t1_wait_ticks(g_us10); }   /* ~10us = 每位的两段短相 */
+dly_s:
+        CODE
+        ; Saved register size: 0
+        ; Auto size: 0
+        ; Setup parameters for call to function t1_wait_ticks
+        MOV       DPTR,#g_us10
+        MOVX      A,@DPTR
+        MOV       R2,A
+        INC       DPTR
+        MOVX      A,@DPTR
+        MOV       R3,A
+        LCALL     t1_wait_ticks
+        RET
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  174 static void dly_l(void) { t1_wait_ticks(g_us20); }   /* ~20us = 每位的长相(SCL 高) */
+dly_l:
+        CODE
+        ; Saved register size: 0
+        ; Auto size: 0
+        ; Setup parameters for call to function t1_wait_ticks
+        MOV       DPTR,#g_us20
+        MOVX      A,@DPTR
+        MOV       R2,A
+        INC       DPTR
+        MOVX      A,@DPTR
+        MOV       R3,A
+        LCALL     t1_wait_ticks
+        RET
+//  175 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  176 void NFC_DelayMs(uint16 ms)
+NFC_DelayMs:
+        CODE
+//  177 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        REQUIRE ?V2
+        REQUIRE ?V3
+        REQUIRE ?V4
+        REQUIRE ?V5
+        REQUIRE ?V6
+        REQUIRE ?V7
+        MOV       A,#-0xd
+        LCALL     ?FUNC_ENTER_PDATA
+        ; Saved register size: 13
+        ; Auto size: 0
+        MOV       A,R2
+        MOV       R6,A
+        MOV       A,R3
+        MOV       R7,A
+        SJMP      ??NFC_DelayMs_0
+//  178     while (ms != 0u) {
+//  179         uint32 s = st24();
+??NFC_DelayMs_1:
+        ; Setup parameters for call to function st24
+        LCALL     st24
+        MOV       ?V0,R2
+        MOV       ?V1,R3
+        MOV       ?V2,R4
+        MOV       ?V3,R5
+//  180         while ((st24() - s) < 33u) { /* ~1ms */ }
+??NFC_DelayMs_2:
+        MOV       DPTR,#__Constant_21
+        PUSH      DPL
+        PUSH      DPH
+        ; Setup parameters for call to function st24
+        LCALL     st24
+        MOV       ?V4,R2
+        MOV       ?V5,R3
+        MOV       ?V6,R4
+        MOV       ?V7,R5
+        MOV       R0,#?V4
+        MOV       R1,#?V0
+        LCALL     ?L_SUB
+        POP       DPH
+        POP       DPL
+        MOV       R0,#?V4
+        LCALL     ?UL_GE_X
+        JNC       ??NFC_DelayMs_2
+//  181         ms--;
+        MOV       A,R6
+        ADD       A,#-0x1
+        MOV       R6,A
+        MOV       A,R7
+        ADDC      A,#-0x1
+        MOV       R7,A
+//  182     }
+??NFC_DelayMs_0:
+        MOV       A,R6
+        ORL       A,R7
+        JNZ       ??NFC_DelayMs_1
+//  183 }
+        MOV       R7,#0x8
+        LJMP      ?FUNC_LEAVE_PDATA
+//  184 
+//  185 /* ===========================================================================
+//  186  *                       位层 (SDA 开漏 / SCL 推挽)
+//  187  * =========================================================================== */
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  188 static void sda_low(void)
+sda_low:
+        CODE
+//  189 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  190     if (swap01 == 0u) { P0_0 = 0; P0DIR |= 0x01u; }
+        MOV       R0,#swap01
+        MOV       A,@R0
+        JNZ       ??sda_low_0
+        CLR       0x80.0
+        ORL       0xfd,#0x1
+        RET
+//  191     else              { P0_1 = 0; P0DIR |= 0x02u; }
+??sda_low_0:
+        CLR       0x80.1
+        ORL       0xfd,#0x2
+//  192 }
+        RET
+        REQUIRE _A_P0
+        REQUIRE P0DIR
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  193 static void scl_low(void)
+scl_low:
+        CODE
+//  194 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  195     if (swap01 == 0u) { P0_1 = 0; P0DIR |= 0x02u; }
+        MOV       R0,#swap01
+        MOV       A,@R0
+        JNZ       ??scl_low_0
+        CLR       0x80.1
+        ORL       0xfd,#0x2
+        RET
+//  196     else              { P0_0 = 0; P0DIR |= 0x01u; }
+??scl_low_0:
+        CLR       0x80.0
+        ORL       0xfd,#0x1
+//  197 }
+        RET
+        REQUIRE _A_P0
+        REQUIRE P0DIR
+//  198 /* SDA 开漏"高" = 释放(转输入, 靠上拉变高) —— 绝不主动推高 */
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  199 static void sda_rel(void)
+sda_rel:
+        CODE
+//  200 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  201     if (swap01 == 0u) { P0_0 = 1; P0DIR &= (uint8)~0x01u; }
+        MOV       R0,#swap01
+        MOV       A,@R0
+        JNZ       ??sda_rel_0
+        SETB      0x80.0
+        ANL       0xfd,#0xfe
+        RET
+//  202     else              { P0_1 = 1; P0DIR &= (uint8)~0x02u; }
+??sda_rel_0:
+        SETB      0x80.1
+        ANL       0xfd,#0xfd
+//  203 }
+        RET
+        REQUIRE _A_P0
+        REQUIRE P0DIR
+//  204 /* SCL 高: 默认推挽(drv_pp=1); drv_pp=0 时改开漏释放(高靠上拉) */
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  205 static void scl_hi(void)
+scl_hi:
+        CODE
+//  206 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  207     if (drv_pp) {
+        MOV       R0,#drv_pp
+        MOV       A,@R0
+        JZ        ??scl_hi_0
+//  208         if (swap01 == 0u) { P0_1 = 1; P0DIR |= 0x02u; }
+        MOV       R0,#swap01
+        MOV       A,@R0
+        JNZ       ??scl_hi_1
+        SETB      0x80.1
+        ORL       0xfd,#0x2
+        RET
+//  209         else              { P0_0 = 1; P0DIR |= 0x01u; }
+??scl_hi_1:
+        SETB      0x80.0
+        ORL       0xfd,#0x1
+        RET
+//  210     } else {
+//  211         if (swap01 == 0u) { P0_1 = 1; P0DIR &= (uint8)~0x02u; }
+??scl_hi_0:
+        MOV       R0,#swap01
+        MOV       A,@R0
+        JNZ       ??scl_hi_2
+        SETB      0x80.1
+        ANL       0xfd,#0xfd
+        RET
+//  212         else              { P0_0 = 1; P0DIR &= (uint8)~0x01u; }
+??scl_hi_2:
+        SETB      0x80.0
+        ANL       0xfd,#0xfe
+//  213     }
+//  214 }
+        RET
+        REQUIRE _A_P0
+        REQUIRE P0DIR
+//  215 /* SCL 释放(转输入) —— 仅在"看电平"时用, 正常时序里 SCL 始终由主机驱动 */
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  216 static void scl_rel(void)
+scl_rel:
+        CODE
+//  217 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  218     if (swap01 == 0u) { P0_1 = 1; P0DIR &= (uint8)~0x02u; }
+        MOV       R0,#swap01
+        MOV       A,@R0
+        JNZ       ??scl_rel_0
+        SETB      0x80.1
+        ANL       0xfd,#0xfd
+        RET
+//  219     else              { P0_0 = 1; P0DIR &= (uint8)~0x01u; }
+??scl_rel_0:
+        SETB      0x80.0
+        ANL       0xfd,#0xfe
+//  220 }
+        RET
+        REQUIRE _A_P0
+        REQUIRE P0DIR
+//  221 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  222 static uint8 sda_rd(void)
+sda_rd:
+        CODE
+//  223 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  224     uint8 v = P0;
+        MOV       R1,0x80+0x0
+//  225     return (uint8)((swap01 == 0u) ? (v & 0x01u) : ((v >> 1) & 0x01u));
+        MOV       R0,#swap01
+        MOV       A,@R0
+        JNZ       ??sda_rd_0
+        MOV       A,R1
+        MOV       C,0xE0 /* A   */.0
+        CLR       A
+        RLC       A
+        MOV       R1,A
+        RET
+??sda_rd_0:
+        MOV       A,R1
+        MOV       C,0xE0 /* A   */.1
+        CLR       A
+        RLC       A
+        MOV       R1,A
+        RET
+        REQUIRE _A_P0
+//  226 }
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  227 static uint8 scl_rd(void)
+scl_rd:
+        CODE
+//  228 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  229     uint8 v = P0;
+        MOV       R1,0x80+0x0
+//  230     return (uint8)((swap01 == 0u) ? ((v >> 1) & 0x01u) : (v & 0x01u));
+        MOV       R0,#swap01
+        MOV       A,@R0
+        JNZ       ??scl_rd_0
+        MOV       A,R1
+        MOV       C,0xE0 /* A   */.1
+        CLR       A
+        RLC       A
+        MOV       R1,A
+        RET
+??scl_rd_0:
+        MOV       A,R1
+        MOV       C,0xE0 /* A   */.0
+        CLR       A
+        RLC       A
+        MOV       R1,A
+        RET
+        REQUIRE _A_P0
+//  231 }
+//  232 
+//  233 /* ------------------------------------------------------------ 电源 -------- */
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  234 static void gpio_prep(void)
+gpio_prep:
+        CODE
+//  235 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  236     P0SEL &= (uint8)~0x03u;   /* P0.0/P0.1 -> GPIO */
+        ANL       0xf3,#0xfc
+//  237     P1SEL &= (uint8)~0x01u;   /* P1.0(NIRQ) -> GPIO */
+        ANL       0xf4,#0xfe
+//  238     if (in_pu_off != 0u) { P0INP |= 0x03u; }          /* 三态(内部上拉关掉) */
+        MOV       R0,#in_pu_off
+        MOV       A,@R0
+        JZ        ??gpio_prep_0
+        ORL       0x8f,#0x3
+        SJMP      ??gpio_prep_1
+//  239     else                 { P0INP &= (uint8)~0x03u; }  /* 使能内部上拉(配合 PDUP0=0) */
+??gpio_prep_0:
+        ANL       0x8f,#0xfc
+//  240     P2INP &= (uint8)~0x20u;   /* PDUP0 = 0 -> Port0 上拉 */
+??gpio_prep_1:
+        ANL       0xf7,#0xdf
+//  241     P0IEN &= (uint8)~0x03u;   /* 关 P0 引脚中断: bit-bang 会疯狂触发 */
+        ANL       0xab,#0xfc
+//  242     P1DIR &= (uint8)~0x01u;
+        ANL       0xfe,#0xfe
+//  243     P1INP &= (uint8)~0x01u;
+        ANL       0xf6,#0xfe
+//  244     P1IEN &= (uint8)~0x01u;
+        ANL       0x8d,#0xfe
+//  245     P2INP &= (uint8)~0x40u;   /* PDUP1 = 0 -> Port1 上拉 (PDUP1 是 bit6!) */
+        ANL       0xf7,#0xbf
+//  246     P2SEL &= (uint8)~0x08u;
+        ANL       0xf5,#0xf7
+//  247     P2DIR |= 0x08u;           /* P2.3 = VDDEX, 输出 */
+        ORL       0xff,#0x8
+//  248     /* 安全默认: 两根线都释放成输入(内部上拉拉高), 绝不主动推高 */
+//  249     P0_0 = 1; P0_1 = 1; P0DIR &= (uint8)~0x03u;
+        SETB      0x80.0
+        SETB      0x80.1
+        ANL       0xfd,#0xfc
+//  250 }
+        RET
+        REQUIRE P0SEL
+        REQUIRE P1SEL
+        REQUIRE P0INP
+        REQUIRE P2INP
+        REQUIRE P0IEN
+        REQUIRE P1DIR
+        REQUIRE P1INP
+        REQUIRE P1IEN
+        REQUIRE P2SEL
+        REQUIRE P2DIR
+        REQUIRE _A_P0
+        REQUIRE P0DIR
+//  251 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  252 void NFC_PowerUp(uint8 bootMs)
+NFC_PowerUp:
+        CODE
+//  253 {
+        MOV       A,R6
+        PUSH      A
+        ; Saved register size: 1
+        ; Auto size: 0
+        MOV       A,R1
+        MOV       R6,A
+//  254     /* ★★ v5: 上电顺序按手册 2.3 + Figure 2-3 重排(上拉必须挂在 VDDEX 上) ★★
+//  255      *   1) 先让 SDA/SCL **三态** —— 既不是 MCU 内部上拉到 3.3V, 也不是推高。
+//  256      *      v4 是"内部上拉着让线先高, 再抬 VDDEX", 于是 VDDEX 还没来时, 芯片的
+//  257      *      SDA/SCL 就已经被 MCU 通过 20k 拉到 3.3V, 电流经芯片 ESD 二极管灌进
+//  258      *      芯片的 VDDEX 节点 —— 芯片"半个上电", 等 VDDEX 真抬起来时上电复位
+//  259      *      已经不干净了, 触点接口起不来 -> 永远不 ACK、NIRQ 永远不低。
+//  260      *   2) 抬 VDDEX(此时线三态, 靠外部上拉跟随 VDDEX)。
+//  261      *   3) 等 tBoot。
+//  262      *   4) 这时才打开内部上拉/放开两线。 */
+//  263     P2SEL &= (uint8)~0x08u;
+        ANL       0xf5,#0xf7
+//  264     P2DIR |= 0x08u;                       /* P2.3 = 输出 */
+        ORL       0xff,#0x8
+//  265     P2_3   = 0;
+        CLR       0xa0.3
+//  266     P0SEL &= (uint8)~0x03u;
+        ANL       0xf3,#0xfc
+//  267     P0_0 = 1; P0_1 = 1;
+        SETB      0x80.0
+        SETB      0x80.1
+//  268     P0DIR &= (uint8)~0x03u;               /* 输入 */
+        ANL       0xfd,#0xfc
+//  269     P0INP |= 0x03u;                       /* 三态 */
+        ORL       0x8f,#0x3
+//  270     dly_l();
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+//  271 
+//  272     P2_3 = 1;                             /* 抬 VDDEX */
+        SETB      0xa0.3
+//  273     NFC_DelayMs(bootMs);                  /* tBoot */
+        ; Setup parameters for call to function NFC_DelayMs
+        MOV       A,R6
+        MOV       R2,A
+        MOV       R3,#0x0
+        LCALL     NFC_DelayMs
+//  274 
+//  275     in_pu_off = (ord_fac != 0u) ? 0u : 1u;
+        MOV       R0,#ord_fac
+        MOV       A,@R0
+        JZ        ??NFC_PowerUp_0
+        MOV       R0,#in_pu_off
+        MOV       @R0,#0x0
+        SJMP      ??NFC_PowerUp_1
+??NFC_PowerUp_0:
+        MOV       R0,#in_pu_off
+        MOV       @R0,#0x1
+//  276     gpio_prep();                          /* VDDEX 已稳, 现在才碰两条线 */
+??NFC_PowerUp_1:
+        ; Setup parameters for call to function gpio_prep
+        LCALL     gpio_prep
+//  277     sda_rel(); scl_rel();
+        ; Setup parameters for call to function sda_rel
+        LCALL     sda_rel
+        ; Setup parameters for call to function scl_rel
+        LCALL     scl_rel
+//  278     dly_l();
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+//  279 }
+        POP       A
+        MOV       R6,A
+        RET
+        REQUIRE P2SEL
+        REQUIRE P2DIR
+        REQUIRE _A_P2
+        REQUIRE P0SEL
+        REQUIRE _A_P0
+        REQUIRE P0DIR
+        REQUIRE P0INP
+//  280 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  281 void NFC_PowerOff(void)
+NFC_PowerOff:
+        CODE
+//  282 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  283     P2_3 = 0;
+        CLR       0xa0.3
+//  284     NFC_DelayMs(2u);
+        ; Setup parameters for call to function NFC_DelayMs
+        MOV       R2,#0x2
+        MOV       R3,#0x0
+        LCALL     NFC_DelayMs
+//  285     P0SEL &= (uint8)~0x03u;
+        ANL       0xf3,#0xfc
+//  286     P0DIR &= (uint8)~0x03u;
+        ANL       0xfd,#0xfc
+//  287     P0INP |= 0x03u;                       /* ★ 三态: 不给断电的芯片经 ESD 二极管灌电 */
+        ORL       0x8f,#0x3
+//  288     P2INP &= (uint8)~0x20u;
+        ANL       0xf7,#0xdf
+//  289     P0IEN &= (uint8)~0x03u;
+        ANL       0xab,#0xfc
+//  290     P1IEN &= (uint8)~0x01u;
+        ANL       0x8d,#0xfe
+//  291     P0_0 = 1;
+        SETB      0x80.0
+//  292     P0_1 = 1;
+        SETB      0x80.1
+//  293 }
+        RET
+        REQUIRE _A_P2
+        REQUIRE P0SEL
+        REQUIRE P0DIR
+        REQUIRE P0INP
+        REQUIRE P2INP
+        REQUIRE P0IEN
+        REQUIRE P1IEN
+        REQUIRE _A_P0
+//  294 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  295 uint8 NFC_NirqLevel(void)
+NFC_NirqLevel:
+        CODE
+//  296 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  297     P1SEL &= (uint8)~0x01u;
+        ANL       0xf4,#0xfe
+//  298     P1DIR &= (uint8)~0x01u;
+        ANL       0xfe,#0xfe
+//  299     dly_l();
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+//  300     return (uint8)((P1 & 0x01u) ? 1u : 0u);
+        MOV       C,0x90.0
+        CLR       A
+        RLC       A
+        MOV       R1,A
+        RET
+        REQUIRE P1SEL
+        REQUIRE P1DIR
+        REQUIRE _A_P1
+//  301 }
+//  302 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  303 uint8 NFC_VddAlive(void)
+NFC_VddAlive:
+        CODE
+//  304 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  305     uint8 v;
+//  306     /* 假设调用前 VDDEX 已开(P2.3 输出高)。短暂转输入读引脚, 再恢复。 */
+//  307     P2DIR &= (uint8)~0x08u;
+        ANL       0xff,#0xf7
+//  308     t1_wait_ticks(g_us4);
+        ; Setup parameters for call to function t1_wait_ticks
+        MOV       DPTR,#g_us4
+        MOVX      A,@DPTR
+        MOV       R2,A
+        INC       DPTR
+        MOVX      A,@DPTR
+        MOV       R3,A
+        LCALL     t1_wait_ticks
+//  309     v = (uint8)((P2 & 0x08u) ? 1u : 0u);
+        MOV       C,0xa0.3
+        JNC       ??NFC_VddAlive_0
+        SETB      B.0
+        SJMP      ??NFC_VddAlive_1
+??NFC_VddAlive_0:
+        CLR       B.0
+??NFC_VddAlive_1:
+        MOV       C,B.0
+        CLR       A
+        RLC       A
+        MOV       R1,A
+//  310     P2DIR |= 0x08u;
+        ORL       0xff,#0x8
+//  311     P2_3 = 1;
+        SETB      0xa0.3
+//  312     return v;
+        RET
+        REQUIRE P2DIR
+        REQUIRE _A_P2
+//  313 }
+//  314 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  315 uint8 NFC_BusLevel(void)
+NFC_BusLevel:
+        CODE
+//  316 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  317     gpio_prep();
+        ; Setup parameters for call to function gpio_prep
+        LCALL     gpio_prep
+//  318     sda_rel(); scl_rel();
+        ; Setup parameters for call to function sda_rel
+        LCALL     sda_rel
+        ; Setup parameters for call to function scl_rel
+        LCALL     scl_rel
+//  319     dly_l();
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+//  320     return (uint8)(P0 & 0x03u);
+        MOV       A,0x80
+        ANL       A,#0x3
+        MOV       R1,A
+        RET
+        REQUIRE _A_P0
+//  321 }
+//  322 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  323 void NFC_BusRecover(void)
+NFC_BusRecover:
+        CODE
+//  324 {
+        MOV       A,R6
+        PUSH      A
+        ; Saved register size: 1
+        ; Auto size: 0
+//  325     uint8 i;
+//  326     sda_rel(); scl_hi();
+        ; Setup parameters for call to function sda_rel
+        LCALL     sda_rel
+        ; Setup parameters for call to function scl_hi
+        LCALL     scl_hi
+//  327     dly_l();
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+//  328     for (i = 0; i < 20u; i++) {
+        MOV       R6,#0x0
+        SJMP      ??NFC_BusRecover_0
+//  329         scl_low(); dly_l();
+??NFC_BusRecover_1:
+        ; Setup parameters for call to function scl_low
+        LCALL     scl_low
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+//  330         scl_hi();  dly_l();
+        ; Setup parameters for call to function scl_hi
+        LCALL     scl_hi
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+//  331     }
+        INC       R6
+??NFC_BusRecover_0:
+        MOV       A,R6
+        CLR       C
+        SUBB      A,#0x14
+        JC        ??NFC_BusRecover_1
+//  332     /* 补一个 STOP: SCL 高时把 SDA 由低变高 */
+//  333     sda_low(); dly_s(); scl_hi(); dly_s(); sda_rel(); dly_l();
+        ; Setup parameters for call to function sda_low
+        LCALL     sda_low
+        ; Setup parameters for call to function dly_s
+        LCALL     dly_s
+        ; Setup parameters for call to function scl_hi
+        LCALL     scl_hi
+        ; Setup parameters for call to function dly_s
+        LCALL     dly_s
+        ; Setup parameters for call to function sda_rel
+        LCALL     sda_rel
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+//  334 }
+        POP       A
+        MOV       R6,A
+        RET
+//  335 
+//  336 /* ------------------------------------------------------------ 原语 -------- */
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  337 static void i2c_start(void)
+i2c_start:
+        CODE
+//  338 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  339     sda_rel(); scl_hi();      /* 空闲: SDA 高, SCL 高 */
+        ; Setup parameters for call to function sda_rel
+        LCALL     sda_rel
+        ; Setup parameters for call to function scl_hi
+        LCALL     scl_hi
+//  340     dly_l();
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+//  341     sda_low();                /* SCL 高, SDA 1->0 = START */
+        ; Setup parameters for call to function sda_low
+        LCALL     sda_low
+//  342     dly_s();
+        ; Setup parameters for call to function dly_s
+        LCALL     dly_s
+//  343     scl_low();
+        ; Setup parameters for call to function scl_low
+        LCALL     scl_low
+//  344     dly_s();
+        ; Setup parameters for call to function dly_s
+        LCALL     dly_s
+//  345 }
+        RET
+//  346 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  347 static void i2c_stop(void)
+i2c_stop:
+        CODE
+//  348 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  349     sda_low(); scl_low();     /* SDA 低, SCL 低 */
+        ; Setup parameters for call to function sda_low
+        LCALL     sda_low
+        ; Setup parameters for call to function scl_low
+        LCALL     scl_low
+//  350     dly_s();
+        ; Setup parameters for call to function dly_s
+        LCALL     dly_s
+//  351     scl_hi();                 /* SCL 1->0... 抬 SCL */
+        ; Setup parameters for call to function scl_hi
+        LCALL     scl_hi
+//  352     dly_s();
+        ; Setup parameters for call to function dly_s
+        LCALL     dly_s
+//  353     sda_rel();                /* SCL 高, SDA 0->1 = STOP */
+        ; Setup parameters for call to function sda_rel
+        LCALL     sda_rel
+//  354     dly_l();
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+//  355 }
+        RET
+//  356 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  357 static void i2c_tx8(uint8 b)
+i2c_tx8:
+        CODE
+//  358 {
+        REQUIRE ?V0
+        MOV       A,#-0x6
+        LCALL     ?FUNC_ENTER_PDATA
+        ; Saved register size: 6
+        ; Auto size: 0
+        MOV       A,R1
+        MOV       R7,A
+//  359     uint8 i;
+//  360     for (i = 0; i < 8u; i++) {
+        MOV       R6,#0x0
+        SJMP      ??i2c_tx8_0
+//  361         if (b & 0x80u) { sda_rel(); } else { sda_low(); }
+??i2c_tx8_1:
+        ; Setup parameters for call to function sda_low
+        LCALL     sda_low
+//  362         dly_s();
+??i2c_tx8_2:
+        ; Setup parameters for call to function dly_s
+        LCALL     dly_s
+//  363         scl_hi();
+        ; Setup parameters for call to function scl_hi
+        LCALL     scl_hi
+//  364         dly_l();
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+//  365         scl_low();
+        ; Setup parameters for call to function scl_low
+        LCALL     scl_low
+//  366         dly_s();
+        ; Setup parameters for call to function dly_s
+        LCALL     dly_s
+//  367         b = (uint8)(b << 1);
+        MOV       A,R7
+        CLR       C
+        RLC       A
+        MOV       R7,A
+        INC       R6
+??i2c_tx8_0:
+        MOV       A,R6
+        CLR       C
+        SUBB      A,#0x8
+        JNC       ??i2c_tx8_3
+        MOV       A,R7
+        MOV       C,0xE0 /* A   */.7
+        JNC       ??i2c_tx8_1
+        ; Setup parameters for call to function sda_rel
+        LCALL     sda_rel
+        SJMP      ??i2c_tx8_2
+//  368     }
+//  369 }
+??i2c_tx8_3:
+        MOV       R7,#0x1
+        LJMP      ?FUNC_LEAVE_PDATA
+//  370 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  371 static uint8 i2c_rx8(void)
+i2c_rx8:
+        CODE
+//  372 {
+        REQUIRE ?V0
+        MOV       A,#-0x6
+        LCALL     ?FUNC_ENTER_PDATA
+        ; Saved register size: 6
+        ; Auto size: 0
+//  373     uint8 i, b = 0;
+        MOV       R6,#0x0
+//  374     for (i = 0; i < 8u; i++) {
+        MOV       R7,#0x0
+        SJMP      ??i2c_rx8_0
+//  375         sda_rel();            /* 释放 SDA 让从机驱动 */
+??i2c_rx8_1:
+        ; Setup parameters for call to function sda_rel
+        LCALL     sda_rel
+//  376         scl_low();
+        ; Setup parameters for call to function scl_low
+        LCALL     scl_low
+//  377         dly_s();
+        ; Setup parameters for call to function dly_s
+        LCALL     dly_s
+//  378         scl_hi();
+        ; Setup parameters for call to function scl_hi
+        LCALL     scl_hi
+//  379         dly_l();
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+//  380         b = (uint8)(b << 1);
+        MOV       A,R6
+        CLR       C
+        RLC       A
+        MOV       R6,A
+//  381         if (sda_rd()) { b |= 0x01u; }
+        ; Setup parameters for call to function sda_rd
+        LCALL     sda_rd
+        MOV       A,R1
+        JZ        ??i2c_rx8_2
+        SETB      C
+        MOV       A,R6
+        MOV       0xE0 /* A   */.0,C
+        MOV       R6,A
+//  382         scl_low();
+??i2c_rx8_2:
+        ; Setup parameters for call to function scl_low
+        LCALL     scl_low
+//  383         dly_s();
+        ; Setup parameters for call to function dly_s
+        LCALL     dly_s
+//  384     }
+        INC       R7
+??i2c_rx8_0:
+        MOV       A,R7
+        CLR       C
+        SUBB      A,#0x8
+        JC        ??i2c_rx8_1
+//  385     return b;
+        MOV       A,R6
+        MOV       R1,A
+        MOV       R7,#0x1
+        LJMP      ?FUNC_LEAVE_PDATA
+//  386 }
+//  387 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  388 static void i2c_putack(uint8 nack)
+i2c_putack:
+        CODE
+//  389 {
+        MOV       A,R6
+        PUSH      A
+        ; Saved register size: 1
+        ; Auto size: 0
+        MOV       A,R1
+        MOV       R6,A
+//  390     sda_low();                /* 默认驱动低 = ACK */
+        ; Setup parameters for call to function sda_low
+        LCALL     sda_low
+//  391     if (nack) { sda_rel(); }  /* NACK = 释放(高) */
+        MOV       A,R6
+        JZ        ??i2c_putack_0
+        ; Setup parameters for call to function sda_rel
+        LCALL     sda_rel
+//  392     scl_low();
+??i2c_putack_0:
+        ; Setup parameters for call to function scl_low
+        LCALL     scl_low
+//  393     dly_s();
+        ; Setup parameters for call to function dly_s
+        LCALL     dly_s
+//  394     scl_hi();
+        ; Setup parameters for call to function scl_hi
+        LCALL     scl_hi
+//  395     dly_l();
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+//  396     scl_low();
+        ; Setup parameters for call to function scl_low
+        LCALL     scl_low
+//  397     sda_low();
+        ; Setup parameters for call to function sda_low
+        LCALL     sda_low
+//  398     dly_s();
+        ; Setup parameters for call to function dly_s
+        LCALL     dly_s
+//  399 }
+        POP       A
+        MOV       R6,A
+        RET
+//  400 
+//  401 /*
+//  402  * ★★ v4 第 9 位真伪判定(新增"SCL 下降沿之后"那一点) ★★
+//  403  *   sda_rel() 后 SCL 低: 从机应在此时把 SDA 拉低(ACK 建立)
+//  404  *   SCL 高: 早(e)/晚(l)采样
+//  405  *   SCL 落: 从机**必须松开** SDA
+//  406  *   post-fall 采样 = 0 -> STUCK(线被钉死, 任何 ACK 作废)
+//  407  */
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+//  408 uint8 g_probe_pre = 1u;      /* 第 9 时钟抬升前 SDA 是否已自由 (1 = 自由) */
+g_probe_pre:
+        DATA8
+        DS 1
+        REQUIRE `?<Initializer for g_probe_pre>`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+        DATA32
+__Constant_21:
+        DS 4
+        REQUIRE `?<Initializer for __Constant_21>`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+        DATA32
+__Constant_4a818:
+        DS 4
+        REQUIRE `?<Initializer for __Constant_4a818>`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+        DATA32
+__Constant_a:
+        DS 4
+        REQUIRE `?<Initializer for __Constant_a>`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+        DATA32
+__Constant_3e8:
+        DS 4
+        REQUIRE `?<Initializer for __Constant_3e8>`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+        DATA32
+__Constant_64:
+        DS 4
+        REQUIRE `?<Initializer for __Constant_64>`
+        REQUIRE __INIT_XDATA_I
+//  409 
+//  410 /*
+//  411  * ★★ 第 9 位真伪判定 ★★
+//  412  *   sda_rel() 后 SCL 低: 真从机会在这个低电平期就把 SDA 拉低(ACK 建立)
+//  413  *   SCL 高: 早(e)/晚(l)采样
+//  414  *   SCL 落: 从机**必须松开** SDA
+//  415  *   下降沿之后再采 = 0 -> STUCK(线被钉死, 任何 ACK 作废) —— 专治"128 全 ACK"
+//  416  *
+//  417  * v5 改动: 抬 SCL 前把低电平期从 10us 拉到 20us。因为上一字节最后一位如果是 0,
+//  418  *   主机会**驱动低**; 放开后要靠上拉拉回高。抖动越小, "低"就越是"别人拉的"。
+//  419  */
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  420 static uint8 clock9_kind(void)
+clock9_kind:
+        CODE
+//  421 {
+        REQUIRE ?V0
+        MOV       A,#-0x6
+        LCALL     ?FUNC_ENTER_PDATA
+        ; Saved register size: 6
+        ; Auto size: 0
+//  422     uint8 pre, early, late, post;
+//  423     sda_rel();
+        ; Setup parameters for call to function sda_rel
+        LCALL     sda_rel
+//  424     scl_low();
+        ; Setup parameters for call to function scl_low
+        LCALL     scl_low
+//  425     dly_l();                  /* ★ 20us: 确保上一位的"驱动低"已彻底放开 */
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+//  426     pre = sda_rd();           /* 第 9 时钟抬升前, 线自由吗 */
+        ; Setup parameters for call to function sda_rd
+        LCALL     sda_rd
+        MOV       A,R1
+        MOV       ?V0,A
+//  427     scl_hi();
+        ; Setup parameters for call to function scl_hi
+        LCALL     scl_hi
+//  428     early = sda_rd();
+        ; Setup parameters for call to function sda_rd
+        LCALL     sda_rd
+        MOV       A,R1
+        MOV       R7,A
+//  429     dly_l();
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+//  430     late  = sda_rd();
+        ; Setup parameters for call to function sda_rd
+        LCALL     sda_rd
+        MOV       A,R1
+        MOV       R6,A
+//  431     scl_low();
+        ; Setup parameters for call to function scl_low
+        LCALL     scl_low
+//  432     dly_l();                  /* ★ 20us 之后再采 */
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+//  433     post = sda_rd();          /* SCL 已落, 健康从机应已释放 -> 高 */
+        ; Setup parameters for call to function sda_rd
+        LCALL     sda_rd
+        MOV       A,R1
+        MOV       R0,A
+//  434     g_probe_pre = pre;
+        MOV       A,?V0
+        MOV       DPTR,#g_probe_pre
+        MOVX      @DPTR,A
+//  435     if (post == 0u) { return NFC_ACK_STUCK; }
+        MOV       A,R0
+        JNZ       ??clock9_kind_0
+        MOV       R1,#0x3
+        SJMP      ??clock9_kind_1
+//  436     if (early == 0u) {
+??clock9_kind_0:
+        MOV       A,R7
+        JNZ       ??clock9_kind_2
+//  437         if (late == 0u) { return NFC_ACK_REAL; }
+        MOV       A,R6
+        JNZ       ??clock9_kind_3
+        MOV       R1,#0x0
+        SJMP      ??clock9_kind_1
+//  438         return NFC_ACK_LATE;
+??clock9_kind_3:
+        MOV       R1,#0x1
+        SJMP      ??clock9_kind_1
+//  439     }
+//  440     return NFC_ACK_NONE;
+??clock9_kind_2:
+        MOV       R1,#0x2
+??clock9_kind_1:
+        MOV       R7,#0x1
+        LJMP      ?FUNC_LEAVE_PDATA
+//  441 }
+//  442 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  443 static uint8 tx_byte_ack(uint8 b)
+tx_byte_ack:
+        CODE
+//  444 {
+        MOV       A,R6
+        PUSH      A
+        ; Saved register size: 1
+        ; Auto size: 0
+        MOV       A,R1
+        MOV       R6,A
+//  445     i2c_tx8(b);
+        ; Setup parameters for call to function i2c_tx8
+        MOV       A,R6
+        MOV       R1,A
+        LCALL     i2c_tx8
+//  446     return clock9_kind();
+        ; Setup parameters for call to function clock9_kind
+        LCALL     clock9_kind
+        POP       A
+        MOV       R6,A
+        RET
+//  447 }
+//  448 
+//  449 /* ------------------------------------------------------------ 配置 API ---- */
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  450 void NFC_SetSwap(uint8 s)   { swap01  = (s != 0u) ? 1u : 0u; }
+NFC_SetSwap:
+        CODE
+        ; Saved register size: 0
+        ; Auto size: 0
+        MOV       A,R1
+        JZ        ??NFC_SetSwap_0
+        MOV       R0,#swap01
+        MOV       @R0,#0x1
+        RET
+??NFC_SetSwap_0:
+        MOV       R0,#swap01
+        MOV       @R0,#0x0
+        RET
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  451 void NFC_SetDrive(uint8 pp) { drv_pp  = (pp != 0u) ? 1u : 0u; }  /* 仅影响 SCL(本版恒推挽) */
+NFC_SetDrive:
+        CODE
+        ; Saved register size: 0
+        ; Auto size: 0
+        MOV       A,R1
+        JZ        ??NFC_SetDrive_0
+        MOV       R0,#drv_pp
+        MOV       @R0,#0x1
+        RET
+??NFC_SetDrive_0:
+        MOV       R0,#drv_pp
+        MOV       @R0,#0x0
+        RET
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  452 void NFC_SetOrder(uint8 o)  { ord_fac = (o != 0u) ? 1u : 0u; }
+NFC_SetOrder:
+        CODE
+        ; Saved register size: 0
+        ; Auto size: 0
+        MOV       A,R1
+        JZ        ??NFC_SetOrder_0
+        MOV       R0,#ord_fac
+        MOV       @R0,#0x1
+        RET
+??NFC_SetOrder_0:
+        MOV       R0,#ord_fac
+        MOV       @R0,#0x0
+        RET
+//  453 
+//  454 /* ------------------------------------------------------------ 引脚真值 ---- */
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  455 uint8 NFC_PinDrive(uint8 pin, uint8 level)
+NFC_PinDrive:
+        CODE
+//  456 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        MOV       A,#-0x7
+        LCALL     ?FUNC_ENTER_PDATA
+        ; Saved register size: 7
+        ; Auto size: 0
+        MOV       A,R1
+        MOV       R6,A
+        MOV       A,R2
+        MOV       R7,A
+//  457     gpio_prep();
+        ; Setup parameters for call to function gpio_prep
+        LCALL     gpio_prep
+//  458     if (pin == 0u) {
+        MOV       A,R6
+        JNZ       ??NFC_PinDrive_0
+//  459         if (level != 0u) { P0_0 = 1; } else { P0_0 = 0; }
+        MOV       A,R7
+        JZ        ??NFC_PinDrive_1
+        SETB      0x80.0
+        SJMP      ??NFC_PinDrive_2
+??NFC_PinDrive_1:
+        CLR       0x80.0
+//  460         P0DIR |= 0x01u;
+??NFC_PinDrive_2:
+        ORL       0xfd,#0x1
+        SJMP      ??NFC_PinDrive_3
+//  461     } else {
+//  462         if (level != 0u) { P0_1 = 1; } else { P0_1 = 0; }
+??NFC_PinDrive_0:
+        MOV       A,R7
+        JZ        ??NFC_PinDrive_4
+        SETB      0x80.1
+        SJMP      ??NFC_PinDrive_5
+??NFC_PinDrive_4:
+        CLR       0x80.1
+//  463         P0DIR |= 0x02u;
+??NFC_PinDrive_5:
+        ORL       0xfd,#0x2
+//  464     }
+//  465     dly_l();
+??NFC_PinDrive_3:
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+//  466     return (uint8)((P0 >> (pin ? 1u : 0u)) & 0x01u);
+        MOV       R1,0x80+0x0
+        MOV       A,R6
+        JZ        ??NFC_PinDrive_6
+        MOV       R0,#0x1
+        SJMP      ??NFC_PinDrive_7
+??NFC_PinDrive_6:
+        MOV       R0,#0x0
+??NFC_PinDrive_7:
+        MOV       A,R1
+        MOV       ?V0,A
+        MOV       ?V1,#0x0
+        MOV       A,R0
+        MOV       R0,#?V0
+        LCALL     ?SS_SHR
+        MOV       A,?V0
+        ANL       A,#0x1
+        MOV       R1,A
+        MOV       R7,#0x2
+        LJMP      ?FUNC_LEAVE_PDATA
+        REQUIRE _A_P0
+        REQUIRE P0DIR
+//  467 }
+//  468 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  469 uint8 NFC_PinFloat(uint8 pin)
+NFC_PinFloat:
+        CODE
+//  470 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        MOV       A,#-0x7
+        LCALL     ?FUNC_ENTER_PDATA
+        ; Saved register size: 7
+        ; Auto size: 0
+        MOV       A,R1
+        MOV       R6,A
+//  471     gpio_prep();
+        ; Setup parameters for call to function gpio_prep
+        LCALL     gpio_prep
+//  472     if (pin == 0u) { P0_0 = 1; P0DIR &= (uint8)~0x01u; }
+        MOV       A,R6
+        JNZ       ??NFC_PinFloat_0
+        SETB      0x80.0
+        ANL       0xfd,#0xfe
+        SJMP      ??NFC_PinFloat_1
+//  473     else           { P0_1 = 1; P0DIR &= (uint8)~0x02u; }
+??NFC_PinFloat_0:
+        SETB      0x80.1
+        ANL       0xfd,#0xfd
+//  474     dly_l();
+??NFC_PinFloat_1:
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+//  475     return (uint8)((P0 >> (pin ? 1u : 0u)) & 0x01u);
+        MOV       R1,0x80+0x0
+        MOV       A,R6
+        JZ        ??NFC_PinFloat_2
+        MOV       R0,#0x1
+        SJMP      ??NFC_PinFloat_3
+??NFC_PinFloat_2:
+        MOV       R0,#0x0
+??NFC_PinFloat_3:
+        MOV       A,R1
+        MOV       ?V0,A
+        MOV       ?V1,#0x0
+        MOV       A,R0
+        MOV       R0,#?V0
+        LCALL     ?SS_SHR
+        MOV       A,?V0
+        ANL       A,#0x1
+        MOV       R1,A
+        MOV       R7,#0x2
+        LJMP      ?FUNC_LEAVE_PDATA
+        REQUIRE _A_P0
+        REQUIRE P0DIR
+//  476 }
+//  477 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  478 uint8 NFC_DriveAndReadOther(uint8 drivePin, uint8 level)
+NFC_DriveAndReadOther:
+        CODE
+//  479 {
+        REQUIRE ?V0
+        REQUIRE ?V2
+        REQUIRE ?V3
+        MOV       A,#-0x9
+        LCALL     ?FUNC_ENTER_PDATA
+        ; Saved register size: 9
+        ; Auto size: 0
+        MOV       A,R1
+        MOV       R7,A
+        MOV       ?V0,R2
+//  480     uint8 other = (uint8)(drivePin ^ 1u);
+        MOV       A,#0x1
+        XRL       A,R7
+        MOV       R6,A
+//  481     gpio_prep();
+        ; Setup parameters for call to function gpio_prep
+        LCALL     gpio_prep
+//  482     if (other == 0u) { P0_0 = 1; P0DIR &= (uint8)~0x01u; }
+        MOV       A,R6
+        JNZ       ??NFC_DriveAndReadOther_0
+        SETB      0x80.0
+        ANL       0xfd,#0xfe
+        SJMP      ??NFC_DriveAndReadOther_1
+//  483     else             { P0_1 = 1; P0DIR &= (uint8)~0x02u; }
+??NFC_DriveAndReadOther_0:
+        SETB      0x80.1
+        ANL       0xfd,#0xfd
+//  484     dly_s();
+??NFC_DriveAndReadOther_1:
+        ; Setup parameters for call to function dly_s
+        LCALL     dly_s
+//  485     if (drivePin == 0u) {
+        MOV       A,R7
+        JNZ       ??NFC_DriveAndReadOther_2
+//  486         if (level != 0u) { P0_0 = 1; } else { P0_0 = 0; }
+        MOV       A,?V0
+        JZ        ??NFC_DriveAndReadOther_3
+        SETB      0x80.0
+        SJMP      ??NFC_DriveAndReadOther_4
+??NFC_DriveAndReadOther_3:
+        CLR       0x80.0
+//  487         P0DIR |= 0x01u;
+??NFC_DriveAndReadOther_4:
+        ORL       0xfd,#0x1
+        SJMP      ??NFC_DriveAndReadOther_5
+//  488     } else {
+//  489         if (level != 0u) { P0_1 = 1; } else { P0_1 = 0; }
+??NFC_DriveAndReadOther_2:
+        MOV       A,?V0
+        JZ        ??NFC_DriveAndReadOther_6
+        SETB      0x80.1
+        SJMP      ??NFC_DriveAndReadOther_7
+??NFC_DriveAndReadOther_6:
+        CLR       0x80.1
+//  490         P0DIR |= 0x02u;
+??NFC_DriveAndReadOther_7:
+        ORL       0xfd,#0x2
+//  491     }
+//  492     dly_l();
+??NFC_DriveAndReadOther_5:
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+//  493     return (uint8)((P0 >> (other ? 1u : 0u)) & 0x01u);
+        MOV       R1,0x80+0x0
+        MOV       A,R6
+        JZ        ??NFC_DriveAndReadOther_8
+        MOV       R0,#0x1
+        SJMP      ??NFC_DriveAndReadOther_9
+??NFC_DriveAndReadOther_8:
+        MOV       R0,#0x0
+??NFC_DriveAndReadOther_9:
+        MOV       A,R1
+        MOV       ?V2,A
+        MOV       ?V3,#0x0
+        MOV       A,R0
+        MOV       R0,#?V2
+        LCALL     ?SS_SHR
+        MOV       A,?V2
+        ANL       A,#0x1
+        MOV       R1,A
+        MOV       R7,#0x4
+        LJMP      ?FUNC_LEAVE_PDATA
+        REQUIRE _A_P0
+        REQUIRE P0DIR
+//  494 }
+//  495 
+//  496 /* ------------------------------------------------------------ 上升/下降 --- */
+//  497 /* 返回 0.1us 单位; 0 = 一直没变到目标电平(上拉缺失/线被钉死) */
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  498 uint16 NFC_SdaRiseUs10(void)
+NFC_SdaRiseUs10:
+        CODE
+//  499 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        REQUIRE ?V2
+        REQUIRE ?V3
+        REQUIRE ?V4
+        REQUIRE ?V5
+        REQUIRE ?V6
+        REQUIRE ?V7
+        MOV       A,#-0xd
+        LCALL     ?FUNC_ENTER_PDATA
+        ; Saved register size: 13
+        ; Auto size: 0
+//  500     uint16 t0, t1, i; uint8 hi = 0;
+        MOV       ?V2,#0x0
+//  501     gpio_prep();
+        ; Setup parameters for call to function gpio_prep
+        LCALL     gpio_prep
+//  502     sda_low(); dly_l();                 /* 先强拉低 */
+        ; Setup parameters for call to function sda_low
+        LCALL     sda_low
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+//  503     t0 = read_t1();
+        ; Setup parameters for call to function read_t1
+        LCALL     read_t1
+        MOV       ?V0,R2
+        MOV       ?V1,R3
+        MOV       R6,?V0
+        MOV       R7,?V1
+//  504     sda_rel();                          /* 释放, 应靠上拉回到高 */
+        ; Setup parameters for call to function sda_rel
+        LCALL     sda_rel
+//  505     for (i = 0; i < 400u; i++) { if (sda_rd()) { hi = 1; break; } }
+        MOV       ?V0,#0x0
+        MOV       ?V1,#0x0
+        SJMP      ??NFC_SdaRiseUs10_0
+??NFC_SdaRiseUs10_1:
+        INC       ?V0
+        MOV       A,?V0
+        JNZ       ??NFC_SdaRiseUs10_0
+        INC       ?V1
+??NFC_SdaRiseUs10_0:
+        CLR       C
+        MOV       A,?V0
+        SUBB      A,#-0x70
+        MOV       A,?V1
+        SUBB      A,#0x1
+        JNC       ??NFC_SdaRiseUs10_2
+        ; Setup parameters for call to function sda_rd
+        LCALL     sda_rd
+        MOV       A,R1
+        JZ        ??NFC_SdaRiseUs10_1
+        MOV       ?V2,#0x1
+//  506     t1 = read_t1();
+??NFC_SdaRiseUs10_2:
+        ; Setup parameters for call to function read_t1
+        LCALL     read_t1
+        MOV       ?V0,R2
+        MOV       ?V1,R3
+        MOV       R0,?V0
+        MOV       R1,?V1
+//  507     if (!hi) { return 0u; }             /* 一直低 = 上拉缺失/被钉 */
+        MOV       A,?V2
+        JNZ       ??NFC_SdaRiseUs10_3
+        MOV       R2,#0x0
+        MOV       R3,#0x0
+        SJMP      ??NFC_SdaRiseUs10_4
+//  508     return (uint16)(((uint32)(t1 - t0) * (uint32)g_tickNs) / 100UL);
+??NFC_SdaRiseUs10_3:
+        MOV       A,R0
+        CLR       C
+        SUBB      A,R6
+        MOV       ?V0,A
+        MOV       A,R1
+        SUBB      A,R7
+        MOV       ?V1,A
+        CLR       A
+        MOV       ?V2,A
+        MOV       ?V3,A
+        MOV       DPTR,#g_tickNs
+        MOVX      A,@DPTR
+        MOV       ?V4,A
+        INC       DPTR
+        MOVX      A,@DPTR
+        MOV       ?V5,A
+        CLR       A
+        MOV       ?V6,A
+        MOV       ?V7,A
+        MOV       R0,#?V0
+        MOV       R1,#?V4
+        LCALL     ?L_MUL
+        MOV       DPTR,#__Constant_64
+        MOV       R0,#?V4
+        LCALL     ?L_MOV_X
+        MOV       R0,#?V0
+        MOV       R1,#?V4
+        LCALL     ?UL_DIV_MOD
+        MOV       R2,?V0
+        MOV       R3,?V1
+??NFC_SdaRiseUs10_4:
+        MOV       R7,#0x8
+        LJMP      ?FUNC_LEAVE_PDATA
+//  509 }
+//  510 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  511 uint16 NFC_SclRiseUs10(void)
+NFC_SclRiseUs10:
+        CODE
+//  512 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        REQUIRE ?V2
+        REQUIRE ?V3
+        REQUIRE ?V4
+        REQUIRE ?V5
+        REQUIRE ?V6
+        REQUIRE ?V7
+        MOV       A,#-0xd
+        LCALL     ?FUNC_ENTER_PDATA
+        ; Saved register size: 13
+        ; Auto size: 0
+//  513     uint16 t0, t1, i; uint8 hi = 0;
+        MOV       ?V2,#0x0
+//  514     gpio_prep();
+        ; Setup parameters for call to function gpio_prep
+        LCALL     gpio_prep
+//  515     scl_low(); dly_l();                 /* 先拉低 */
+        ; Setup parameters for call to function scl_low
+        LCALL     scl_low
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+//  516     t0 = read_t1();
+        ; Setup parameters for call to function read_t1
+        LCALL     read_t1
+        MOV       ?V0,R2
+        MOV       ?V1,R3
+        MOV       R6,?V0
+        MOV       R7,?V1
+//  517     scl_hi();                           /* 推挽抬升 */
+        ; Setup parameters for call to function scl_hi
+        LCALL     scl_hi
+//  518     for (i = 0; i < 400u; i++) { if (scl_rd()) { hi = 1; break; } }
+        MOV       ?V0,#0x0
+        MOV       ?V1,#0x0
+        SJMP      ??NFC_SclRiseUs10_0
+??NFC_SclRiseUs10_1:
+        INC       ?V0
+        MOV       A,?V0
+        JNZ       ??NFC_SclRiseUs10_0
+        INC       ?V1
+??NFC_SclRiseUs10_0:
+        CLR       C
+        MOV       A,?V0
+        SUBB      A,#-0x70
+        MOV       A,?V1
+        SUBB      A,#0x1
+        JNC       ??NFC_SclRiseUs10_2
+        ; Setup parameters for call to function scl_rd
+        LCALL     scl_rd
+        MOV       A,R1
+        JZ        ??NFC_SclRiseUs10_1
+        MOV       ?V2,#0x1
+//  519     t1 = read_t1();
+??NFC_SclRiseUs10_2:
+        ; Setup parameters for call to function read_t1
+        LCALL     read_t1
+        MOV       ?V0,R2
+        MOV       ?V1,R3
+        MOV       R0,?V0
+        MOV       R1,?V1
+//  520     if (!hi) { return 0u; }
+        MOV       A,?V2
+        JNZ       ??NFC_SclRiseUs10_3
+        MOV       R2,#0x0
+        MOV       R3,#0x0
+        SJMP      ??NFC_SclRiseUs10_4
+//  521     return (uint16)(((uint32)(t1 - t0) * (uint32)g_tickNs) / 100UL);
+??NFC_SclRiseUs10_3:
+        MOV       A,R0
+        CLR       C
+        SUBB      A,R6
+        MOV       ?V0,A
+        MOV       A,R1
+        SUBB      A,R7
+        MOV       ?V1,A
+        CLR       A
+        MOV       ?V2,A
+        MOV       ?V3,A
+        MOV       DPTR,#g_tickNs
+        MOVX      A,@DPTR
+        MOV       ?V4,A
+        INC       DPTR
+        MOVX      A,@DPTR
+        MOV       ?V5,A
+        CLR       A
+        MOV       ?V6,A
+        MOV       ?V7,A
+        MOV       R0,#?V0
+        MOV       R1,#?V4
+        LCALL     ?L_MUL
+        MOV       DPTR,#__Constant_64
+        MOV       R0,#?V4
+        LCALL     ?L_MOV_X
+        MOV       R0,#?V0
+        MOV       R1,#?V4
+        LCALL     ?UL_DIV_MOD
+        MOV       R2,?V0
+        MOV       R3,?V1
+??NFC_SclRiseUs10_4:
+        MOV       R7,#0x8
+        LJMP      ?FUNC_LEAVE_PDATA
+//  522 }
+//  523 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  524 uint16 NFC_SdaFallUs10(void)
+NFC_SdaFallUs10:
+        CODE
+//  525 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        REQUIRE ?V2
+        REQUIRE ?V3
+        REQUIRE ?V4
+        REQUIRE ?V5
+        REQUIRE ?V6
+        REQUIRE ?V7
+        MOV       A,#-0xd
+        LCALL     ?FUNC_ENTER_PDATA
+        ; Saved register size: 13
+        ; Auto size: 0
+//  526     uint16 t0, t1, i; uint8 lo = 0;
+        MOV       ?V2,#0x0
+//  527     gpio_prep();
+        ; Setup parameters for call to function gpio_prep
+        LCALL     gpio_prep
+//  528     sda_rel(); dly_l();                 /* 释放(应高) */
+        ; Setup parameters for call to function sda_rel
+        LCALL     sda_rel
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+//  529     t0 = read_t1();
+        ; Setup parameters for call to function read_t1
+        LCALL     read_t1
+        MOV       ?V0,R2
+        MOV       ?V1,R3
+        MOV       R6,?V0
+        MOV       R7,?V1
+//  530     sda_low();                          /* 驱动拉低 */
+        ; Setup parameters for call to function sda_low
+        LCALL     sda_low
+//  531     for (i = 0; i < 400u; i++) { if (!sda_rd()) { lo = 1; break; } }
+        MOV       ?V0,#0x0
+        MOV       ?V1,#0x0
+        SJMP      ??NFC_SdaFallUs10_0
+??NFC_SdaFallUs10_1:
+        INC       ?V0
+        MOV       A,?V0
+        JNZ       ??NFC_SdaFallUs10_0
+        INC       ?V1
+??NFC_SdaFallUs10_0:
+        CLR       C
+        MOV       A,?V0
+        SUBB      A,#-0x70
+        MOV       A,?V1
+        SUBB      A,#0x1
+        JNC       ??NFC_SdaFallUs10_2
+        ; Setup parameters for call to function sda_rd
+        LCALL     sda_rd
+        MOV       A,R1
+        JNZ       ??NFC_SdaFallUs10_1
+        MOV       ?V2,#0x1
+//  532     t1 = read_t1();
+??NFC_SdaFallUs10_2:
+        ; Setup parameters for call to function read_t1
+        LCALL     read_t1
+        MOV       ?V0,R2
+        MOV       ?V1,R3
+        MOV       R0,?V0
+        MOV       R1,?V1
+//  533     if (!lo) { return 0u; }
+        MOV       A,?V2
+        JNZ       ??NFC_SdaFallUs10_3
+        MOV       R2,#0x0
+        MOV       R3,#0x0
+        SJMP      ??NFC_SdaFallUs10_4
+//  534     return (uint16)(((uint32)(t1 - t0) * (uint32)g_tickNs) / 100UL);
+??NFC_SdaFallUs10_3:
+        MOV       A,R0
+        CLR       C
+        SUBB      A,R6
+        MOV       ?V0,A
+        MOV       A,R1
+        SUBB      A,R7
+        MOV       ?V1,A
+        CLR       A
+        MOV       ?V2,A
+        MOV       ?V3,A
+        MOV       DPTR,#g_tickNs
+        MOVX      A,@DPTR
+        MOV       ?V4,A
+        INC       DPTR
+        MOVX      A,@DPTR
+        MOV       ?V5,A
+        CLR       A
+        MOV       ?V6,A
+        MOV       ?V7,A
+        MOV       R0,#?V0
+        MOV       R1,#?V4
+        LCALL     ?L_MUL
+        MOV       DPTR,#__Constant_64
+        MOV       R0,#?V4
+        LCALL     ?L_MOV_X
+        MOV       R0,#?V0
+        MOV       R1,#?V4
+        LCALL     ?UL_DIV_MOD
+        MOV       R2,?V0
+        MOV       R3,?V1
+??NFC_SdaFallUs10_4:
+        MOV       R7,#0x8
+        LJMP      ?FUNC_LEAVE_PDATA
+//  535 }
+//  536 
+//  537 /* ===========================================================================
+//  538  *                       采样示波 (v4 判决性)
+//  539  * =========================================================================== */
+//  540 /*
+//  541  * 产生 "START + b(8位) + 第9时钟 + STOP" 的完整波形, 同时每 4us 采一次真实
+//  542  * (SCL,SDA) 电平存进 g_scp[]:
+//  543  *   bit0 = SDA 引脚电平(看的是线的真实状态)   bit1 = SCL 引脚电平
+//  544  * 采样点下标(固定):
+//  545  *   0..3   : 空闲 + START
+//  546  *   4..83  : 8 个数据位 (每位 10 点 = 40us)
+//  547  *   84..93 : 第 9 个时钟 (第 86 点上升, 第 91 点下降)
+//  548  *   94..125: STOP + 尾部(看从机是否继续钉住 SDA)
+//  549  */
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  550 static void scope_set(uint8 sdaDrvLow, uint8 sclHi, uint8 *idx)
+scope_set:
+        CODE
+//  551 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        REQUIRE ?V2
+        MOV       A,#-0x8
+        LCALL     ?FUNC_ENTER_PDATA
+        ; Saved register size: 8
+        ; Auto size: 0
+        MOV       ?V1,R1
+        MOV       ?V2,R2
+        MOV       A,R4
+        MOV       R6,A
+        MOV       A,R5
+        MOV       R7,A
+//  552     if (sdaDrvLow) { sda_low(); } else { sda_rel(); }
+        MOV       A,?V1
+        JZ        ??scope_set_0
+        ; Setup parameters for call to function sda_low
+        LCALL     sda_low
+        SJMP      ??scope_set_1
+??scope_set_0:
+        ; Setup parameters for call to function sda_rel
+        LCALL     sda_rel
+//  553     if (sclHi)     { scl_hi();  } else { scl_low(); }
+??scope_set_1:
+        MOV       A,?V2
+        JZ        ??scope_set_2
+        ; Setup parameters for call to function scl_hi
+        LCALL     scl_hi
+        SJMP      ??scope_set_3
+??scope_set_2:
+        ; Setup parameters for call to function scl_low
+        LCALL     scl_low
+//  554     t1_wait_ticks(g_us4);                 /* 保持 4us */
+??scope_set_3:
+        ; Setup parameters for call to function t1_wait_ticks
+        MOV       DPTR,#g_us4
+        MOVX      A,@DPTR
+        MOV       R2,A
+        INC       DPTR
+        MOVX      A,@DPTR
+        MOV       R3,A
+        LCALL     t1_wait_ticks
+//  555     if (*idx < SCP_N) {
+        MOV       DPL,R6
+        MOV       DPH,R7
+        MOVX      A,@DPTR
+        CLR       C
+        SUBB      A,#0x7e
+        JNC       ??scope_set_4
+//  556         uint8 s = sda_rd();
+        ; Setup parameters for call to function sda_rd
+        LCALL     sda_rd
+        MOV       A,R1
+        MOV       ?V0,A
+//  557         uint8 c = scl_rd();
+        ; Setup parameters for call to function scl_rd
+        LCALL     scl_rd
+        MOV       A,R1
+        MOV       R0,A
+//  558         g_scp[*idx] = (uint8)((s & 0x01u) | ((c & 0x01u) << 1));
+        MOV       A,R0
+        MOV       C,0xE0 /* A   */.0
+        CLR       A
+        RLC       A
+        CLR       C
+        RLC       A
+        MOV       R0,A
+        MOV       A,?V0
+        MOV       C,0xE0 /* A   */.0
+        CLR       A
+        RLC       A
+        ORL       A,R0
+        PUSH      A
+        MOV       DPL,R6
+        MOV       DPH,R7
+        MOVX      A,@DPTR
+        MOV       R0,A
+        MOV       R1,#0x0
+        MOV       A,#g_scp & 0xff
+        ADD       A,R0
+        MOV       DPL,A
+        MOV       A,#(g_scp >> 8) & 0xff
+        ADDC      A,R1
+        MOV       DPH,A
+        POP       A
+        MOVX      @DPTR,A
+//  559     }
+//  560     (*idx)++;
+??scope_set_4:
+        MOV       DPL,R6
+        MOV       DPH,R7
+        MOVX      A,@DPTR
+        ADD       A,#0x1
+        MOVX      @DPTR,A
+//  561 }
+        MOV       R7,#0x3
+        LJMP      ?FUNC_LEAVE_PDATA
+//  562 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  563 void NFC_ScopeTx(uint8 b)
+NFC_ScopeTx:
+        CODE
+//  564 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        MOV       A,#-0x7
+        LCALL     ?FUNC_ENTER_PDATA
+        ; Saved register size: 7
+        ; Auto size: 1
+        DEC       ?PSP
+        MOV       A,R1
+        MOV       R7,A
+//  565     uint8 i, bit, idx = 0u;
+        MOV       A,#0x0
+        PUSH      A
+        MOV       A,?PSP
+        MOV       R0,A
+        POP       A
+        MOVX      @R0,A
+//  566 
+//  567     /* 清空缓冲 */
+//  568     for (i = 0; i < SCP_N; i++) { g_scp[i] = 0u; }
+        MOV       R6,#0x0
+        SJMP      ??NFC_ScopeTx_0
+??NFC_ScopeTx_1:
+        MOV       A,R6
+        MOV       R0,A
+        MOV       R1,#0x0
+        MOV       A,#g_scp & 0xff
+        ADD       A,R0
+        MOV       DPL,A
+        MOV       A,#(g_scp >> 8) & 0xff
+        ADDC      A,R1
+        MOV       DPH,A
+        MOV       A,#0x0
+        MOVX      @DPTR,A
+        INC       R6
+??NFC_ScopeTx_0:
+        MOV       A,R6
+        CLR       C
+        SUBB      A,#0x7e
+        JC        ??NFC_ScopeTx_1
+//  569 
+//  570     /* 0..3: 空闲 + START */
+//  571     scope_set(0, 1, &idx);   /* 0 idle SDA高 SCL高 */
+        ; Setup parameters for call to function scope_set
+        MOV       A,?PSP
+        MOV       R4,A
+        MOV       R5,#HIGH(_PDATA0_START)
+        MOV       R2,#0x1
+        MOV       R1,#0x0
+        LCALL     scope_set
+//  572     scope_set(0, 1, &idx);   /* 1 idle */
+        ; Setup parameters for call to function scope_set
+        MOV       A,?PSP
+        MOV       R4,A
+        MOV       R5,#HIGH(_PDATA0_START)
+        MOV       R2,#0x1
+        MOV       R1,#0x0
+        LCALL     scope_set
+//  573     scope_set(1, 1, &idx);   /* 2 START: SDA 落(此时 SCL 高) */
+        ; Setup parameters for call to function scope_set
+        MOV       A,?PSP
+        MOV       R4,A
+        MOV       R5,#HIGH(_PDATA0_START)
+        MOV       R2,#0x1
+        MOV       R1,#0x1
+        LCALL     scope_set
+//  574     scope_set(1, 1, &idx);   /* 3 START 保持 */
+        ; Setup parameters for call to function scope_set
+        MOV       A,?PSP
+        MOV       R4,A
+        MOV       R5,#HIGH(_PDATA0_START)
+        MOV       R2,#0x1
+        MOV       R1,#0x1
+        LCALL     scope_set
+//  575 
+//  576     /* 4..83: 8 个数据位, 每位 10 点 */
+//  577     for (bit = 0; bit < 8u; bit++) {
+        MOV       ?V0,#0x0
+        SJMP      ??NFC_ScopeTx_2
+//  578         uint8 v = (uint8)((b & 0x80u) ? 1u : 0u);
+//  579         uint8 j;
+//  580         for (j = 0; j < 10u; j++) {
+//  581             uint8 sclHi = (j >= 4u) ? 1u : 0u;   /* 后 5 点 SCL 高 */
+//  582             scope_set(v ? 0u : 1u, sclHi, &idx);  /* v=1 -> 释放(高), v=0 -> 拉低 */
+//  583         }
+//  584         b = (uint8)(b << 1);
+??NFC_ScopeTx_3:
+        MOV       A,R7
+        CLR       C
+        RLC       A
+        MOV       R7,A
+        INC       ?V0
+??NFC_ScopeTx_2:
+        MOV       A,?V0
+        CLR       C
+        SUBB      A,#0x8
+        JNC       ??NFC_ScopeTx_4
+        MOV       A,R7
+        MOV       C,0xE0 /* A   */.7
+        CLR       A
+        RLC       A
+        MOV       ?V1,A
+        MOV       R6,#0x0
+        SJMP      ??NFC_ScopeTx_5
+??NFC_ScopeTx_6:
+        MOV       R1,#0x1
+??NFC_ScopeTx_7:
+        ; Setup parameters for call to function scope_set
+        MOV       A,?PSP
+        MOV       R4,A
+        MOV       R5,#HIGH(_PDATA0_START)
+        LCALL     scope_set
+        INC       R6
+??NFC_ScopeTx_5:
+        MOV       A,R6
+        CLR       C
+        SUBB      A,#0xa
+        JNC       ??NFC_ScopeTx_3
+        MOV       A,R6
+        CLR       C
+        SUBB      A,#0x4
+        JC        ??NFC_ScopeTx_8
+        MOV       R2,#0x1
+        SJMP      ??NFC_ScopeTx_9
+??NFC_ScopeTx_8:
+        MOV       R2,#0x0
+??NFC_ScopeTx_9:
+        MOV       A,?V1
+        JZ        ??NFC_ScopeTx_6
+        MOV       R1,#0x0
+        SJMP      ??NFC_ScopeTx_7
+//  585     }
+//  586 
+//  587     /* 84..93: 第 9 个时钟 (SCL 在 idx 86..90 高, 91 落) */
+//  588     for (i = 0; i < 10u; i++) {
+??NFC_ScopeTx_4:
+        MOV       R6,#0x0
+        SJMP      ??NFC_ScopeTx_10
+//  589         uint8 sclHi = ((i >= 2u) && (i <= 6u)) ? 1u : 0u;
+??NFC_ScopeTx_11:
+        MOV       R2,#0x0
+//  590         scope_set(0, sclHi, &idx);     /* SDA 全程释放, 等从机拉 */
+??NFC_ScopeTx_12:
+        ; Setup parameters for call to function scope_set
+        MOV       A,?PSP
+        MOV       R4,A
+        MOV       R5,#HIGH(_PDATA0_START)
+        MOV       R1,#0x0
+        LCALL     scope_set
+        INC       R6
+??NFC_ScopeTx_10:
+        MOV       A,R6
+        CLR       C
+        SUBB      A,#0xa
+        JNC       ??NFC_ScopeTx_13
+        MOV       A,R6
+        CLR       C
+        SUBB      A,#0x2
+        CLR       C
+        SUBB      A,#0x5
+        JNC       ??NFC_ScopeTx_11
+        MOV       R2,#0x1
+        SJMP      ??NFC_ScopeTx_12
+//  591     }
+//  592 
+//  593     /* 94..125: STOP + 尾部 (idx98 起 SDA 释放=STOP; 之后看是否仍被钉低) */
+//  594     for (i = 0; i < 32u; i++) {
+??NFC_ScopeTx_13:
+        MOV       R6,#0x0
+        SJMP      ??NFC_ScopeTx_14
+//  595         uint8 sclHi  = (i >= 2u) ? 1u : 0u;       /* idx96 起 SCL 高 */
+//  596         uint8 sdaLow = (i < 4u)  ? 1u : 0u;        /* idx94..97 SDA 低, 98 起释放 */
+??NFC_ScopeTx_15:
+        MOV       R1,#0x0
+//  597         scope_set(sdaLow, sclHi, &idx);
+??NFC_ScopeTx_16:
+        ; Setup parameters for call to function scope_set
+        MOV       A,?PSP
+        MOV       R4,A
+        MOV       R5,#HIGH(_PDATA0_START)
+        LCALL     scope_set
+        INC       R6
+??NFC_ScopeTx_14:
+        MOV       A,R6
+        CLR       C
+        SUBB      A,#0x20
+        JNC       ??NFC_ScopeTx_17
+        MOV       A,R6
+        CLR       C
+        SUBB      A,#0x2
+        JC        ??NFC_ScopeTx_18
+        MOV       R2,#0x1
+        SJMP      ??NFC_ScopeTx_19
+??NFC_ScopeTx_18:
+        MOV       R2,#0x0
+??NFC_ScopeTx_19:
+        MOV       A,R6
+        CLR       C
+        SUBB      A,#0x4
+        JNC       ??NFC_ScopeTx_15
+        MOV       R1,#0x1
+        SJMP      ??NFC_ScopeTx_16
+//  598     }
+//  599 
+//  600     /* 派生量 */
+//  601     {
+//  602         uint8 p = (g_scp[85] & 0x01u);
+??NFC_ScopeTx_17:
+        MOV       DPTR,#g_scp + 85
+        MOVX      A,@DPTR
+        MOV       C,0xE0 /* A   */.0
+        CLR       A
+        RLC       A
+        MOV       R3,A
+//  603         uint8 e = (g_scp[87] & 0x01u);
+        MOV       DPTR,#g_scp + 87
+        MOVX      A,@DPTR
+        MOV       C,0xE0 /* A   */.0
+        CLR       A
+        RLC       A
+        MOV       R2,A
+//  604         uint8 l = (g_scp[90] & 0x01u);
+        MOV       DPTR,#g_scp + 90
+        MOVX      A,@DPTR
+        MOV       C,0xE0 /* A   */.0
+        CLR       A
+        RLC       A
+        MOV       R1,A
+//  605         uint8 a = (g_scp[93] & 0x01u);
+        MOV       DPTR,#g_scp + 93
+        MOVX      A,@DPTR
+        MOV       C,0xE0 /* A   */.0
+        CLR       A
+        RLC       A
+        MOV       R0,A
+//  606         uint8 k;
+//  607         g_scp_ack = (uint8)((p << 3) | (e << 2) | (l << 1) | a);
+        MOV       A,R1
+        CLR       C
+        RLC       A
+        MOV       R1,A
+        MOV       A,R2
+        RLC       A
+        RLC       A
+        ANL       A,#0xfc
+        MOV       R2,A
+        MOV       A,R3
+        RLC       A
+        RLC       A
+        RLC       A
+        ANL       A,#0xf8
+        ORL       A,R2
+        ORL       A,R1
+        ORL       A,R0
+        MOV       DPTR,#g_scp_ack
+        MOVX      @DPTR,A
+//  608         g_scp_post = 0x0Fu;
+        MOV       DPTR,#g_scp_post
+        MOV       A,#0xf
+        MOVX      @DPTR,A
+//  609         for (k = 91u; k < SCP_N; k++) {
+        MOV       R0,#0x5b
+        SJMP      ??NFC_ScopeTx_20
+??NFC_ScopeTx_21:
+        INC       R0
+??NFC_ScopeTx_20:
+        MOV       A,R0
+        CLR       C
+        SUBB      A,#0x7e
+        JNC       ??NFC_ScopeTx_22
+//  610             if (g_scp[k] & 0x01u) { g_scp_post = (uint8)(k - 91u); break; }
+        MOV       A,R0
+        MOV       R2,A
+        MOV       R3,#0x0
+        MOV       A,#g_scp & 0xff
+        ADD       A,R2
+        MOV       DPL,A
+        MOV       A,#(g_scp >> 8) & 0xff
+        ADDC      A,R3
+        MOV       DPH,A
+        MOVX      A,@DPTR
+        MOV       C,0xE0 /* A   */.0
+        JNC       ??NFC_ScopeTx_21
+        MOV       A,#-0x5b
+        ADD       A,R0
+        MOV       DPTR,#g_scp_post
+        MOVX      @DPTR,A
+//  611         }
+//  612     }
+//  613 }
+??NFC_ScopeTx_22:
+        INC       ?PSP
+        MOV       R7,#0x2
+        LJMP      ?FUNC_LEAVE_PDATA
+//  614 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  615 uint8 NFC_ScpKind(void)
+NFC_ScpKind:
+        CODE
+//  616 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  617     uint8 a = (g_scp[93] & 0x01u);
+        MOV       DPTR,#g_scp + 93
+        MOVX      A,@DPTR
+        MOV       C,0xE0 /* A   */.0
+        CLR       A
+        RLC       A
+        MOV       R2,A
+//  618     uint8 e = (g_scp[87] & 0x01u);
+        MOV       DPTR,#g_scp + 87
+        MOVX      A,@DPTR
+        MOV       C,0xE0 /* A   */.0
+        CLR       A
+        RLC       A
+        MOV       R1,A
+//  619     uint8 l = (g_scp[90] & 0x01u);
+        MOV       DPTR,#g_scp + 90
+        MOVX      A,@DPTR
+        MOV       C,0xE0 /* A   */.0
+        CLR       A
+        RLC       A
+        MOV       R0,A
+//  620     if (a == 0u) { return NFC_ACK_STUCK; }
+        MOV       A,R2
+        JNZ       ??NFC_ScpKind_0
+        MOV       R1,#0x3
+        RET
+//  621     if (e == 0u) {
+??NFC_ScpKind_0:
+        MOV       A,R1
+        JNZ       ??NFC_ScpKind_1
+//  622         if (l == 0u) { return NFC_ACK_REAL; }
+        MOV       A,R0
+        JNZ       ??NFC_ScpKind_2
+        MOV       R1,#0x0
+        RET
+//  623         return NFC_ACK_LATE;
+??NFC_ScpKind_2:
+        MOV       R1,#0x1
+        RET
+//  624     }
+//  625     return NFC_ACK_NONE;
+??NFC_ScpKind_1:
+        MOV       R1,#0x2
+        RET
+//  626 }
+//  627 
+//  628 /* ------------------------------------------------------------ ACK 探测 ---- */
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  629 uint8 NFC_AckProbe(uint8 addr7, uint8 rd, uint8 *status)
+NFC_AckProbe:
+        CODE
+//  630 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        REQUIRE ?V2
+        MOV       A,#-0x8
+        LCALL     ?FUNC_ENTER_PDATA
+        ; Saved register size: 8
+        ; Auto size: 0
+        MOV       ?V1,R1
+        MOV       ?V2,R2
+        MOV       A,R4
+        MOV       R6,A
+        MOV       A,R5
+        MOV       R7,A
+//  631     uint8 kind;
+//  632     if (status != 0) { *status = 0xFFu; }
+        MOV       A,R6
+        ORL       A,R7
+        JZ        ??NFC_AckProbe_0
+        MOV       DPL,R6
+        MOV       DPH,R7
+        MOV       A,#-0x1
+        MOVX      @DPTR,A
+//  633 
+//  634     i2c_start();
+??NFC_AckProbe_0:
+        ; Setup parameters for call to function i2c_start
+        LCALL     i2c_start
+//  635 
+//  636     if (addr7 == 0xFFu) {
+        MOV       A,#-0x1
+        XRL       A,?V1
+        JNZ       ??NFC_AckProbe_1
+//  637         /* 对照实验: 一个地址字节都不发, 从机绝不可能应答 */
+//  638         kind = clock9_kind();
+        ; Setup parameters for call to function clock9_kind
+        LCALL     clock9_kind
+        MOV       A,R1
+        MOV       ?V0,A
+//  639         i2c_stop();
+        ; Setup parameters for call to function i2c_stop
+        LCALL     i2c_stop
+//  640         dly_l();
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+//  641         g_ack_kind = kind;   /* STUCK/NONE/REAL/LATE 直接反映线的真实状态 */
+        MOV       A,?V0
+        MOV       DPTR,#g_ack_kind
+        MOVX      @DPTR,A
+//  642         return kind;
+        MOV       R1,?V0
+        SJMP      ??NFC_AckProbe_2
+//  643     }
+//  644 
+//  645     kind = tx_byte_ack((uint8)(((uint8)(addr7 << 1)) | ((rd != 0u) ? 1u : 0u)));
+??NFC_AckProbe_1:
+        MOV       A,?V2
+        JZ        ??NFC_AckProbe_3
+        MOV       R0,#0x1
+        MOV       R1,#0x0
+        SJMP      ??NFC_AckProbe_4
+??NFC_AckProbe_3:
+        MOV       R0,#0x0
+        MOV       R1,#0x0
+??NFC_AckProbe_4:
+        ; Setup parameters for call to function tx_byte_ack
+        MOV       A,?V1
+        CLR       C
+        RLC       A
+        ORL       A,R0
+        MOV       R1,A
+        LCALL     tx_byte_ack
+        MOV       A,R1
+        MOV       ?V0,A
+//  646 
+//  647     if (rd != 0u && kind == NFC_ACK_REAL && status != 0) {
+        MOV       A,?V2
+        JZ        ??NFC_AckProbe_5
+        MOV       A,?V0
+        JNZ       ??NFC_AckProbe_5
+        MOV       A,R6
+        ORL       A,R7
+        JZ        ??NFC_AckProbe_5
+//  648         *status = i2c_rx8();
+        ; Setup parameters for call to function i2c_rx8
+        LCALL     i2c_rx8
+        MOV       A,R1
+        PUSH      A
+        MOV       DPL,R6
+        MOV       DPH,R7
+        POP       A
+        MOVX      @DPTR,A
+//  649         i2c_putack(1u);
+        ; Setup parameters for call to function i2c_putack
+        MOV       R1,#0x1
+        LCALL     i2c_putack
+//  650         i2c_stop();
+        ; Setup parameters for call to function i2c_stop
+        LCALL     i2c_stop
+//  651         dly_l();
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+//  652         g_status = *status;
+        MOV       DPL,R6
+        MOV       DPH,R7
+        MOVX      A,@DPTR
+        MOV       DPTR,#g_status
+        MOVX      @DPTR,A
+        SJMP      ??NFC_AckProbe_6
+//  653     } else {
+//  654         i2c_stop();
+??NFC_AckProbe_5:
+        ; Setup parameters for call to function i2c_stop
+        LCALL     i2c_stop
+//  655         dly_l();
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+//  656     }
+//  657 
+//  658     g_ack_kind = kind;
+??NFC_AckProbe_6:
+        MOV       A,?V0
+        MOV       DPTR,#g_ack_kind
+        MOVX      @DPTR,A
+//  659     return kind;
+        MOV       R1,?V0
+??NFC_AckProbe_2:
+        MOV       R7,#0x3
+        LJMP      ?FUNC_LEAVE_PDATA
+//  660 }
+//  661 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  662 uint8 NFC_StatusCmd(uint8 slv, uint8 *status)
+NFC_StatusCmd:
+        CODE
+//  663 {
+        MOV       A,R6
+        PUSH      A
+        ; Saved register size: 1
+        ; Auto size: 0
+        MOV       A,R1
+        MOV       R6,A
+//  664     return NFC_AckProbe(slv, 1u, status);
+        ; Setup parameters for call to function NFC_AckProbe
+        MOV       A,R2
+        MOV       R4,A
+        MOV       A,R3
+        MOV       R5,A
+        MOV       R2,#0x1
+        MOV       A,R6
+        MOV       R1,A
+        LCALL     NFC_AckProbe
+        POP       A
+        MOV       R6,A
+        RET
+//  665 }
+//  666 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  667 uint8 NFC_ScanAll(uint8 *first, uint8 *late, uint8 *none, uint8 *stuck)
+NFC_ScanAll:
+        CODE
+//  668 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        REQUIRE ?V2
+        REQUIRE ?V3
+        REQUIRE ?V4
+        REQUIRE ?V6
+        REQUIRE ?V7
+        MOV       A,#-0xd
+        LCALL     ?FUNC_ENTER_PDATA
+        ; Saved register size: 13
+        ; Auto size: 0
+        MOV       A,R2
+        MOV       R6,A
+        MOV       A,R3
+        MOV       R7,A
+        MOV       ?V6,R4
+        MOV       ?V7,R5
+//  669     uint8 a, n = 0u, l = 0u, no = 0u, sk = 0u, k;
+        MOV       ?V0,#0x0
+        MOV       ?V4,#0x0
+        MOV       ?V3,#0x0
+        MOV       ?V1,#0x0
+//  670     *first = 0xFFu;
+        MOV       DPL,R6
+        MOV       DPH,R7
+        MOV       A,#-0x1
+        MOVX      @DPTR,A
+//  671     for (a = 0; a < 128u; a++) {
+        MOV       ?V2,#0x0
+        SJMP      ??NFC_ScanAll_0
+//  672         k = NFC_AckProbe(a, 1u, 0);
+//  673         if      (k == NFC_ACK_REAL)  { if (n == 0u) { *first = a; } n++; }
+//  674         else if (k == NFC_ACK_LATE)  { l++; }
+//  675         else if (k == NFC_ACK_STUCK) { sk++; }
+//  676         else                         { no++; }
+??NFC_ScanAll_1:
+        INC       ?V3
+??NFC_ScanAll_2:
+        INC       ?V2
+??NFC_ScanAll_0:
+        MOV       A,?V2
+        CLR       C
+        SUBB      A,#-0x80
+        JNC       ??NFC_ScanAll_3
+        ; Setup parameters for call to function NFC_AckProbe
+        MOV       R4,#0x0
+        MOV       R5,#0x0
+        MOV       R2,#0x1
+        MOV       R1,?V2
+        LCALL     NFC_AckProbe
+        MOV       A,R1
+        MOV       R0,A
+        MOV       A,R0
+        JNZ       ??NFC_ScanAll_4
+        MOV       A,?V0
+        JNZ       ??NFC_ScanAll_5
+        MOV       A,?V2
+        PUSH      A
+        MOV       DPL,R6
+        MOV       DPH,R7
+        POP       A
+        MOVX      @DPTR,A
+??NFC_ScanAll_5:
+        INC       ?V0
+        SJMP      ??NFC_ScanAll_2
+??NFC_ScanAll_4:
+        MOV       A,#0x1
+        XRL       A,R0
+        JNZ       ??NFC_ScanAll_6
+        INC       ?V4
+        SJMP      ??NFC_ScanAll_2
+??NFC_ScanAll_6:
+        MOV       A,#0x3
+        XRL       A,R0
+        JNZ       ??NFC_ScanAll_1
+        INC       ?V1
+        SJMP      ??NFC_ScanAll_2
+//  677     }
+//  678     *late  = l;
+??NFC_ScanAll_3:
+        MOV       A,?V4
+        PUSH      A
+        MOV       DPL,?V6
+        MOV       DPH,?V7
+        POP       A
+        MOVX      @DPTR,A
+//  679     *none  = no;
+        MOV       A,?V3
+        PUSH      A
+        MOV       A,?PSP
+        ADD       A,#0xd
+        MOV       R0,A
+        MOVX      A,@R0
+        MOV       DPL,A
+        INC       R0
+        MOVX      A,@R0
+        MOV       DPH,A
+        POP       A
+        MOVX      @DPTR,A
+//  680     *stuck = sk;
+        MOV       A,?V1
+        PUSH      A
+        MOV       A,?PSP
+        ADD       A,#0xf
+        MOV       R0,A
+        MOVX      A,@R0
+        MOV       DPL,A
+        INC       R0
+        MOVX      A,@R0
+        MOV       DPH,A
+        POP       A
+        MOVX      @DPTR,A
+//  681     return n;
+        MOV       R1,?V0
+        MOV       R7,#0x8
+        LJMP      ?FUNC_LEAVE_PDATA
+//  682 }
+//  683 
+//  684 /* ------------------------------------------------------------ 命令帧 ------ */
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  685 static uint8 cmd_send(uint8 slv, const uint8 *buf, uint8 n)
+cmd_send:
+        CODE
+//  686 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        REQUIRE ?V2
+        MOV       A,#-0x8
+        LCALL     ?FUNC_ENTER_PDATA
+        ; Saved register size: 8
+        ; Auto size: 0
+        MOV       ?V1,R1
+        MOV       A,R2
+        MOV       R6,A
+        MOV       A,R3
+        MOV       R7,A
+        MOV       ?V2,R4
+//  687     uint8 i;
+//  688     i2c_start();
+        ; Setup parameters for call to function i2c_start
+        LCALL     i2c_start
+//  689     if (tx_byte_ack((uint8)((uint8)(slv << 1) & 0xFEu)) != NFC_ACK_REAL) {
+        ; Setup parameters for call to function tx_byte_ack
+        MOV       A,?V1
+        CLR       C
+        RLC       A
+        MOV       R1,A
+        LCALL     tx_byte_ack
+        MOV       A,R1
+        JZ        ??cmd_send_0
+//  690         i2c_stop(); dly_l(); return 0u;
+        ; Setup parameters for call to function i2c_stop
+        LCALL     i2c_stop
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+        MOV       R1,#0x0
+        SJMP      ??cmd_send_1
+//  691     }
+//  692     for (i = 0; i < n; i++) {
+??cmd_send_0:
+        MOV       ?V0,#0x0
+        SJMP      ??cmd_send_2
+??cmd_send_3:
+        INC       ?V0
+??cmd_send_2:
+        MOV       A,?V0
+        CLR       C
+        SUBB      A,?V2
+        JNC       ??cmd_send_4
+//  693         if (tx_byte_ack(buf[i]) != NFC_ACK_REAL) { i2c_stop(); dly_l(); return 0u; }
+        ; Setup parameters for call to function tx_byte_ack
+        MOV       A,?V0
+        MOV       R0,A
+        MOV       R1,#0x0
+        MOV       A,R6
+        ADD       A,R0
+        MOV       DPL,A
+        MOV       A,R7
+        ADDC      A,R1
+        MOV       DPH,A
+        MOVX      A,@DPTR
+        MOV       R1,A
+        LCALL     tx_byte_ack
+        MOV       A,R1
+        JZ        ??cmd_send_3
+        ; Setup parameters for call to function i2c_stop
+        LCALL     i2c_stop
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+        MOV       R1,#0x0
+        SJMP      ??cmd_send_1
+//  694     }
+//  695     i2c_stop(); dly_l();
+??cmd_send_4:
+        ; Setup parameters for call to function i2c_stop
+        LCALL     i2c_stop
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+//  696     return 1u;
+        MOV       R1,#0x1
+??cmd_send_1:
+        MOV       R7,#0x3
+        LJMP      ?FUNC_LEAVE_PDATA
+//  697 }
+//  698 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  699 static uint8 resp_read(uint8 slv, uint8 *st, uint8 *dst, uint8 n)
+resp_read:
+        CODE
+//  700 {
+        REQUIRE ?V0
+        REQUIRE ?V2
+        REQUIRE ?V3
+        MOV       A,#-0x9
+        LCALL     ?FUNC_ENTER_PDATA
+        ; Saved register size: 9
+        ; Auto size: 0
+        MOV       ?V0,R1
+        MOV       A,R2
+        MOV       R6,A
+        MOV       A,R3
+        MOV       R7,A
+        MOV       ?V2,R4
+        MOV       ?V3,R5
+//  701     uint8 i;
+//  702     i2c_start();
+        ; Setup parameters for call to function i2c_start
+        LCALL     i2c_start
+//  703     if (tx_byte_ack((uint8)(((uint8)(slv << 1)) | 1u)) != NFC_ACK_REAL) {
+        ; Setup parameters for call to function tx_byte_ack
+        MOV       A,?V0
+        CLR       C
+        RLC       A
+        ORL       A,#0x1
+        MOV       R1,A
+        LCALL     tx_byte_ack
+        MOV       A,R1
+        JZ        ??resp_read_0
+//  704         i2c_stop(); dly_l(); return 0u;
+        ; Setup parameters for call to function i2c_stop
+        LCALL     i2c_stop
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+        MOV       R1,#0x0
+        SJMP      ??resp_read_1
+//  705     }
+//  706     *st = i2c_rx8();
+??resp_read_0:
+        ; Setup parameters for call to function i2c_rx8
+        LCALL     i2c_rx8
+        MOV       A,R1
+        PUSH      A
+        MOV       DPL,R6
+        MOV       DPH,R7
+        POP       A
+        MOVX      @DPTR,A
+        MOV       A,?PSP
+        ADD       A,#0x9
+        MOV       R0,A
+        MOVX      A,@R0
+        MOV       R7,A
+//  707     i2c_putack((uint8)((n == 0u) ? 1u : 0u));
+        MOV       A,R7
+        JNZ       ??resp_read_2
+        MOV       R1,#0x1
+        SJMP      ??resp_read_3
+??resp_read_2:
+        MOV       R1,#0x0
+??resp_read_3:
+        ; Setup parameters for call to function i2c_putack
+        LCALL     i2c_putack
+//  708     for (i = 0; i < n; i++) {
+        MOV       R6,#0x0
+        SJMP      ??resp_read_4
+//  709         dst[i] = i2c_rx8();
+//  710         i2c_putack((uint8)(((uint8)(i + 1u) >= n) ? 1u : 0u));
+??resp_read_5:
+        MOV       R1,#0x0
+??resp_read_6:
+        ; Setup parameters for call to function i2c_putack
+        LCALL     i2c_putack
+        INC       R6
+??resp_read_4:
+        MOV       A,R6
+        CLR       C
+        SUBB      A,R7
+        JNC       ??resp_read_7
+        ; Setup parameters for call to function i2c_rx8
+        LCALL     i2c_rx8
+        MOV       A,R1
+        PUSH      A
+        MOV       A,R6
+        MOV       R0,A
+        MOV       R1,#0x0
+        MOV       A,?V2
+        ADD       A,R0
+        MOV       DPL,A
+        MOV       A,?V3
+        ADDC      A,R1
+        MOV       DPH,A
+        POP       A
+        MOVX      @DPTR,A
+        MOV       A,#0x1
+        ADD       A,R6
+        CLR       C
+        SUBB      A,R7
+        JC        ??resp_read_5
+        MOV       R1,#0x1
+        SJMP      ??resp_read_6
+//  711     }
+//  712     i2c_stop(); dly_l();
+??resp_read_7:
+        ; Setup parameters for call to function i2c_stop
+        LCALL     i2c_stop
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+//  713     return 1u;
+        MOV       R1,#0x1
+??resp_read_1:
+        MOV       R7,#0x4
+        LJMP      ?FUNC_LEAVE_PDATA
+//  714 }
+//  715 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  716 uint8 NFC_WaitNirqLow(uint16 ms)
+NFC_WaitNirqLow:
+        CODE
+//  717 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        REQUIRE ?V2
+        MOV       A,#-0x8
+        LCALL     ?FUNC_ENTER_PDATA
+        ; Saved register size: 8
+        ; Auto size: 0
+        MOV       A,R2
+        MOV       R6,A
+        MOV       A,R3
+        MOV       R7,A
+//  718     uint8  w = 0u;
+        MOV       ?V2,#0x0
+//  719     uint16 i;
+//  720     if (ms > 250u) { ms = 250u; }
+        CLR       C
+        MOV       A,R6
+        SUBB      A,#-0x5
+        MOV       A,R7
+        SUBB      A,#0x0
+        JC        ??NFC_WaitNirqLow_0
+        MOV       R6,#-0x6
+        MOV       R7,#0x0
+//  721     for (i = 0; i < ms; i++) {
+??NFC_WaitNirqLow_0:
+        MOV       ?V0,#0x0
+        MOV       ?V1,#0x0
+        SJMP      ??NFC_WaitNirqLow_1
+//  722         if (NFC_NirqLevel() == 0u) { g_nirq_ms = w; return w; }
+//  723         NFC_DelayMs(1u);
+??NFC_WaitNirqLow_2:
+        ; Setup parameters for call to function NFC_DelayMs
+        MOV       R2,#0x1
+        MOV       R3,#0x0
+        LCALL     NFC_DelayMs
+//  724         w++;
+        INC       ?V2
+        INC       ?V0
+        MOV       A,?V0
+        JNZ       ??NFC_WaitNirqLow_1
+        INC       ?V1
+??NFC_WaitNirqLow_1:
+        CLR       C
+        MOV       A,?V0
+        SUBB      A,R6
+        MOV       A,?V1
+        SUBB      A,R7
+        JNC       ??NFC_WaitNirqLow_3
+        ; Setup parameters for call to function NFC_NirqLevel
+        LCALL     NFC_NirqLevel
+        MOV       A,R1
+        JNZ       ??NFC_WaitNirqLow_2
+        MOV       A,?V2
+        MOV       DPTR,#g_nirq_ms
+        MOVX      @DPTR,A
+        MOV       R1,?V2
+        SJMP      ??NFC_WaitNirqLow_4
+//  725     }
+//  726     g_nirq_ms = 0xFFu;
+??NFC_WaitNirqLow_3:
+        MOV       DPTR,#g_nirq_ms
+        MOV       A,#-0x1
+        MOVX      @DPTR,A
+//  727     return 0xFFu;
+        MOV       R1,#-0x1
+??NFC_WaitNirqLow_4:
+        MOV       R7,#0x3
+        LJMP      ?FUNC_LEAVE_PDATA
+//  728 }
+//  729 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  730 uint8 NFC_ReadMem(uint8 slv, uint16 addr, uint8 len, uint8 *dst, uint8 *status)
+NFC_ReadMem:
+        CODE
+//  731 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        REQUIRE ?V2
+        REQUIRE ?V3
+        MOV       A,#-0x9
+        LCALL     ?FUNC_ENTER_PDATA
+        ; Saved register size: 9
+        ; Auto size: 5
+        MOV       A,?PSP
+        ADD       A,#-0x5
+        MOV       ?PSP,A
+        MOV       ?V2,R1
+        MOV       A,R4
+        MOV       R6,A
+//  732     uint8 cmd[4];
+//  733     uint8 st = 0xFFu;
+        MOV       A,#-0x1
+        PUSH      A
+        MOV       A,?PSP
+        MOV       R0,A
+        POP       A
+        MOVX      @R0,A
+//  734     if (len == 0u || len > NFC_READ_CHUNK || dst == 0) { return NFC_ERR_PARAM; }
+        MOV       A,R6
+        JZ        ??NFC_ReadMem_0
+        MOV       A,#-0x1
+        XRL       A,R6
+        JZ        ??NFC_ReadMem_0
+        MOV       A,?PSP
+        ADD       A,#0xe
+        MOV       R0,A
+        MOVX      A,@R0
+        MOV       ?V0,A
+        INC       R0
+        MOVX      A,@R0
+        MOV       ?V1,A
+        MOV       A,?V0
+        ORL       A,?V1
+        JNZ       ??NFC_ReadMem_1
+??NFC_ReadMem_0:
+        MOV       R1,#0x4
+        LJMP      ??NFC_ReadMem_2
+//  735     cmd[0] = MN63Y_CMD_READ;
+??NFC_ReadMem_1:
+        MOV       A,#0x8
+        PUSH      A
+        MOV       A,?PSP
+        ADD       A,#0x1
+        MOV       R0,A
+        POP       A
+        MOVX      @R0,A
+//  736     cmd[1] = (uint8)(addr >> 8);
+        MOV       A,R2
+        MOV       R0,A
+        MOV       A,R3
+        MOV       R1,A
+        CLR       A
+        XCH       A,R1
+        MOV       R0,A
+        MOV       A,R0
+        PUSH      A
+        MOV       A,?PSP
+        ADD       A,#0x2
+        MOV       R0,A
+        POP       A
+        MOVX      @R0,A
+//  737     cmd[2] = (uint8)(addr & 0xFFu);
+        MOV       A,R2
+        PUSH      A
+        MOV       A,?PSP
+        ADD       A,#0x3
+        MOV       R0,A
+        POP       A
+        MOVX      @R0,A
+//  738     cmd[3] = len;
+        MOV       A,R6
+        PUSH      A
+        MOV       A,?PSP
+        ADD       A,#0x4
+        MOV       R0,A
+        POP       A
+        MOVX      @R0,A
+//  739     if (cmd_send(slv, cmd, 4u) == 0u) { return NFC_ERR_NOACK; }
+        ; Setup parameters for call to function cmd_send
+        MOV       R4,#0x4
+        MOV       A,?PSP
+        ADD       A,#0x1
+        MOV       R2,A
+        MOV       R3,#HIGH(_PDATA0_START)
+        MOV       R1,?V2
+        LCALL     cmd_send
+        MOV       A,R1
+        JNZ       ??NFC_ReadMem_3
+        MOV       R1,#0x1
+        SJMP      ??NFC_ReadMem_2
+//  740     (void)NFC_WaitNirqLow(200u);
+??NFC_ReadMem_3:
+        ; Setup parameters for call to function NFC_WaitNirqLow
+        MOV       R2,#-0x38
+        MOV       R3,#0x0
+        LCALL     NFC_WaitNirqLow
+        MOV       A,R1
+        MOV       R7,A
+//  741     if (resp_read(slv, &st, dst, len) == 0u) { return NFC_ERR_NOACK; }
+        ; Setup parameters for call to function resp_read
+        MOV       A,R6
+        MOV       ?V3,A
+        MOV       R0,#?V3
+        LCALL     ?PUSH_PSTACK_I_ONE
+        MOV       R4,?V0
+        MOV       R5,?V1
+        MOV       A,?PSP
+        ADD       A,#0x1
+        MOV       R2,A
+        MOV       R3,#HIGH(_PDATA0_START)
+        MOV       R1,?V2
+        LCALL     resp_read
+        INC       ?PSP
+        MOV       A,R1
+        JNZ       ??NFC_ReadMem_4
+        MOV       R1,#0x1
+        SJMP      ??NFC_ReadMem_2
+??NFC_ReadMem_4:
+        MOV       A,?PSP
+        ADD       A,#0x10
+        MOV       R0,A
+        MOVX      A,@R0
+        MOV       DPL,A
+        INC       R0
+        MOVX      A,@R0
+        MOV       DPH,A
+//  742     if (status != 0) { *status = st; }
+        MOV       A,DPL
+        ORL       A,DPH
+        JZ        ??NFC_ReadMem_5
+        MOV       A,?PSP
+        MOV       R0,A
+        MOVX      A,@R0
+        PUSH      A
+        POP       A
+        MOVX      @DPTR,A
+//  743     g_status = st;
+??NFC_ReadMem_5:
+        MOV       A,?PSP
+        MOV       R0,A
+        MOVX      A,@R0
+        MOV       DPTR,#g_status
+        MOVX      @DPTR,A
+//  744     if ((uint8)(st & 0x0Fu) != MN63Y_ST_OK) { return NFC_ERR_STATUS; }
+        MOV       A,?PSP
+        MOV       R0,A
+        MOVX      A,@R0
+        ANL       A,#0xf
+        XRL       A,#0x5
+        JZ        ??NFC_ReadMem_6
+        MOV       R1,#0x2
+        SJMP      ??NFC_ReadMem_2
+//  745     return NFC_OK;
+??NFC_ReadMem_6:
+        MOV       R1,#0x0
+??NFC_ReadMem_2:
+        INC       ?PSP
+        INC       ?PSP
+        INC       ?PSP
+        INC       ?PSP
+        INC       ?PSP
+        MOV       R7,#0x4
+        LJMP      ?FUNC_LEAVE_PDATA
+//  746 }
+//  747 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  748 uint8 NFC_WriteMem(uint8 slv, uint16 addr, const uint8 *src, uint8 len, uint8 *status)
+NFC_WriteMem:
+        CODE
+//  749 {
+        REQUIRE ?V0
+        MOV       A,#-0x6
+        LCALL     ?FUNC_ENTER_PDATA
+        ; Saved register size: 6
+        ; Auto size: 1
+        DEC       ?PSP
+        MOV       A,R1
+        MOV       R6,A
+//  750     static __xdata uint8 cmd[NFC_WRITE_CHUNK + 4u];
+//  751     uint8 st = 0xFFu, i;
+        MOV       A,#-0x1
+        PUSH      A
+        MOV       A,?PSP
+        MOV       R0,A
+        POP       A
+        MOVX      @R0,A
+        MOV       A,?PSP
+        ADD       A,#0x7
+        MOV       R0,A
+        MOVX      A,@R0
+        MOV       R7,A
+//  752     if (len == 0u || len > NFC_WRITE_CHUNK || src == 0) { return NFC_ERR_PARAM; }
+        MOV       A,R7
+        JZ        ??NFC_WriteMem_0
+        MOV       A,R7
+        CLR       C
+        SUBB      A,#-0x4
+        JNC       ??NFC_WriteMem_0
+        MOV       A,R4
+        ORL       A,R5
+        JNZ       ??NFC_WriteMem_1
+??NFC_WriteMem_0:
+        MOV       R1,#0x4
+        LJMP      ??NFC_WriteMem_2
+//  753     cmd[0] = MN63Y_CMD_WRITE;
+??NFC_WriteMem_1:
+        MOV       DPTR,#??cmd
+        MOV       A,#0x18
+        MOVX      @DPTR,A
+//  754     cmd[1] = (uint8)(addr >> 8);
+        MOV       A,R2
+        MOV       R0,A
+        MOV       A,R3
+        MOV       R1,A
+        CLR       A
+        XCH       A,R1
+        MOV       R0,A
+        MOV       A,R0
+        MOV       DPTR,#??cmd + 1
+        MOVX      @DPTR,A
+//  755     cmd[2] = (uint8)(addr & 0xFFu);
+        MOV       A,R2
+        MOV       DPTR,#??cmd + 2
+        MOVX      @DPTR,A
+//  756     cmd[3] = len;
+        MOV       A,R7
+        MOV       DPTR,#??cmd + 3
+        MOVX      @DPTR,A
+//  757     for (i = 0; i < len; i++) { cmd[4u + i] = src[i]; }
+        MOV       R0,#0x0
+        SJMP      ??NFC_WriteMem_3
+??NFC_WriteMem_4:
+        MOV       A,R0
+        MOV       R2,A
+        MOV       R3,#0x0
+        MOV       A,R4
+        ADD       A,R2
+        MOV       DPL,A
+        MOV       A,R5
+        ADDC      A,R3
+        MOV       DPH,A
+        MOVX      A,@DPTR
+        PUSH      A
+        MOV       A,R0
+        MOV       R2,A
+        MOV       R3,#0x0
+        MOV       A,#(??cmd + 4) & 0xff
+        ADD       A,R2
+        MOV       DPL,A
+        MOV       A,#((??cmd + 4) >> 8) & 0xff
+        ADDC      A,R3
+        MOV       DPH,A
+        POP       A
+        MOVX      @DPTR,A
+        INC       R0
+??NFC_WriteMem_3:
+        MOV       A,R0
+        CLR       C
+        SUBB      A,R7
+        JC        ??NFC_WriteMem_4
+//  758     if (cmd_send(slv, cmd, (uint8)(4u + len)) == 0u) { return NFC_ERR_NOACK; }
+        ; Setup parameters for call to function cmd_send
+        MOV       A,#0x4
+        ADD       A,R7
+        MOV       R4,A
+        MOV       R2,#??cmd & 0xff
+        MOV       R3,#(??cmd >> 8) & 0xff
+        MOV       A,R6
+        MOV       R1,A
+        LCALL     cmd_send
+        MOV       A,R1
+        JNZ       ??NFC_WriteMem_5
+        MOV       R1,#0x1
+        SJMP      ??NFC_WriteMem_2
+//  759     (void)NFC_WaitNirqLow(200u);
+??NFC_WriteMem_5:
+        ; Setup parameters for call to function NFC_WaitNirqLow
+        MOV       R2,#-0x38
+        MOV       R3,#0x0
+        LCALL     NFC_WaitNirqLow
+        MOV       A,R1
+        MOV       R7,A
+//  760     if (resp_read(slv, &st, 0, 0u) == 0u) { return NFC_ERR_NOACK; }
+        ; Setup parameters for call to function resp_read
+        MOV       ?V0,#0x0
+        MOV       R0,#?V0
+        LCALL     ?PUSH_PSTACK_I_ONE
+        MOV       R4,#0x0
+        MOV       R5,#0x0
+        MOV       A,?PSP
+        ADD       A,#0x1
+        MOV       R2,A
+        MOV       R3,#HIGH(_PDATA0_START)
+        MOV       A,R6
+        MOV       R1,A
+        LCALL     resp_read
+        INC       ?PSP
+        MOV       A,R1
+        JNZ       ??NFC_WriteMem_6
+        MOV       R1,#0x1
+        SJMP      ??NFC_WriteMem_2
+??NFC_WriteMem_6:
+        MOV       A,?PSP
+        ADD       A,#0x8
+        MOV       R0,A
+        MOVX      A,@R0
+        MOV       DPL,A
+        INC       R0
+        MOVX      A,@R0
+        MOV       DPH,A
+//  761     if (status != 0) { *status = st; }
+        MOV       A,DPL
+        ORL       A,DPH
+        JZ        ??NFC_WriteMem_7
+        MOV       A,?PSP
+        MOV       R0,A
+        MOVX      A,@R0
+        PUSH      A
+        POP       A
+        MOVX      @DPTR,A
+//  762     g_status = st;
+??NFC_WriteMem_7:
+        MOV       A,?PSP
+        MOV       R0,A
+        MOVX      A,@R0
+        MOV       DPTR,#g_status
+        MOVX      @DPTR,A
+//  763     if ((uint8)(st & 0x0Fu) != MN63Y_ST_OK) { return NFC_ERR_STATUS; }
+        MOV       A,?PSP
+        MOV       R0,A
+        MOVX      A,@R0
+        ANL       A,#0xf
+        XRL       A,#0x5
+        JZ        ??NFC_WriteMem_8
+        MOV       R1,#0x2
+        SJMP      ??NFC_WriteMem_2
+//  764     return NFC_OK;
+??NFC_WriteMem_8:
+        MOV       R1,#0x0
+??NFC_WriteMem_2:
+        INC       ?PSP
+        MOV       R7,#0x1
+        LJMP      ?FUNC_LEAVE_PDATA
+//  765 }
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+??cmd:
+        DS 255
+        REQUIRE __INIT_XDATA_Z
+//  766 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  767 uint8 NFC_RReg(uint8 slv, uint8 *status, uint8 *data)
+NFC_RReg:
+        CODE
+//  768 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        REQUIRE ?V2
+        REQUIRE ?V3
+        REQUIRE ?V4
+        MOV       A,#-0xa
+        LCALL     ?FUNC_ENTER_PDATA
+        ; Saved register size: 10
+        ; Auto size: 3
+        DEC       ?PSP
+        DEC       ?PSP
+        DEC       ?PSP
+        MOV       A,R1
+        MOV       R6,A
+        MOV       ?V0,R2
+        MOV       ?V1,R3
+        MOV       ?V2,R4
+        MOV       ?V3,R5
+//  769     uint8 cmd[1];
+//  770     uint8 st = 0xFFu, d = 0xFFu;
+        MOV       A,#-0x1
+        PUSH      A
+        MOV       A,?PSP
+        MOV       R0,A
+        POP       A
+        MOVX      @R0,A
+        MOV       A,#-0x1
+        PUSH      A
+        MOV       A,?PSP
+        ADD       A,#0x1
+        MOV       R0,A
+        POP       A
+        MOVX      @R0,A
+//  771     cmd[0] = MN63Y_CMD_RREG;
+        MOV       A,#0x68
+        PUSH      A
+        MOV       A,?PSP
+        ADD       A,#0x2
+        MOV       R0,A
+        POP       A
+        MOVX      @R0,A
+//  772     if (cmd_send(slv, cmd, 1u) == 0u) { return NFC_ERR_NOACK; }
+        ; Setup parameters for call to function cmd_send
+        MOV       R4,#0x1
+        MOV       A,?PSP
+        ADD       A,#0x2
+        MOV       R2,A
+        MOV       R3,#HIGH(_PDATA0_START)
+        MOV       A,R6
+        MOV       R1,A
+        LCALL     cmd_send
+        MOV       A,R1
+        JNZ       ??NFC_RReg_0
+        MOV       R1,#0x1
+        SJMP      ??NFC_RReg_1
+//  773     (void)NFC_WaitNirqLow(200u);
+??NFC_RReg_0:
+        ; Setup parameters for call to function NFC_WaitNirqLow
+        MOV       R2,#-0x38
+        MOV       R3,#0x0
+        LCALL     NFC_WaitNirqLow
+        MOV       A,R1
+        MOV       R7,A
+//  774     if (resp_read(slv, &st, &d, 1u) == 0u) { return NFC_ERR_NOACK; }
+        ; Setup parameters for call to function resp_read
+        MOV       ?V4,#0x1
+        MOV       R0,#?V4
+        LCALL     ?PUSH_PSTACK_I_ONE
+        MOV       A,?PSP
+        ADD       A,#0x2
+        MOV       R4,A
+        MOV       R5,#HIGH(_PDATA0_START)
+        MOV       A,?PSP
+        ADD       A,#0x1
+        MOV       R2,A
+        MOV       R3,#HIGH(_PDATA0_START)
+        MOV       A,R6
+        MOV       R1,A
+        LCALL     resp_read
+        INC       ?PSP
+        MOV       A,R1
+        JNZ       ??NFC_RReg_2
+        MOV       R1,#0x1
+        SJMP      ??NFC_RReg_1
+//  775     if (status != 0) { *status = st; }
+??NFC_RReg_2:
+        MOV       A,?V0
+        ORL       A,?V1
+        JZ        ??NFC_RReg_3
+        MOV       A,?PSP
+        MOV       R0,A
+        MOVX      A,@R0
+        PUSH      A
+        MOV       DPL,?V0
+        MOV       DPH,?V1
+        POP       A
+        MOVX      @DPTR,A
+//  776     if (data   != 0) { *data   = d;  }
+??NFC_RReg_3:
+        MOV       A,?V2
+        ORL       A,?V3
+        JZ        ??NFC_RReg_4
+        MOV       A,?PSP
+        ADD       A,#0x1
+        MOV       R0,A
+        MOVX      A,@R0
+        PUSH      A
+        MOV       DPL,?V2
+        MOV       DPH,?V3
+        POP       A
+        MOVX      @DPTR,A
+//  777     g_status = st;
+??NFC_RReg_4:
+        MOV       A,?PSP
+        MOV       R0,A
+        MOVX      A,@R0
+        MOV       DPTR,#g_status
+        MOVX      @DPTR,A
+//  778     if ((uint8)(st & 0x0Fu) != MN63Y_ST_OK) { return NFC_ERR_STATUS; }
+        MOV       A,?PSP
+        MOV       R0,A
+        MOVX      A,@R0
+        ANL       A,#0xf
+        XRL       A,#0x5
+        JZ        ??NFC_RReg_5
+        MOV       R1,#0x2
+        SJMP      ??NFC_RReg_1
+//  779     return NFC_OK;
+??NFC_RReg_5:
+        MOV       R1,#0x0
+??NFC_RReg_1:
+        INC       ?PSP
+        INC       ?PSP
+        INC       ?PSP
+        MOV       R7,#0x5
+        LJMP      ?FUNC_LEAVE_PDATA
+//  780 }
+//  781 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  782 uint8 NFC_WReg(uint8 slv, uint8 data, uint8 *status)
+NFC_WReg:
+        CODE
+//  783 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        REQUIRE ?V2
+        REQUIRE ?V3
+        MOV       A,#-0x9
+        LCALL     ?FUNC_ENTER_PDATA
+        ; Saved register size: 9
+        ; Auto size: 3
+        DEC       ?PSP
+        DEC       ?PSP
+        DEC       ?PSP
+        MOV       A,R1
+        MOV       R6,A
+        MOV       A,R2
+        MOV       R7,A
+        MOV       ?V2,R4
+        MOV       ?V3,R5
+//  784     uint8 cmd[2];
+//  785     uint8 st = 0xFFu;
+        MOV       A,#-0x1
+        PUSH      A
+        MOV       A,?PSP
+        MOV       R0,A
+        POP       A
+        MOVX      @R0,A
+//  786     cmd[0] = MN63Y_CMD_WREG;
+        MOV       A,#0x78
+        PUSH      A
+        MOV       A,?PSP
+        ADD       A,#0x1
+        MOV       R0,A
+        POP       A
+        MOVX      @R0,A
+//  787     cmd[1] = data;
+        MOV       A,R7
+        PUSH      A
+        MOV       A,?PSP
+        ADD       A,#0x2
+        MOV       R0,A
+        POP       A
+        MOVX      @R0,A
+//  788     if (cmd_send(slv, cmd, 2u) == 0u) { return NFC_ERR_NOACK; }
+        ; Setup parameters for call to function cmd_send
+        MOV       R4,#0x2
+        MOV       A,?PSP
+        ADD       A,#0x1
+        MOV       R2,A
+        MOV       R3,#HIGH(_PDATA0_START)
+        MOV       A,R6
+        MOV       R1,A
+        LCALL     cmd_send
+        MOV       A,R1
+        JNZ       ??NFC_WReg_0
+        MOV       R1,#0x1
+        SJMP      ??NFC_WReg_1
+//  789     (void)NFC_WaitNirqLow(200u);
+??NFC_WReg_0:
+        ; Setup parameters for call to function NFC_WaitNirqLow
+        MOV       R2,#-0x38
+        MOV       R3,#0x0
+        LCALL     NFC_WaitNirqLow
+        MOV       A,R1
+        MOV       ?V0,A
+//  790     if (resp_read(slv, &st, 0, 0u) == 0u) { return NFC_ERR_NOACK; }
+        ; Setup parameters for call to function resp_read
+        MOV       ?V1,#0x0
+        MOV       R0,#?V1
+        LCALL     ?PUSH_PSTACK_I_ONE
+        MOV       R4,#0x0
+        MOV       R5,#0x0
+        MOV       A,?PSP
+        ADD       A,#0x1
+        MOV       R2,A
+        MOV       R3,#HIGH(_PDATA0_START)
+        MOV       A,R6
+        MOV       R1,A
+        LCALL     resp_read
+        INC       ?PSP
+        MOV       A,R1
+        JNZ       ??NFC_WReg_2
+        MOV       R1,#0x1
+        SJMP      ??NFC_WReg_1
+//  791     if (status != 0) { *status = st; }
+??NFC_WReg_2:
+        MOV       A,?V2
+        ORL       A,?V3
+        JZ        ??NFC_WReg_3
+        MOV       A,?PSP
+        MOV       R0,A
+        MOVX      A,@R0
+        PUSH      A
+        MOV       DPL,?V2
+        MOV       DPH,?V3
+        POP       A
+        MOVX      @DPTR,A
+//  792     g_status = st;
+??NFC_WReg_3:
+        MOV       A,?PSP
+        MOV       R0,A
+        MOVX      A,@R0
+        MOV       DPTR,#g_status
+        MOVX      @DPTR,A
+//  793     if ((uint8)(st & 0x0Fu) != MN63Y_ST_OK) { return NFC_ERR_STATUS; }
+        MOV       A,?PSP
+        MOV       R0,A
+        MOVX      A,@R0
+        ANL       A,#0xf
+        XRL       A,#0x5
+        JZ        ??NFC_WReg_4
+        MOV       R1,#0x2
+        SJMP      ??NFC_WReg_1
+//  794     return NFC_OK;
+??NFC_WReg_4:
+        MOV       R1,#0x0
+??NFC_WReg_1:
+        INC       ?PSP
+        INC       ?PSP
+        INC       ?PSP
+        MOV       R7,#0x4
+        LJMP      ?FUNC_LEAVE_PDATA
+//  795 }
+//  796 
+//  797 /* --------------------------------------------------------- NDEF 解析 ------- */
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  798 static uint8 ndef_find_text(const uint8 *p, uint16 n, char *out, uint16 max)
+ndef_find_text:
+        CODE
+//  799 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        REQUIRE ?V2
+        REQUIRE ?V3
+        REQUIRE ?V4
+        REQUIRE ?V5
+        REQUIRE ?V6
+        REQUIRE ?V7
+        MOV       A,#-0xd
+        LCALL     ?FUNC_ENTER_PDATA
+        ; Saved register size: 13
+        ; Auto size: 2
+        DEC       ?PSP
+        DEC       ?PSP
+        MOV       A,?PSP
+        MOV       R0,A
+        MOV       A,R4
+        MOVX      @R0,A
+        INC       R0
+        MOV       A,R5
+        MOVX      @R0,A
+        MOV       ?V2,R2
+        MOV       ?V3,R3
+//  800     uint16 i;
+//  801     for (i = 0; (uint16)(i + 5u) < n; i++) {
+        MOV       ?V0,#0x0
+        MOV       ?V1,#0x0
+        SJMP      ??ndef_find_text_0
+//  802         uint8 pl, status, langlen, src;
+//  803         uint16 body, k, w;
+//  804         if ((p[i] & 0x10u) != 0u) continue;        /* SR 必须为 1 */
+??ndef_find_text_1:
+        INC       ?V0
+        MOV       A,?V0
+        JNZ       ??ndef_find_text_0
+        INC       ?V1
+??ndef_find_text_0:
+        MOV       A,?V0
+        ADD       A,#0x5
+        MOV       R4,A
+        CLR       A
+        ADDC      A,?V1
+        MOV       R5,A
+        MOV       A,?PSP
+        MOV       R0,A
+        MOVX      A,@R0
+        MOV       R2,A
+        INC       R0
+        MOVX      A,@R0
+        MOV       R3,A
+        CLR       C
+        MOV       A,R4
+        SUBB      A,R2
+        MOV       A,R5
+        SUBB      A,R3
+        JC        $+5
+        LJMP      ??ndef_find_text_2
+        MOV       A,?V2
+        ADD       A,?V0
+        MOV       DPL,A
+        MOV       A,?V3
+        ADDC      A,?V1
+        MOV       DPH,A
+        MOVX      A,@DPTR
+        MOV       C,0xE0 /* A   */.4
+        JC        ??ndef_find_text_1
+//  805         if ((p[i] & 0x1Fu) != 0x01u) continue;     /* TNF = NFC well-known */
+        MOV       A,?V2
+        ADD       A,?V0
+        MOV       DPL,A
+        MOV       A,?V3
+        ADDC      A,?V1
+        MOV       DPH,A
+        MOVX      A,@DPTR
+        ANL       A,#0x1f
+        XRL       A,#0x1
+        JNZ       ??ndef_find_text_1
+//  806         if (p[i + 1u] != 0x01u) continue;          /* TYPE LENGTH = 1 */
+        MOV       A,?V2
+        ADD       A,?V0
+        MOV       DPL,A
+        MOV       A,?V3
+        ADDC      A,?V1
+        MOV       DPH,A
+        INC       DPTR
+        MOVX      A,@DPTR
+        XRL       A,#0x1
+        JNZ       ??ndef_find_text_1
+//  807         if (p[i + 3u] != 'T')   continue;          /* TYPE = 'T' */
+        MOV       A,?V2
+        ADD       A,?V0
+        MOV       DPL,A
+        MOV       A,?V3
+        ADDC      A,?V1
+        MOV       DPH,A
+        INC       DPTR
+        INC       DPTR
+        INC       DPTR
+        MOVX      A,@DPTR
+        XRL       A,#0x54
+        JNZ       ??ndef_find_text_1
+//  808         pl      = p[i + 2u];
+        MOV       A,?V2
+        ADD       A,?V0
+        MOV       DPL,A
+        MOV       A,?V3
+        ADDC      A,?V1
+        MOV       DPH,A
+        INC       DPTR
+        INC       DPTR
+        MOVX      A,@DPTR
+        MOV       R2,A
+//  809         status  = p[i + 4u];
+        MOV       A,?V2
+        ADD       A,?V0
+        MOV       DPL,A
+        MOV       A,?V3
+        ADDC      A,?V1
+        MOV       DPH,A
+        INC       DPTR
+        INC       DPTR
+        INC       DPTR
+        INC       DPTR
+        MOVX      A,@DPTR
+        MOV       ?V4,A
+//  810         langlen = (uint8)(status & 0x3Fu);
+        MOV       A,#0x3f
+        ANL       A,?V4
+        MOV       R4,A
+//  811         if ((uint16)pl < (uint16)(1u + langlen)) continue;
+        MOV       A,R2
+        MOV       R6,A
+        MOV       R7,#0x0
+        MOV       A,R4
+        MOV       R0,A
+        MOV       R1,#0x0
+        MOV       A,R0
+        ADD       A,#0x1
+        MOV       R0,A
+        JNC       ??ndef_find_text_3
+        INC       R1
+??ndef_find_text_3:
+        CLR       C
+        MOV       A,R6
+        SUBB      A,R0
+        MOV       A,R7
+        SUBB      A,R1
+        JNC       $+5
+        LJMP      ??ndef_find_text_1
+//  812         src  = (uint8)(i + 5u + langlen);
+        MOV       A,?V0
+        ADD       A,R4
+        ADD       A,#0x5
+        MOV       R1,A
+//  813         body = (uint16)(pl - 1u - langlen);
+        MOV       A,R2
+        MOV       R2,A
+        MOV       R3,#0x0
+        MOV       A,R2
+        ADD       A,#-0x1
+        MOV       R2,A
+        MOV       A,R3
+        ADDC      A,#-0x1
+        MOV       R3,A
+        MOV       A,R4
+        MOV       R4,A
+        MOV       R5,#0x0
+        MOV       A,R2
+        CLR       C
+        SUBB      A,R4
+        MOV       R4,A
+        MOV       A,R3
+        SUBB      A,R5
+        MOV       R5,A
+//  814         if ((uint16)src + body > n) continue;
+        MOV       A,?PSP
+        MOV       R0,A
+        MOVX      A,@R0
+        MOV       R2,A
+        INC       R0
+        MOVX      A,@R0
+        MOV       R3,A
+        MOV       A,R1
+        MOV       R6,A
+        MOV       R7,#0x0
+        MOV       A,R6
+        ADD       A,R4
+        MOV       R6,A
+        MOV       A,R7
+        ADDC      A,R5
+        MOV       R7,A
+        CLR       C
+        MOV       A,R2
+        SUBB      A,R6
+        MOV       A,R3
+        SUBB      A,R7
+        JNC       $+5
+        LJMP      ??ndef_find_text_1
+//  815         w = 0;
+        MOV       R2,#0x0
+        MOV       R3,#0x0
+//  816         if ((status & 0x80u) != 0u) {              /* UTF-16LE: 只取低字节 */
+        MOV       A,?V4
+        MOV       C,0xE0 /* A   */.7
+        JC        $+5
+        LJMP      ??ndef_find_text_4
+//  817             for (k = 0; k < body; k++) {
+        MOV       R6,#0x0
+        MOV       R7,#0x0
+        SJMP      ??ndef_find_text_5
+//  818                 if ((uint16)(src + (uint8)(k * 2u) + 1u) >= n) break;
+//  819                 if (w + 1u >= max) break;
+//  820                 out[w++] = (char)p[src + (uint8)(k * 2u) + 1u];
+??ndef_find_text_6:
+        MOV       A,R1
+        MOV       ?V6,A
+        MOV       ?V7,#0x0
+        MOV       B,#0x2
+        MOV       A,R6
+        MUL       AB
+        MOV       ?V4,A
+        MOV       ?V5,#0x0
+        MOV       A,?V6
+        ADD       A,?V4
+        MOV       ?V4,A
+        MOV       A,?V7
+        ADDC      A,?V5
+        MOV       ?V5,A
+        MOV       A,?V2
+        ADD       A,?V4
+        MOV       DPL,A
+        MOV       A,?V3
+        ADDC      A,?V5
+        MOV       DPH,A
+        INC       DPTR
+        MOVX      A,@DPTR
+        PUSH      A
+        MOV       A,?PSP
+        ADD       A,#0xf
+        MOV       R0,A
+        MOVX      A,@R0
+        ADD       A,R2
+        MOV       DPL,A
+        INC       R0
+        MOVX      A,@R0
+        ADDC      A,R3
+        MOV       DPH,A
+        POP       A
+        MOVX      @DPTR,A
+        INC       R2
+        MOV       A,R2
+        JNZ       ??ndef_find_text_7
+        INC       R3
+??ndef_find_text_7:
+        INC       R6
+        MOV       A,R6
+        JNZ       ??ndef_find_text_5
+        INC       R7
+??ndef_find_text_5:
+        CLR       C
+        MOV       A,R6
+        SUBB      A,R4
+        MOV       A,R7
+        SUBB      A,R5
+        JNC       ??ndef_find_text_8
+        MOV       A,R1
+        MOV       ?V6,A
+        MOV       ?V7,#0x0
+        MOV       B,#0x2
+        MOV       A,R6
+        MUL       AB
+        MOV       ?V4,A
+        MOV       ?V5,#0x0
+        MOV       A,?V6
+        ADD       A,?V4
+        MOV       ?V4,A
+        MOV       A,?V7
+        ADDC      A,?V5
+        MOV       ?V5,A
+        MOV       A,?V4
+        ADD       A,#0x1
+        MOV       ?V6,A
+        CLR       A
+        ADDC      A,?V5
+        MOV       ?V7,A
+        MOV       A,?PSP
+        MOV       R0,A
+        MOVX      A,@R0
+        MOV       ?V4,A
+        INC       R0
+        MOVX      A,@R0
+        MOV       ?V5,A
+        CLR       C
+        MOV       A,?V6
+        SUBB      A,?V4
+        MOV       A,?V7
+        SUBB      A,?V5
+        JC        ??ndef_find_text_9
+//  821             }
+//  822         } else {
+//  823             for (k = 0; k < body; k++) {
+//  824                 char ch;
+//  825                 if (w + 1u >= max) break;
+//  826                 ch = (char)p[(uint8)(src + (uint8)k)];
+//  827                 out[w++] = (char)(((ch >= 0x20) && (ch < 0x7F)) ? ch : '.');
+//  828             }
+//  829         }
+//  830         out[w] = '\0';
+??ndef_find_text_8:
+        MOV       A,?PSP
+        ADD       A,#0xf
+        MOV       R0,A
+        MOVX      A,@R0
+        ADD       A,R2
+        MOV       DPL,A
+        INC       R0
+        MOVX      A,@R0
+        ADDC      A,R3
+        MOV       DPH,A
+        MOV       A,#0x0
+        MOVX      @DPTR,A
+//  831         g_ndef_at = (uint8)i;
+        MOV       A,?V0
+        MOV       DPTR,#g_ndef_at
+        MOVX      @DPTR,A
+//  832         return NFC_OK;
+        MOV       R1,#0x0
+        LJMP      ??ndef_find_text_10
+??ndef_find_text_9:
+        MOV       A,R2
+        ADD       A,#0x1
+        MOV       ?V6,A
+        CLR       A
+        ADDC      A,R3
+        MOV       ?V7,A
+        MOV       A,?PSP
+        ADD       A,#0x11
+        MOV       R0,A
+        MOVX      A,@R0
+        MOV       ?V4,A
+        INC       R0
+        MOVX      A,@R0
+        MOV       ?V5,A
+        CLR       C
+        MOV       A,?V6
+        SUBB      A,?V4
+        MOV       A,?V7
+        SUBB      A,?V5
+        JNC       $+5
+        LJMP      ??ndef_find_text_6
+        SJMP      ??ndef_find_text_8
+??ndef_find_text_4:
+        MOV       R6,#0x0
+        MOV       R7,#0x0
+        SJMP      ??ndef_find_text_11
+??ndef_find_text_12:
+        MOV       R0,#0x2e
+??ndef_find_text_13:
+        MOV       A,R0
+        PUSH      A
+        MOV       A,?PSP
+        ADD       A,#0xf
+        MOV       R0,A
+        MOVX      A,@R0
+        ADD       A,?V4
+        MOV       DPL,A
+        INC       R0
+        MOVX      A,@R0
+        ADDC      A,?V5
+        MOV       DPH,A
+        POP       A
+        MOVX      @DPTR,A
+        INC       R6
+        MOV       A,R6
+        JNZ       ??ndef_find_text_11
+        INC       R7
+??ndef_find_text_11:
+        CLR       C
+        MOV       A,R6
+        SUBB      A,R4
+        MOV       A,R7
+        SUBB      A,R5
+        JNC       ??ndef_find_text_8
+        MOV       A,R2
+        ADD       A,#0x1
+        MOV       ?V6,A
+        CLR       A
+        ADDC      A,R3
+        MOV       ?V7,A
+        MOV       A,?PSP
+        ADD       A,#0x11
+        MOV       R0,A
+        MOVX      A,@R0
+        MOV       ?V4,A
+        INC       R0
+        MOVX      A,@R0
+        MOV       ?V5,A
+        CLR       C
+        MOV       A,?V6
+        SUBB      A,?V4
+        MOV       A,?V7
+        SUBB      A,?V5
+        JC        $+5
+        LJMP      ??ndef_find_text_8
+        MOV       A,R6
+        ADD       A,R1
+        MOV       ?V4,A
+        MOV       ?V5,#0x0
+        MOV       A,?V2
+        ADD       A,?V4
+        MOV       DPL,A
+        MOV       A,?V3
+        ADDC      A,?V5
+        MOV       DPH,A
+        MOVX      A,@DPTR
+        MOV       ?V6,A
+        MOV       ?V4,R2
+        MOV       ?V5,R3
+        MOV       A,?V4
+        ADD       A,#0x1
+        MOV       R2,A
+        CLR       A
+        ADDC      A,?V5
+        MOV       R3,A
+        MOV       A,?V6
+        CLR       C
+        SUBB      A,#0x20
+        CLR       C
+        SUBB      A,#0x5f
+        JNC       ??ndef_find_text_12
+        MOV       R0,?V6
+        SJMP      ??ndef_find_text_13
+//  833     }
+//  834     return NFC_ERR_NDEF;
+??ndef_find_text_2:
+        MOV       R1,#0x3
+??ndef_find_text_10:
+        INC       ?PSP
+        INC       ?PSP
+        MOV       R7,#0x8
+        LJMP      ?FUNC_LEAVE_PDATA
+//  835 }
+//  836 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  837 uint8 NFC_ReadTextEx(uint8 slv, char *out, uint16 max)
+NFC_ReadTextEx:
+        CODE
+//  838 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        REQUIRE ?V2
+        REQUIRE ?V3
+        REQUIRE ?V4
+        REQUIRE ?V5
+        REQUIRE ?V6
+        REQUIRE ?V7
+        MOV       A,#-0xd
+        LCALL     ?FUNC_ENTER_PDATA
+        ; Saved register size: 13
+        ; Auto size: 1
+        DEC       ?PSP
+        MOV       ?V3,R1
+        MOV       ?V6,R2
+        MOV       ?V7,R3
+        MOV       A,R4
+        MOV       R6,A
+        MOV       A,R5
+        MOV       R7,A
+//  839     uint16 off = 0u;
+        MOV       ?V0,#0x0
+        MOV       ?V1,#0x0
+//  840     uint8  st = 0xFFu;
+        MOV       A,#-0x1
+        PUSH      A
+        MOV       A,?PSP
+        MOV       R0,A
+        POP       A
+        MOVX      @R0,A
+//  841     if (out == 0 || max < 2u) { return NFC_ERR_PARAM; }
+        MOV       A,?V6
+        ORL       A,?V7
+        JZ        ??NFC_ReadTextEx_0
+        CLR       C
+        MOV       A,R6
+        SUBB      A,#0x2
+        MOV       A,R7
+        SUBB      A,#0x0
+        JNC       ??NFC_ReadTextEx_1
+??NFC_ReadTextEx_0:
+        MOV       R1,#0x4
+        LJMP      ??NFC_ReadTextEx_2
+//  842     out[0] = '\0';
+??NFC_ReadTextEx_1:
+        MOV       DPL,?V6
+        MOV       DPH,?V7
+        MOV       A,#0x0
+        MOVX      @DPTR,A
+//  843     g_ndef_at = 0xFFu;
+        MOV       DPTR,#g_ndef_at
+        MOV       A,#-0x1
+        MOVX      @DPTR,A
+//  844     g_mem_len = 0u;
+        MOV       DPTR,#g_mem_len
+        MOV       A,#0x0
+        MOVX      @DPTR,A
+        INC       DPTR
+        MOV       A,#0x0
+        MOVX      @DPTR,A
+        SJMP      ??NFC_ReadTextEx_3
+//  845     while (off < MN63Y_FERAM_SIZE) {
+//  846         uint16 left = (uint16)(MN63Y_FERAM_SIZE - off);
+//  847         uint8  n = (uint8)((left > (uint16)NFC_READ_CHUNK) ? (uint16)NFC_READ_CHUNK : left);
+//  848         uint8  r = NFC_ReadMem(slv, off, n, &g_mem[off], &st);
+//  849         if (r != NFC_OK) { break; }
+//  850         off = (uint16)(off + n);
+??NFC_ReadTextEx_4:
+        MOV       A,?V2
+        MOV       R0,A
+        MOV       R1,#0x0
+        MOV       A,?V0
+        ADD       A,R0
+        MOV       ?V0,A
+        MOV       A,?V1
+        ADDC      A,R1
+        MOV       ?V1,A
+//  851         g_mem_len = off;
+        MOV       DPTR,#g_mem_len
+        MOV       A,?V0
+        MOVX      @DPTR,A
+        INC       DPTR
+        MOV       A,?V1
+        MOVX      @DPTR,A
+//  852         NFC_DelayMs(1u);
+        ; Setup parameters for call to function NFC_DelayMs
+        MOV       R2,#0x1
+        MOV       R3,#0x0
+        LCALL     NFC_DelayMs
+??NFC_ReadTextEx_3:
+        CLR       C
+        MOV       A,?V0
+        SUBB      A,#0x0
+        MOV       A,?V1
+        SUBB      A,#0x2
+        JNC       ??NFC_ReadTextEx_5
+        MOV       A,#0x0
+        CLR       C
+        SUBB      A,?V0
+        MOV       R0,A
+        MOV       A,#0x2
+        SUBB      A,?V1
+        MOV       R1,A
+        CLR       C
+        MOV       A,R0
+        SUBB      A,#-0x1
+        MOV       A,R1
+        SUBB      A,#0x0
+        JC        ??NFC_ReadTextEx_6
+        MOV       ?V2,#-0x2
+        SJMP      ??NFC_ReadTextEx_7
+??NFC_ReadTextEx_6:
+        MOV       A,R0
+        MOV       ?V2,A
+??NFC_ReadTextEx_7:
+        ; Setup parameters for call to function NFC_ReadMem
+        MOV       A,?PSP
+        MOV       ?V4,A
+        MOV       ?V5,#HIGH(_PDATA0_START)
+        MOV       R0,#?V4
+        LCALL     ?PUSH_PSTACK_I_TWO
+        MOV       A,#g_mem & 0xff
+        ADD       A,?V0
+        MOV       ?V4,A
+        MOV       A,#(g_mem >> 8) & 0xff
+        ADDC      A,?V1
+        MOV       ?V5,A
+        MOV       R0,#?V4
+        LCALL     ?PUSH_PSTACK_I_TWO
+        MOV       R4,?V2
+        MOV       R2,?V0
+        MOV       R3,?V1
+        MOV       R1,?V3
+        LCALL     NFC_ReadMem
+        MOV       A,?PSP
+        ADD       A,#0x4
+        MOV       ?PSP,A
+        MOV       A,R1
+        JZ        ??NFC_ReadTextEx_4
+//  853     }
+//  854     if (off == 0u) { return NFC_ERR_NOACK; }
+??NFC_ReadTextEx_5:
+        MOV       A,?V0
+        ORL       A,?V1
+        JNZ       ??NFC_ReadTextEx_8
+        MOV       R1,#0x1
+        SJMP      ??NFC_ReadTextEx_2
+//  855     return ndef_find_text(g_mem, off, out, max);
+??NFC_ReadTextEx_8:
+        ; Setup parameters for call to function ndef_find_text
+        MOV       ?V4,R6
+        MOV       ?V5,R7
+        MOV       R0,#?V4
+        LCALL     ?PUSH_PSTACK_I_TWO
+        MOV       R0,#?V6
+        LCALL     ?PUSH_PSTACK_I_TWO
+        MOV       R4,?V0
+        MOV       R5,?V1
+        MOV       R2,#g_mem & 0xff
+        MOV       R3,#(g_mem >> 8) & 0xff
+        LCALL     ndef_find_text
+        MOV       A,?PSP
+        ADD       A,#0x4
+        MOV       ?PSP,A
+??NFC_ReadTextEx_2:
+        INC       ?PSP
+        MOV       R7,#0x8
+        LJMP      ?FUNC_LEAVE_PDATA
+//  856 }
+//  857 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  858 uint8 NFC_WriteTextEx(uint8 slv, uint16 addr, const char *text)
+NFC_WriteTextEx:
+        CODE
+//  859 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        REQUIRE ?V2
+        REQUIRE ?V3
+        MOV       A,#-0x9
+        LCALL     ?FUNC_ENTER_PDATA
+        ; Saved register size: 9
+        ; Auto size: 1
+        DEC       ?PSP
+        MOV       A,R1
+        MOV       R6,A
+//  860     static __xdata uint8 blk[64];
+//  861     uint8  i, k, tlen = 0u, langlen = 2u, paylen, n;
+        MOV       R7,#0x0
+        MOV       ?V2,#0x2
+//  862     uint8  st = 0xFFu;
+        MOV       A,#-0x1
+        PUSH      A
+        MOV       A,?PSP
+        MOV       R0,A
+        POP       A
+        MOVX      @R0,A
+//  863     uint16 total;
+//  864     if (text == 0) { return NFC_ERR_PARAM; }
+        MOV       A,R4
+        ORL       A,R5
+        JNZ       ??NFC_WriteTextEx_0
+        MOV       R1,#0x4
+        LJMP      ??NFC_WriteTextEx_1
+//  865     while (text[tlen] != '\0' && tlen < 40u) { tlen++; }
+??NFC_WriteTextEx_2:
+        INC       R7
+??NFC_WriteTextEx_0:
+        MOV       A,R7
+        MOV       R0,A
+        MOV       R1,#0x0
+        MOV       A,R4
+        ADD       A,R0
+        MOV       DPL,A
+        MOV       A,R5
+        ADDC      A,R1
+        MOV       DPH,A
+        MOVX      A,@DPTR
+        JZ        ??NFC_WriteTextEx_3
+        MOV       A,R7
+        CLR       C
+        SUBB      A,#0x28
+        JC        ??NFC_WriteTextEx_2
+//  866     paylen = (uint8)(1u + langlen + tlen);
+??NFC_WriteTextEx_3:
+        MOV       A,?V2
+        ADD       A,R7
+        ADD       A,#0x1
+        MOV       ?V3,A
+//  867     total  = (uint16)(3u + paylen);
+        MOV       A,?V3
+        MOV       R0,A
+        MOV       R1,#0x0
+        MOV       A,R0
+        ADD       A,#0x3
+        MOV       R0,A
+        JNC       ??NFC_WriteTextEx_4
+        INC       R1
+//  868     blk[0] = (uint8)(total >> 8);
+??NFC_WriteTextEx_4:
+        MOV       ?V0,R0
+        MOV       ?V1,R1
+        CLR       A
+        XCH       A,?V1
+        MOV       ?V0,A
+        MOV       A,?V0
+        MOV       DPTR,#??blk
+        MOVX      @DPTR,A
+//  869     blk[1] = (uint8)(total & 0xFFu);
+        MOV       A,R0
+        MOV       DPTR,#??blk + 1
+        MOVX      @DPTR,A
+//  870     blk[2] = 0xD1u;
+        MOV       DPTR,#??blk + 2
+        MOV       A,#-0x2f
+        MOVX      @DPTR,A
+//  871     blk[3] = 0x01u;
+        MOV       DPTR,#??blk + 3
+        MOV       A,#0x1
+        MOVX      @DPTR,A
+//  872     blk[4] = paylen;
+        MOV       A,?V3
+        MOV       DPTR,#??blk + 4
+        MOVX      @DPTR,A
+//  873     blk[5] = 'T';
+        MOV       DPTR,#??blk + 5
+        MOV       A,#0x54
+        MOVX      @DPTR,A
+//  874     blk[6] = langlen;
+        MOV       A,?V2
+        MOV       DPTR,#??blk + 6
+        MOVX      @DPTR,A
+//  875     blk[7] = 'e';
+        MOV       DPTR,#??blk + 7
+        MOV       A,#0x65
+        MOVX      @DPTR,A
+//  876     blk[8] = 'n';
+        MOV       DPTR,#??blk + 8
+        MOV       A,#0x6e
+        MOVX      @DPTR,A
+//  877     for (k = 0; k < tlen; k++) { blk[9u + k] = (uint8)text[k]; }
+        MOV       R0,#0x0
+        SJMP      ??NFC_WriteTextEx_5
+??NFC_WriteTextEx_6:
+        MOV       A,R0
+        MOV       ?V0,A
+        MOV       ?V1,#0x0
+        MOV       A,R4
+        ADD       A,?V0
+        MOV       DPL,A
+        MOV       A,R5
+        ADDC      A,?V1
+        MOV       DPH,A
+        MOVX      A,@DPTR
+        PUSH      A
+        MOV       A,R0
+        MOV       ?V0,A
+        MOV       ?V1,#0x0
+        MOV       A,#(??blk + 9) & 0xff
+        ADD       A,?V0
+        MOV       DPL,A
+        MOV       A,#((??blk + 9) >> 8) & 0xff
+        ADDC      A,?V1
+        MOV       DPH,A
+        POP       A
+        MOVX      @DPTR,A
+        INC       R0
+??NFC_WriteTextEx_5:
+        MOV       A,R0
+        CLR       C
+        SUBB      A,R7
+        JC        ??NFC_WriteTextEx_6
+//  878     n = (uint8)(9u + tlen);
+        MOV       A,#0x9
+        ADD       A,R7
+//  879     for (i = n; i < 64u; i++) { blk[i] = 0x00u; }
+        MOV       R7,A
+        SJMP      ??NFC_WriteTextEx_7
+??NFC_WriteTextEx_8:
+        MOV       A,R7
+        MOV       R0,A
+        MOV       R1,#0x0
+        MOV       A,#??blk & 0xff
+        ADD       A,R0
+        MOV       DPL,A
+        MOV       A,#(??blk >> 8) & 0xff
+        ADDC      A,R1
+        MOV       DPH,A
+        MOV       A,#0x0
+        MOVX      @DPTR,A
+        INC       R7
+??NFC_WriteTextEx_7:
+        MOV       A,R7
+        CLR       C
+        SUBB      A,#0x40
+        JC        ??NFC_WriteTextEx_8
+//  880     return NFC_WriteMem(slv, addr, blk, 64u, &st);
+        ; Setup parameters for call to function NFC_WriteMem
+        MOV       A,?PSP
+        MOV       ?V0,A
+        MOV       ?V1,#HIGH(_PDATA0_START)
+        MOV       R0,#?V0
+        LCALL     ?PUSH_PSTACK_I_TWO
+        MOV       ?V0,#0x40
+        MOV       R0,#?V0
+        LCALL     ?PUSH_PSTACK_I_ONE
+        MOV       R4,#??blk & 0xff
+        MOV       R5,#(??blk >> 8) & 0xff
+        MOV       A,R6
+        MOV       R1,A
+        LCALL     NFC_WriteMem
+        INC       ?PSP
+        INC       ?PSP
+        INC       ?PSP
+??NFC_WriteTextEx_1:
+        INC       ?PSP
+        MOV       R7,#0x4
+        LJMP      ?FUNC_LEAVE_PDATA
+//  881 }
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+??blk:
+        DS 64
+        REQUIRE __INIT_XDATA_Z
+//  882 
+//  883 /* ===========================================================================
+//  884  *                   上拉 / 电源 诊断 (v5 新增)
+//  885  *   "硬件没问题"这句话必须过的三道量化关卡:
+//  886  *     A) 外部上拉在不在   -> NFC_BusOn()  低 4 位(三态时) 必须 = 0b11
+//  887  *     B) 断电时线有没有倒灌 -> NFC_BusOff() 低 4 位(三态时) 必须 = 0b00
+//  888  *     C) VDDEX 有没有去耦电容 / 到底连没连到芯片 -> NFC_VddHoldMs()
+//  889  * =========================================================================== */
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  890 void NFC_SetTristate(uint8 on) { in_pu_off = (on != 0u) ? 1u : 0u; }
+NFC_SetTristate:
+        CODE
+        ; Saved register size: 0
+        ; Auto size: 0
+        MOV       A,R1
+        JZ        ??NFC_SetTristate_0
+        MOV       R0,#in_pu_off
+        MOV       @R0,#0x1
+        RET
+??NFC_SetTristate_0:
+        MOV       R0,#in_pu_off
+        MOV       @R0,#0x0
+        RET
+//  891 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  892 uint8 NFC_BusLevel2(void)
+NFC_BusLevel2:
+        CODE
+//  893 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  894     sda_rel(); scl_rel();
+        ; Setup parameters for call to function sda_rel
+        LCALL     sda_rel
+        ; Setup parameters for call to function scl_rel
+        LCALL     scl_rel
+//  895     dly_l();
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+//  896     return (uint8)(P0 & 0x03u);        /* bit0 = SDA(P0.0), bit1 = SCL(P0.1) */
+        MOV       A,0x80
+        ANL       A,#0x3
+        MOV       R1,A
+        RET
+        REQUIRE _A_P0
+//  897 }
+//  898 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  899 uint8 NFC_BusOn(void)
+NFC_BusOn:
+        CODE
+//  900 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        MOV       A,#-0x7
+        LCALL     ?FUNC_ENTER_PDATA
+        ; Saved register size: 7
+        ; Auto size: 0
+//  901     uint8 a, b;
+//  902     in_pu_off = 0u; gpio_prep(); P2_3 = 1; dly_l();
+        MOV       R0,#in_pu_off
+        MOV       @R0,#0x0
+        ; Setup parameters for call to function gpio_prep
+        LCALL     gpio_prep
+        SETB      0xa0.3
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+//  903     a = NFC_BusLevel2();                       /* 有 MCU 内部上拉时 */
+        ; Setup parameters for call to function NFC_BusLevel2
+        LCALL     NFC_BusLevel2
+        MOV       A,R1
+        MOV       R6,A
+//  904     in_pu_off = 1u; gpio_prep(); P2_3 = 1; dly_l();
+        MOV       R0,#in_pu_off
+        MOV       @R0,#0x1
+        ; Setup parameters for call to function gpio_prep
+        LCALL     gpio_prep
+        SETB      0xa0.3
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+//  905     b = NFC_BusLevel2();                       /* 三态(只有外部上拉能拉高) */
+        ; Setup parameters for call to function NFC_BusLevel2
+        LCALL     NFC_BusLevel2
+        MOV       A,R1
+        MOV       R7,A
+//  906     in_pu_off = 0u; gpio_prep(); P2_3 = 1; dly_l();
+        MOV       R0,#in_pu_off
+        MOV       @R0,#0x0
+        ; Setup parameters for call to function gpio_prep
+        LCALL     gpio_prep
+        SETB      0xa0.3
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+//  907     return (uint8)((a << 4) | (b & 0x0Fu));
+        MOV       A,#0xf
+        ANL       A,R7
+        PUSH      A
+        MOV       A,R6
+        MOV       ?V0,A
+        MOV       ?V1,#0x0
+        MOV       A,#0x4
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        POP       A
+        ORL       A,?V0
+        MOV       R1,A
+        MOV       R7,#0x2
+        LJMP      ?FUNC_LEAVE_PDATA
+        REQUIRE _A_P2
+//  908 }
+//  909 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  910 uint8 NFC_BusOff(void)
+NFC_BusOff:
+        CODE
+//  911 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        MOV       A,#-0x7
+        LCALL     ?FUNC_ENTER_PDATA
+        ; Saved register size: 7
+        ; Auto size: 0
+//  912     uint8 a, b;
+//  913     in_pu_off = 0u; gpio_prep(); P2_3 = 0; dly_l();
+        MOV       R0,#in_pu_off
+        MOV       @R0,#0x0
+        ; Setup parameters for call to function gpio_prep
+        LCALL     gpio_prep
+        CLR       0xa0.3
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+//  914     a = NFC_BusLevel2();
+        ; Setup parameters for call to function NFC_BusLevel2
+        LCALL     NFC_BusLevel2
+        MOV       A,R1
+        MOV       R6,A
+//  915     in_pu_off = 1u; gpio_prep(); P2_3 = 0; dly_l();
+        MOV       R0,#in_pu_off
+        MOV       @R0,#0x1
+        ; Setup parameters for call to function gpio_prep
+        LCALL     gpio_prep
+        CLR       0xa0.3
+        ; Setup parameters for call to function dly_l
+        LCALL     dly_l
+//  916     b = NFC_BusLevel2();
+        ; Setup parameters for call to function NFC_BusLevel2
+        LCALL     NFC_BusLevel2
+        MOV       A,R1
+        MOV       R7,A
+//  917     in_pu_off = 0u; gpio_prep();
+        MOV       R0,#in_pu_off
+        MOV       @R0,#0x0
+        ; Setup parameters for call to function gpio_prep
+        LCALL     gpio_prep
+//  918     return (uint8)((a << 4) | (b & 0x0Fu));
+        MOV       A,#0xf
+        ANL       A,R7
+        PUSH      A
+        MOV       A,R6
+        MOV       ?V0,A
+        MOV       ?V1,#0x0
+        MOV       A,#0x4
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        POP       A
+        ORL       A,?V0
+        MOV       R1,A
+        MOV       R7,#0x2
+        LJMP      ?FUNC_LEAVE_PDATA
+        REQUIRE _A_P2
+//  919 }
+//  920 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  921 uint16 NFC_VddHoldMs(void)
+NFC_VddHoldMs:
+        CODE
+//  922 {
+        REQUIRE ?V0
+        MOV       A,#-0x6
+        LCALL     ?FUNC_ENTER_PDATA
+        ; Saved register size: 6
+        ; Auto size: 0
+//  923     uint16 ms = 0u;
+        MOV       R6,#0x0
+        MOV       R7,#0x0
+//  924     in_pu_off = 1u;                    /* 别让内部上拉经 ESD 二极管给节点续命 */
+        MOV       R0,#in_pu_off
+        MOV       @R0,#0x1
+//  925     gpio_prep();
+        ; Setup parameters for call to function gpio_prep
+        LCALL     gpio_prep
+//  926     P2_3 = 1;
+        SETB      0xa0.3
+//  927     NFC_DelayMs(50u);                  /* 先把 VDDEX 上的电容充满 */
+        ; Setup parameters for call to function NFC_DelayMs
+        MOV       R2,#0x32
+        MOV       R3,#0x0
+        LCALL     NFC_DelayMs
+//  928     P2DIR &= (uint8)~0x08u;            /* 放开 P2.3, 看节点自己撑多久 */
+        ANL       0xff,#0xf7
+        SJMP      ??NFC_VddHoldMs_0
+//  929     while (ms < 500u) {
+//  930         if ((P2 & 0x08u) == 0u) { break; }
+//  931         NFC_DelayMs(1u);
+??NFC_VddHoldMs_1:
+        ; Setup parameters for call to function NFC_DelayMs
+        MOV       R2,#0x1
+        MOV       R3,#0x0
+        LCALL     NFC_DelayMs
+//  932         ms++;
+        INC       R6
+        MOV       A,R6
+        JNZ       ??NFC_VddHoldMs_0
+        INC       R7
+??NFC_VddHoldMs_0:
+        CLR       C
+        MOV       A,R6
+        SUBB      A,#-0xc
+        MOV       A,R7
+        SUBB      A,#0x1
+        JNC       ??NFC_VddHoldMs_2
+        MOV       C,0xa0.3
+        JC        ??NFC_VddHoldMs_1
+//  933     }
+//  934     P2DIR |= 0x08u;
+??NFC_VddHoldMs_2:
+        ORL       0xff,#0x8
+//  935     P2_3 = 1;
+        SETB      0xa0.3
+//  936     in_pu_off = 0u;
+        MOV       R0,#in_pu_off
+        MOV       @R0,#0x0
+//  937     gpio_prep();
+        ; Setup parameters for call to function gpio_prep
+        LCALL     gpio_prep
+//  938     return ms;
+        MOV       A,R6
+        MOV       R2,A
+        MOV       A,R7
+        MOV       R3,A
+        MOV       R7,#0x1
+        LJMP      ?FUNC_LEAVE_PDATA
+        REQUIRE _A_P2
+        REQUIRE P2DIR
+//  939 }
+//  940 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  941 uint8 NFC_NirqWatchMs(uint16 ms, uint16 *lows)
+NFC_NirqWatchMs:
+        CODE
+//  942 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        REQUIRE ?V2
+        REQUIRE ?V3
+        REQUIRE ?V4
+        REQUIRE ?V5
+        MOV       A,#-0xb
+        LCALL     ?FUNC_ENTER_PDATA
+        ; Saved register size: 11
+        ; Auto size: 0
+        MOV       ?V4,R2
+        MOV       ?V5,R3
+        MOV       ?V2,R4
+        MOV       ?V3,R5
+//  943     uint16 n = 0u, l = 0u;
+        MOV       ?V0,#0x0
+        MOV       ?V1,#0x0
+        MOV       R6,#0x0
+        MOV       R7,#0x0
+        SJMP      ??NFC_NirqWatchMs_0
+//  944     while (n < ms) {
+//  945         if (NFC_NirqLevel() == 0u) { l++; }
+??NFC_NirqWatchMs_1:
+        ; Setup parameters for call to function NFC_NirqLevel
+        LCALL     NFC_NirqLevel
+        MOV       A,R1
+        JNZ       ??NFC_NirqWatchMs_2
+        INC       R6
+        MOV       A,R6
+        JNZ       ??NFC_NirqWatchMs_2
+        INC       R7
+//  946         NFC_DelayMs(1u);
+??NFC_NirqWatchMs_2:
+        ; Setup parameters for call to function NFC_DelayMs
+        MOV       R2,#0x1
+        MOV       R3,#0x0
+        LCALL     NFC_DelayMs
+//  947         n++;
+        INC       ?V0
+        MOV       A,?V0
+        JNZ       ??NFC_NirqWatchMs_0
+        INC       ?V1
+//  948     }
+??NFC_NirqWatchMs_0:
+        CLR       C
+        MOV       A,?V0
+        SUBB      A,?V4
+        MOV       A,?V1
+        SUBB      A,?V5
+        JC        ??NFC_NirqWatchMs_1
+//  949     if (lows != 0) { *lows = l; }
+        MOV       A,?V2
+        ORL       A,?V3
+        JZ        ??NFC_NirqWatchMs_3
+        MOV       DPL,?V2
+        MOV       DPH,?V3
+        MOV       A,R6
+        MOVX      @DPTR,A
+        INC       DPTR
+        MOV       A,R7
+        MOVX      @DPTR,A
+//  950     return (uint8)((l != 0u) ? 1u : 0u);
+??NFC_NirqWatchMs_3:
+        MOV       A,R6
+        ORL       A,R7
+        JZ        ??NFC_NirqWatchMs_4
+        MOV       R1,#0x1
+        SJMP      ??NFC_NirqWatchMs_5
+??NFC_NirqWatchMs_4:
+        MOV       R1,#0x0
+??NFC_NirqWatchMs_5:
+        MOV       R7,#0x6
+        LJMP      ?FUNC_LEAVE_PDATA
+//  951 }
+//  952 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  953 uint8 NFC_ScanRd(uint8 rd, uint8 *first3)
+NFC_ScanRd:
+        CODE
+//  954 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        REQUIRE ?V2
+        MOV       A,#-0x8
+        LCALL     ?FUNC_ENTER_PDATA
+        ; Saved register size: 8
+        ; Auto size: 0
+        MOV       ?V2,R1
+        MOV       A,R2
+        MOV       R6,A
+        MOV       A,R3
+        MOV       R7,A
+//  955     uint8 a, n = 0u, k;
+        MOV       ?V0,#0x0
+//  956     first3[0] = 0xFFu; first3[1] = 0xFFu; first3[2] = 0xFFu;
+        MOV       DPL,R6
+        MOV       DPH,R7
+        MOV       A,#-0x1
+        MOVX      @DPTR,A
+        MOV       DPL,R6
+        MOV       DPH,R7
+        INC       DPTR
+        MOV       A,#-0x1
+        MOVX      @DPTR,A
+        MOV       DPL,R6
+        MOV       DPH,R7
+        INC       DPTR
+        INC       DPTR
+        MOV       A,#-0x1
+        MOVX      @DPTR,A
+//  957     for (a = 0u; a < 128u; a++) {
+        MOV       ?V1,#0x0
+        SJMP      ??NFC_ScanRd_0
+//  958         k = NFC_AckProbe(a, rd, 0);
+??NFC_ScanRd_1:
+        ; Setup parameters for call to function NFC_AckProbe
+        MOV       R4,#0x0
+        MOV       R5,#0x0
+        MOV       R2,?V2
+        MOV       R1,?V1
+        LCALL     NFC_AckProbe
+        MOV       A,R1
+//  959         if (k == NFC_ACK_REAL) {
+        JNZ       ??NFC_ScanRd_2
+//  960             if (n < 3u) { first3[n] = a; }
+        MOV       A,?V0
+        CLR       C
+        SUBB      A,#0x3
+        JNC       ??NFC_ScanRd_3
+        MOV       A,?V1
+        PUSH      A
+        MOV       A,?V0
+        MOV       R0,A
+        MOV       R1,#0x0
+        MOV       A,R6
+        ADD       A,R0
+        MOV       DPL,A
+        MOV       A,R7
+        ADDC      A,R1
+        MOV       DPH,A
+        POP       A
+        MOVX      @DPTR,A
+//  961             n++;
+??NFC_ScanRd_3:
+        INC       ?V0
+//  962         }
+//  963     }
+??NFC_ScanRd_2:
+        INC       ?V1
+??NFC_ScanRd_0:
+        MOV       A,?V1
+        CLR       C
+        SUBB      A,#-0x80
+        JC        ??NFC_ScanRd_1
+//  964     return n;
+        MOV       R1,?V0
+        MOV       R7,#0x3
+        LJMP      ?FUNC_LEAVE_PDATA
+//  965 }
+//  966 
+
+        RSEG NEAR_CODE:CODE:NOROOT(0)
+//  967 uint8 NFC_Probe(uint8 addr7, uint8 rd)
+NFC_Probe:
+        CODE
+//  968 {
+        REQUIRE ?V0
+        MOV       A,#-0x6
+        LCALL     ?FUNC_ENTER_PDATA
+        ; Saved register size: 6
+        ; Auto size: 0
+        MOV       A,R1
+        MOV       R6,A
+        MOV       A,R2
+        MOV       R7,A
+//  969     return NFC_AckProbe(addr7, rd, 0);
+        ; Setup parameters for call to function NFC_AckProbe
+        MOV       R4,#0x0
+        MOV       R5,#0x0
+        MOV       A,R7
+        MOV       R2,A
+        MOV       A,R6
+        MOV       R1,A
+        LCALL     NFC_AckProbe
+        MOV       R7,#0x1
+        LJMP      ?FUNC_LEAVE_PDATA
+//  970 }
+
+        RSEG IDATA_ID:CODE:NOROOT(0)
+`?<Initializer for drv_pp>`:
+        DATA8
+        DB 1
+
+        RSEG IDATA_ID:CODE:NOROOT(0)
+`?<Initializer for ord_fac>`:
+        DATA8
+        DB 1
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for g_tickNs>`:
+        DATA16
+        DW 31
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for g_us4>`:
+        DATA16
+        DW 125
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for g_us10>`:
+        DATA16
+        DW 312
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for g_us20>`:
+        DATA16
+        DW 625
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for g_bitTicks>`:
+        DATA16
+        DW 1249
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for g_ack_kind>`:
+        DATA8
+        DB 2
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for g_status>`:
+        DATA8
+        DB 255
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for g_nirq_ms>`:
+        DATA8
+        DB 255
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for g_ndef_at>`:
+        DATA8
+        DB 255
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for g_scp_post>`:
+        DATA8
+        DB 15
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for g_probe_pre>`:
+        DATA8
+        DB 1
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for __Constant_21>`:
+        DATA32
+        DD 33
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for __Constant_4a818>`:
+        DATA32
+        DD 305176
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for __Constant_a>`:
+        DATA32
+        DD 10
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for __Constant_3e8>`:
+        DATA32
+        DD 1000
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for __Constant_64>`:
+        DATA32
+        DD 100
+
+        END
+// 
+//     2 bytes in segment IDATA_I
+//     2 bytes in segment IDATA_ID
+//     2 bytes in segment IDATA_Z
+// 5 920 bytes in segment NEAR_CODE
+//    21 bytes in segment SFR_AN
+//    36 bytes in segment XDATA_I
+//    36 bytes in segment XDATA_ID
+//   966 bytes in segment XDATA_Z
+// 
+// 5 938 bytes of CODE  memory (+ 20 bytes shared)
+//     0 bytes of DATA  memory (+ 21 bytes shared)
+//   982 bytes of XDATA memory (+ 20 bytes shared)
+//     4 bytes of IDATA memory
+//
+//Errors: none
+//Warnings: none
