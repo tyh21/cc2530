@@ -1,0 +1,32 @@
+/*
+ * nfc_flow.mac — 跟踪 autotune 的实际执行路径
+ *
+ * 关键函数:
+ *   autotune      = 0x0EA0
+ *   NFC_Probe     = 0x30E4    (autotune 第①关)
+ *   NFC_ReadMem   = 0x292B    (autotune 第②关)
+ *   NFC_PowerUp   = 0x243D    (每轮开头)
+ *   NFC_SetSwap   = 0x2721    (每轮设 swap)
+ *
+ * 记录调用次序, 就能还原 autotune 到底跑了几轮、卡在哪一步。
+ * 只读 SFR, 不读 XDATA(会报错)。
+ */
+
+__var np, nrm, npu, nsw, nauto;
+
+execUserSetup()
+{
+  __message ">>> nfc_flow.mac armed\n";
+  __message ">>> watching autotune(0x0EA0) Probe(0x30E4) ReadMem(0x292B) PowerUp(0x243D) SetSwap(0x2721)\n";
+  __setCodeBreak("0x0EA0", 0, "on_auto()", "TRUE", "");
+  __setCodeBreak("0x30E4", 0, "on_probe()", "TRUE", "");
+  __setCodeBreak("0x292B", 0, "on_rdmem()", "TRUE", "");
+  __setCodeBreak("0x243D", 0, "on_pwrup()", "TRUE", "");
+  __setCodeBreak("0x2721", 0, "on_swap()", "TRUE", "");
+}
+
+on_auto()  { nauto++; __message "AUTO  #", nauto, "\n"; }
+on_pwrup() { npu++;   if(npu<=20) __message "  PowerUp  #", npu, "\n"; }
+on_swap()  { nsw++;   if(nsw<=20) __message "  SetSwap  #", nsw, " P0DIR=0x", __readMemory8(0xFD,"SFR"):%X, "\n"; }
+on_probe() { np++;    if(np<=20)  __message "  >> Probe #", np, "\n"; }
+on_rdmem() { nrm++;   if(nrm<=20) __message "  >> ReadMem #", nrm, "\n"; }

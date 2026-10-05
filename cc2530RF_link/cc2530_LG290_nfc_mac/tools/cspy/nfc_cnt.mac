@@ -1,0 +1,5 @@
+__var c;
+execUserSetup() { }
+execUserReset() { __setCodeBreak("0x236B", 0, "on_d()", "TRUE", ""); }
+on_d() { c = c + 1; }
+execUserExit() { __message "TOTAL inner-loop hits = ", c, "\n"; }

@@ -1,0 +1,8784 @@
+========= PAGE 1 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 1 of 127  
+ Rev. 1.0 
+KM63Y1213 DATA SHEET 
+Dual Interface RFID 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+KM63Y1213 
+Data Sheet 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+The information described in this document is the exclusive intellectual property of 
+Nuvoton Technology Corporation Japan and shall not be reproduced without permission from Nuvoton. 
+ 
+Nuvoton is providing document only for reference purposes of KM63Y1213 based system design. Nuvoton 
+assumes no responsibility for errors or omissions. 
+All data and specifications are subject to changed without notice. 
+ 
+For additional information or question, please contact Nuvoton Technology Corporation Japan. 
+WWW.nuvoton.co.jp 
+ 
+ 
+ 
+ 
+
+========= PAGE 2 =========
+ 
+ 
+
+========= PAGE 3 =========
+KM63Y1213 
+December 15, 2020 
+Page 3 of 127 
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+
+========= PAGE 4 =========
+KM63Y1213 
+December 15, 2020 
+Page 4 of 127 
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+■
+Organization
+These specifications provide important information for users of the KM63Y1213, including an overview and 
+descriptions of functions. 
+■
+Manual Configuration
+Each section of this manual consists of a title, main text, and notes. The layout and definition of each section 
+are shown below. 
+■
+Finding Desired Information
+This manual provides two methods for finding desired information quickly and easily. 
+1.
+Consult the table of contents at the front of the manual to locate desired titles.
+2.
+Chapter names are located at the top outer corner of each page, and section titles are located at the
+bottom outer corner of each page.
+About this manual 
+1.1 UART
+This section describes the 
+UART specification.
+1.1.1 Communication Specifications
+Table 1 -1 shows the UART specification of this RFID .
+Table 1 - 1 UART Communication Specification
+No flow control signal (RTS/CTS)
+Other
+LSB -first 
+Data (8 bits)
+Start bit (1bit) 
+Parity bit (1bit, even)
+Stop bit (1bit)  See Note below.
+Character 
+transmission 
+1200 bps, 2400 bps, 4800 bps, 9600 bps, 19200 bps, 38400 
+bps
+Data rate 
+Asynchronous, half-duplex (Only IRQ notification allows full 
+- 
+duplex)
+Data transfer 
+method 
+No flow control signal (RTS/CTS)
+Other
+LSB -first 
+Data (8 bits)
+Start bit (1bit) 
+Parity bit (1bit, even)
+Stop bit (1bit)  See Note below.
+Character 
+transmission 
+1200 bps, 2400 bps, 4800 bps, 9600 bps, 19200 bps, 38400 
+bps
+Data rate 
+Asynchronous, half-duplex (Only IRQ notification allows full 
+- 
+duplex)
+Data transfer 
+method 
+Note: In order to ensure the timing margin, when sending consequtive data fro
+m the host, use a 
+2 - bit stop bit or set the interval between stop bit and next start bit to 1 bit or more.
+Middle title
+Small title
+Text
+Note 
+This is the Note. 
+Please read.
+1.1 UART
+This section describes the 
+UART specification.
+1.1.1 Communication Specifications
+Table 1 -1 shows the UART specification of this RFID .
+Table 1 - 1 UART Communication Specification
+No flow control signal (RTS/CTS)
+Other
+LSB -first 
+Data (8 bits)
+Start bit (1bit) 
+Parity bit (1bit, even)
+Stop bit (1bit)  See Note below.
+Character 
+transmission 
+1200 bps, 2400 bps, 4800 bps, 9600 bps, 19200 bps, 38400 
+bps
+Data rate 
+Asynchronous, half-duplex (Only IRQ notification allows full 
+- 
+duplex)
+Data transfer 
+method 
+No flow control signal (RTS/CTS)
+Other
+LSB -first 
+Data (8 bits)
+Start bit (1bit) 
+Parity bit (1bit, even)
+Stop bit (1bit)  See Note below.
+Character 
+transmission
+1200 bps, 2400 bps, 4800 bps, 9600 bps, 19200 bps, 38400 
+bps
+Data rate 
+Asynchronous, half-duplex (Only IRQ notification allows full 
+- 
+duplex)
+Data transfer 
+method 
+Note: In order to ensure the timing margin, when sending consequtive data fro
+m the host, use a 
+2 - bit stop bit or set the interval between stop bit and next start bit to 1 bit or more.
+Middle title
+Small title
+Text
+Note 
+This is the Note. 
+Please read.
+SAMPLE
+
+========= PAGE 5 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 5 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+Chapter 1 
+Overview 
+1 
+Chapter 2 
+Pin Descriptions 
+ 2 
+Chapter 3 
+Memory Map 
+3 
+Chapter 4 
+RF Communication Mode 
+ 4 
+Chapter 5 
+Serial Communication Mode 
+5 
+Chapter 6 
+Interrupt Generation Function 
+6 
+Chapter 7 
+Tunnel Mode 
+7 
+Chapter 8 
+Annex 
+8 
+Chapter 9 
+Electrical characteristics 
+9 
+
+========= PAGE 6 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 6 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+Contents 
+Chapter 1 Overview ................................................................... 9 
+1.1 Features ............................................................................................................................ 10 
+1.2 Block Diagram ................................................................................................................. 11 
+1.3 Operation Mode ............................................................................................................... 12 
+1.4 Encrypted Communication Function ............................................................................... 13 
+Chapter 2 Pin Descriptions ...................................................... 15 
+2.1 List of Pins ....................................................................................................................... 16 
+2.2 Pin Descriptions ............................................................................................................... 18 
+2.3 Connection Example ........................................................................................................ 19 
+Chapter 3 Memory Map ........................................................... 21 
+3.1 Block Configuration ........................................................................................................ 22 
+3.2 Physical Memory Map ..................................................................................................... 23 
+3.3 System Area ..................................................................................................................... 24 
+3.3.1 Parameter Specifications ........................................................................................... 24 
+3.3.2 Enabling System Area ............................................................................................... 31 
+3.4 Address Correspondence ................................................................................................. 32 
+Chapter 4 RF Communication Mode ....................................... 33 
+4.1 RF Communication Mode Sequence ............................................................................... 34 
+4.2 JISX6319-4 Specification ................................................................................................ 35 
+4.2.1 Communication Specifications .................................................................................. 35 
+4.2.2 Frame Format ............................................................................................................ 35 
+4.2.3 State Transition Diagram ........................................................................................... 36 
+4.2.4 Flow Chart ................................................................................................................. 36 
+4.2.5 Various Settings ........................................................................................................ 37 
+4.2.5.1 System Code ....................................................................................................... 37 
+4.2.5.2 PICC (Proximity IC Card) Identifier .................................................................. 37 
+4.2.5.3 Response Time Descriptor .................................................................................. 37 
+4.2.5.4 Anticollision ........................................................................................................ 38 
+4.2.5.5 Service ................................................................................................................. 38 
+4.2.5.6 Block ................................................................................................................... 39 
+4.2.5.7 Block List ............................................................................................................ 41 
+4.2.5.8 Status Flag ........................................................................................................... 43 
+4.2.6 Command .................................................................................................................. 44 
+4.2.6.1 REQ ..................................................................................................................... 45 
+4.2.6.2 READ .................................................................................................................. 46 
+4.2.6.3 WRITE ................................................................................................................ 48 
+4.2.7 NDEF ......................................................................................................................... 49 
+
+========= PAGE 7 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 7 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+4.2.7.1 MEMORY MAP ................................................................................................. 49 
+4.2.7.2 Setup of System Code（SC） ............................................................................ 50 
+4.2.7.3 Setup of Attribute Information Block ................................................................. 50 
+4.2.7.4 NDEF FILE ......................................................................................................... 51 
+4.3 ISO/IEC14443 TypeB Specification ............................................................................... 52 
+4.3.1 Communication Specification ................................................................................... 52 
+4.3.2 Frame Format ............................................................................................................ 52 
+4.3.3 Protocol Control ........................................................................................................ 53 
+4.3.4 Block Control ............................................................................................................ 55 
+4.3.5 Upper Command Format ........................................................................................... 56 
+4.3.6 State Transition Diagram ........................................................................................... 57 
+4.3.7 Flow Chart ................................................................................................................. 58 
+4.3.8 Various Settings ........................................................................................................ 59 
+4.3.8.1 AFI (Application Family Identifier) ................................................................... 59 
+4.3.8.2 PUPI (Pseudo-Unique PICC Identifier) .............................................................. 59 
+4.3.8.3 FWI (Frame Waiting Time Integer) .................................................................... 60 
+4.3.8.4 File System .......................................................................................................... 60 
+4.3.8.5 Address................................................................................................................ 60 
+4.3.8.6 Data ..................................................................................................................... 62 
+4.3.8.7 Status Word ......................................................................................................... 63 
+4.3.9 Command .................................................................................................................. 64 
+4.3.9.1 REQB/WUPB ..................................................................................................... 65 
+4.3.9.2 ATTRIB .............................................................................................................. 67 
+4.3.9.3 HLTB .................................................................................................................. 69 
+4.3.9.4 SELECT .............................................................................................................. 70 
+4.3.9.5 READ .................................................................................................................. 72 
+4.3.9.6 WRITE ................................................................................................................ 73 
+4.3.10 NDEF ....................................................................................................................... 74 
+4.3.10.1 Memory Map..................................................................................................... 74 
+4.3.10.2 NDEF Tag Application Selection ..................................................................... 75 
+4.3.10.3 CC File .............................................................................................................. 75 
+4.3.10.4 NDEF File ......................................................................................................... 76 
+Chapter 5 Serial Communication Mode ................................... 77 
+5.1 Serial Communication Mode Sequence........................................................................... 78 
+5.2 I2C ................................................................................................................................... 79 
+5.2.1 Communication Specifications .................................................................................. 79 
+5.2.2 Frame Format ............................................................................................................ 79 
+5.2.3 Specifying Slave Address .......................................................................................... 80 
+5.2.4 Status ......................................................................................................................... 80 
+5.2.5 Command .................................................................................................................. 81 
+5.2.5.1 READ .................................................................................................................. 82 
+5.2.5.2 WRITE ................................................................................................................ 83 
+5.2.5.3 RREG .................................................................................................................. 84 
+5.2.5.4 WREG ................................................................................................................. 85 
+5.2.5.5 STATUS.............................................................................................................. 86 
+5.2.6 Time Chart ................................................................................................................. 87 
+
+========= PAGE 8 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 8 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+Chapter 6 Interrupt Generation Function ................................. 89 
+6.1 Interrupt Source ............................................................................................................... 90 
+Chapter 7 Tunnel Mode ........................................................... 91 
+7.1 Tunnel Mode Sequence ................................................................................................... 92 
+7.2 Communication between Reader/Writer and RFID ........................................................ 93 
+7.2.1 Using JISX6319-4 ..................................................................................................... 93 
+7.2.2 Using ISO/IEC14443 ................................................................................................ 93 
+7.3 Communication between Host and RFID ........................................................................ 94 
+7.3.1.1 Communication Specification ............................................................................. 94 
+7.3.1.2 IRQ Notification ................................................................................................. 94 
+7.3.2 Response to QUERY Command ............................................................................... 95 
+7.3.3 Timeout ..................................................................................................................... 96 
+7.3.3.1 Wait Time for QUERY Command ..................................................................... 97 
+7.3.3.2 Wait Time for ANSWER Command .................................................................. 98 
+7.4 Command ......................................................................................................................... 99 
+7.4.1 Read in Tunnel Mode .............................................................................................. 100 
+7.4.2 Write in Tunnel Mode ............................................................................................. 104 
+Chapter 8 Annex .................................................................... 109 
+8.1 Exclusive Control .......................................................................................................... 110 
+8.2 State Transition Diagram in Operation Mode ............................................................... 112 
+8.3 Flow Chart in Tunnel Mode .......................................................................................... 113 
+Chapter 9 Electrical characteristics ....................................... 115 
+
+========= PAGE 9 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 9 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+Chapter 1  Overview 
+1 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+========= PAGE 10 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 10 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+1.1  Features 
+The KM63Y1213 is an LSI for RFID (Radio Frequency Identification) of passive type, which features the 
+following: 
+ Built-in 4-Kbit FeRAM non-volatile memory with fast write and low power consumption. 
+ RF interface compliant with JISX6319-4 (212 kbps / 424 kbps) and ISO/IEC14443 TypeB (106 kbps / 212 
+kbps) of the 13.56-MHz contactless IC card standards. 
+ Serial interface compatible with I2C (100 kHz) 
+ Batteryless RF communication 
+ Three communication modes of RF, serial, and tunnel (Tunnel mode allows communications between 
+reader/writer and host CPU via this LSI.) 
+ Encryption communication function that uses AES (128 bits) private-key cryptosystem 
+ Supply voltage range: 1.7 V to 3.6 V 
+
+========= PAGE 11 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 11 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+1.2  Block Diagram 
+Figure 1-1 shows a block diagram. 
+This RFID provides RF interface for contactless communication with external reader/writer, serial interface for 
+contact communication with external host, control logic for command processing and various controls, 2-Kbit 
+transmit/receive buffer for RF communication, 4-Kbit FeRAM non-volatile memory, and AES cryptosystem. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 1-1 Block Diagram 
+RF
+I/F
+FeRAM
+(4 Kbit)
+Serial
+I/F
+Crypto
+(AES)
+R/W
+(External)
+Host
+(External)
+RFID
+Control
+Logic
+RF
+Com.
+Buffer
+(2Kbit)
+RF
+I/F
+FeRAM
+(4 Kbit)
+Serial
+I/F
+Crypto
+(AES)
+R/W
+(External)
+Host
+(External)
+RFID
+Control
+Logic
+RF
+Com.
+Buffer
+(2Kbit)
+
+========= PAGE 12 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 12 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+1.3  Operation Mode 
+This RFID provides three operation modes of RF communication, serial communication, and tunnel. 
+Figure 1-2 gives the overview of each operation mode. 
+■ RF communication mode 
+This mode is used for communication between reader/writer and RFID. Reader/writer is the master and RFID 
+is the slave. Key commands are read and write commands to FeRAM of RFID. This mode allows batteryless 
+operations that use only the power supplied from the antenna of reader/writer. 
+For more information about RF communication mode, see Chapter 4   RF Communication Mode. 
+■ Serial communication mode 
+This mode is used for communication between host and RFID. Host is the master and RFID is the slave. Key 
+commands are read and write commands to FeRAM of RFID. This mode requires a power supply to the 
+supply voltage pin (VDDEX) of RFID. 
+For more information about serial communication mode, see Chapter 5   Serial Communication Mode. 
+■ Tunnel mode 
+This mode is used for communication between reader/writer and host via RFID. Reader/writer is the master 
+and host is the slave. Key commands are read and write commands to host. This mode requires a power 
+supply to the supply voltage pin (VDDEX) of RFID. 
+For more information about serial communication mode, see Chapter 7  Tunnel Mode. 
+ 
+Additionally, for state transition diagram in each operation mode, see Section 8.2  State Transition Diagram 
+in Operation Mode. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 1-2  Operation Mode  
+R/W
+RFID
+Host
+RF communication mode
+Master
+Slave
+R/W
+RFID
+Host
+Serial communication mode
+Master
+Slave
+R/W
+RFID
+Host
+Tunnel mode
+Master
+Slave
+
+========= PAGE 13 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 13 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+1.4  Encrypted Communication Function 
+This RFID provides an encrypted communication function. 
+Figure 1-3 depicts its functionality in each operation mode. 
+For communication between reader/writer and RFID, RF communication mode allows both encrypted and 
+plaintext (unencrypted) communications while serial communication mode allows only plaintext 
+communication. 
+Tunnel mode enables both encrypted and plaintext communications between reader/writer and RFID. 
+However, for communication between RFID and host, the mode enables only plaintext communication, 
+regardless of communication form (encrypted or plaintext) between reader/writer and RFID. 
+Encrypted communication uses Message Authentication Code (MAC) to detect falsified communication data 
+and to prevent access from illegal readers/writers. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 1-3  Encrypted Communication Function 
+R/W
+RFID
+Host
+RF communication mode
+Master
+Slave
+R/W
+RFID
+Host
+Serial communication mode
+Master
+Slave
+R/W
+RFID
+Host
+Tunnel mode
+Master
+Slave
+Plaintext (unencrypted) communication
+Encrypted (or plaintext) communication Plaintext (unencrypted) communication
+Encrypted (or plaintext) communication
+
+========= PAGE 14 =========
+
+========= PAGE 15 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 15 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ 
+ 
+Chapter 2  Pin Descriptions 
+2 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+========= PAGE 16 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 16 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+2.1  List of Pins 
+Table 2-1 shows a list of pins of this RFID and Figure 2-1 illustrates the pin assignments of this RFID. 
+ 
+Table 2-1 List of Pins 
+Pin No. 
+Name 
+I/O 
+Output type 
+Description 
+1 
+VB 
+I/O  
+- 
+Connected to coil 
+2 
+VDDEX 
+- 
+Power 
+Contact power supply (Apply 1.7 V through 3.6 V.) 
+3 
+VSS 
+- 
+GND 
+Ground 
+4 
+VA 
+I/O 
+- 
+Connected to coil 
+5 
+NIRQ 
+Output 
+Open Drain  Interrupt request output 
+6 
+SCL 
+Input 
+- 
+Host interface (I2C: 100 kHz) 
+7 
+SDA 
+I/O 
+Open Drain  Host interface (I2C: 100 kHz) 
+8 
+VDDA 
+- 
+Power 
+Internal analog power supply (Connect a capacitor 
+between this pin and VSS.) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 2-1 Pin Assignments (SON8) 
+V
+B
+1
+2
+3
+4
+8
+7
+6
+5
+TOP  VIEW
+V
+D
+D
+E
+X
+V
+S
+S
+V
+A
+N
+I
+R
+Q
+S
+C
+L
+S
+D
+A
+V
+D
+D
+A
+V
+B
+1
+2
+3
+4
+8
+7
+6
+5
+TOP  VIEW
+V
+D
+D
+E
+X
+V
+S
+S
+V
+A
+N
+I
+R
+Q
+S
+C
+L
+S
+D
+A
+V
+D
+D
+A
+
+========= PAGE 17 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 17 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ 
+ 
+  
+ 
+                              
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+              Unit：mm 
+ 
+Figure 2-2 Outside drawing (SON8) 
+2.00
+2.00
+0.50×3＝1.50
+1.70
+1.10
+0.25
+0.25
+1
+2
+3
+4
+5
+6
+7
+8
+2.00
+2.00
+TOP VIEW
+TOP VIEW
+BOTTOM VIEW
+BOTTOM VIEW
+4
+3
+2
+1
+5
+6
+7
+8
+0.50
+0.50
+0.50
+0.50
+
+========= PAGE 18 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 18 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+2.2  Pin Descriptions 
+■ Coil connection pins (VA, VB) 
+Used for connecting an antenna coil. Also connect a resonance capacitor for adjusting resonance frequency. 
+■ Ground (VSS) 
+A reference power supply pin. Connect to the ground of the host CPU. 
+■ Internal analog power supply (VDDA) 
+An internal analog power supply pin. Connect a capacitor (see the Product Standards for its value) between 
+VDDA and VSS pins as close as possible to the RFID. It is unnecessary to apply an external power to this pin. 
+■ Contact power supply (VDDEX) 
+A contact power supply pin. Apply a "high" voltage to this pin when communicating data between the host 
+CPU and RFID. Connect a capacitor (see the Product Standards for its value) between VDDEX and VSS pins 
+as close as possible to the RFID. 
+Additionally, the RFID has a built-in clamp circuit for 5-V operation. When using the circuit, apply a 5-V supply 
+voltage to this pin through a given resistor (see the Product Standards for its value). 
+■ Host interface I2C (SDA, SCL) 
+I2C is an N-ch open drain pin, so should be pulled up to VDDEX externally. It is available between the 
+frequencies 20 kHz and 100 kHz. Start the access tBoot after applying VDDEX. For more information about 
+tBoot, see the Product Standards. 
+■ Interrupt request (NIQR) 
+An N-ch open drain pin to request an interrupt to the host and should be pulled up externally. 
+
+========= PAGE 19 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 19 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+2.3  Connection Example 
+Figure 2-3 gives a connection example. 
+This example shows that the host's GPIO controls the RFID's VDDEX. In this case, when not using serial 
+communication, turning VDDEX off allows the consumption current of the RFID to be turned off. In addition, it 
+is also possible to supply a voltage to VDDEX directly from the power supply, not from the host's GPIO. 
+The SDA(IO) and NIRQ pins are open-drain output. Pull up these pins to the same voltage level as the power 
+supply of the host. 
+Please arrange the capacity between power supplies of VDDA near the PKG as much as possible. 
+ 
+ case : 1.7V≦VDDEX≦2.5V 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ case : 2.5V＜VDDEX≦3.6V 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 2-3 Connection Example 
+ 
+Output port
+Host
+MN63Y1213
+SDA
+NIRQ
+VDDEX
+SDA
+NIRQ
+Power IC
+SCL
+SCL
+VA
+VB
+VSS
+VDDA
+2.2μF
+3.3KΩ
+3.3KΩ
+3.3KΩ
+0.1μF～2.2μF
+1.7V～2.5V
+Output port
+Host
+MN63Y1213
+SDA
+NIRQ
+VDDEX
+SDA
+NIRQ
+Power IC
+SCL
+SCL
+VA
+VB
+VSS
+VDDA
+2.2μF
+3.3KΩ
+3.3KΩ
+3.3KΩ
+0.1μF～2.2μF
+1.7V～2.5V
+Output port
+Host
+MN63Y1213
+SDA
+NIRQ
+VDDEX
+SDA
+NIRQ
+Power IC
+SCL
+SCL
+VA
+VB
+VSS
+VDDA
+2.2μF
+3.3KΩ
+3.3KΩ
+3.3KΩ
+2.2μF
+2.5V～3.6V
+200Ω
+Output port
+Host
+MN63Y1213
+SDA
+NIRQ
+VDDEX
+SDA
+NIRQ
+Power IC
+SCL
+SCL
+VA
+VB
+VSS
+VDDA
+2.2μF
+3.3KΩ
+3.3KΩ
+3.3KΩ
+2.2μF
+2.5V～3.6V
+200Ω
+KM63Y1213 
+KM63Y1213 
+
+========= PAGE 20 =========
+
+========= PAGE 21 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 21 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ 
+ 
+Chapter 3  Memory Map 
+3 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+========= PAGE 22 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 22 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+3.1  Block Configuration 
+Figure 3-1 illustrates the block configuration of 4-Kbit FeRAM. 
+This LSI consists of 32 FeRAM blocks. The size of a block is 16 bytes. 
+The memory consists of two areas: user and system areas. 
+The system area stores RF-communication-related parameters and memory-access-control-related data, etc. 
+ 
+Block 
+Area 
+Type 
+0 
+16-byte FeRAM 
+User area 
+1 
+16-byte FeRAM 
+2 
+16-byte FeRAM 
+3 
+16-byte FeRAM 
+… 
+… 
+24 
+16-byte FeRAM 
+25 
+16-byte FeRAM 
+26 
+16-byte FeRAM 
+27 
+16-byte FeRAM 
+System area 
+28 
+16-byte FeRAM 
+29 
+16-byte FeRAM 
+30 
+16-byte FeRAM 
+31 
+16-byte FeRAM 
+ 
+Figure 3-1 4-Kbit FeRAM Block Configuration 
+ 
+
+========= PAGE 23 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 23 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+3.2  Physical Memory Map 
+Figure 3-2 presents the physical memory map. 
+ 
+Block Address 0x0 
+0x1 
+0x2 
+0x3 
+0x4 
+0x5 
+0x6 
+0x7 
+0x8 
+0x9 
+0xA 
+0xB 0xC 0xD 0xE 
+0xF 
+0 
+0x0000 
+User Area 
+1 
+0x0010 
+User Area 
+2 
+0x0020 
+User Area 
+3 
+0x0030 
+User Area 
+4 
+0x0040 
+User Area 
+5 
+0x0050 
+User Area 
+6 
+0x0060 
+User Area 
+7 
+0x0070 
+User Area 
+8 
+0x0080 
+User Area 
+9 
+0x0090 
+User Area 
+10 
+0x00A0 
+User Area 
+11 
+0x00B0 
+User Area 
+12 
+0x00C0 
+User Area 
+13 
+0x00D0 
+User Area 
+14 
+0x00E0 
+User Area 
+15 
+0x00F0 
+User Area 
+16 
+0x0100 
+User Area 
+17 
+0x0110 
+User Area 
+18 
+0x0120 
+User Area 
+19 
+0x0130 
+User Area 
+20 
+0x0140 
+User Area 
+21 
+0x0150 
+User Area 
+22 
+0x0160 
+User Area 
+23 
+0x0170 
+User Area 
+24 
+0x0180 
+User Area 
+25 
+0x0190 
+User Area 
+26 
+0x01A0 
+User Area 
+27 
+0x01B0 
+CONFIG 
+28 
+0x01C0 
+CONFIG 
+29 
+0x01D0 
+CONFIG 
+30 
+0x01E0 
+SC 
+IDM 
+PMM 
+AFI 
+FWI 
+HW1 
+31 
+0x01F0 
+RORF 
+ROSI 
+SECURITY 
+TNPRM HW2 
+CONFIG 
+ 
+Figure 3-2 Physical Memory Map 
+
+========= PAGE 24 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 24 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+3.3  System Area 
+This section describes the system area. 
+3.3.1  Parameter Specifications 
+Each parameter of the system area is shown below. 
+All addresses and block numbers used in this section correspond to the physical address in Figure 3-2. 
+■ RORF (4 bytes) 
+RORF and SECURITY are an area to specify whether read/write or read-only is to be used in accessing the 
+block by memory access commands in RF communication mode. Tabel 3-1 describes RORF and SECURITY 
+setting, and  shows RORF setting bits and corresponding block numbers. By default, all values are 0. Set all 
+reserved bits to 0.   
+Tabel 3-1 RORF and SECURITY Setting 
+Value  
+Meaning - 
+SECURITY 
+RORF 
+Plaintext 
+communication 
+Encryption 
+communication 
+0 
+0 
+READ/WRITE 
+READ/WRITE 
+0 
+1 
+Prohibition 
+READ/WRITE 
+1 
+0 
+READ ONLY 
+READ ONLY 
+1 
+1 
+READ ONLY 
+READ/WRITE 
+ 
+Tabel 3-2 RORF Setting Bits and Corresponding Block Numbers 
+Address 
+Bit 7 
+Bit 6 
+Bit 5 
+Bit 4 
+Bit 3 
+Bit 2 
+Bit 1 
+Bit 0 
+0x01F0 
+Block7 
+Block6 
+Block5 
+Block4 
+Block3 
+Block2 
+Block1 
+Block0 
+0x01F1 
+Block15 
+Block14 
+Block13 
+Block12 
+Block11 
+Block10 
+Block9 
+Block8 
+0x01F2 
+Block23 
+Block22 
+Block21 
+Block20 
+Block19 
+Block18 
+Block17 
+Block16 
+0x01F3 
+Reserved Reserved Reserved Reserved Reserved Block26 
+Block25 
+Block24 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+========= PAGE 25 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 25 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+■ ROSI (4 bytes) 
+ROSI is an area to specify whether read/write or read-only is to be used in accessing the block by memory 
+access commands in serial communication mode. Table 3-1 describes ROSI setting, and Table 3-2 shows 
+ROSI setting bits and corresponding block numbers. By default, all values are 0. Set all reserved bits to 0. 
+Table 3-1 ROSI Setting 
+Value 
+Meaning 
+0 
+Read/Write 
+1 
+Read only 
+ 
+Table 3-2 ROSI Setting Bits and Corresponding Block Numbers 
+Address 
+Bit 7 
+Bit 6 
+Bit 5 
+Bit 4 
+Bit 3 
+Bit 2 
+Bit 1 
+Bit 0 
+0x01F4 
+Block7 
+Block6 
+Block5 
+Block4 
+Block3 
+Block2 
+Block1 
+Block0 
+0x01F5 
+Block15 
+Block14 
+Block13 
+Block12 
+Block11 
+Block10 
+Block9 
+Block8 
+0x01F6 
+Block23 
+Block22 
+Block21 
+Block20 
+Block19 
+Block18 
+Block17 
+Block16 
+0x01F7 
+Reserved Reserved Reserved Reserved Reserved Block26 
+Block25 
+Block24 
+
+========= PAGE 26 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 26 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+■ SECURITY (4 bytes) 
+RORF and SECURITY are an area to specify whether to enable plaintext (unencrypted) communication 
+access by memory access commands in RF communication mode. This setting is valid only in RF 
+communication mode.  
+ 
+Table 3-5Tabel 3-1 describes RORF and SECURITY setting, and Table 3-5 shows SECURITY setting bits 
+and corresponding block numbers. By default, all values are 0. Set all reserved bits to 0. 
+ 
+Table 3-5 SECURITY Setting Bit and Corresponding Block Number 
+Address 
+Bit 7 
+Bit 6 
+Bit 5 
+Bit 4 
+Bit 3 
+Bit 2 
+Bit 1 
+Bit 0 
+0x01F8 
+Block7 
+Block6 
+Block5 
+Block4 
+Block3 
+Block2 
+Block1 
+Block0 
+0x01F9 
+Block15 
+Block14 
+Block13 
+Block12 
+Block11 
+Block10 
+Block9 
+Block8 
+0x01FA 
+Block23 
+Block22 
+Block21 
+Block20 
+Block19 
+Block18 
+Block17 
+Block16 
+0x01FB 
+Reserved Reserved Reserved Reserved Reserved Block26 
+Block25 
+Block24 
+ 
+■ HW1 (2 bytes) 
+HW1 is an area to store various setting data related to the hardware of this RFID. 
+Table 3-6 describes the HW1 parameter. For the setting of the RF communication protocol RFTYPE, see 
+Table 3-7. For the setting of IDM data selection IDMSEL, see Table 3-8. For the setting of the I2C slave 
+address setting I2C_SLV, see Table 3-9. 
+Table 3-6 HW1 Parameter 
+Address 
+Bit 7 
+Bit 6 
+Bit 5 
+Bit 4 
+Bit 3 
+Bit 2 
+Bit 1 
+Bit 0 
+0x01EE 
+Reserved  
+RFTYPE 
+Reserved  
+IDMSEL 
+0x01EF 
+Reserved 
+I2C_SLV 
+ 
+Table 3-7 RFTYPE Setting for Selecting RF Communication Protocol 
+Bit 5 
+Bit 4 
+Meaning 
+0 
+0 
+Use both JISX6319-4 and ISO/IEC14443 TypeB. (Automatic protocol detection) 
+(default) 
+0 
+1 
+Use JISX6319-4 only. (ISO/IEC14443 TypeB interface disabled) 
+1 
+0 
+Use ISO/IEC14443 TypeB only. (JISX6319-4 interface disabled) 
+1 
+1 
+Reserved (When this field is specified, a default setting will be applied.) 
+ 
+Table 3-8 IDMSEL Setting for Selecting IDM Data 
+Bit 0 
+Meaning 
+0 
+Use the fixed values (All-0) as JISX6319-4 PICC identifier or ISO/IEC14443 TypeB PICC. 
+Values written in the system area are not used. (default) 
+1 
+Use the values written in the system area as JISX6319-4 PICC identifier or ISO/IEC14443 
+TypeB PICC. 
+ 
+Table 3-9 I2C_SLV Setting for Specifying I2C Slave Address 
+Address 
+Bit 6 Bit 5 Bit 4 Bit 3 Bit 2 Bit 1 Bit 0 
+Default value 
+1 
+0 
+1 
+0 
+1 
+0 
+0 
+
+========= PAGE 27 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 27 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+■ TNPRM (1 byte) 
+TNPRM is an area to store various setting data related to timeout. 
+For more information about this parameter, see Section 7.3.3  Timeout. 
+Table 3-10 describes the TNPRM parameter. 
+ 
+Table 3-10 TNPRM Parameter 
+Address 
+Bit 7 
+Bit 6 
+Bit 5 
+Bit 4 
+Bit 3 
+Bit 2 
+Bit 1 
+Bit 0 
+0x01FC 
+QWT 
+AWT  
+ 
+ 
+ 
+QWT 
+QWT specifies the maximum wait time until the RFID receives a QUERY command from the host after it 
+sends an IRQ to the host during tunnel mode operation. 
+QWT is determined using the following formula. 
+ 
+ 
+Maximum wait time for QUERY command = T × 2QWT 
+ 
+ 
+T: Typ. 1024 μs (±25%) 
+ 
+ 
+QWT: 0 to 8 (default: 4; typ. approximately 16 ms) 
+When this field is set to a value other than 0 to 8, a default value will be applied. 
+ 
+ 
+ 
+AWT 
+AWT specifies the maximum wait time until the RFID receives an ANSWER command from the host after it 
+sends a response to the QUERY command to the host during tunnel mode operation. 
+AWT is determined using the following formula. 
+ 
+ 
+Maximum wait time for ANSWER command = T × 2AWT 
+ 
+ 
+T: typ. 1024 μs (±25%) 
+ 
+ 
+AWT: 0 to 12 (default: 7; typ. approximately 131 ms ) 
+When this field is set to a value other than 0 to 12, a default value will be applied. 
+ 
+Note: T includes an error of ±25%. Set the QWT and AWT values in consideration of the error. 
+ 
+ 
+■ HW2 (1 byte) 
+HW2 is an area to store various setting data related to the hardware of this RFID. 
+Table 3-11 describes the HW2 parameter. INTWT and RESWT are parameters related to timeout in I2C 
+communication. For the setting of IRQSEL for IRQ notification, see Table 3-12. 
+ 
+Table 3-11 HW2 Parameter 
+Address 
+Bit 7 
+Bit 6 
+Bit 5 
+Bit 4 
+Bi t3 
+Bit 2 
+Bit 1 
+Bit 0 
+0x01FC 
+INTWT 
+RESWT 
+Reserved 
+IRQSEL 
+ 
+
+========= PAGE 28 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 28 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ 
+INTWT 
+INTWT specifies the maximum wait time between characters in I2C communication. 
+INTWT is determined using the following formula. 
+ 
+ 
+Maximum wait time between characters = T × 2INTWT 
+ 
+ 
+T: Typ. 942 μs (±25%) 
+ 
+ 
+INTWT: 0 to 3 (default: 3; typ. approximately 7.5ms ) 
+When this field is set to a value other than 0 to 8, a default value will be applied. 
+ 
+ 
+ 
+RESWT 
+RESWT specifies the maximum wait time from the start of response to the command (NIRQ = L) until slave 
+transmission request input in I2C communication. 
+RESWT is determined using the following formula. 
+ 
+ 
+Maximum wait time for starting response = T × 2RESWT 
+ 
+ 
+T: 
+Typ. 1.88ms(±25%) 
+ 
+ 
+RESWT: 
+0 to 3: (default: 3, typ. approximately 15 ms) 
+When this field is set to a value other than 0 to 12, a default value will be applied. 
+ 
+Note: T includes an error of ±25%. Set the INTWT and RESWT values in consideration of the error. 
+ 
+ 
+ 
+IRQSEL 
+IRQSEL is used for IRQ notification to add the condition of generating an interrupt to the NIRQ pin. 
+Setting IRQSEL allows an additional interrupt to be generated in addition to a normal host command 
+processing complete interrupt. 
+There are two user-selectable additional interrupt sources, RF communication detection or reader/writer 
+magnetic-field detection. In addition, RF communication detection is selected from FeRAM write completion 
+by RF command and RF response before sending. 
+For more information about interrupt source, see Chapter 6  Interrupt Generation Function. 
+The IRQSEL settings are as follows. 
+ 
+Table 3-12 IRQSEL Setting for IRQ Notification 
+Bit 2 
+Bit 1 Bit 0 
+Meaning 
+0 
+0 
+X 
+Do not generate an interrupt when RF response before transmission or when a write to 
+FeRAM with the RF command is completed. 
+0 
+1 
+X 
+Reserved  
+1 
+0 
+X 
+Generate an interrupt when RF response before transmission. 
+1 
+1 
+X 
+Generate an interrupt when a write to FeRAM with the RF command is completed. 
+X 
+X 
+0 
+Do not generate an interrupt when a magnetic field is detected. 
+X 
+X 
+1 
+Generate an interrupt when a magnetic field is detected. 
+By default, value of each bit of IRQSEL is 0.  
+
+========= PAGE 29 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 29 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ 
+■ SC (2 bytes) 
+SC is used as the JISX6319-4 system code (2 bytes). For more information about system code, see Section 
+4.2.5.1  System Code. 
+ 
+Table 3-13 SC Parameter 
+Address 
+0x01E0 
+0x01E1 
+JISX6319-4 
+system code (2 bytes) 
+D0 
+D1 
+Default 
+0xAA 
+0xFF 
+ 
+ 
+■ IDM (8 bytes) 
+IDM is used as JISX6319-4 PICC (Proximity IC Card) identifier (8 bytes). The PUPI (Pseudo-Unique PICC 
+Identifier) (4 bytes) of ISO/IEC14443 TypeB is shared with the lower 4 bytes of the JISX6319-4 PICC 
+identifier. For information about JISX6319-4 PICC identifier, see Section 4.2.5.2  PICC (Proximity IC Card) 
+Identifier, and for information about ISO/IEC14443 TypeB PUPI, see Section  4.3.8.2  PUPI. 
+ 
+Table 3-14 IDM Parameter 
+Address 
+0x01E2 0x01E3 0x01E4 0x01E5 0x01E6 
+0x1E7 
+0x1E8 
+0x01E9 
+JISX6319-4 
+PICC identifier (8 bytes) 
+D0 
+D1 
+D2 
+D3 
+D4 
+D5 
+D6 
+D7 
+Default 
+0x02 
+0xFE 
+0x00 
+0x00 
+0x00 
+0x00 
+0x00 
+0x00 
+ISO/IEC14443TypeB 
+PUPI (4 bytes) 
+Reserved 
+D0 
+D1 
+D2 
+D3 
+Default 
+- 
+- 
+- 
+- 
+0x00 
+0x00 
+0x00 
+0x00 
+ 
+ 
+Note: In order to validate the value written in the system area IDM, the HW parameter's IDMSEL must be set 
+to 1. See Table 3-8. 
+ 
+ 
+■ PMM (2 bytes) 
+Of the JISX6319-4 response time descriptor (8 bytes), PMM is an area (2 bytes) to specify maximum wait time 
+for the response to READ/WRITE commands. See Section 4.2.5.3  . 
+ 
+Table 3-15 PMM Parameter 
+Address 
+0x01EA 
+0x01EB 
+JISX6319-4 
+Response time descriptor (2 bytes) 
+D5 
+D6 
+Default 
+0xFF 
+0xFF 
+ 
+ 
+ 
+
+========= PAGE 30 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 30 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+■ AFI (1 byte) 
+AFI is an area to specify AFI (Application Family Identifier) of ISO/IEC14443 TypeB. See Section 4.3.8.1  
+AFI. 
+Table 3-16 AFI Parameter 
+Address 
+0x01EC 
+ISO/IEC14443 TypeB 
+AFI (1 byte) 
+D0 
+Default 
+0x00 
+ 
+ 
+■ FWI (1 byte) 
+FWI is an area to specify FWI (Frame Waiting time Integer) of ISO/IEC14443 TypeB. See Section 4.3.8.3  
+FWI. 
+ 
+Table 3-17 FWI Parameter 
+Address 
+0x01ED 
+ISO/IEC14443 TypeB 
+FWI (1 byte) 
+D0 
+Default 
+0xE0 
+ 
+ 
+■ CONFIG 
+See the Administrator's Manual. 
+ 
+ 
+
+========= PAGE 31 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 31 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+3.3.2  Enabling System Area 
+In order to enable parameters in the system area, CFEN and BCC (see the Administrator's Manual) of the 
+system area must be set to valid values. If CFEN and BCC are not set to valid values, default values defined 
+by each parameter will be applied. 
+Table 3-18 lists the setting application timings after rewriting parameters in the system area while CFEN and 
+BCC are enabled. New parameter setting is applied to RORF, ROSI, and SECURITY immediately after 
+rewriting, and applied to other parameters after turning power supply ON from OFF or applied to other 
+parameters after the self-reset by the WREG command of the serial communication. 
+ 
+Table 3-18 Parameter Application Timing 
+ 
+A timing at which new parameter setting 
+is applied after rewriting parameters 
+when CFEN is enabled. 
+RORF 
+Apply immediately after rewrites. 
+ROSI 
+Apply immediately after rewrites.  
+SECURITY 
+Apply immediately after rewrites.  
+HW1 
+Apply after turning power ON from OFF 
+following rewrites. 
+TNPRM 
+Apply after turning power ON from OFF 
+following rewrites. 
+HW2 
+Apply after turning power ON from OFF 
+following rewrites. 
+SC 
+Apply after turning power ON from OFF 
+following rewrites. 
+IDM 
+Apply after turning power ON from OFF 
+following rewrites. 
+PMM 
+Apply after turning power ON from OFF 
+following rewrites. 
+AFI 
+Apply after turning power ON from OFF 
+following rewrites. 
+FWI 
+Apply after turning power ON from OFF 
+following rewrites. 
+CONFIG 
+See the Administrator's Manual. 
+ 
+Note: Power OFF means power supplies from both VDDEX and RF interface are OFF. 
+
+========= PAGE 32 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 32 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+3.4  Address Correspondence 
+Figure 3-3 presents the physical address and the corresponding address of each communication mode. 
+ 
+Physical address 
+Serial communication 
+mode 
+RF communication mode 
+JISX6319-4 
+ISO/IEC14443 
+Block0 
+0x0000 
+0x0000 
+Block No. 
+0 
+D0 
+0x0000 
+0x0001 
+0x0001 
+D1 
+0x0001 
+0x0002 
+0x0002 
+D2 
+0x0002 
+0x0003 
+0x0003 
+D3 
+0x0003 
+0x0004 
+0x0004 
+D4 
+0x0004 
+0x0005 
+0x0005 
+D5 
+0x0005 
+0x0006 
+0x0006 
+D6 
+0x0006 
+0x0007 
+0x0007 
+D7 
+0x0007 
+0x0008 
+0x0008 
+D8 
+0x0008 
+0x0009 
+0x0009 
+D9 
+0x0009 
+0x000A 
+0x000A 
+Da 
+0x000A 
+0x000B 
+0x000B 
+Db 
+0x000B 
+0x000C 
+0x000C 
+Dc 
+0x000C 
+0x000D 
+0x000D 
+Dd 
+0x000D 
+0x000E 
+0x000E 
+De 
+0x000E 
+0x000F 
+0x000F 
+Df 
+0x000F 
+Block1 
+0x0010 
+0x0010 
+Block No. 
+1 
+D0 
+0x0010 
+0x0011 
+0x0011 
+D1 
+0x0011 
+… 
+… 
+… 
+… 
+0x001E 
+0x001E 
+De 
+0x001E 
+0x001F 
+0x001F 
+Df 
+0x001F 
+… 
+Block31 
+0x01F0 
+0x01F0 
+Block No. 
+31 
+D0 
+0x01F0 
+0x01F1 
+0x01F1 
+D1 
+0x01F1 
+… 
+… 
+… 
+… 
+0x01FE 
+0x01FE 
+De 
+0x01FE 
+0x01FF 
+0x01FF 
+Df 
+0x01FF 
+ 
+Figure 3-3 Address Correspondence 
+ 
+
+========= PAGE 33 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 33 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ 
+ 
+ 
+Chapter 4  RF Communication Mode 
+ 4 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+========= PAGE 34 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 34 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+4.1  RF Communication Mode Sequence 
+Figure 4-1 illustrates the sequence in RF communication mode. Each sequence is described below. 
+SNo.1: A reader/writer sends an RF communication mode command to the RFID. 
+SNo.2: Once the RFID receives the RF communication mode command described in SNo.1, it processes the 
+command and then sends the result to the reader/writer as the response to the command. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 4-1 RF Communication Mode Sequence 
+R/W
+Host
+RFID
+RF communication mode command
+SNo.1
+Response to RF communication mode command
+SNo.2
+
+========= PAGE 35 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 35 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+4.2  JISX6319-4 Specification 
+This section describes the JISX6319-4 specification of this RFID. 
+ 
+4.2.1  Communication Specifications 
+Table 4-1 shows the JISX6319-4 specification of this RFID. 
+Table 4-1 JISX6319-4 Communication Specification 
+Carrier frequency 
+13.56 MHz 
+Modulation mode, 
+Bit encoding 
+R/W→RFID 
+ASK10%, Manchester encoding 
+RFID→R/W 
+Load modulation, Manchester encoding  
+Data rate 
+212 kbps / 424 kbps 
+Character transmission 
+ MSB-first 
+ Data (8 bits) 
+ No start bit 
+ No parity bit 
+ No stop bit 
+ No spare time between characters 
+ 
+4.2.2  Frame Format 
+Figure 4-2 illustrates the JISX6319-4 frame format and Table 4-2 defines the fields. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 4-2 JISX6319-4 Frame Format 
+ 
+Table 4-2 JISX6319-4 Field Definition 
+Field name 
+Byte length 
+Definition 
+Preamble 
+6 
+0x000000000000 
+Synchronous code  
+2 
+0xB24D 
+LEN 
+1 
+n (data field length) + 1 
+Data field 
+n 
+Command message or Response message 
+Error-detecting code 
+2 
+Initial value: 0000,  
+Generating polynomial: CRC of X16+X12+X5+1 
+0 to 254 bytes
+Data field
+2 bytes
+Synchronous code
+2 bytes （CRC）
+1 byte
+6 bytes
+Error-detecting code
+End field
+LEN
+Information field
+Preamble
+Start field
+0 to 254 bytes
+Data field
+2 bytes
+Synchronous code
+2 bytes （CRC）
+1 byte
+6 bytes
+Error-detecting code
+End field
+LEN
+Information field
+Preamble
+Start field
+Data length
+Error-detecting signal
+(LEN+10) bytes
+
+========= PAGE 36 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 36 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+4.2.3  State Transition Diagram 
+Figure 4-3 shows the state transition diagram for the JIX6319-4 PICC of this RFID. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 4-3 State Transition Diagram of JISX6319-4 PICC 
+4.2.4  Flow Chart 
+Figure 4-4 gives the flow chart for JIX6319-4 command processing of this RFID. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 4-4 JISX6319-4 Flow Chart of Command Processing
+POWER OFF
+MODE0
+Magnetic field ON/ No response
+REQ/ Response
+READ/ Response
+WRITE/ Response
+Unimplemented command/ No response
+CRC error/ No response
+Service count error/ Response with an error
+Service file specification error/ Response with an error
+Block count error/ Response with an error
+Block specification error/ Response with an error
+Self-diagnosis error/ Response with an error
+Magnetic field OFF
+Magnet field ON
+Mode 0
+REQ
+Send a response to request.
+Yes
+No
+READ
+WRITE
+PICC identifier identified?
+Send a response.
+Yes
+No
+Any of the following conditions identified?
+・System code is 0xFFFF.
+・System code is 0xAAFF and
+upper 1 byte (0xAA) are matched.
+・System code of 2 bytes are matched.
+Other
+Magnet field ON
+Mode 0
+REQ
+Send a response to request.
+Yes
+No
+READ
+WRITE
+PICC identifier identified?
+Send a response.
+Yes
+No
+Any of the following conditions identified?
+・System code is 0xFFFF.
+・System code is 0xAAFF and
+upper 1 byte (0xAA) are matched.
+・System code of 2 bytes are matched.
+Other
+
+========= PAGE 37 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 37 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ 
+4.2.5  Various Settings 
+This section describes the parameter settings and operation specifications based on JISX6319-4 for this 
+RFID. 
+4.2.5.1  System Code 
+System code is a parameter specified by the REQ command that is used to identify the RFID. Figure 4-5 
+shows the system code. The system code is set by the value of the system area SC for FeRAM. 
+The response operation to the REQ command by system code is shown in Table 4-3. 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 4-5 System Code 
+ 
+Table 4-3 Response to REQ Command by System Code 
+REQ command 
+System code setting value 
+RFID's response to REQ command 
+0xFFFF 
+Responds regardless of the system area SC setting 
+0xAAFF 
+When the value of the upper 1 byte of the SC system area 
+is 0xAA, the RFID responds regardless of the value of the 
+lower 1 byte.  
+Other 
+Responds only when the setting value of the REQ 
+command's system code matches the value specified in 
+the system area SC (and does not respond in other cases). 
+ 
+4.2.5.2  PICC (Proximity IC Card) Identifier 
+The PICC (Proximity IC Card) identifier is a data used to identify RFID, and is included in the response to the 
+REQ command. Figure 4-6 illustrates the PICC identifier's format. The PICC identifier (8 bytes) is set in the 
+system area IDM. 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 4-6 PICC Identifier Format 
+ 
+4.2.5.3  Response Time Descriptor 
+The response time descriptor is used to specify the maximum wait time until the RFID sends a response after 
+reader/writer sends a command, and is included in the response to the REQ command. Figure 4-7 illustrates 
+SC
+D1
+D0
+SC
+D1
+D0
+System code
+IDM
+D7
+D6
+D5
+D4
+D3
+D2
+D1
+D0
+IDM
+D7
+D6
+D5
+D4
+D3
+D2
+D1
+D0
+PICC identifier
+
+========= PAGE 38 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 38 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+the response time descriptor's format. In hardware, D0, D1, and D7 bytes are set to FFh and D2 to D4 bytes 
+are set to 00h. The response time calculation parameters D5 and D6 bytes are the values of the system area.  
+Table 4-4 shows the response time calculation parameter and corresponding command. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 4-7 Response Time Descriptor Format 
+ 
+Table 4-4 Response Time Calculation Parameter and Corresponding Command 
+Response time calculation parameter 
+Command 
+D5 
+READ 
+D6 
+WRITE 
+ 
+Figure 4-8 shows the response time calculation parameter's format. 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 4-8 Response Time Calculation Parameter Format 
+ 
+The response time is calculated by the following formula: 
+ 
+Response time =  T × [ (B + 1) × n + (A + 1) ] × 4E 
+ 
+ 
+T: 256 × 16/fc (approx. 0.302 ms) 
+ 
+ 
+n: No. of blocks or No. of files of command parameter. 
+ 
+4.2.5.4  Anticollision 
+JISX6319-4 uses the time slot method for anti-collision (prevention of collision). This RFID always responds 
+according to the first slot. 
+4.2.5.5  Service 
+This RFID does not implement the concept of service based on JISX6319-4. 
+However, it is possible to specify multiple services using a command service list. Table 4-5 shows the 
+available maximum number of services. When specifying multiple services in the service list, the values of 
+service list must be set to the same value. 
+ 
+Response time descriptor
+Response time calculation parameter
+0xFF
+PMM
+0x00
+0x00
+0x00
+0xFF
+0xFF
+D7
+D6
+D5
+D4
+D3
+D2
+D1
+D0
+0xFF
+PMM
+0x00
+0x00
+0x00
+0xFF
+0xFF
+D7
+D6
+D5
+D4
+D3
+D2
+D1
+D0
+Real number A
+Real number B
+Exponent E
+Bit 0
+Bit 1
+Bit 2
+Bit 3
+Bit 4
+Bit 5
+Bit 6
+Bit 7
+Real number A
+Real number B
+Exponent E
+Bit 0
+Bit 1
+Bit 2
+Bit 3
+Bit 4
+Bit 5
+Bit 6
+Bit 7
+msb
+lsb
+
+========= PAGE 39 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 39 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+Table 4-5 Maximum Number of Services 
+Command 
+Maximum No. of services  
+READ 
+15 
+WRITE 
+11 
+ 
+Note: The RFID responds with an error when multiple services are not set to the same service file value. 
+ 
+4.2.5.6  Block 
+JISX6319-4 uses data of 16-byte blocks. Block number is used to specify each block. Figure 4-9 shows the 
+block element of 2 bytes and Figure 4-10 shows the block element of 3 bytes. All of bits 6 to 4 of byte D0 for 
+access mode setting should be set to 0 in this RFID; otherwise the RFID responds with an error. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 4-9 Block Element of 2 Bytes 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 4-10 Block Element of 3 Bytes 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+1
+-
+Bit
+7
+Block number designation
+Don’t care
+0
+0
+0
+This RFID’s
+setting value
+Block number
+Order of service 
+code
+Access mode
+Definition
+Bit
+0
+Bit
+7
+Bit
+6
+Bit
+5
+Bit
+4
+Bit
+3
+Bit
+2
+Bit
+1
+Bit
+0
+Bit
+1
+Bit
+2
+Bit
+3
+Bit
+4
+Bit
+5
+Bit
+6
+1
+-
+Bit
+7
+Block number designation
+Don’t care
+0
+0
+0
+This RFID’s
+setting value
+Block number
+Order of service 
+code
+Access mode
+Definition
+Bit
+0
+Bit
+7
+Bit
+6
+Bit
+5
+Bit
+4
+Bit
+3
+Bit
+2
+Bit
+1
+Bit
+0
+Bit
+1
+Bit
+2
+Bit
+3
+Bit
+4
+Bit
+5
+Bit
+6
+msb
+lsb msb
+lsb
+D0
+D1
+0
+-
+Bit
+7
+Mode setting
+0
+0
+0
+0
+0
+Block number designation
+Don’t care
+0
+0
+0
+This RFID’s
+setting value
+Block number
+Order of service 
+code 
+Access mode
+Definition
+Bit
+0
+Bit
+7
+Bit
+6
+Bit
+5
+Bit
+4
+Bit
+3
+Bit
+2
+Bit
+1
+Bit
+0
+Bit
+7
+Bit
+6
+Bit
+5
+Bit
+4
+Bit
+3
+Bit
+2
+Bit
+1
+Bit
+0
+Bit
+1
+Bit
+2
+Bit
+3
+Bit
+4
+Bit
+5
+Bit
+6
+0
+-
+Bit
+7
+Mode setting
+0
+0
+0
+0
+0
+Block number designation
+Don’t care
+0
+0
+0
+This RFID’s
+setting value
+Block number
+Order of service 
+code 
+Access mode
+Definition
+Bit
+0
+Bit
+7
+Bit
+6
+Bit
+5
+Bit
+4
+Bit
+3
+Bit
+2
+Bit
+1
+Bit
+0
+Bit
+7
+Bit
+6
+Bit
+5
+Bit
+4
+Bit
+3
+Bit
+2
+Bit
+1
+Bit
+0
+Bit
+1
+Bit
+2
+Bit
+3
+Bit
+4
+Bit
+5
+Bit
+6
+msb
+lsb msb
+lsb msb
+lsb
+D0
+D1
+D2
+
+========= PAGE 40 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 40 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+This RFID uses a block number to specify tunnel mode and encrypted communication. Table 4-6 shows the 
+mode settings for tunnel mode and encrypted communication. Bits 2 to 0 of byte D2 in 3-byte block element 
+format are used. All of bits 7 to 3 of byte D2 should be set to 0; otherwise the RFID responds with an error. 
+Table 4-6 Mode Settings 
+Block element format 
+Byte D2 of block No. 
+Meaning 
+Bit 2 
+Bit 1 
+Bit 0 
+Communication 
+mode 
+Encrypted communication 
+2 bytes 
+- 
+- 
+- 
+RF communication 
+mode 
+Plaintext (unencrypted) 
+communication 
+3 bytes 
+0 
+0 
+0 
+0 
+1 
+0 
+Encrypted communication 
+(private key) 
+0 
+1 
+1 
+Encrypted communication 
+(family key) 
+0 
+0 
+1 
+Reserved (Setting this field causes an error.) 
+1 
+0 
+0 
+Tunnel mode 
+Plaintext (unencrypted) 
+communication 
+1 
+1 
+0 
+Encrypted communication 
+(private key) 
+1 
+1 
+1 
+Encrypted communication 
+(family key) 
+1 
+0 
+1 
+Reserved (Setting this field causes an error.) 
+ 
+Table 4-7 shows the available maximum number of blocks. For READ command, the number is 15 for 
+plaintext (unencrypted) communication in RF communication mode. The maximum number of blocks for 
+WRITE command depends on the number of services. 
+Table 4-7 Maximum Number of Blocks 
+Command 
+Communication 
+mode 
+Encrypted communication 
+No. of services 
+Maximum No. 
+of blocks  
+READ 
+RF communication 
+mode 
+Plaintext (unencrypted) 
+communication 
+1 to 15 
+15 
+Encrypted communication 
+1 to 15 
+15 
+Tunnel mode 
+Plaintext (unencrypted) 
+communication, Encrypted 
+communication 
+WRITE 
+RF communication 
+mode, Tunnel mode 
+Plaintext (unencrypted) 
+communication, Encrypted 
+communication 
+1 to 8 
+12 
+9 to 11 
+11 
+ 
+Note: Encrypted communication uses 2 blocks for its parameter, so the available number of blocks for data is 
+"the value listed in Table 4-7 – 2." 
+ 
+ 
+ 
+ 
+ 
+ 
+
+========= PAGE 41 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 41 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+4.2.5.7  Block List 
+For encrypted communication in tunnel mode, how to specify block list is slightly different from the 
+JISX6319-4 specification. Figure 4-11 shows the block list referenced from this RFID. 
+(1) Plaintext (unencrypted) communication in RF communication mode: The block number of block list can be 
+set freely. The RFID references to all block numbers. 
+(2) Plaintext (unencrypted) communication in tunnel mode: The block number of block list should be set in 
+ascending order. The RFID checks that the block number is set in ascending order and if not, it responds with 
+an error. 
+(3) Encrypted communication in RF communication mode or tunnel mode: The block number to access is 
+specified using the block numbers between first and (m-2)th in the block list. The last two block numbers are 
+dummy. The block number of block list should be set in ascending order. The RFID checks that the block 
+number is set in ascending order and if not, it responds with an error. 
+Note: When specifying multiple blocks, communication mode (RF communication mode/ tunnel mode) and 
+encrypted communication for all blocks should be configured to the same setting; if not, the RFID 
+responds with an error. 
+ 
+Note: When setting block numbers in ascending order, set to 0x00 following the block number 0xFF (and set 
+to 0x01 following 0x00). Mode setting (bits 2 to 0 of byte D2) for all blocks should be set to the same 
+value. 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 4-11 Block List Referenced from this RFID 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(1)
+Plaintext 
+(unencrypted) 
+communication 
+in RF 
+communication mode
+Block number can be set freely.
+(2)
+Plaintext 
+(unencrypted) 
+communication 
+in tunnel mode
+Set the block numbers in ascending order from the first block.
+Set the first block.
+Block element m
+(Block No. f)
+Block element (m-1)
+(Block No. e)
+...
+Block element (m-2)
+(Block No. d)
+Block element 3
+(Block No. c)
+Block element 2
+(Block No. b)
+Block element 1
+(Block No. a)
+m
+Block list
+No. of 
+blocks
+Block element m
+(Block No. f)
+Block element (m-1)
+(Block No. e)
+...
+Block element (m-2)
+(Block No. d)
+Block element 3
+(Block No. c)
+Block element 2
+(Block No. b)
+Block element 1
+(Block No. a)
+m
+Block list
+No. of 
+blocks
+Block element m
+(Block No. a+m-1)
+Block element (m-1)
+(Block No. a+m-2)
+...
+Block element (m-2)
+(Block No. a+m-3)
+Block element 3
+(Block No. a+2)
+Block element 2
+(Block No. a+1)
+Block element 1
+(Block No. a)
+m
+Block list
+No. of 
+blocks
+Block element m
+(Block No. a+m-1)
+Block element (m-1)
+(Block No. a+m-2)
+...
+Block element (m-2)
+(Block No. a+m-3)
+Block element 3
+(Block No. a+2)
+Block element 2
+(Block No. a+1)
+Block element 1
+(Block No. a)
+m
+Block list
+No. of 
+blocks
+(3)
+Encrypted 
+communication 
+in RF 
+communication 
+mode or tunnel mode
+Set the block numbers in ascending order from the first block.
+Set the first block.
+Block element m
+(Block No. a+m-1)
+Block element (m-1)
+(Block No. a+m-2)
+...
+Block element (m-2)
+(Block No. a+m-3)
+Block element 3
+(Block No. a+2)
+Block element 2
+(Block No. a+1)
+Block element 1
+(Block No. a)
+m
+Block list
+No. of 
+blocks
+Block element m
+(Block No. a+m-1)
+Block element (m-1)
+(Block No. a+m-2)
+...
+Block element (m-2)
+(Block No. a+m-3)
+Block element 3
+(Block No. a+2)
+Block element 2
+(Block No. a+1)
+Block element 1
+(Block No. a)
+m
+Block list
+No. of 
+blocks
+Dummy block
+
+========= PAGE 42 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 42 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+In addition, for encrypted communication, the structure of data is also slightly different from the JISX6319-4 
+specification. Figure 4-12 shows the block data structure. 
+(1) Plaintext (unencrypted) communication treats all block data as actual data. 
+(2) In encrypted communication, of the number of blocks m, the first block data is IV (Initial Vector) to be used 
+for encryption, data from second to (m-1)th blocks are actual data, and the last block data is MAC value for 
+Message Authentication Code (MAC). 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 4-12 Block Data Structure 
+ 
+(1) Plaintext 
+(unencrypted) 
+communication
+(2) Encrypted 
+communication
+Data m
+...
+Data (m-1)
+Data 3
+Data 2
+Data 1
+Block data
+Data m
+...
+Data (m-1)
+Data 3
+Data 2
+Data 1
+Block data
+Actual data
+MAC value
+MAC value
+...
+Data (m-2)
+Data 2
+Data 1
+IV
+Block data
+MAC value
+...
+Data (m-2)
+Data 2
+Data 1
+IV
+Block data
+Actual data
+IV
+Size specified by the number of blocks
+Size specified by the number of blocks
+
+========= PAGE 43 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 43 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+4.2.5.8  Status Flag 
+Table 4-8 lists the meanings of status flags. 
+Table 4-8 Status Flag 
+Status flag 1 
+Status flag 2 
+Meaning 
+Description 
+0x00 
+0x00 
+Normal end 
+Terminated normally. 
+0xFF 
+0x50 
+Tunnel mode error 
+No response from the host 
+0xFF 
+0x51 
+Tunnel mode error 
+The host responded with an error. 
+0xFF 
+0xA1 
+Service count 
+specification error 
+The number of service files was out of the 
+specification. 
+0xFF 
+0xA2 
+Block count specification 
+error (*) 
+The number of blocks was out of the 
+specification. 
+0xFF 
+0xA3 
+Service count 
+specification error 
+Some settings for multiple service were 
+different from the specification. 
+0xFF 
+0xA5 
+Block specification error 
+ Illegal access mode setting (except All-0) 
+ Illegal mode setting (RFU setting) 
+ Block number was specified outside FeRAM. 
+ Ascending order was not used to specify 
+block numbers in tunnel mode or encrypted 
+communication. 
+0xFF 
+0x60 
+Self-diagnosis error 
+(*) 
+ Write access to FeRAM-Read-Only area 
+(RORF setting) 
+ Plaintext (unencrypted) command access to 
+Encrypted-communication-enable-only area 
+(SECURITY setting) 
+(*) For more information about these errors, see the Administrator's Manual. 
+ 
+
+========= PAGE 44 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 44 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+4.2.6  Command 
+Table 4-9 lists the JISX6319-4 commands supported by this RFID. 
+Subsequent sections describe each command in detail. 
+Table 4-9 JISX6319-4 Command List 
+Name 
+Code 
+Description 
+REQ 
+0x00 
+Reader/writer identifies RFID with this command. 
+READ 
+0x06 
+Reads data of RFID from reader/writer or, in tunnel mode, reads 
+data of the host from reader/writer. 
+WRITE 
+0x08 
+Writes data to RFID from reader/writer or, in tunnel mode, writes 
+data to the host from reader/writer. 
+ 
+
+========= PAGE 45 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 45 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+4.2.6.1  REQ 
+ 
+Purpose 
+Reader/writer identifies RFID with this command. 
+ 
+ 
+Command message 
+ Format 
+Command code 
+System code 
+Request code 
+Timeslot 
+1 byte 
+2 bytes 
+1 byte 
+1 byte 
+ 
+ Data field 
+Field 
+Setting 
+Remarks 
+Command code 
+0x00 
+ 
+System code 
+ 0xFFFF: Identifies all RFIDs. 
+ 0xAAFF: Identifies RFID compliant with 
+JIXS6319-4, regardless of category. 
+ Other: The RFID corresponding to the 
+specified system code responds. 
+ 
+Request code 
+ 0x00: No request 
+ 0x01: Additional system code request 
+ 0x02: Additional transmission protocol 
+capability request 
+When values other than the 
+values on the left column are 
+set, the RFID treats this field 
+as 0x00 (no request) 
+Timeslot 
+0x00: One slot 
+This RFID always treats this 
+field as 0x00. 
+ 
+ 
+Response message 
+ Format 
+Response code 
+PICC identifier  
+Response time 
+descriptor  
+Request data 
+1 byte 
+8 bytes 
+8 bytes 
+0 or 2 bytes 
+ 
+ Data field 
+Field 
+Output value 
+Remarks 
+Response code 
+0x01 
+ 
+PICC identifier  
+See 4.2.5.2  PICC (Proximity IC Card) Identifier.  
+Response time 
+descriptor  
+See 4.2.5.3  Response Time Descriptor 
+ 
+Request data 
+ Request code 0x00: Request data 0 bytes (No 
+additional data) 
+ Request code 0x01: Adds system code. 
+ Request code 0x02: 0x0083 (212 kbps, 424 
+kbps, automatic data rate detection supported) 
+ 
+
+========= PAGE 46 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 46 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+4.2.6.2  READ 
+ 
+Purpose 
+Reads data of RFID from reader/writer or, in tunnel mode, reads data of the host from reader/writer. 
+ 
+ 
+Command message 
+ Format 
+Command code 
+PICC 
+identifier 
+No. of service file 
+identifiers (k) 
+List of service file 
+identifiers 
+No. of blocks 
+(m) 
+Block list 
+1 byte 
+8 bytes 
+1 byte 
+2×k bytes 
+1 byte 
+2×m or 3×m 
+bytes 
+ 
+ Data field 
+Field 
+Setting 
+Remarks 
+Command code 
+0x06 
+ 
+PICC identifier 
+PICC identifier acquired by REQ command 
+described in Section 4.2.6.1  REQ. 
+ 
+No. of service file 
+identifiers (k) 
+Number of service files 
+Setting range: 0x01(1) to 0x0F(15) 
+When the range other than the 
+range on the left column is set, 
+the RFID responds with an 
+error. 
+List of service file 
+identifiers 
+Don't care (Setting example: 0x0900) 
+When specifying multiple 
+services, the RFID responds 
+with an error if all service files 
+are not set to the same value. 
+No. of blocks (m) 
+Number of blocks specified in block list 
+Setting range: 
+ Plaintext (unencrypted) communication in RF 
+communication mode: 0x01(1) to 0x0F(15) 
+ Other: 0x01(1) to 0x0F(15) 
+When the range other than the 
+range on the left column is set, 
+the RFID responds with an 
+error. 
+Block list 
+Block list of data to be read 
+For information about how to set, see the 
+following: 
+ 4.2.5.6   
+ 4.2.5.7   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+========= PAGE 47 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 47 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ 
+Response message 
+ Format 
+Response code 
+PICC identifier Status flag 1 Status flag 2 No. of blocks 
+(m) 
+Block data 
+1 byte 
+8 bytes 
+1 byte 
+1 byte 
+1 byte 
+16×m byte 
+ 
+ Data field 
+Field 
+Output value 
+Remarks 
+Response code 
+0x07 
+ 
+PICC identifier 
+See 4.2.5.2  PICC (Proximity IC Card) Identifier.  
+Status flag 1 
+See 4.2.5.8  Status Flag 
+ 
+Status flag 2 
+See 4.2.5.8  Status Flag. 
+ 
+No. of blocks (m) 
+Number of blocks specified by the command 
+Omitted when the status is not 
+"Normal end" 
+Block data 
+See 4.2.5.7  Block List. 
+Omitted when the status is not 
+"Normal end" 
+
+========= PAGE 48 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 48 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+4.2.6.3  WRITE 
+ 
+Purpose 
+Writes data to RFID from reader/writer or, in tunnel mode, writes data to the host from reader/writer. 
+ 
+ 
+Command message 
+ Format 
+command 
+code 
+PICC 
+identifier 
+No. of service file 
+identifiers (k) 
+List of service file 
+identifiers 
+No. of 
+blocks (m) 
+Block list 
+Block data 
+1 byte 
+8 bytes 
+1 byte 
+2×k bytes 
+1 byte 
+2×m or 3×m 
+bytes 
+16×m bytes 
+ 
+ Data field 
+Field 
+Setting 
+Remarks 
+Command code 
+0x08 
+ 
+PICC identifier 
+PICC identifier acquired by REQ command 
+described in Section 4.2.6.1   
+ 
+No. of service 
+file identifiers (k) 
+Number of service files 
+Setting range: 0x01(1) to 0x0B(11) 
+When the range other than the 
+range on the left column is set, 
+the RFID responds with an 
+error.  
+List of service 
+file identifiers 
+Don't care (Setting example: 0x0900) 
+When specifying multiple 
+services, the RFID responds 
+with an error if all service files 
+are not set to the same value.  
+No. of blocks 
+(m) 
+Number of blocks specified in block list 
+Setting range: 
+ No. of service files is 1 to 8: 0x01(1) to 0x0C(12) 
+ No. of service files is 9 to 11: 0x01(1) to 0x0B(11) 
+When the range other than the 
+range on the left column is set, 
+the RFID responds with an 
+error.  
+Block list 
+Block list of data to be written 
+For information about how to set, see the following: 
+ 4.2.5.6  Block 
+ 4.2.5.7  Block list 
+ 
+Block data 
+See 4.2.5.7  Block list 
+ 
+ 
+ 
+Response message 
+ Format 
+Response code 
+PICC identifier Status flag 1 Status flag 2 
+1 byte 
+8 bytes 
+1 byte 
+1 byte 
+ 
+ Data field 
+Field 
+Output value 
+Remarks 
+Response code 
+0x09 
+ 
+PICC identifier 
+See 4.2.5.2  PICC (Proximity IC Card) Identifier.  
+Status flag 1 
+See 4.2.5.8  Status Flag. 
+ 
+Status flag 2 
+See 4.2.5.8  Status Flag. 
+ 
+
+========= PAGE 49 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 49 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+4.2.7  NDEF 
+This RFID is based on Type3 Tag and Type4B Tag of NFC Forum and supports data exchange of a NDEF format. 
+This section explains Type3 Tag.  
+In addition, 4.3.10 NDEF explains Type4B Tag of NFC Forum. 
+Data exchange of NDEF can be performed by performing a predetermined setup to the user area of FeRAM. 
+Please refer to the applicable written standards of NFC Forum for the details of NDEF. 
+4.2.7.1  MEMORY MAP 
+The memory map at the time of NDEF use is shown in Fig. 4-13 
+Attribute Information Block is arranged to Block0. 
+NDEF file is arranged from Block1 to Block23. 
+0
+0x0000
+      Attribute Information Block
+1
+0x0010
+2
+0x0020
+3
+0x0030
+4
+0x0040
+5
+0x0050
+6
+0x0060
+7
+0x0070
+8
+0x0080
+9
+0x0090
+10
+0x00A0
+11
+0x00B0
+12
+0x00C0
+13
+0x00D0
+14
+0x00E0
+15
+0x00F0
+16
+0x0100
+17
+0x0110
+18
+0x0120
+19
+0x0130
+20
+0x0140
+21
+0x0150
+22
+0x0160
+23
+0x0170
+24
+0x0180
+25
+0x0190
+26
+0x01A0
+27
+0x01B0
+28
+0x01C0
+29
+0x01D0
+System Area
+30
+0x01E0
+31
+0x01F0
+SC
+　　　　NDEF data area (message area)
+When using in common by Type3 tag and Type4B Tag
+When using it
+only by Type3 Tag
+ 
+Fig 4-13 The memory map at the time of NDEF use.（NFC Forum Type3 Tag） 
+ 
+ 
+
+========= PAGE 50 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 50 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+4.2.7.2  Setup of System Code（SC） 
+In order to use NDEF of Type3 Tag, It is necessary to set value "0x12FC." on a system code(SC). 
+ 
+4.2.7.3  Setup of Attribute Information Block 
+Attribute Information Block(AIB) is arranged to Block0. 
+Explanation and the example of a setting of Attribute Information Block (AIB) are shown in Table 4-10.  
+ 
+Table 4-10 The example of a setting of Attribute Information Block (AIB) 
+Physical 
+address 
+Size 
+Value 
+Contents 
+Supplement 
+0x0000 
+1Byte 
+0x10 
+Mapping Version 
+Please set up according to the NDEF 
+standard version to apply. 
+0x0001 
+1Byte 
+0x0F 
+Nbr (The number of the maximum 
+block of one read command) 
+Please set up 0x0F in this RFID. 
+0x0002 
+1Byte 
+0x0B 
+Nbw (The number of the maximum 
+block of one write command) 
+Please set up 0x0B in this RFID. 
+0x0003 
+～0x0004 
+2Byte 
+0x0017 
+Nmaxb (T The number of maximum 
+block of NDEF data which can 
+handle this RFID) 
+(Note:) 
+0x0005 
+～0x0008 
+4Byte 
+0x00000000 Intact area 
+Please set 4 bytes of 0x00 to all. 
+0x0009 
+1Byte 
+0x00 
+WriteF 
+ 0x00：Write-in completion 
+ 0x0F：Under a write-in advance 
+Please set “0x0F” before the writing 
+of a NDEF message, and Please set 
+“0x00” after all the writing of a 
+NDEF message completed. 
+0x000A 
+1Byte 
+0x01 
+RW-Flag 
+ 0x00：AIB is read-only. 
+ 0x01：Read and write are possible 
+for AIB. 
+ 
+0x000B 
+～0x000D 
+3Byte 
+0x000003 
+Ln (NDEF message length) 
+0x000003 = 3Byte 
+（The value to a setting example of a 
+setting of Table 4-11) 
+0x000E 
+～0x000F 
+2Byte 
+0x0046 
+CheckSum 
+The sum of data level to address  
+0x0000 - 0x000D 
+ 
+Note: When sharing a NDEF message by Type3 Tag and Type4B Tag, the maximum of Nmaxb is 0x0017. 
+   When using it only by Type3 Tag, the maximum of Nmaxb is 0x001A. 
+   However, the maximum of Nmaxb may be set to 0x0018 depending on the directions for encryption  
+communication. Refer to the administrator manual for the details of encryption communication. 
+ 
+
+========= PAGE 51 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 51 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+4.2.7.4  NDEF FILE 
+An empty NDEF file is shown in Table 4-11 as an example of a setting of a NDEF file. 
+ 
+Table 4-11 The example of a setting of a NDEF file (An empty NDEF file) 
+Physical 
+address 
+Size 
+Value 
+Contents 
+Supplement 
+0x0010 
+～0x0012 
+3Byte 
+0xD00000 
+NDEF Message 
+A mentioned value is a value 
+which shows an empty message. 
+ 
+ 
+ 
+
+========= PAGE 52 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 52 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+4.3  ISO/IEC14443 TypeB Specification 
+This section describes the ISO/IEC14443 TypeB specification. 
+4.3.1  Communication Specification 
+Table 4-12 provides the communication specifications of this RFID based on ISO/IEC14443 TypeB. 
+Table 4-12 ISO/IEC14443 TypeB Communication Specification 
+Carrier frequency  
+13.56 MHz 
+Moduration mode, 
+Bit coding  
+R/W→RFID 
+ASK10%, NRZ coding 
+RFID→R/W 
+Load modulation, BPSK coding (848 kHz subcarrier) 
+Data rate  
+106 kbps / 212 kbps 
+Character transmission  
+ LSB-first 
+ Data (8 bits) 
+ Start bit (1 bit) 
+ Stop bit (1 bit) 
+ 
+4.3.2  Frame Format 
+Figure 4-14 illustrates the ISO/IEC14443 TypeB frame format. SOF(Start Of Frame) and EOF(End Of Frame) 
+are added to a data field. The maximum size of data field is 256 bytes in this RFID. 
+ 
+ 
+ 
+Figure 4-14 ISO/IEC14443 TypeB Frame Format 
+ 
+Additionally, the ISO/IEC14443-4 block format shown in Figure 4-15 is applied to the data field shown in 
+Figure 4-14. This RFID does not support CID and NAD of the first field, so adding them is prohibited. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 4-15 ISO/IEC14443-4 Block Format 
+ 
+EOF
+Data field (maximum 256 bytes)
+SOF
+EOF
+Data field (maximum 256 bytes)
+SOF
+1 byte
+[CID]*
+1 byte
+[NAD]*
+2 bytes （CRC）
+0 to 253 bytes (when CID and 
+NAD are omitted)
+1 byte
+ECD
+Last field
+INF
+Information field
+PCB
+First field
+1 byte
+[CID]*
+1 byte
+[NAD]*
+2 bytes （CRC）
+0 to 253 bytes (when CID and 
+NAD are omitted)
+1 byte
+ECD
+Last field
+INF
+Information field
+PCB
+First field
+Error-detecting signal
+•CID and NAD: Not supported 
+by this RFID
+(Adding CID and NAD is prohibited.)
+Frame size
+
+========= PAGE 53 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 53 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ 
+Table 4-13 ISO/IEC14443-4 Field Definition 
+Field name 
+Byte length 
+Definition 
+PCB 
+1 
+Protocol Control Byte. See 4.3.3  Protocol Control 
+CID 
+1 
+Card Identifier (optional) Used to identify RFID. 
+(Not supported by this RFID; not added.) 
+NAD 
+1 
+Node Address (optional). Used to establish a logical 
+channel. 
+(Not supported by this RFID; not added.) 
+INF 
+n 
+Command message or response message 
+ECD 
+2 
+See CRC_B ISO/IEC14443-3. 
+ 
+4.3.3  Protocol Control 
+PCB (Protocol Control Byte) shown in Figure 4-15 and Table 4-13 is provided for ISO/IEC14443-4 protocol 
+control, and used to send information necessary for data transmission control. This protocol has 3 block 
+types. Table 4-14 lists the definition of block type. This RFID's protocol control specification is given in Table 
+4-15. 
+Figure 4-16, Figure 4-17, and Figure 4-18 illustrate I-block, R-block, and S-block codings, respectively. 
+Table 4-14 Block Type 
+Block name 
+Definition 
+I-block 
+Used to send the information of application layer. 
+R-block 
+Used to send ACK (Acknowledge) or NAK (NegativeAcknowlege). 
+R-block does not include INF field. 
+An R-block corresponding to the last reception block will be sent. 
+S-block 
+Used to send a control information. The following 2 types are provided: 
+1. Wait time extension request (WTX) 
+2. DESELECT command 
+ 
+Table 4-15 Protocol Control Specification 
+Item 
+Desctiption 
+By this RFID 
+CID 
+(Card IDentifier) 
+First field parameter of ISO/IEC14443-4 frame 
+(optional). Used to identify RFID. 
+Not supported 
+NAD 
+(Node Address) 
+First field parameter of ISO/IEC14443-4 frame 
+(optional). Used to establish a logical channel. 
+Not supported 
+Chaining 
+Used to transmit/receive divided data 
+Supported (however, the size of 
+divisible frame size is 64 bytes or 
+more.) 
+ACK/NCK 
+response 
+Used to send ACK (Acknowledge) or NAK 
+(NegativeAcknowlege). 
+Supported 
+WTX 
+Used to extend the wait time for response from 
+RFID 
+Not supported 
+DESELECT 
+command 
+Used to deselect the RFID. 
+Supported 
+ 
+ 
+ 
+
+========= PAGE 54 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 54 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 4-16 I-block Coding 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 4-17 R-block Coding 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 4-18 S-block Coding 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+b8 b7 b6 b5 b4 b3 b2 b1
+0
+0
+0
+0
+0
+1
+b8 b7 b6 b5 b4 b3 b2 b1
+0
+0
+0
+0
+0
+1
+Block number
+Set to 1. (0: No response)
+NAD enable/disable. Set to 0 (NAD disable). (1: No response)
+CID enable/disable. Set to 0 (CID disable). (1: No response)
+Setting to 1 enables chaining.
+Set to 0. (1: No response)
+I-block
+b8 b7 b6 b5 b4 b3 b2 b1
+1
+0
+1
+0
+0
+1
+b8 b7 b6 b5 b4 b3 b2 b1
+1
+0
+1
+0
+0
+1
+Block number
+Set to 1. (0: No response)
+Set to 0. (1: No response)
+CID enable/disable. Set to 0 (CID disable).
+0: ACK; 1: NACK
+Set to 1. (0: No response)
+R-Block
+b8 b7 b6 b5 b4 b3 b2 b1
+1
+1
+0
+0
+1
+0
+b8 b7 b6 b5 b4 b3 b2 b1
+1
+1
+0
+0
+1
+0
+Set to 0. (1: No response)
+Set to 1. (0: No response)
+Set to 0. (1: No response)
+CID enable/disable. Set to 0 (CID disable).
+(00)b, DESELECT
+(No response, except (00)b)
+S-Block
+
+========= PAGE 55 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 55 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+4.3.4  Block Control 
+The block number rule for ISO/IEC14443-4 I-block is given in Table 4-16. The block control rule and whether 
+to be supported by this RFID are shown in Table 4-17. 
+Table 4-16 Block Number Rule 
+Applied to 
+No. 
+Rule 
+Reader/ 
+Writer 
+RuleA 
+Set the initial value of reader/writer block number to 0 whenever activating RFID. 
+RuleB 
+When I-block or R(ACK) block whose block number is equal to the current one is 
+received, toggle the current block number before sending the block number to 
+RFID. 
+RFID 
+RuleC 
+Set the initial value of RFID block number to 1 whenever activating RFID. 
+RuleD 
+When I-block is received, toggle the current block number before sending the 
+block. 
+RuleE 
+When R(ACK) block whose block number is not equal to the current one is 
+received, RFID toggles the current block number before sending the block. When 
+R(NAK) is received, do not toggle the block number. 
+ 
+Table 4-17 Block Control Rule 
+Applied to 
+No. 
+Rule 
+By this RFID 
+Reader/ 
+Writer and 
+RFID 
+Rule1 
+Send the first block from reader/writer. 
+Supported 
+Rule2 
+When I-block indicating chaining is received, send an affirmative 
+response to the block, with R(ACK) block. 
+Supported 
+Rule3 
+S-block is used only for pair. Send a response to S(...)block 
+whenever S(...)block is requested. 
+Only 
+DESELECT 
+supported 
+Reader/  
+Writer 
+Rule4 
+When an illegal block is received or FWT timeout occurs, send 
+R(NAK) block (except while RFID is in chaining or when 
+S(DESELECT) is executed). 
+- 
+Rule5 
+When an illegal block is received or FWT timeout occurs while 
+RFID is in chaining, send R(ACK) block. 
+- 
+Rule6 
+When R(ACK) block is received and its block number is not equal 
+to the block number of reader/writer, re-send the last I-block. 
+- 
+Rule7 
+When R(ACK) block is received and its block number is equal to 
+the block number of reader/writer, continue chaining. 
+- 
+Rule8 
+When a response to S(DESELECT) is not sent with no error, 
+re-send S(DESELECT) or ignore the RFID. 
+- 
+RFID 
+Rule9 
+RFID can send S(WTX) block, instead of I-block or R(ACK) block. 
+Not 
+supported  
+Rule10 
+When I-block not indicating chaining is not received, send an 
+affirmative response. 
+Supported 
+Rule11 
+When R(ACK) or R(NAK) block is received and its block number 
+is equal to the block number of RFID, re-send the last I-block. 
+Supported 
+Rule12 
+When R(NAK) block is received and its block number is not equal 
+to the block number of RFID, send R(ACK). 
+Supported 
+Rule13 
+When R(ACK) block is received and its block number is not equal 
+to the block number of RFID and RFID is in chaining, continue 
+chaining. 
+Supported 
+ 
+
+========= PAGE 56 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 56 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+4.3.5  Upper Command Format 
+The upper commands (SELECT, READ, WRITE) are compliant with the APDU (Application Protocol Data 
+Unit) format of ISO/IEC7816-4. 
+Figure 4-19 shows the command APDU format. Table 4-18 shows the command APDU field definition. Figure 
+4-20 gives the response APDU format. Table 4-19 gives the response APDU field definition. 
+The command APDU format shown in Figure 4-19 and the response APDU format shown in Figure 4-20 are 
+configured in the information field INF of the ISO/IEC14443-4 block format shown in Figure 4-15. 
+ 
+ 
+ 
+ 
+ 
+Figure 4-19 Command APDU Format 
+ 
+Table 4-18  Command APDU Field Definition 
+Field name 
+Byte length 
+Definition 
+Class byte 
+1 
+Fixed to 0x00 
+Instruction byte 
+1 
+Instruction code 
+Param byte 1 
+1 
+Command parameter 
+Param byte 2 
+1 
+Command parameter 
+Lc field 
+1 
+If a data byte exists in the command APDU, set the 
+byte length of n; if not, omit the data byte. 
+Data byte 
+n 
+Data block (can be omitted) 
+Le field 
+1 
+If a data byte exists in the response APDU, set the 
+byte length; if not, omit the data byte. 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 4-20 Response APDU Format 
+ 
+Table 4-19  Response APDU Field Definition 
+Field name 
+Byte length 
+Definition 
+Data byte 
+n 
+Data block (can be omitted) 
+Status word 1 
+1 
+Status information  
+Status word 2 
+1 
+Status information  
+Le
+field
+Le
+Data byte
+(Lc bytes)
+Data
+Param
+byte
+P2
+Param
+byte
+P1
+Instruction 
+byte
+INS
+Lc field
+Class 
+byte
+Lc
+CLA
+Le
+field
+Le
+Data byte
+(Lc bytes)
+Data
+Param
+byte
+P2
+Param
+byte
+P1
+Instruction 
+byte
+INS
+Lc field
+Class 
+byte
+Lc
+CLA
+Status 
+word 2
+SW2
+Status 
+word 1
+SW1
+Data byte
+Response Body
+Status 
+word 2
+SW2
+Status 
+word 1
+SW1
+Data byte
+Response Body
+
+========= PAGE 57 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 57 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+4.3.6  State Transition Diagram 
+Figure 4-21 provides the state transition diagram for this RFID's operation based on ISO/IEC14443 TypeB. 
+POWER_OFF
+IDLE
+READY
+HALT
+PROTOCOL
+Magnet field ON/ No response
+REQB(AFI)/ ATQB
+WUPB(AFI)/ ATQB
+REQB(nAFI)/ No response
+WUPB(nAFI)/ No response
+HLTB(PUPI)/ No response
+HLTB(nPUPI)/ No response
+ATTRIB(PUPI)/ No response
+ATTRIB(nPUPI)/ No response
+Other commands/ No response
+CRC error/ No response
+REQB(nAFI)/ No response
+WUPB(nAFI)/ No response
+Notes
+• Even in any of IDLE, READY, PROTOCOL, or HALT 
+state, turning RF off causes the RFID to transition to 
+POWER_OFF state.
+• AFI: AFI matched、nAFI: AFI unmatched
+• PUPI: PUPI matched、nPUPI: PUPI unmatched
+ATTRIB(PUPI)/ Response
+HALT(PUPI)/ Response
+DESELECT/
+Response
+WUPB(AFI)/ATQB
+SELECT/ Response
+READ/ Response
+WRITE/ Response
+WUPB(nAFI)/ No response
+CLA error/ Response with an error
+INS error/ Response with an error
+P1, P2 error/ Response with an error
+Lc, Le error/ Response with an error
+Self-diagnosis error/ Response with an error
+REQB(AFI)/ATQB
+WUPB(AFI)/ATQB
+HLTB(nPUPI)/ No response
+ATTRIB(nPUPI)/ No response
+Other commands/ No response
+CRC error/ No response
+REQB(AFI)/ No response
+REQB(nAFI)/ No response
+WUPB(AFI)/ No response
+WUPB(nAFI)/ No response
+HLTB(PUPI)/ No response
+HLTB(nPUPI)/ No response
+ATTRIB(PUPI)/ No response
+ATTRIB(nPUPI)/ No response
+CRC error/ No response
+PCB setting error/ No response
+REQB(AFI)/ No response
+REQB(nAFI)/ No response
+HLTB(PUPI)/ No response
+HLTB(nPUPI)/ No response
+ATTRIB(PUPI)/ No response
+ATTRIB(nPUPI)/ No response
+Other commands/ No response
+CRC error/ No response
+Magnet field OFF
+ 
+Figure 4-21 State Transition Diagram for Operation Based on ISO/IEC14443 TypeB 
+ 
+
+========= PAGE 58 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 58 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+4.3.7  Flow Chart 
+Figure 4-22 illustrates the flow chart for this RFID's command processing based on ISO/IEC14443 TypeB. 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 4-22 Flow Chart of Command Processing Based on ISO/IEC14443 TypeB 
+PUPI identified?
+Respond to ATTRIB.
+Respond to HLTB.
+Yes
+ATTRIB
+HLTB
+Magnet field ON
+Respond to ATQB
+REQB/WUPB
+Other
+Yes
+Yes
+No
+PUPI identified?
+No
+Yes
+No
+PROTOCOL state
+Respond to command.
+SELECT
+READ
+WRITE
+DESELECT
+Respond to DESELECT.
+HALT state
+READY state
+IDLE state
+WUPB
+Other
+Any of the following conditions identified?
+・AFI is 0x00.
+・AFI is 0xY0 and Y of upper 4 bits are matched.
+・AFI is 0x0Y and Y of lower 4 bits are matched.
+・AFI1 byte  is matched.
+REQB/WUPB
+Other
+PUPI identified?
+Respond to ATTRIB.
+Respond to HLTB.
+Yes
+ATTRIB
+HLTB
+Magnet field ON
+Respond to ATQB
+REQB/WUPB
+Other
+Yes
+Yes
+No
+PUPI identified?
+No
+Yes
+No
+PROTOCOL state
+Respond to command.
+SELECT
+READ
+WRITE
+DESELECT
+Respond to DESELECT.
+HALT state
+READY state
+IDLE state
+WUPB
+Other
+Any of the following conditions identified?
+・AFI is 0x00.
+・AFI is 0xY0 and Y of upper 4 bits are matched.
+・AFI is 0x0Y and Y of lower 4 bits are matched.
+・AFI1 byte  is matched.
+REQB/WUPB
+Other
+
+========= PAGE 59 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 59 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+4.3.8  Various Settings 
+This section describes the parameter settings and operation specifications based on ISO/IEC14443 TypeB for 
+this RFID. 
+4.3.8.1  AFI (Application Family Identifier) 
+Figure 4-23 shows the format of AFI (Application Family Identifier). The value of AFI is set in the system area 
+AFI. 
+AFI is a parameter specified by the REQB command. The response operation to REQB command in this 
+RFID is shown in Table 4-20. For information about the setting values for AFI, see ISO/IEC14443-3. 
+AFI
+D0
+AFI
+D0
+AFI
+ 
+Figure 4-23 AFI Format 
+ 
+Table 4-20 REQB Command Response Operation 
+REQB command 
+AFI setting value 
+RFID's response to REQB command 
+0x00 
+Responds regardless of the system area AFI setting. 
+0xY0 
+Responds when the value Y of the upper 4 bits of the 
+REQB command's AFI is matched. 
+0x0Y 
+Responds when the value Y of the lower 4 bits of the 
+REQB command's AFI is matched. 
+Other 
+Responds only when the setting value of the REQB 
+command's AFI matches the value specified in the system 
+area AFI. 
+ 
+4.3.8.2  PUPI (Pseudo-Unique PICC Identifier) 
+Figure 4-24 shows the format of PUPI (Pseudo-Unique PICC Identifier). PUPI is an identifier of PICC 
+(Proximity IC Card). The value of PUPI is set in the lower 4 bytes of the system area IDM. 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 4-24 PUPI Format 
+ 
+ 
+ 
+ 
+ 
+Lower 4 bytes of IDM
+D3
+D2
+D1
+D0
+Lower 4 bytes of IDM
+D3
+D2
+D1
+D0
+PUPI
+
+========= PAGE 60 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 60 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+4.3.8.3  FWI (Frame Waiting Time Integer) 
+Figure 4-25 shows the format of FWI (Frame Waiting time Integer). FWI is used to specify the maximum wait 
+time until the PICC sends a response after receiving a command. 
+ 
+  
+ 
+ 
+ 
+ 
+Figure 4-25 FWI Format 
+ 
+The maximum wait time is calculated by the following formula: 
+ 
+Maximum wait time = T × 2FWI 
+ 
+ 
+T: 
+256 × 16/fc (fc = 13.56 MHz, approx. 0.302 ms) 
+ 
+ 
+FWI: 0 to 14 (integer) 
+ 
+The maximum wait time ranges from approximately 0.302 ms (min.; FWI = 0) to approximately 4949 ms (max; 
+FWI = 14). 
+ 
+4.3.8.4  File System 
+This RFID is compliant with the command specification of ISO/IEC7816-4 standards, but does not implement 
+the file system functionality of the standards. However, in order to ensure the compatibility with 
+communication to reader/writer, the SELECT command to select files is set to "Normal response" when 
+specifying the given parameters. For information about how to set the parameters of the SELECT command, 
+see 4.3.9.4  SELECT. 
+ 
+ 
+4.3.8.5  Address 
+In ISO/IEC14443 TypeB (command is compliant with ISO/IEC7816-4), the addresses of READ and WRITE 
+commands are specified by bytes P1 and P2 of the command APDU. (See Section 4.3.5  Upper Command 
+Format) 
+Figure 4-26 shows the address specification format. Set bit 7 of byte P1 to 0; setting to 1 causes an error. 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 4-26 Address Specification 
+Start address designation
+Mode setting
+Start address
+0
+This RFID’s
+setting value
+-
+Definition
+Bit
+7
+Bit
+6
+Bit
+5
+Bit
+4
+Bit
+3
+Bit
+2
+Bit
+1
+Bit
+0
+Bit
+7
+Bit
+6
+Bit
+5
+Bit
+4
+Bit
+3
+Bit
+2
+Bit
+1
+Bit
+0
+Start address designation
+Mode setting
+Start address
+0
+This RFID’s
+setting value
+-
+Definition
+Bit
+7
+Bit
+6
+Bit
+5
+Bit
+4
+Bit
+3
+Bit
+2
+Bit
+1
+Bit
+0
+Bit
+7
+Bit
+6
+Bit
+5
+Bit
+4
+Bit
+3
+Bit
+2
+Bit
+1
+Bit
+0
+msb
+lsb msb
+lsb
+P1
+P2
+
+========= PAGE 61 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 61 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+This RFID uses address to specify encrypted communication in tunnel mode. Table 4-21 shows mode 
+settings including encrypted communication in tunnel mode with bits 6 to 4 of byte P1. 
+Table 4-21 Mode Settings 
+Byte P1 
+Meaning 
+Bit 6 
+Bit 5 
+Bit 4 
+Communication 
+mode  
+Encrypted communication 
+- 
+- 
+- 
+RF communication 
+mode 
+Plaintext (unencrypted) 
+communication 
+0 
+0 
+0 
+0 
+1 
+0 
+Encrypted communication 
+(private key) 
+0 
+1 
+1 
+Encrypted communication 
+(family key) 
+0 
+0 
+1 
+Reserved (Setting this field causes an error.) 
+1 
+0 
+0 
+Tunnel mode 
+Plaintext (unencrypted) 
+communication 
+1 
+1 
+0 
+Encrypted communication 
+(private key) 
+1 
+1 
+1 
+Encrypted communication 
+(family key) 
+1 
+0 
+1 
+Reserved (Setting this field causes an error.) 
+ 
+In addition, Table 4-22 shows the setting unit for address by communication mode. 
+Table 4-22 Setting Unit for Address 
+Communication mode 
+Setting unit for address  
+(n: integer) 
+Plaintext (unencrypted) 
+1×n bytes 
+Encrypted 
+16×n bytes 
+ 
+Note: Setting the address to a value other than 16×n bytes in encrypted communication causes the RFID to 
+respond with an error. 
+
+========= PAGE 62 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 62 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+4.3.8.6  Data 
+For encrypted communication, the structure of data block for READ and WRITE commands is slightly different 
+from the ISO/IEC7816-4 command specification. Figure 4-27 shows the data block structure. 
+(1) Plaintext (unencrypted) communication treats all block data as actual data. 
+(2) In encrypted communication, the first 16 bytes of data is IV (Initial Vector) used for encryption, following 
+16×n bytes of data is actual data, and the last 16 bytes is MAC value for Message Authentication Code 
+(MAC). 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 4-27 Data Block Structure 
+ 
+Note: Setting the data length to a value other than 16×n bytes in encrypted communication causes the RFID 
+to respond with an error. 
+(1) Plaintext 
+(unencrypted) 
+communication
+(2) Encrypted 
+communication
+1 x n bytes (n: integer)
+DATA
+1 x n bytes (n: integer)
+DATA
+Actual data
+MAC value
+Actual data
+16 x n bytes (n: integer)
+16 bytes
+16 bytes
+DATA
+16 x n bytes (n: integer)
+16 bytes
+16 bytes
+DATA
+IV
+Size specified by the Lc or Le field
+Size specified by the Lc or Le field
+
+========= PAGE 63 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 63 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+4.3.8.7  Status Word 
+Table 4-23 lists the meaning of statuses. 
+Table 4-23 Status Word 
+SW1 
+SW2 
+Meaning 
+Description 
+0x90 
+0x00 
+Normal end 
+Terminated normally. 
+0x50 
+0x00 
+Tunnel mode error 
+No response from the host  
+0x51 
+0x00 
+Tunnel mode error 
+The host responded with an error. 
+0x67 
+0x00 
+Lc/Le specification error 
+(*1) 
+ Lc and Le were out of the specification. 
+ In encrypted communication, Lc and Le were not 
+16×n bytes. 
+0x6A 
+0x86 
+P1-P2 specification error 
+ Bit 7 of P1 was not 0. (*2) 
+ Illegal mode setting (RFU setting) 
+ Specified outside FeRAM 
+ In encrypted communication, the address was not 
+specified in 16×n byte units. 
+0x6D 
+0x00 
+INS specification error 
+Illegal INS setting (Specified an unimplemented 
+command) 
+0x6E 
+0x00 
+CLA specification error 
+Illegal CLA setting (except 0x00) 
+0x6F 
+0x00 
+Self-diagnosis error 
+(*1) 
+ Write access to FeRAM-Read-Only area (RORF 
+setting) 
+ Plaintext (unencrypted) command access to 
+Encrypted-communication-enable-only area 
+(SECURITY setting) 
+(*1) For more information about these errors, see the Administrator's Manual. 
+(*2) In the case of SELECT command, it may become "Lc, Le error 0x6700" depending on the combination of 
+values of P1,P2. 
+
+========= PAGE 64 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 64 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+4.3.9  Command 
+The commands based on ISO/IEC14443 TypeB supported by this RFID fall into two types: 
+Commands defined in ISO/IEC14443-3, and APDU commands defined in ISO/IEC7816-4 to be sent in the 
+ISO/IEC14443-4 format. 
+These commands are shown in Table 4-24 and Table 4-25. 
+For information about the command format, see Section 4.3.2  Frame Format and Section 4.3.5  Upper 
+Command Format.  
+Additionally, protocol control such as chaining, ACK/NAK response (R-Block), and DESELECT (S-Block) are 
+also supported. For its detail, see Section 4.3.3  Protocol Control.  
+Subsequent sections describe each command in detail. 
+Table 4-24 ISO/IEC14443-3 TypeB Command List 
+Name 
+Code 
+Description 
+REQB/WUPB 
+0x05 
+Identifies the RFID. Used by reader/writer. 
+ATTRIB 
+0x1D 
+Exchanges protocol signal information between reader/writer and 
+RFID, and causes the RFID to transition to the state in which 
+command processing is enabled. 
+HLTB 
+0x50 
+Transitions the RFID to a HALT state. Used by reader/writer. 
+ 
+Table 4-25 APDU Command List 
+Name 
+INS 
+Description 
+SELECT 
+0xA4 
+Selects the file. (No processing is performed in this RFID.） 
+READ 
+0xB0 
+Reads the data of RFID from reader/writer. While in tunnel mode, 
+reads the data of the host from reader/writer. 
+WRITE 
+0xD6 
+Writes a data to RFID from reader/writer. While in tunnel mode, 
+writes a data to the host. 
+ 
+
+========= PAGE 65 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 65 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+4.3.9.1  REQB/WUPB 
+ 
+Purpose 
+Identifies the RFID. Used by reader/writer 
+ REQB is used when the RFID is in IDLE state. 
+ WUPB is used when the RFID is in HALT state. (It can be also used in IDLE state.) 
+ 
+ 
+Command message 
+ Format 
+Command code 
+AFI 
+PARAM 
+CRC_B 
+1 byte 
+1 byte 
+1 byte 
+2 bytes 
+ 
+ Data field 
+Field 
+Setting 
+Remarks 
+Command code 
+0x05 
+ 
+AFI 
+0x00: Identifies all RFIDs. 
+0xY0: RFID whose upper 4 bits are identified 
+responds. 
+0x0Y: RFID whose lower 4 bits are identified 
+responds. 
+Other than 0x00: RFID corresponding to the 
+specified system code responds. 
+See 4.3.8.1  AFI (Application 
+Family Identifier). 
+PARAM 
+0x00: REQB 
+0x08: WUPB 
+This RFID always operates as 
+follows: 
+ Ignores the setting of bits 
+7-5. 
+ Recognizes the number N of 
+Slots is 1 (always responds 
+with ATQB) even when bits 
+2-0 are set to any of the 
+values (including PFU). 
+Bits 7-5 
+RFU (Set to 000b.) 
+Bit 4 
+0: Extension ATQB not supported 
+1: Extension ATQB supported 
+Bit 3 
+0: REQB 
+1: WUPB 
+Bits 2-0 
+000b: Slot count N = 1 
+001b: Slot count N = 2 
+010b: Slot count N = 4 
+011b: Slot count N = 8 
+100b: Slot count N = 16 
+101b: RFU 
+110b: RFU 
+CRC_B 
+See CRC_B ISO/IEC14443-3. 
+ 
+
+========= PAGE 66 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 66 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ 
+Response message 
+ Format 
+Response code 
+PUPI 
+Application data 
+Protocol info 
+CRC_B 
+1 byte 
+4 bytes 
+4 bytes 
+3 bytes 
+2 bytes 
+ 
+ Data field 
+Field 
+Output value 
+Remarks 
+response code 
+0x50 (ATQB) 
+ 
+PUPI 
+See 4.2.5.2  PICC (Proximity IC Card) Identifier.  
+Application Data 
+0x00000000 
+Reserved (treated as 
+proprietary data.) 
+Protocol Info 
+1st byte: 0x91 
+For more information about 
+parameters, see 
+ISO/IEC14443-3. 
+Bits 7-0 
+Data rate setting: 0x91 
+ R/W→RFID: 106K, 212K bps 
+ RFID→R/W: 106K, 212K bps 
+ R/W→RFID, RFID→R/W (same data 
+rate) 
+2nd byte: 0x81 
+Bits 7-4 
+Maximum frame size of RFID 
+1000b: 256 bytes 
+Bits 3-0 
+Protocol type: 0001b 
+ RFID is ISO/IEC14443-4 compliant 
+ Minimum reader/writer command 
+wait time (TR2) after RFID responds: 
+10etu + 32/fs (fs = 848 kHz) 
+3rd byte: 0xX0 (X is a value of FWI.) 
+Bits 7-4 
+FWI (Frame Waiting time Integer) 
+See 4.3.8.3  FWI (Frame Waiting 
+Time Integer). 
+Bits 3-2 
+ADC (Application Data Coding) 
+00b: Proprietary Application Data 
+Bits 1-0 
+FO (Frame Option) 
+00b: NAD, CID not supported 
+CRC_B 
+See CRC_B ISO/IEC14443-3. 
+ 
+ 
+
+========= PAGE 67 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 67 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+4.3.9.2  ATTRIB 
+ 
+Purpose 
+Exchanges protocol signal information between reader/writer and RFID, and causes the RFID to transition to 
+the state in which command processing is enabled. 
+ 
+ 
+Command message 
+ Format 
+Command code 
+Identifier 
+Param1 
+Param2 
+Param3 
+Param4 
+CRC_B 
+1 byte 
+4 bytes 
+1 byte 
+1 byte 
+1 byte 
+1 byte 
+2 bytes 
+ 
+ Data field 
+Field 
+Setting 
+Remarks 
+Command code 
+0x1D 
+ 
+Identifier 
+Sets PUPI for ATQB response. 
+ 
+Param1 
+0x00 
+This RFID operates with: 
+ bits 1-0 ignored 
+ bits 7-6 set to 00b (when 
+these bits are set to 11b) 
+ bits 5-4 set to 00b (when 
+these bits are set to 11b) 
+This RFID operates with: 
+ Minimum TR0: 64/fs 
+ Minimum TR1: 80/fs 
+ EOF not omitted 
+ SOF not omitted 
+Bits 7-6 
+Minimum value of RFID response time 
+to reader/writer command (TR0): (fs = 
+848 kHz) 
+00b: 64/fs (106 Kbps), 64/fs (212 
+Kbps) 
+01b: 48/fs (106 Kbps), 32/fs (212 
+Kbps) 
+10b: 16/fs (106 Kbps), 8/fs (212 Kbps) 
+11b: RFU 
+Bits 5-4 
+Minimum value of the time (TR1) until 
+RFID starts data transmission after 
+subcarrier is generated:  
+(fs = 848 kHz) 
+00b: 80/fs (106 Kbps), 80/fs (212 
+Kbps) 
+01b: 64/fs (106 Kbps), 32/fs (212 
+Kbps) 
+10b: 16/fs (106 Kbps), 8/fs (212K bps) 
+11b: RFU 
+Bit 3 
+0: Do not omit EOF. 
+1: Omit EOF. 
+Bit 2 
+0: Do not omit SOF. 
+1: Omit SOF. 
+Bits 1-0 
+RFU (Set to 00b.) 
+Param2 
+0xXX (For XX, see the settings below.) 
+ If parameters other than 
+those on the left 
+(communication settings or 
+reader/writer frame size 
+which the RFID does not 
+support) are set, the RFID 
+will generate no response.  
+ If the data rate setting differs 
+between RFID→PCD and 
+Bits 7-6 
+RFID→PCD data rate 
+00b: 106 Kbps 
+01b: 212 Kbps 
+Bits 5-4 
+PCD→PICC data rate 
+00b: 106 Kbps 
+01b: 212 Kbps 
+Bits 3-0 
+Maximum receptible frame size of 
+
+========= PAGE 68 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 68 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+reader/writer 
+1000b: 256 bytes 
+0111b: 128 bytes 
+0110b: 96 bytes 
+0101b: 64 bytes 
+PCD→RFID, the RFID will 
+generate no response. 
+Param3 
+0x01 
+If parameters other than those 
+on the left are set, the RFID 
+will generate no response. 
+Bits 7-4 
+RFU (Set to 0000b.) 
+Bits 3-0 
+Set to the same value as that for the 
+protocol type (4 bits) of the ATQB 
+parameter's second byte. 
+Param4 
+0x00 
+The RFID operates with: 
+ bits 7-4 ignored 
+ no response generated 
+except when bits 3-0 are set 
+to 0000b 
+Bits 7-4 
+RFU (Set to 0000b.) 
+Bits 3-0 
+0000b: RFID does not support CID. 
+CRC_B 
+See CRC_B ISO/IEC14443-3. 
+ 
+ 
+ 
+Response message 
+ Format 
+Response code 
+CRC_B 
+1 byte 
+2 bytes 
+ 
+ Data field 
+Field 
+Output value 
+Remarks 
+response code 
+1st byte: 0x10 
+For more information about 
+parameters, see 
+ISO/IEC14443-3. 
+Bits 7-4 
+MBLI (Maximum Buffer Length 
+Integer) 
+0001b: 1x of RFID frame size (256 
+bytes) 
+Bits 3-0 
+0000b: RFID does not support CID. 
+CRC_B 
+See CRC_B ISO/IEC14443-3. 
+ 
+ 
+
+========= PAGE 69 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 69 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+4.3.9.3  HLTB 
+ 
+Purpose 
+Causes the RFID to transition to a HALT state. Used by reader/writer. 
+ 
+ 
+Command message 
+ Format 
+Command code 
+Identifier 
+CRC_B 
+1 byte 
+4 bytes 
+2 bytes 
+ 
+ Data field 
+Field 
+Setting 
+Remarks 
+Command code 
+0x50 
+ 
+Identifier 
+Sets the PUPI of the RFID to be set to a HALT 
+state. 
+ 
+CRC_B 
+See CRC_B ISO/IEC14443-3. 
+ 
+ 
+ 
+Response message 
+ Format 
+Response code 
+CRC_B 
+1 byte 
+2 bytes 
+ 
+ Data field 
+Field 
+Output value 
+Remarks 
+Response code 
+0x00 
+ 
+CRC_B 
+See CRC_B ISO/IEC14443-3. 
+ 
+ 
+
+========= PAGE 70 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 70 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+4.3.9.4  SELECT 
+ 
+Purpose 
+Selects the file. 
+This RFID conforms to the NDEF Ver. 2.0 of NFC forum Type 4B tag and therefore is capable of performing 
+the following selections: EF file, NDEF application, CC file, or NDEF file. 
+For operations at CC or NDEF file selections, see Section 4.3.10.3  CC File and Section 4.3.10.4  NDEF 
+File. 
+ 
+ 
+Command message 
+ Format 
+CLA 
+INS 
+P1 
+P2 
+Lc 
+Data 
+Le 
+1 byte 
+1 byte 
+1 byte 
+1 byte 
+1 byte 
+n bytes 
+1 byte 
+ 
+ Data field 
+Field 
+Setting 
+Remarks 
+CLA 
+0x00 
+Responds with an error, except 
+0x00. 
+INS 
+0xA4  
+ 
+P1 
+0x00: Selection by a file identifier 
+0x02: EF file selection  
+0x04: Selection by DF name (Selection by an 
+application identifier) 
+A combination except follows is 
+an error reply 
+P1,P2=0x020C：EF file choice 
+P1,P2=0x0400：NDEF tag 
+application choice 
+P1,P2=0x000C：EF file, CC file 
+or NDEF file choice 
+ 
+P2 
+0x00: Designate the corresponding file. 
+0x0C: FCI generates no response. 
+Lc 
+Sets the byte length of the Data block. 
+ Setting range: 
+NDEF tag application selection (when P1, P2 = 
+x0400):  
+0x07(7) 
+Other than the above: 0x02(2) 
+ 
+Responds with an error, except 
+the setting range on the left 
+column. 
+Data 
+NDEF tag application selection (when P1, P2 = 
+x0400): 0xD2760000850101 
+CC file selection (when P1, P2 = 000C): 0xE103 
+NDEF file selection (when P1, P2 = 000C): 0x0103 
+EF file selection (when P1, P2 = 020C): Don't care 
+(This field is set by EF-ID.) 
+Responds with an error, except 
+the settings on the left column. 
+Le 
+Sets the byte length of the Data block for response. 
+ Setting range: 0x00 (with field only for NDEF tag 
+application selection) 
+Responds with an error, except 
+the setting range on the left 
+column. 
+ 
+ 
+ 
+
+========= PAGE 71 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 71 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ Setting examples 
+  ・EF file selection 
+CLA 
+INS 
+P1 
+P2 
+Lc 
+Data 
+0x00 
+0xA4 
+0x02 
+0x0C 
+0x02 
+0xXXXX 
+In case of the P1,P2=x020C setting, any value of Data(EF-ID) is settable. 
+ 
+CLA 
+INS 
+P1 
+P2 
+Lc 
+Data 
+0x00 
+0xA4 
+0x02 
+0x0C 
+0x02 
+0xXXXX 
+  In case of the P1,P2=0x000C setting, please set Data(EF-ID) any place other than 0xE103 and 0x0103. 
+ 
+  ・NDEF tag application selection 
+CLA 
+INS 
+P1 
+P2 
+Lc 
+Data 
+Le 
+0x00 
+0xA4 
+0x04 
+0x00 
+0x07 
+0xD2760000850101 
+0x00 
+    In case of the NDEF tag application choice, only the value mentioned above is settable. 
+ 
+  ・CC file selection 
+CLA 
+INS 
+P1 
+P2 
+Lc 
+Data 
+0x00 
+0xA4 
+0x00 
+0x0C 
+0x02 
+0xE103 
+    In case of the CC file application choice, only the value mentioned above is settable. 
+ 
+  ・NDEF file selection 
+CLA 
+INS 
+P1 
+P2 
+Lc 
+Data 
+0x00 
+0xA4 
+0x00 
+0x0C 
+0x02 
+0x0103 
+    In case of the NDEF file application choice, only the value mentioned above is settable. 
+    ID(File ID) of the NDEF file in this RFID is 0x0103 fixation. 
+ 
+ 
+Response message 
+ Format 
+SW1 
+SW2 
+1 byte 
+1 byte 
+ 
+ Data field 
+Field 
+Output value 
+Remarks 
+SW1 
+See 4.3.8.7  Status Word.  
+ 
+SW2 
+See 4.3.8.7  Status Word.  
+ 
+ 
+ 
+
+========= PAGE 72 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 72 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+4.3.9.5  READ 
+ 
+Purpose 
+Reads the data of RFID from reader/writer. While in tunnel mode, reads the data of the host from 
+reader/writer. 
+ 
+ 
+Command message 
+ Format 
+CLA 
+INS 
+P1 
+P2 
+Le 
+1 byte 
+1 byte 
+1 byte 
+1 byte 
+1 byte 
+ 
+ Data field 
+Field 
+Setting 
+Remarks 
+CLA 
+0x00 
+Responds with an error, 
+except 0x00. 
+INS 
+0xB0 
+ 
+P1 
+Sets the start address to be read. 
+ See 4.3.8.5  Address. 
+ 
+P2 
+Sets the start address to be read. 
+ See 4.3.8.5  Address 
+ 
+Le 
+Sets the byte length of data to be read. 
+ Setting range: 0x01(1) to 0xFB(251) 
+ Sets to 16×n (n: integer) for encrypted communication. 
+Maximum value of n is 15 
+for encrypted 
+communication. 
+ 
+ 
+Response message 
+ Format 
+Data 
+SW1 
+SW2 
+1 to 251 bytes 
+1 byte 
+1 byte 
+ 
+ Data field 
+Field 
+Output value 
+Remarks 
+Data 
+Sets the data to be read. 
+ See 4.3.8.6  Data. 
+Omitted except when status 
+word ends normally. 
+SW1 
+See 4.3.8.7  Status Word. 
+ 
+SW2 
+See 4.3.8.7  Status Word. 
+ 
+ 
+
+========= PAGE 73 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 73 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+4.3.9.6  WRITE 
+ 
+Purpose 
+Writes a data to RFID from reader/writer. While in tunnel mode, writes a data to the host. 
+ 
+ 
+Command message 
+ Format 
+CLA 
+INS 
+P1 
+P2 
+Lc 
+Data 
+1 byte 
+1 byte 
+1 byte 
+1 byte 
+1 byte 
+1 to 248 bytes 
+ 
+ Data field 
+Field 
+Setting 
+Remarks 
+CLA 
+0x00 
+Responds with an error, 
+except 0x00. 
+INS 
+0xD6 
+ 
+P1 
+Sets the start address of data to be written. 
+ See 4.3.8.5  Address 
+ 
+P2 
+Sets the start address of data to be written. 
+ See 4.3.8.5  Address 
+ 
+Lc 
+Sets the byte length of the Data block. 
+ Setting range: 0x01(1) to 0xF8(248) 
+ Sets to 16×n (n: integer) for encrypted communication. 
+Maximum value of n is 15 
+for encrypted 
+communication. 
+Data 
+Sets the data to be written. 
+ See 4.3.8.6  Data.  
+ 
+ 
+ 
+Response message 
+ Format 
+SW1 
+SW2 
+1 byte 
+1 byte 
+ 
+ Data field 
+Field 
+Output value 
+Remarks 
+SW1 
+See 4.3.8.7  Status Word. 
+ 
+SW2 
+See 4.3.8.7  Status Word. 
+ 
+ 
+ 
+
+========= PAGE 74 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 74 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+4.3.10  NDEF 
+This RFID is based on Type3 Tag and Type4B Tag of NFC Forum and supports data exchange of a NDEF format 
+This section explains Type4B Tag.  
+In addition, 4.2.7 NDEF explains Type3 Tag of NFC Forum. 
+Data exchange of NDEF can be performed by performing a predetermined setup to the user area of FeRAM. 
+Please refer to the applicable written standards of NFC Forum for the details of NDEF. 
+ 
+4.3.10.1  Memory Map 
+Fig 4-28 shows the memory map in NDEF format. 
+CC file is assigned to Block 24. 
+NDEF file is assigned to part of Block 0, and Blocks 1 to 23. 
+ 
+Block
+Address 0x0 0x1 0x2 0x3 0x4 0x5 0x6 0x7 0x8 0x9 0xA 0xB 0xC 0xD 0xE 0xF
+0
+0x0000
+1
+0x0010
+2
+0x0020
+3
+0x0030
+4
+0x0040
+5
+0x0050
+6
+0x0060
+7
+0x0070
+8
+0x0080
+9
+0x0090
+10
+0x00A0
+11
+0x00B0
+12
+0x00C0
+13
+0x00D0
+14
+0x00E0
+15
+0x00F0
+16
+0x0100
+17
+0x0110
+18
+0x0120
+19
+0x0130
+20
+0x0140
+21
+0x0150
+22
+0x0160
+23
+0x0170
+24
+0x0180
+25
+0x0190
+26
+0x01A0
+27
+0x01B0
+28
+0x01C0
+29
+0x01D0
+30
+0x01E0
+31
+0x01F0
+System Area
+NDEF Data Area (Message)
+CC File Area
+User Area
+User Area
+ 
+Fig 4-29 Memory map when NDEF is used 
+ 
+ 
+
+========= PAGE 75 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 75 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+4.3.10.2  NDEF Tag Application Selection 
+This selection requires a SELECT command. 
+ 
+4.3.10.3  CC File 
+This selection requires a SELECT command. 
+While in CC file selection, CC file starts from the beginning of Block 24 (physical address 0x0180). 
+See Table 4-24 shows a setting example of the CC file. 
+ 
+Table 4-26 Example of the CC file 
+Select 
+address 
+Physical 
+address 
+Size 
+Value 
+Contents 
+Remarks 
+0x0000 
+～0x0001 
+0x0180 
+～0x0181 
+2Byte 
+0x000F 
+CCLEN 
+ (Length of CC file) 
+ 
+0x0002 
+0x0182 
+1Byte 
+0x20 
+Mapping Version 
+Please set 0x20 in this 
+RFID. 
+0x0003 
+～0x0004 
+0x0183 
+～0x0184 
+2Byte 
+0x003B 
+MLe (The biggest 
+response length of the 
+Read command） 
+ 
+0x0005 
+～0x0006 
+0x0185 
+～0x0186 
+2Byte 
+0x0034 
+Mlc  (The biggest 
+response length of the 
+Write command） 
+ 
+0x0007 
+0x0187 
+1Byte 
+0x04 
+T field of the 
+NDEF File Control TLV 
+ 
+0x0008 
+0x0188 
+1Byte 
+0x06 
+L field of the 
+NDEF File Control TLV 
+ 
+0x0009 
+～0x000A 
+0x0189 
+～0x018A 
+6Byte 
+0x0103 
+V field of the 
+NDEF File Control TLV 
+File ID  
+Please set 0x 0103 in this 
+RFID.  
+0x000B 
+～0x000C 
+0x018B 
+～0x018C 
+0x0032 
+The biggest NDEF size 
+0x000D 
+0x018D 
+0x00 
+Read access condition 
+0x000E 
+0x018E 
+0x00 
+Write access condition 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+========= PAGE 76 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 76 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+4.3.10.4  NDEF File 
+This selection requires a SELECT command. 
+Table 4-25 shows empty NDEF file as a setting example of the NDEF file. 
+ 
+ 
+Table 4-25 etting example of the NDEF file(when NDEF file is empty) 
+Select 
+address 
+Physical 
+address 
+Size 
+Value 
+Contents 
+Remarks 
+0x0000 
+～0x0001 
+0x000C 
+～0x000D 
+2Byte 
+0x0003 
+NLEN (NDEF 
+message length) 
+The size of NLEN is 2Byte 
+fixation. 
+0x0002 
+～0x0004 
+0x0010 
+～0x0012 
+3Byte 
+0xD00000 
+NDEF message 
+The value shows an empty 
+message 
+ 
+The access to the NDEF file in the NDEF file choice state, I link NLEN and NDEF message and, only other 
+than only NLEN or NDEF message, can access it by 1 command. 
+In the NDEF file choice state, physical address 0x000C of Block0 the NDEF file top, the top (physical address 
+0x0010) becomes address 0x0002 of the NDEF file.) of Block1. In other words, the NLEN field of the NDEF 
+file is placed in 0x000C - 0x000D of the physical address, and the NDEF message field is placed by 0x0010 of 
+the physical address. 
+
+========= PAGE 77 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 77 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ 
+ 
+ 
+ 
+Chapter 5  Serial Communication Mode 
+5 
+ 
+ 
+ 
+ 
+ 
+
+========= PAGE 78 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 78 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+5.1  Serial Communication Mode Sequence 
+This RFID provides a serial communication function via I2C interface. 
+The host is the master and the RFID operates as the slave. 
+Figure 5-1 illustrates the sequence in serial communication mode. Each sequence is described below. 
+SNo.1 (slave reception): The host sends a serial commuinication mode command to the RFID. 
+SNo.2 (slave transmission): Once the RFID receives the serial communication mode command described in 
+SNo.1, it processes the command and then sends the result to the host as the response to the 
+command. 
+ 
+It is also possible to read the status of the RFID by omitting SNo.1 and performing only SNo.2. 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 5-1  Serial Communication Mode Sequence 
+R/W
+Host
+RFID
+Serial communication mode command
+SNo.1
+Response to serial communication mode command
+SNo.2
+
+========= PAGE 79 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 79 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+5.2  I2C 
+This section describes the I2C specification. 
+5.2.1  Communication Specifications 
+Table 5-1 shows the I2C specification of this RFID. 
+Table 5-1 I2C Communication Specification 
+Data transfer method I2C-format, Slave communication 
+Data rate 
+20 kHz to 100 kHz 
+Character 
+transmission  
+ Slave address (7 bits) 
+ Data (8 bits) 
+5.2.2  Frame Format 
+Figure 5-2 illustrates the I2C frame format, Table 5-2 defines the field. 
+ 
+  
+ 
+ 
+Figure 5-2 Frame Format 
+ 
+Table 5-2 Field Definition 
+Field name 
+Byte length  
+Definition 
+Address field 
+1 
+Slave address (7 bits) and data direction bit (R/W) 
+Data field 
+n 
+Command message or Response message 
+ 
+When the slave address is identified and the data direction bit is 0, a command is input from the host as slave 
+reception. 
+When the slave address is identified and the data direction bit is 1, a response is sent to the host as slave 
+transmission. 
+0 to 255 bytes
+Data field
+1 byte
+Address field
+0 to 255 bytes
+Data field
+1 byte
+Address field
+
+========= PAGE 80 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 80 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+5.2.3  Specifying Slave Address 
+The slave address of I2C is specified by I2C_SLV in the system area HW1 of FeRAM. 
+For more information, see Section  3.3  ■HW1 (2 bytes) in Section System Area. 
+5.2.4  Status 
+Table 5-3 and Table 5-4 show the field format and the meaning of of the RFID's response status, respectively. 
+ 
+Table 5-3 Field Format of RFID Response Status 
+ Field name 
+ Bit position 
+ Description 
+ (Reserved) 
+Bits 7-6 
+ Unused (Always reads 0.) 
+ RFCMD_IRQ 
+Bit 5 
+ Indicates whether an RF command interrupt is generated. 
+ 0: Not generated  
+ 1: Generated 
+ RFDET_IRQ 
+Bit 4 
+ Indicates whether an magnetic-field detect interrupt is generated. 
+ 0: Not generated  
+ 1: Generated 
+ CMD_RES 
+Bits 3-0 
+Indicates the results of command processing. 
+ (See Table 5-4 RFID Response Status (CMD_RES Field).) 
+ 
+ 
+Table 5-4 RFID Response Status (CMD_RES Field) 
+ Value 
+ Meaning 
+Description 
+ 0x0 
+No information 
+Response has been sent, indicating no information 
+ 0x1 
+Tunnel Read  Request (*1) 
+ The tunneling mode Read detection by the RF 
+communication  
+ 0x3 
+Tunnel Read  Request (*1) 
+The tunneling mode Write detection by the RF 
+communication 
+ 0x5 
+Normal end 
+ 
+Terminated normally 
+ 0x8 
+Unimplemented command error 
+Tunnel mode error 
+ The command was an unimplemented one. 
+ QUERY and ANSWER commands were issued in 
+IDLE state. 
+ 0xA 
+Command parameter error 
+(*2) 
+ Address was specified outside FeRAM. 
+ Data length was out of the specification. 
+ 0xB 
+Self-diagnosis error 
+Write access to FeRAM-Read-Only area (ROSI 
+setting) 
+ 0x7 
+BUSY 
+ RFID command processing in progress 
+ 
+(*1) For more information about these errors, see the Administrator's Manual. 
+(*2) Please refer to the manager manual for this error. 
+ 
+
+========= PAGE 81 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 81 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+5.2.5  Command 
+Table 5-5 lists the serial communication mode commands supported by this RFID. 
+Subsequent sections describe each command in detail. 
+Table 5-5 Command List in Serial Communication Mode 
+Name 
+Code 
+Description 
+READ 
+0x08 
+Reads an RFID data from the host. 
+WRITE 
+0x18 
+Writes a data to RFID from the host. 
+RREG 
+0x68 
+Reads an RFID control data and interrupt source from the host. 
+WREG 
+0x78 
+Writes a control data to RFID from the host. 
+STATUS 
+- 
+Reads an RFID staus information from the host. 
+ 
+
+========= PAGE 82 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 82 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+5.2.5.1  READ 
+ 
+Purpose 
+Reads an RFID data from the host. 
+ 
+ 
+Command message 
+ Format 
+Command code 
+Start address 
+Data length n 
+1 byte 
+2 bytes 
+1 byte 
+ 
+ Data field 
+Field 
+Setting 
+Remarks 
+Command code 
+0x08 
+ 
+Start address 
+Address at which to start reads 
+ Byte units 
+ Big endian format 
+Data length n 
+Size of data to be read 
+ Setting range: 0x01(1) to 0xFE(254) 
+Byte units 
+ 
+ 
+Response message 
+ Format 
+Status 
+Data 
+1 byte 
+1 to 254 bytes 
+ 
+ Data field 
+Field 
+Output value 
+Remarks 
+Status 
+See 5.2.4  Status. 
+ 
+Data 
+Data to be read 
+See Note below.  
+ 
+Note: If the status of a response message from RFID is not normal (error or busy), data will be omitted. 
+
+========= PAGE 83 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 83 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+5.2.5.2  WRITE 
+ 
+Purpose 
+Writes a data to RFID from the host. 
+ 
+ 
+Command message 
+ Format 
+Command code 
+Start address 
+Data length n 
+Data 
+1 byte 
+2 bytes 
+1 byte 
+1 to 251 bytes 
+ 
+ Data field 
+Field 
+Setting 
+Remarks 
+Command code 
+0x18 
+ 
+Start address 
+Address at which to start writes 
+ Byte units  
+ Big endian format  
+Data length n 
+Size of data to be written 
+ Setting range: 0x01(1) to 0xFB(251) 
+Byte units  
+Data 
+Data to be written 
+ 
+ 
+ 
+Response message 
+ Format 
+Status 
+1 byte 
+ 
+ Data field 
+Field 
+Output value 
+Remarks 
+Status 
+See 5.2.4  Status. 
+ 
+ 
+
+========= PAGE 84 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 84 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+5.2.5.3  RREG 
+ 
+Purpose 
+Reads an RFID control data and interrupt source from the host. 
+ 
+ 
+Command message 
+ Format 
+Command code 
+1 byte 
+ 
+ Data field 
+Field 
+Setting 
+Remarks 
+Command code 
+0x68 
+ 
+ 
+ 
+Response message 
+ Format 
+Status 
+Data 
+1 byte 
+1 byte 
+ 
+ Data field 
+Field 
+Output value 
+Remarks 
+Status 
+See 5.2.4  Status. 
+ 
+Data 
+Bit 7 
+Reserved (Indefinite) 
+The output of this bit takes either 
+"0" or "1". 
+ 
+Bit 6 
+Masks RF communication detect 
+interrupt. 
+Set by the WREG command. 
+ 
+Bit 5 
+Masks magnet-field detect interrupt. 
+Set by the WREG command. 
+ 
+Bit 4 
+Stops RF communication. 
+Set by the WREG command. 
+ 
+Bit 3 
+Dectects magnetic field. 
+0: Not detected (with no RF carrier) 
+1: Detected (with RF carrier) 
+This bit is valid when 
+magnetic-field detect interrupt 
+is enabled with the system 
+area HW2 parameter's 
+IRQSEL specified. 
+ 
+Bits 2-1 Reserved (Fixed at 0) 
+ 
+ 
+Bit 0 
+BCC error 
+0: None 
+1: BCC error 
+Reads the BCC check results 
+for values of the system area. 
+For BCC check, see the 
+Administrator's Manual. 
+
+========= PAGE 85 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 85 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+5.2.5.4  WREG 
+ 
+Purpose 
+Writes a data to RFID from the host. 
+ 
+ 
+Command message 
+ Format 
+Command code 
+Data 
+1 byte 
+1 byte 
+ 
+ Data field 
+Field 
+Setting 
+Remarks 
+Command code 
+0x78 
+ 
+Data 
+Bit 7 
+Reserved (set to 0.) 
+ 
+ 
+Bit 6 
+Masks RF communication detect 
+interrupt. 
+0: Disable (default) 
+1: Enable  
+Setting to 1 masks RF 
+communication detect 
+interrupt (including write detect 
+interrupts), regardless of the 
+system area HW2 parameter's 
+IRQSEL setting. 
+ 
+Bit 5 
+Masks magnet-field detect interrupt. 
+0: Disable (default) 
+1: Enable 
+Setting to 1 masks 
+magnet-field detect interrupt, 
+regardless of the system area 
+HW2 parameter's IRQSEL 
+setting. 
+ 
+Bit 4 
+Stops RF communication. 
+0: Disable (default) 
+1: Enable 
+Setting to 1 disables RF 
+communication temporarily. 
+ 
+Bits 3-1 
+Reserved (Set to 0.) 
+ 
+ 
+Bit 0 
+Requests a reset. 
+0: Normal operation (default) 
+1: Enable  
+Self-reset the LSI after 
+sending a response to WREG 
+command 
+ 
+ 
+Response message 
+ Format 
+Status 
+1 byte 
+ 
+ Data field 
+Field 
+Output value 
+Remarks 
+Status 
+See 5.2.4  Status. 
+ 
+ 
+
+========= PAGE 86 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 86 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+5.2.5.5  STATUS 
+ 
+Purpose 
+Reads an RFID status information from the host. 
+ 
+ 
+Command message 
+The STATUS command has no command message. 
+A slave transmission request serves as a STATUS command. 
+ 
+ 
+Response message 
+ Format 
+Status 
+1 byte 
+ 
+ Data field 
+Field 
+Output value 
+Remarks 
+Status 
+See 5.2.4  Status. 
+ 
+ 
+Note: The response message to the STATUS command immediately after RREG response is 0xXb  
+(self-diagnosis error) or 0xX7 (BUSY) in under RF processing 
+4 bits (CMD_RES field) of low ranks of the response message to the STATUS command immediately 
+after RREG response should be disregarded. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+========= PAGE 87 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 87 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ 
+ 
+5.2.6  Time Chart 
+Figure 5-3 shows the time chart when I2C is used. 
+t0: The host inputs a start condition and then inputs a slave address and R/W bit (L). The RFID returns an 
+ACK if the slave address is identified. Subsequently, if the host inputs a command data, the RFID returns an 
+ACK in byte units. The host inputs a stop condition last. Pull up the NIRQ pin to high. 
+t1: The host stops the clock input to the SCK pin after inputting command data. The RFID executes command 
+processing internally. 
+t2: Once the internal command processing is completed, the RFID outputs low to the NIRQ pin to send a 
+response. 
+t3: The host detects the low output of the NIRQ pin and inputs a start condition, and then inputs a slave 
+address and R/W bit (H). The RFID returns an ACK and stops the low output of the NIRQ pin if the slave 
+address is identified. Subsequently, if the host inputs a clock to the SCK pin, the RFID returns an ACK in byte 
+units. The host inputs an ACK in byte units, and inputs an NACK and stop condition last. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 5-3 Time Chart 
+ 
+command
+NIRQ
+SCL
+SDA
+Response
+IRQ generated by 
+RFID
+(Command processing terminated)
+t0
+t1
+t2
+t3
+Address
+Address
+
+========= PAGE 88 =========
+
+========= PAGE 89 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 89 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ 
+ 
+ 
+ 
+ 
+Chapter 6  Interrupt Generation Function 
+6 
+ 
+ 
+ 
+ 
+
+========= PAGE 90 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 90 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+6.1  Interrupt Source 
+This RFID provides an NIRQ pin for interrupt output. A low output to the pin enables IRQ notification to notify 
+the host of generation of an interrupt. 
+Interrupt sources are described below. 
+ 
+・Serial communication interrupt 
+An IRQ that is caused by serial communication and issued when processing of the command input from the 
+host is completed. 
+Serial communication interrupt cannot be masked. 
+ 
+・RF communication detect interrupt 
+An IRQ that is caused by RF communication and issued either when RF response before transmission or 
+when a write to FeRAM with the RF command is completed. 
+The system area HW2 parameter's IRQSEL selects whether interrupt is generated and the interrupt source. 
+Bit 2 selects whether interrupt is generated and bit 1 selects the interrupt source. 
+In addition, even when interrupt generation is enabled, the WREG command for serial command can mask 
+the IRQ. 
+ 
+・Magnetic-field detect interrupt 
+An IRQ that is caused by RF magnetic-field detection and issued when an RF magnetic field by 
+reader/writer is detected. 
+Bit 0 of the system area HW2 parameter's IRQSEL selects whether interrupt is generated. 
+In addition, even when interrupt generation is enabled, the WREG command for serial command can mask 
+the IRQ. 
+ 
+While the contact power supply VDDEX is not applied, an IRQ is issued by starting a power supply due to RF 
+magnetic field. However, when RF magnetic field disappears, power supply will be stopped and low output of 
+the NIRQ pin will be stopped. 
+ 
+Any of the IRQs described above are canceled when the slave address is identified by a slave transmission 
+request from the host, and low output of the NIRQ pin will be stopped. 
+ 
+ 
+Note: If Ithe internal voltage VDDD has not reached the reference voltage, an internal reset occurs. 
+   Internal voltage can be generated from the higher voltage either the VDDA and VDDEX. 
+   Therefore, it is possible to set to 1.84V or higher VDDEX at least, generation of the internal reset  
+will be avoided. 
+ 
+ 
+ 
+ 
+ 
+ 
+
+========= PAGE 91 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 91 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Chapter 7  Tunnel Mode 
+7 
+ 
+
+========= PAGE 92 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 92 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+7.1  Tunnel Mode Sequence 
+This section describes the sequence of tunnel mode, which is shown in Figure 7-1. 
+SNo.1: Reader/writer sends a tunnel mode command to RFID. 
+SNo.2: RFID receives the tunnel mode command and issues an interrupt request (IRQ) to the host. 
+SNo.3: If VDDEX is not applied, the host applies VDDEX. 
+SNo.4: The host sends a QUERY command (inquiry) to RFID. 
+SNo.5: RFID sends a response to the QUERY command to the host. The response includes data of the tunnel 
+mode command in step SNo.1. 
+SNo.6: The host sends an ANSWER command (notification of the result) to RFID. The command includes 
+data to be sent to reader/writer. 
+SNo.7: RFID receives the ANSWER command and sends a response (processing result; Normal end or 
+Error) to the command to the host. 
+SNo.8: After sending the response to the ANSWER command in step SNo.7, RFID sends the data of the 
+ANSWER command to reader/writer as a response to the tunnel mode command. 
+ 
+For more information about tunnel mode operation, see Section 8.2  State Transition Diagram in Operation 
+Mode, Section 8.3  Flow Chart in Tunnel Mode, or other related sections. 
+ 
+   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 7-1  Tunnel Mode Sequence 
+ 
+R/W
+Host
+RFID
+Tunnel mode command
+SNo.1
+IRQ notification
+QUERY command
+Response to QUERY command
+ANSWER command
+Response to ANSWER command
+Response to tunnel mode command
+SNo.2
+SNo.4
+SNo.5
+SNo.6
+SNo.7
+SNo.8
+VDDEX applied
+SNo.3
+
+========= PAGE 93 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 93 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+7.2  Communication between Reader/Writer and RFID 
+This section describes the communication between Reader/Writer and RFID in tunnel mode, based on 
+JISX6319-4 and ISO/IEC14443 TypeB. 
+ 
+7.2.1  Using JISX6319-4 
+READ and WRITE commands, same as those of RF communication mode, are used. 
+Use the given bits of block number to set the tunnel mode commands. For more information, see Section 
+4.2.5.6  SectionBlock. 
+For information on how to set block list and block data, see Section 4.2.5.7  Block List.  
+ 
+7.2.2  Using ISO/IEC14443 
+READ and WRITE commands, same as those of RF communication mode, are used. 
+Use the given bits of address (P1, P2) to set the tunnel mode commands. For more information, see Section 
+4.3.8.5  Address. 
+For information on how to set data, see Section 4.3.8.6  Data. 
+ 
+ 
+
+========= PAGE 94 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 94 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+7.3  Communication between Host and RFID 
+This section describes the I2C communication between the host and RFID in tunnel mode. 
+ 
+7.3.1.1  Communication Specification 
+The specification for I2C communication is the same as that for serial communication mode. See Section 5.2  
+I2C. 
+QUERY and ANSWER commands are provided only for tunnel mode. For more information about commands, 
+see Section 7.4  Command. 
+ 
+7.3.1.2  IRQ Notification 
+Once this RFID receives a tunnel mode command from reader/writer, it sends an IRQ to the host. 
+IRQ is output from the NIRQ pin. The NIRQ pin also outputs IRQs in other modes than tunnel mode by setting 
+the system area HW2 parameter's IRQSEL. For more information about IRQSEL, see Section  3.3  ■HW1 
+(2 bytes) in Section System Area.  
+When the host receives an IRQ and detects that the supply voltage VDDEX is not applied, it applies VDDEX 
+and sends a QUERY command to the RFID. The RFID can receive I2C commands at the falling edge of 
+NIRQ. 
+In addition, if the RFID does not receive a QUERY command from the host even when the maximum wait time 
+for QUERY command specified in the system area QWT elapses after the NIRQ pin outputs low, it detects a 
+timeout. For more information, see Section  8.3  Flow Chart in Tunnel Mode. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+========= PAGE 95 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 95 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+7.3.2  Response to QUERY Command 
+When a response to QUERY command in tunnel mode is sent, the RFID reports the content of the command 
+from reader/writer to the host. 
+The address setting for response to QUERY is shown in Figure 7-2. 
+Bit 7 of upper byte is fixed to 0 and bit 6 is fixed to 1. Setting bit 6 to 1 indicates the RFID is in tunnel mode. 
+Bits 5 and 4 indicate mode. 
+Table 7-1 shows the meaning of mode of upper byte bits 5 and 4. These bits indicate whether the 
+communication in tunnel mode is plaintext (unencrypted) or encrypted (private or family key). 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 7-2 Address Setting for Response to QUERY Command 
+ 
+Table 7-1 QUERY Response Mode 
+Upper byte  
+Meaning 
+Bit 5 
+Bit 4 
+0 
+0 
+Plaintext (unencrypted) communication 
+1 
+0 
+Encrypted communication (private key) 
+1 
+1 
+Encrypted communication (family key) 
+0 
+1 
+Reserved 
+ 
+ 
+Note: Encrypted communication in tunnel mode should be controlled by the host (e.g., plaintext 
+communication is enabled or disabled) using the information of upper byte bits 5 and 4 of start address 
+for the response to QUERY.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Mode
+Start address designation
+1
+0
+Output
+Bit
+7
+Bit
+6
+Bit
+5
+Bit
+4
+Bit
+3
+Bit
+2
+Bit
+1
+Bit
+0
+Bit
+7
+Bit
+6
+Bit
+5
+Bit
+4
+Bit
+3
+Bit
+2
+Bit
+1
+Bit
+0
+Mode
+Start address designation
+1
+0
+Output
+Bit
+7
+Bit
+6
+Bit
+5
+Bit
+4
+Bit
+3
+Bit
+2
+Bit
+1
+Bit
+0
+Bit
+7
+Bit
+6
+Bit
+5
+Bit
+4
+Bit
+3
+Bit
+2
+Bit
+1
+Bit
+0
+msb
+lsb msb
+lsb
+Start address (2 bytes)
+Upper byte
+Lower byte
+
+========= PAGE 96 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 96 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+7.3.3  Timeout 
+In tunnel mode command processing for communication between host and RFID, a timeout processing is 
+applied if the host sends no response to QUERY and ANSWER commands. 
+Figure 7-3 shows the wait time for commands in tunnel mode. 
+Subsequent section describes the wait time for QUERY and ANSWER commands. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 7-3 Wait Time for Commands 
+ 
+ 
+Note: In timeout measurement processing for I2C, the start of command is detected at the start of ACK 
+transmission to a slave address input, not start condition. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Tunnel mode 
+command
+RF-I/F
+Slave 
+reception
+NIRQ
+Slave transmission
+I2C (RFID side)
+QUERY
+command
+Response to 
+QUERY
+ANSWER
+command
+Response to
+ANSWER
+Response to 
+tunnel mode
+Wait time for QUERY command
+Wait time for ANSWER command
+
+========= PAGE 97 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 97 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+7.3.3.1  Wait Time for QUERY Command 
+The time sequence for timeout of waiting for QUERY command (no response from the host) is shown in 
+Figure 7-4 . The measurement of timeout starts when the IRQ state of NIRQ pin changes to low from high. 
+A timeout time is QWT setting time. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 7-4 Timeout of Waiting for QUERY Command (No Response from the Host) 
+ 
+ 
+Next, the time sequence when the RFID receives a command other than QUERY from the host while it waits 
+for a QUERY command is shown in Figure 7-5 .Note that the timeout measurement time does not include the 
+time from serial communication command issue to the response to the command. 
+For more information, see Section 8.3  Flow Chart in Tunnel Mode. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 7-5 Timeout of Waiting for QUERY Command (Command Other Than QUERY) 
+ 
+ 
+ 
+ 
+Tunnel mode 
+command
+RF-I/F
+Slave reception
+NIRQ
+Slave transmission
+I2C (RFID side)
+Response to 
+tunnel mode
+■No response from the host
+Response with an error
+(No response from the host)
+QWT setting time
+Tunnel mode 
+command
+RF-I/F
+Slave reception
+NIRQ
+Slave transmission
+I2C (RFID side)
+■Command other than QUERY
+Command other 
+than QUERY
+Response with 
+BUSY
+Response to 
+tunnel mode
+Response with an error
+(No response from the host)
+Less than QWT setting time
+
+========= PAGE 98 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 98 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+7.3.3.2  Wait Time for ANSWER Command 
+The time sequence when the RFID receives no response from the host while it waits for an ANSWER 
+command is shown in Figure 7-6 . The measurement of timeout starts immediately after the first response (to 
+normal QUERY command) is sent. 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 7-6 Timeout of Waiting for ANSWER Command (No Response from the Host) 
+ 
+ 
+Next, the time sequence when the RFID receives a command other than ANSWER from the host while it waits 
+for an ANSWER command is shown in Figure 7-7 . Note that the timeout measurement time does not include 
+the time from serial communication command issue to the response to the command. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 7-7 Timeout of Waiting for ANSWER Command (Command Other Than ANSWER) 
+ 
+ 
+Note: After the set timeout time has elapsed and a timeout has occurred, if a command is input from the 
+HOST at the timing when the internal state of the LSI changes, subsequent commands may not be 
+accepted. Speceifically, it occuers when the QUERY and ANSWER commands time out. 
+If the command is no longer accepted, stop the supply of the contact power supply VDDEX and stop 
+the RF communication to reset it. 
+ 
+Tunnel mode 
+command
+RF-I/F
+Slave reception
+NIRQ
+Slave transmission
+I2C (RFID side)
+■No response from the host
+AWT setting time
+QUERY
+command
+Response to 
+QUERY
+Tunnel mode 
+command
+Response with an error
+(No response from the host)
+Tunnel mode 
+command
+RF-I/F
+Slave reception
+NIRQ
+Slave 
+transmission
+I2C (RFID side)
+■Command other than ANSWER
+QUERY
+command
+Response to 
+QUERY
+Command other 
+than ANSWER
+Response with 
+BUSY (*2)
+(*2) When a QUERY command is sent, 
+a response to QUERY is re-sent.
+Tunnel mode 
+command
+Response with an error
+(No response from 
+the host)
+t0
+t1
+t2
+Note (*1):
+The timeout measurement time does 
+not include the time from serial 
+communication command issue to 
+the response to the command.
+(t0 + t2) > AWT setting time (*1)
+IRQSEL=0
+
+========= PAGE 99 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 99 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+7.4  Command 
+The tunnel mode commands supported by this RFID fall into two types: 
+RF-interface-side commands between reader/writer and RFID and serial-interface-side commands between 
+the host and RFID. 
+These commands are shown in Table 7-2 and Table 7-3. 
+Subsequent sections describe each command in detail. 
+ 
+Table 7-2 RF Interface Command List in Tunnel Mode 
+Name 
+Code 
+Description 
+JISX6319-4 
+ISO/IEC 
+14443TypeB 
+READ 
+0x06 
+0xB0 
+Reads data of the host from reader/writer. 
+(Command code is the same as that for RF 
+communication mode) 
+WRITE 
+0x08 
+0xD6 
+Writes data to the host from reader/writer. 
+(Command code is the same as that for RF 
+communication mode) 
+ 
+ 
+Table 7-3 Serial-Communication-Side Commands List in Tunnel Mode 
+Name 
+Code 
+Descripion 
+QUERY 
+0x28 
+The host inquires about the content of tunnel mode 
+command to RFID. 
+ANSWER (normal 
+end) 
+0xF8 
+The host reports the processing result (normal end) of 
+tunnel mode command to RFID. 
+ANSWER (error) 
+0xE8 
+The host reports the processing result (error) of tunnel 
+mode command to RFID. 
+
+========= PAGE 100 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 100 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+7.4.1  Read in Tunnel Mode 
+ 
+Purpose 
+Reads data of the host from reader/writer via RFID. 
+ 
+1. 
+Read Command in Tunnel Mode (Reader/Writer to RFID) 
+ 
+JIX6319-4 
+ Format 
+Command code 
+PICC 
+identifier 
+No. of service file 
+identifiers (k) 
+List of service file 
+identifiers 
+No. of blocks 
+(m) 
+Block list 
+1 byte 
+8 bytes 
+1 byte 
+2×k byte 
+1 byte 
+2×m or 3×m 
+bytes 
+ 
+ Data field 
+Field 
+Setting 
+Remarks 
+Command code 
+0x06 
+ 
+PICC identifier 
+PICC identifier acquired by REQ command 
+described in Section 4.2.6.1  REQ. 
+ 
+No. of service file 
+identifiers (k) 
+Number of service files 
+Setting range: 0x01(1) to 0x0F(15) 
+When the range other than the 
+range on the left column is set, 
+the RFID responds with an 
+error. 
+List of service file 
+identifiers 
+Don't care (Setting example: 0x0900) 
+When specifying multiple 
+services, the RFID responds 
+with an error if all service files 
+are not set to the same value.  
+No. of blocks (m) 
+Number of blocks specified in block list 
+Setting range: 
+ Plaintext (unencrypted) communication in RF 
+communication mode: 0x01(1) to 0x0F(15) 
+ Other communication: 0x01(1) to 0x0F(15) 
+When the range other than the 
+range on the left column is set, 
+the RFID responds with an 
+error.  
+Block list 
+Block list of data to be read 
+For information about how to set, see the 
+following: 
+ See 4.2.5.6  Block. 
+ See 4.2.5.7  Block List. 
+ 
+ 
+ 
+ISO/IEC14443 TypeB 
+ Format 
+CLA 
+INS 
+P1 
+P2 
+Le 
+1 byte 
+1 byte 
+1 byte 
+1 byte 
+1 byte 
+ 
+ 
+ 
+ 
+ 
+
+========= PAGE 101 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 101 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ Data field 
+Field 
+Setting 
+Remarks 
+CLA 
+0x00 
+Responds with an error, 
+except 0x00. 
+INS 
+0xB0 
+ 
+P1 
+Start address of data to be read 
+ See 4.3.8.5  Address.  
+ 
+P2 
+Start address of data to be read 
+ See 4.3.8.5  Address. 
+ 
+Le 
+Byte length of data to be read 
+ Setting range: 0x01(1) to 0xFB(251) 
+ Set to 16×n (n: integer) for encrypted communication. 
+Maximum value of n is 15 
+for encrypted 
+communication 
+ 
+ 
+2. 
+QUERY Command (Host to RFID) 
+ Format 
+Command code 
+1 byte 
+ 
+ Data field 
+Field 
+Setting 
+Remarks 
+Command code 
+0x28 
+ 
+ 
+ 
+3. 
+QUERY Response (RFID to Host) 
+ Format 
+Response code 
+Start address 
+Data length n 
+1 byte 
+2 bytes 
+1 byte 
+ 
+ Data field 
+Field 
+Setting 
+Remarks 
+Response code 
+ See 5.2.4  Status. 
+ 
+Start address 
+Address at which to start reads 
+ Byte units 
+ Big endian format 
+Data length n 
+Size of data to be read 
+Byte units 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+4. 
+ANSWER Command (Host to RFID) 
+
+========= PAGE 102 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 102 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ Format 
+Command code 
+Data 
+1 byte 
+n bytes 
+ 
+ Data field 
+Field 
+Output value 
+Remarks 
+Command code 
+0xF8: Normal end 
+0xE8: Error 
+ 
+Data 
+Data of the range specified by the response to 
+the QUERY command 
+See Note below. 
+ 
+ 
+Note: If the status of the ANSWER command is "error," omit the data. 
+ 
+ 
+5. 
+ANSWER Response (RFID to Host) 
+ Format 
+Status 
+1 byte 
+ 
+ Data field 
+Field 
+Output value 
+Remarks 
+Status 
+See 5.2.4  Status. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+6. 
+Read Response in Tunnel Mode (RFID to Reader/Writer) 
+
+========= PAGE 103 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 103 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ 
+JIX6319-4 
+ Format 
+Response code 
+PICC identifier Status flag 1 Status flag 2 No. of blocks 
+(m) 
+Block data 
+1 byte 
+8 bytes 
+1 byte 
+1 byte 
+1 byte 
+16×m bytes 
+ 
+ Data field 
+Field 
+Ourput value 
+Remarks 
+Response code 
+0x07 
+ 
+PICC identifier 
+See 4.2.5.2  PICC (Proximity IC Card) Identifier.  
+Status flag 1 
+See 4.2.5.8  Status Flag. 
+ 
+Status flag 2 
+See 4.2.5.8  Status Flag. 
+ 
+No. of blocks (m) 
+Number of blocks specified by the tunnel mode 
+read command 
+Omitted when the status is not 
+"Normal end" 
+Block data 
+Data specified by the ANSWER command 
+ See 4.2.5.7  Block List. 
+Omitted when the status is not 
+"Normal end" 
+ 
+ 
+ISO/IEC14443 TypeB 
+ 
+Format 
+Data 
+SW1 
+SW2 
+1 to 251 bytes 
+1 byte 
+1 byte 
+ 
+ 
+Data field 
+Field 
+Output value 
+Remarks 
+Data 
+Read data 
+See 4.3.8.6  Data. 
+Omitted when the status word 
+is not "Normal end" 
+SW1 
+ See 4.3.8.7  Status Word. 
+ 
+SW2 
+ See 4.3.8.7  Status Word. 
+ 
+ 
+ 
+
+========= PAGE 104 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 104 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+7.4.2  Write in Tunnel Mode 
+ 
+Purpose 
+Writes a data to the host from reader/writer, via RFID. 
+ 
+1. 
+Write Command in Tunnel Mode (Reader/Writer to RFID) 
+ 
+JIX6319-4 
+ Format 
+Command 
+code 
+PICC 
+identifier 
+No. of service file 
+identifiers (k) 
+List of service file 
+identifier 
+No. of 
+blocks 
+(m) 
+Block list 
+Block data 
+1 byte 
+8 bytes 
+1 byte 
+2×k bytes 
+1 byte 
+2×m or 3×m 
+bytes 
+16×m bytes 
+ 
+ Data field 
+Field 
+Setting 
+Remarks 
+Command code 
+0x08 
+ 
+PICC identifier 
+PICC identifier acquired by REQ command 
+described in Section 4.2.6.1  REQ. 
+ 
+No. of service file 
+identifiers (k) 
+Number of service files 
+Setting range: 0x01(1) to 0x0B(11) 
+When the range other than the 
+range on the left column is set, 
+the RFID responds with an 
+error.  
+List of service file 
+identifier 
+Don't care (Setting example: 0x0900) 
+When specifying multiple 
+services, the RFID responds 
+with an error if all service files 
+are not set to the same value. 
+No. of blocks (m) 
+Number of blocks specified by block list 
+Setting range: 
+ 1 to 8 service files: 0x01(1) to 0x0C(12) 
+ 9 to 11 service files: 0x01(1) to 0x0B(11) 
+When the range other than the 
+range on the left column is set, 
+the RFID responds with an 
+error. 
+Block list 
+Block list of data to be written 
+For information about how to set, see the 
+following: 
+ See 4.2.5.6  Block. 
+ See 4.2.5.7  Block List. 
+ 
+Block data 
+See 4.2.5.7  Block List. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+========= PAGE 105 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 105 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ 
+ISO/IEC14443 TypeB 
+ 
+Format 
+CLA 
+INS 
+P1 
+P2 
+Lc 
+Data 
+1 byte 
+1 byte 
+1 byte 
+1 byte 
+1 byte 
+1 to 248 bytes 
+ 
+ 
+Data field 
+Field 
+Setting 
+Remarks 
+CLA 
+0x00 
+Responds with an error, 
+except 0x00 
+INS 
+0xD6 
+ 
+P1 
+Start address of data to be written 
+ See 4.3.8.5  Address. 
+ 
+P2 
+Start address of data to be written 
+ See 4.3.8.5  Address. 
+ 
+Lc 
+Byte length of Data block 
+Setting range: 0x01(1) to 0xF8(248) 
+ Set to 16×n (n: integer) for encrypted communication. 
+Maximum n = 15 for 
+encrypted communication 
+Data 
+Write data 
+ See 4.3.8.6  Data. 
+ 
+ 
+ 
+2. 
+QUERY Command (Host to RFID) 
+ Format 
+Command code 
+1 byte 
+ 
+ Data field 
+Field 
+Setting 
+Remarks 
+Command code 
+0x28 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+3. 
+QUERY Response (RFID to Host) 
+
+========= PAGE 106 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 106 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ Format 
+Response code 
+Start address 
+Data length n 
+Data 
+1 byte 
+2 bytes 
+1 byte 
+n bytes 
+ 
+ Data field 
+Field 
+Setting 
+Remarks 
+Response code 
+See 5.2.4  Status. 
+ 
+Start address 
+Address at which to start writes 
+ Byte units 
+ Big endian format 
+Data length n 
+Size of data to be written 
+Byte units 
+Data 
+Data to be written to the host 
+ 
+ 
+ 
+4. 
+ANSWER Command (Host to RFID) 
+ Format 
+Command code 
+1 byte 
+ 
+ Data field 
+Field 
+Output value 
+Remarks 
+Command code 
+0xF8: Normal end 
+0xE8: Error 
+ 
+ 
+ 
+5. 
+ANSWER Response (RFID to Host) 
+ Format 
+Status 
+1 byte 
+ 
+ Data field 
+Field 
+Output value 
+Remarks 
+Status 
+See 5.2.4  Status. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+6. 
+Write Response in Tunnel Mode (RFID to Reader/Writer) 
+
+========= PAGE 107 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 107 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ 
+JIX6319-4 
+ Format 
+Response code 
+PICC identifier Status flag 1 Status flag 2 
+1 byte 
+8 bytes 
+1 byte 
+1 byte 
+ 
+ Data field 
+Field 
+Output value 
+Remarks 
+Response code 
+0x09 
+ 
+PICC identifier 
+See 4.2.5.2  PICC (Proximity IC Card) Identifier.  
+Status flag 1 
+See 4.2.5.8  Status Flag. 
+ 
+Status flag 2 
+See 4.2.5.8  Status Flag. 
+ 
+ 
+ 
+ISO/IEC14443 TypeB 
+ Format 
+SW1 
+SW2 
+1 byte 
+1 byte 
+ 
+ Data field 
+Field 
+Output value 
+Remarks 
+SW1 
+See 4.3.8.7  Status Word.  
+ 
+SW2 
+See 4.3.8.7  Status Word.  
+ 
+ 
+ 
+
+========= PAGE 108 =========
+
+========= PAGE 109 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 109 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Chapter 8  Annex 
+8 
+ 
+ 
+
+========= PAGE 110 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 110 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+8.1  Exclusive Control 
+While in operation mode, this RFID performs an exclusive control not to receive other commands. 
+Figure 8-1 shows the exclusive control period. The period is from the start of an operation mode command to 
+the end of the response to the command. In tunnel mode, the period is from the start of the tunnel mode 
+command from reader/writer (see SNo.1 in Figure 7-1 Tunnel Mode Sequence) to the end of the response to 
+the command from RFID to reader/writer (see SNo.8 in Figure 7-1 Tunnel Mode Sequence). 
+ 
+  
+ 
+ 
+ 
+Figure 8-1  Exclusive Control Period 
+ 
+Table 8-1 shows the operations in exclusive control period for each operation mode. Illegular cases that are 
+not generated normally are indicated with parenthesis. 
+The RFID responds with BUSY to a command from the host if the slave address is identified. It also responds 
+with BUSY for unimplemented command. 
+In tunnel mode, the RFID operation differs between before and after IRQ output following the reception of a 
+tunnel mode command from reader/writer. 
+Table 8-1 Operation during Exclusive Control (Irregular Case in Parenthesis) 
+Current operation 
+mode 
+Receive command  
+Operation to a receive command 
+Operation mode  
+From 
+RF communication 
+mode  
+(RF communication 
+mode) 
+(R/W) 
+(No response) 
+Serial communication 
+mode 
+Host 
+Responds with BUSY. 
+(Tunnel mode) 
+(R/W) 
+(No response) 
+Tunnel mode 
+(Host) 
+(Responds with BUSY.) 
+Serial communication 
+mode 
+RF communication 
+mode 
+R/W 
+No response 
+Serial communication 
+mode 
+Host 
+Responds with BUSY (at reception during 
+command processing). 
+Tunnel mode 
+R/W 
+No response 
+(Tunnel mode) 
+(Host) 
+(No response) 
+Tunnel mode 
+(RF communication 
+mode) 
+(R/W) 
+(No response) 
+Serial communication 
+mode 
+Host 
+Responds with BUSY. 
+(Tunnel mode) 
+(R/W) 
+(No response) 
+Tunnel mode 
+Host 
+See 7.1  Tunnel Mode Sequence. 
+ 
+Command
+Time
+Exclusive control period
+Response
+
+========= PAGE 111 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 111 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+Figure 8-2 shows the detail of exclusive control in tunnel mode. 
+When the RFID receives a command from the host during tunnel mode command reception and before IRQ 
+output, it sends a response with BUSY and then outputs IRQ. 
+When the RFID receives a command (other than QUERY) from the host after IRQ output, it responds with 
+BUSY to the command. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 8-2  Exclusive Control in Tunnel Mode 
+  
+Command
+Exclusive control period
+Response
+RF I/F
+Response with 
+BUSY
+Command
+Exclusive control period
+Response
+RF I/F
+NIRQ
+Slave transmission
+Slave reception
+Response with 
+BUSY
+Command other 
+than QUERY
+Command
+IRQ generated
+IRQ generated
+●Issuing a serial interface command before generating IRQ
+●Issuing a serial interface command after generating IRQ
+I2C (RFID side)
+NIRQ
+Slave transmission
+Slave reception
+I2C (RFID side)
+
+========= PAGE 112 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 112 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+8.2  State Transition Diagram in Operation Mode 
+Figure 8-3 shows the state transition diagram of this RFID in operation mode. 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 8-3  State Transition Diagram in Operation Mode 
+IDLE
+TUNNEL_MODE1(*)
+TUNNEL_MODE2(*)
+Tunnel mode command/
+IRQ transmission
+QUERY command/
+Response to QUERY
+ANSWER command/
+Response to ANSWER &
+Response to tunnel mode
+QUERY command/
+Response to QUERY
+Wait time [QWT] with no command from the host
+Commands from the host, except QUERY
+Tunnel mode response (error)
+No wait time [AWT] host command/
+Response to tunnel mode (error)
+Command from reader/writer/
+No response
+RF communication 
+mode command
+Serial communication 
+mode command
+Processing end/
+Response
+Command from the host 
+except QUERY and ANSWER/
+Response with BUSY
+Command from reader/writer/
+No response
+Command from the host/
+No response
+Command from reader/writer/
+No response
+Command from the host/
+Response with BUSY
+Command from reader/writer/
+No response
+QUERY or ANSWER command/
+Response with an error
+Serial interface unimplemented command/
+Response with an error
+SERIAL_COM_MODE(*)
+RF_COM_MODE
+Processing end/
+Response
+(*): VDDEX must be applied when using serial interface (Unnecessary when sending IRQ by RFID).
+
+========= PAGE 113 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 113 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+8.3  Flow Chart in Tunnel Mode  
+Figure 8-4 illustrates a flow chart for tunnel mode. 
+  
+ 
+ 
+ 
+Figure 8-4  Flow Chart in Tunnel Mode 
+
+========= PAGE 114 =========
+
+========= PAGE 115 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 115 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Chapter 9  Electrical characteristics 
+9 
+ 
+
+========= PAGE 116 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 116 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ 
+ 
+Attention 
+The technical information described in this document is intended only to show the main characteristics and 
+application circuit examples of the product. No license is granted in and to any intellectual property right or 
+other right owned by Nuvoton Technology Corporation Japan or any other company. Therefore, no 
+responsibility is assumed by our company as to the infringement upon any such right owned by any other 
+company which may arise as a result of the use of technical information described in this document. 
+ 
+Use caution regarding the orientation of the LSI during use. Mounting of the LSI in an incorrect orientation 
+may cause smoke or fire. 
+  
+ 
+
+========= PAGE 117 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 117 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ 
+ 
+Structure 
+CMOS Type LSI with 4Kbit FeRAM 
+Application 
+Digital AV devices, Home Appliances, Portable devices, etc. 
+Function 
+Dual interface RFID 
+ 
+A. Absolute Maximum Ratings Note 1) 
+ 
+ 
+VSS = 0 V 
+Item 
+Symbol 
+Rating 
+Unit 
+A1 
+Power supply      Note 2) 
+VDDEX 
+- 0.3 ～ + 4.6 
+V 
+A2 
+VDDA 
+- 0.3 ～ + 4.6 
+V 
+A3 
+Voltage antenna terminals swing (VB 
+Peak to peak)  Note3) 
+VCBA 
+30 
+V 
+A4 
+Input pin voltage (SDA,SCL,NIRQ) 
+VI 
+- 0.3 ～ + 4.6 
+V 
+A5 
+Output current 
+IO 
+＋12 
+mA 
+A6 
+Storage temperature   
+Tstg 
+-40 ～ 85 
+°C 
+A7 
+Operating ambient temperature 
+Topr 
+-20 ～ 85 
+°C 
+Note 1) Absolute Maximum Ratings are limit values not to destroy the chip and are not to 
+guarantee operation. 
+Note 2) VDDA is generated internally and are not supplied externally.  
+Note 3) Definition of Voltage antenna terminals swing (VCBA)  
+ 
+VCBA
+( VB Peak to Peak )
+VB
+VCBA
+( VB Peak to Peak )
+VB
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+========= PAGE 118 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 118 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ 
+Notation for usage 
+1. Connect a 2.2F smooth capacitor between VDDA and VSS pins as close as possible to the IC. 
+The accuracy of the capacitor including capacitance change with temperature must be within 30%. 
+2. Connect a 2.2F (0.1F～2.2F at VDDEX<2.5V) smooth capacitor between VDDEX and VSS pins  
+as close as possible to the IC. 
+The accuracy of the capacitor including capacitance change with temperature must be within 30%. 
+3. In case of VDDEX=2.5V～3.6V, connect a 200Ω resister at VDDEX pin as shown Fig5. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+========= PAGE 119 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 119 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ 
+ 
+ 
+B. Operating Conditions 
+ 
+Ta = -20 °C ～ 85 °C, VSS = 0 V 
+Item 
+Symbol 
+Conditions 
+Limits 
+Unit 
+Min 
+Typ 
+Max 
+B1 Supply voltage VDDEX  
+VDDEX 
+ 
+1.7 
+ 
+3.6 
+V 
+ 
+ 
+Reference 
+Ta = -20 °C ～ 85 °C, VSS = 0 V 
+Item 
+Symbol 
+Conditions 
+Limits 
+Unit 
+Min 
+Typ 
+Max 
+B2 VDDA voltage  
+VDDA 
+ 
+1.65 
+1.8 
+3.6 
+V 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+========= PAGE 120 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 120 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ 
+ 
+ 
+C. Electric Characteristics 
+ 
+ 
+DC Characteristics 
+Ta = -20 °C ～ 85 °C, VSS = 0 V 
+Item 
+Symbol 
+Conditions 
+Limits 
+Unit 
+Min 
+Typ 
+Max 
+C1 Operating current on 
+VDDEX  
+IDDEX 
+VDDEX=3.3V 
+- 
+250 
+500 
+A
+ 
+ 
+ 
+Reference 
+Ta = -20 °C ～ 85 °C, VSS = 0 V 
+Item 
+Symbol 
+Conditions 
+Limits 
+Unit 
+Min 
+Typ 
+Max 
+C2 Operating current on 
+VDDA 
+IDDA 
+VDDA = 1.8 V 
+With 13.56 MHz RF input 
+between VA and VB  
+- 
+220 
+400 
+A 
+ 
+Note5) “C2” is the reference specification which is used at LSI manufacturing process to  
+test RF communication characteristics. 
+ 
+ 
+ 
+
+========= PAGE 121 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 121 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ 
+ 
+ 
+I/O terminal characteristics 
+Ta = -20 °C ～ 85 °C, VSS = 0 V 
+Item 
+Symbol 
+Condition 
+Limits 
+Unit 
+Min 
+Typ 
+Max 
+ 
+Input/Output pin : SDA、SCL 
+C3 Input voltage high 
+level 
+VIH1 
+ 
+0.7×VDDEX 
+- 
+VDDEX 
+V 
+C4 Input voltage low level 
+VIL1 
+ 
+0 
+- 
+0.3×VDDEX 
+V 
+C5 Input leakage current 
+ILK1 
+ 
+－10 
+0.02 
+＋10 
+A 
+C6 Output voltage low 
+level (SDA) 
+ILK1 
+VDDEX=3.3 V, 
+IOL=4.0 mA 
+- 
+- 
+0.4 
+V 
+ 
+Output pin : NIRQ 
+C7 Output leakage 
+current 
+ILK2 
+ 
+－10 
+0.02 
+＋10 
+A 
+C8 Output voltage low 
+level 
+VOL2 
+VDDEX=3.3 V, 
+IOL=4.0 mA 
+- 
+- 
+0.4 
+V 
+ 
+ 
+ 
+Reference information 
+ 
+As a reference of pull-up resistor connected to the open-drain type terminals, 
+SDA, SCL and NIRQ, 3.3Kohm resistors are used in our evaluation. Please adjust the  
+ 
+resistance value considering the communication speed, capacitive loads and other factors.  
+ 
+ 
+ 
+
+========= PAGE 122 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 122 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ 
+ 
+ 
+Input capacitance 
+VSS = 0 V 
+Item 
+Symbol 
+Condition 
+Limits 
+Unit 
+Min 
+Typ 
+Max 
+C9 
+Capacitance between 
+antenna terminals 
+(VA-VB) 
+CI 
+Ta=25 °C 
+13.56 MHz, amplitude 
+1V(RMS) with bias of 2V 
+13.5 
+15.5 
+17.5 
+pF 
+ 
+ 
+ 
+Load switch 
+Ta = -20 °C ～ 85 °C, VSS = 0 V 
+Item 
+Symbol 
+Condition 
+Limits 
+Unit 
+Min 
+Typ 
+Max 
+C10 Load switch 
+resistance 
+RLD 
+VA-VB 
+90 
+150 
+210 
+Ω 
+ 
+ 
+ 
+ 
+
+========= PAGE 123 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 123 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ 
+ 
+ 
+D. AC characteristics 
+ 
+ 
+I2C interface 
+Ta = -20 °C ～ 85 °C, VSS = 0 V 
+Item 
+Symbol 
+Limits 
+Unit 
+Min 
+Typ 
+Max 
+D1 
+SCL clock frequency 
+FSCL 
+20 
+ 
+100 
+kHz 
+D2 
+Hold time of Repeated-START 
+condition 
+THD;STA 
+4.0 
+ 
+ 
+μs 
+D3 
+SCL clock low period 
+TLOW 
+4.7 
+ 
+ 
+μs 
+D4 
+SCL clock high period 
+THIGH 
+4.0 
+ 
+ 
+μs 
+D5 
+Setup time of Repeated-START 
+condition 
+TSU;STA 
+4.7 
+ 
+ 
+μs 
+D6 
+SDA hold time 
+THD;DAT 
+0.0 
+ 
+3.45 
+μs 
+D7 
+SDA setup time 
+TSU;DAT 
+250 
+ 
+ 
+ns 
+D8 
+Setup time of STOP condition 
+TSU;STO 
+4.0 
+ 
+ 
+μs 
+D9 
+Period between STOP condition 
+and START condition 
+TBUF 
+4.7 
+ 
+ 
+μs 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Fig.1 
+ 
+ 
+SDA
+SCL
+THD;STA
+TLOW
+THIGH
+THD;DATTSU;DAT
+THD;STA
+TSU;STA
+TSU;STO
+TBUF
+START
+Repeated-
+START
+START
+STOP
+
+========= PAGE 124 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 124 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ 
+ 
+ 
+RF interface 
+Ta = -20 °C ～ 85 °C, VSS = 0 V 
+Item 
+Symbol 
+Condition 
+Limits 
+Unit 
+Min 
+Typ 
+Max 
+D10 
+VB voltage (peak to 
+peak) at “RF High” 
+period 
+VRFH1 
+RF 13.56 MHz 
+4.5 
+- 
+21 
+V 
+D11 Modulation index of 
+command  
+m 
+JISX6319-4 RF 
+interface specification 
+Communication rate of 
+212kbps 
+4.0  
+- 
+14  
+% 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Fig.2 
+ 
+ 
+ 
+b
+a
+RF
+Waveform
+b
+a
+b
+a
+m
+
+
+
+Modulation
+Factor
+The RF waveform is measured with 
+a calibration coil specified in ISO/IEC 10373-6.
+RF=High
+RF=Low
+RF=High
+b
+a
+RF
+Waveform
+b
+a
+b
+a
+m
+
+
+
+Modulation
+Factor
+The RF waveform is measured with 
+a calibration coil specified in ISO/IEC 10373-6.
+RF=High
+RF=Low
+RF=High
+a 
+VRFH* 
+
+========= PAGE 125 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 125 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ 
+ 
+ 
+E. Boot of power supply 
+ 
+ 
+ 
+Ta = -20 °C ～ 85 °C, VSS = 0 V 
+Item 
+Symbol 
+Condition 
+Limits 
+Unit 
+Min 
+Typ 
+Max 
+E1 
+VDDEX boot time to be 
+ready to receive 
+command 
+tBOOT 
+Note 7) 
+- 
+- 
+3 
+ms 
+E2 
+VDDEX low pulse 
+period 
+tPLW 
+Note 7) 
+3 
+- 
+- 
+ms 
+ 
+Note 7) VDDEX-VSS decoupling capacitor is 0.1 F and VDDD-VSS decoupling capacitor is 0.1 F. 
+Note 8) When it turn OFF a VDD power supply, make VDDEX less than 0.3V. 
+Host access enable after TBOOT time passed on Power up.  
+        Host access is finished before Power down. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Fig.3 
+ 
+ 
+ 
+TBOOT
+TPLW
+Ready to receive 
+command
+Ready to receive 
+command
+VDDEX
+VDDEX
+TBOOT
+TPLW
+Ready to receive 
+command
+Ready to receive 
+command
+VDDEX
+VDDEX
+
+========= PAGE 126 =========
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 126 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ 
+Revision History 
+Revised on Dec 15, 2020 
+Purpose 
+Revision 1.0 
+Revision x.x 
+Page 
+Section 
+Comments 
+Page 
+Section 
+Comments 
+ 
+ 
+ 
+First edition 
+ 
+ 
+ 
+
+========= PAGE 127 =========
+KM63Y1213 
+December 15, 2020 
+Page 127 of 127 
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+Important Notice 
+Nuvoton Products are neither intended nor warranted for usage in systems or equipment, any 
+malfunction or failure of which may cause loss of human life, bodily injury or severe property 
+damage. Such applications are deemed, “Insecure Usage”.  
+Insecure usage includes, but is not limited to: equipment for surgical implementation, atomic 
+energy control instruments, airplane or spaceship instruments, the control or operation of dynamic, 
+brake or safety systems designed for vehicular use, traffic signal instruments, all types of safety 
+devices, and other applications intended to support or sustain life.   
+All Insecure Usage shall be made at customer’s risk, and in the event that third parties lay claims to 
+Nuvoton as a result of customer’s Insecure Usage, customer shall indemnify the damages and 
+liabilities thus incurred by Nuvoton. 

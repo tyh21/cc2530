@@ -1,0 +1,186 @@
+﻿warning: The `fitz` API is deprecated and will be removed in future. Use `import pymupdf` instead.
+========================= PAGE 28 =========================
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 28 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ 
+INTWT 
+INTWT specifies the maximum wait time between characters in I2C communication. 
+INTWT is determined using the following formula. 
+ 
+ 
+Maximum wait time between characters = T × 2INTWT 
+ 
+ 
+T: Typ. 942 μs (±25%) 
+ 
+ 
+INTWT: 0 to 3 (default: 3; typ. approximately 7.5ms ) 
+When this field is set to a value other than 0 to 8, a default value will be applied. 
+ 
+ 
+ 
+RESWT 
+RESWT specifies the maximum wait time from the start of response to the command (NIRQ = L) until slave 
+transmission request input in I2C communication. 
+RESWT is determined using the following formula. 
+ 
+ 
+Maximum wait time for starting response = T × 2RESWT 
+ 
+ 
+T: 
+Typ. 1.88ms(±25%) 
+ 
+ 
+RESWT: 
+0 to 3: (default: 3, typ. approximately 15 ms) 
+When this field is set to a value other than 0 to 12, a default value will be applied. 
+ 
+Note: T includes an error of ±25%. Set the INTWT and RESWT values in consideration of the error. 
+ 
+ 
+ 
+IRQSEL 
+IRQSEL is used for IRQ notification to add the condition of generating an interrupt to the NIRQ pin. 
+Setting IRQSEL allows an additional interrupt to be generated in addition to a normal host command 
+processing complete interrupt. 
+There are two user-selectable additional interrupt sources, RF communication detection or reader/writer 
+magnetic-field detection. In addition, RF communication detection is selected from FeRAM write completion 
+by RF command and RF response before sending. 
+For more information about interrupt source, see Chapter 6  Interrupt Generation Function. 
+The IRQSEL settings are as follows. 
+ 
+Table 3-12 IRQSEL Setting for IRQ Notification 
+Bit 2 
+Bit 1 Bit 0 
+Meaning 
+0 
+0 
+X 
+Do not generate an interrupt when RF response before transmission or when a write to 
+FeRAM with the RF command is completed. 
+0 
+1 
+X 
+Reserved  
+1 
+0 
+X 
+Generate an interrupt when RF response before transmission. 
+1 
+1 
+X 
+Generate an interrupt when a write to FeRAM with the RF command is completed. 
+X 
+X 
+0 
+Do not generate an interrupt when a magnetic field is detected. 
+X 
+X 
+1 
+Generate an interrupt when a magnetic field is detected. 
+By default, value of each bit of IRQSEL is 0.  
+
+
+========================= PAGE 29 =========================
+KM63Y1213 
+ 
+December 15, 2020 
+ Page 29 of 127  
+Rev. 1.0 
+KM63Y1213 DATA SHEET 
+ 
+■ SC (2 bytes) 
+SC is used as the JISX6319-4 system code (2 bytes). For more information about system code, see Section 
+4.2.5.1  System Code. 
+ 
+Table 3-13 SC Parameter 
+Address 
+0x01E0 
+0x01E1 
+JISX6319-4 
+system code (2 bytes) 
+D0 
+D1 
+Default 
+0xAA 
+0xFF 
+ 
+ 
+■ IDM (8 bytes) 
+IDM is used as JISX6319-4 PICC (Proximity IC Card) identifier (8 bytes). The PUPI (Pseudo-Unique PICC 
+Identifier) (4 bytes) of ISO/IEC14443 TypeB is shared with the lower 4 bytes of the JISX6319-4 PICC 
+identifier. For information about JISX6319-4 PICC identifier, see Section 4.2.5.2  PICC (Proximity IC Card) 
+Identifier, and for information about ISO/IEC14443 TypeB PUPI, see Section  4.3.8.2  PUPI. 
+ 
+Table 3-14 IDM Parameter 
+Address 
+0x01E2 0x01E3 0x01E4 0x01E5 0x01E6 
+0x1E7 
+0x1E8 
+0x01E9 
+JISX6319-4 
+PICC identifier (8 bytes) 
+D0 
+D1 
+D2 
+D3 
+D4 
+D5 
+D6 
+D7 
+Default 
+0x02 
+0xFE 
+0x00 
+0x00 
+0x00 
+0x00 
+0x00 
+0x00 
+ISO/IEC14443TypeB 
+PUPI (4 bytes) 
+Reserved 
+D0 
+D1 
+D2 
+D3 
+Default 
+- 
+- 
+- 
+- 
+0x00 
+0x00 
+0x00 
+0x00 
+ 
+ 
+Note: In order to validate the value written in the system area IDM, the HW parameter's IDMSEL must be set 
+to 1. See Table 3-8. 
+ 
+ 
+■ PMM (2 bytes) 
+Of the JISX6319-4 response time descriptor (8 bytes), PMM is an area (2 bytes) to specify maximum wait time 
+for the response to READ/WRITE commands. See Section 4.2.5.3  . 
+ 
+Table 3-15 PMM Parameter 
+Address 
+0x01EA 
+0x01EB 
+JISX6319-4 
+Response time descriptor (2 bytes) 
+D5 
+D6 
+Default 
+0xFF 
+0xFF 
+ 
+ 
+ 
+
+

@@ -1,0 +1,44 @@
+/*
+ * nfc_tx.mac — 在 i2c_tx8 入口抓现场 (发地址字节的时刻)
+ *
+ * i2c_tx8 = 0x25FC (project.map)
+ * 这里应该已经 P0DIR |= 0x03 (两线都输出)。
+ * 若 P0DIR.0 仍为 0 -> SDA 没切输出 -> 地址字节发不出去 -> 必 NACK。
+ */
+
+__var p0, p2, p0dir, p2dir, p0inp, pc, n;
+__var arg;
+
+dump_now(tag)
+{
+  p0    = __readMemory8(0x80, "SFR");
+  p2    = __readMemory8(0xA0, "SFR");
+  p0dir = __readMemory8(0xFD, "SFR");
+  p2dir = __readMemory8(0xFF, "SFR");
+  p0inp = __readMemory8(0x8F, "SFR");
+  pc    = #PC;
+
+  __message "\n";
+  __message "===== BREAK @ ", tag, "  PC=0x", pc:%X, " =====\n";
+  __message "P0    = 0x", p0:%X, "   <- bit0=SDA bit1=SCL\n";
+  __message "P2    = 0x", p2:%X, "   <- bit3=VDDEX\n";
+  __message "P0DIR = 0x", p0dir:%X, "   <- ★ bit0 必须是 1 (SDA 输出)!\n";
+  __message "P2DIR = 0x", p2dir:%X, "\n";
+  __message "P0INP = 0x", p0inp:%X, "\n";
+  __message "======================================\n\n";
+}
+
+execUserSetup()
+{
+  __message ">>> nfc_tx.mac: breakpoint at i2c_tx8 (0x25FC)\n";
+  __setCodeBreak("0x25FC", 0, "hit_tx()", "TRUE", "");
+}
+
+hit_tx()
+{
+  n = n + 1;
+  if(n <= 3)
+  {
+    dump_now("i2c_tx8");
+  }
+}

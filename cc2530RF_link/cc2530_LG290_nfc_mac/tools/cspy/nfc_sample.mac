@@ -1,0 +1,37 @@
+/*
+ * nfc_sample.mac — 断点设在 i2c_read_ack 内部 "sda_rd 刚返回" 处, 读 R1 = SDA 采样值
+ *
+ * i2c_read_ack = 0x2670
+ * 手工数指令字节:
+ *   0x2670 MOV A,R6      2B -> 00
+ *   0x2672 PUSH A        1B
+ *   0x2673 LCALL sda_input  3B
+ *   0x2676 LCALL dly_i2c_s  3B
+ *   0x2679 LCALL scl_hi     3B
+ *   0x267C LCALL dly_i2c_s  3B
+ *   0x267F LCALL sda_rd     3B
+ *   0x2682 MOV A,R1      2B  <-- 采样刚结束, R1 = SDA 电平
+ *
+ * 断点设在 0x2682, 读 R1: 0=SDA低=ACK,  1=SDA高=NACK
+ */
+
+__var n, p0, dir;
+
+execUserSetup()
+{
+  __message ">>> nfc_sample.mac: break @ 0x2682 (right after sda_rd in i2c_read_ack)\n";
+  __setCodeBreak("0x2682", 0, "on_sample()", "TRUE", "");
+}
+
+on_sample()
+{
+  n = n + 1;
+  if(n <= 30)
+  {
+    p0  = __readMemory8(0x80, "SFR");
+    dir = __readMemory8(0xFD, "SFR");
+    __message "[", n, "] PC=0x", #PC:%X,
+              " P0=0x", p0:%X, " P0DIR=0x", dir:%X,
+              "  SDA=", (p0&1)?1:0, " SCL=", (p0&2)?1:0, "\n";
+  }
+}

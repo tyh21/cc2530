@@ -1,0 +1,22 @@
+/*
+ * nfc_min2.mac — 在 execUserReset() 里 arm 断点 (可靠时机)
+ * CC2530 实测: execUserSetup 可能太早, 断点未生效。
+ */
+__var c;
+
+execUserSetup()
+{
+  __message ">>> nfc_min2.mac setup\n";
+}
+
+execUserReset()
+{
+  __message ">>> nfc_min2.mac reset -> arm bp @0x0EAB\n";
+  __setCodeBreak("0x0EAB", 0, "on_at()", "TRUE", "");
+}
+
+on_at()
+{
+  c = c + 1;
+  if(c <= 3) __message "*** autotune entered #", c, "\n";
+}

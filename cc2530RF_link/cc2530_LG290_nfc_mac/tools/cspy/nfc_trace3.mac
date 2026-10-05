@@ -1,0 +1,32 @@
+/*
+ * nfc_trace3.mac — 4 个断点以内 (CC2530 硬件断点资源有限)
+ *   0x0EAB autotune
+ *   0x2961 NFC_ReadMem
+ *   0x311A NFC_Probe
+ *   0x246D NFC_PowerUp
+ */
+__var c_at, c_rm, c_pr, c_pu;
+
+execUserSetup()
+{
+  __message ">>> nfc_trace3.mac armed (4 bp)\n";
+  __setCodeBreak("0x0EAB", 0, "on_at()", "TRUE", "");
+  __setCodeBreak("0x2961", 0, "on_rm()", "TRUE", "");
+  __setCodeBreak("0x311A", 0, "on_pr()", "TRUE", "");
+  __setCodeBreak("0x246D", 0, "on_pu()", "TRUE", "");
+}
+
+on_at() { c_at++; if(c_at<=2)  __message "> autotune #", c_at, "\n"; }
+on_pu() { c_pu++; if(c_pu<=24) __message "  pwrUp #", c_pu, "\n"; }
+on_pr() { c_pr++; if(c_pr<=24) __message "    probe #", c_pr, "\n"; }
+on_rm() { c_rm++; if(c_rm<=24) __message "      ReadMem #", c_rm, "\n"; }
+
+execUserExit()
+{
+  __message "\n===== TRACE3 SUMMARY =====\n";
+  __message "  autotune = ", c_at, "\n";
+  __message "  pwrUp    = ", c_pu, "\n";
+  __message "  probe    = ", c_pr, "\n";
+  __message "  ReadMem  = ", c_rm, "\n";
+  __message "==========================\n";
+}

@@ -1,0 +1,17 @@
+/*
+ * nfc_p1.mac — 单断点: 只在 NFC_Probe(0x311A) 上, 看 autotune 的 probe 次数与顺序
+ * CC2530 实测只有 1 个可用硬件断点, 必须一次只设 1 个!
+ */
+__var c;
+
+execUserSetup()
+{
+  __message ">>> nfc_p1.mac: single bp @ NFC_Probe\n";
+  __setCodeBreak("0x311A", 0, "on_pr()", "TRUE", "");
+}
+
+on_pr()
+{
+  c = c + 1;
+  if(c <= 40) __message "PROBE #", c, "\n";
+}

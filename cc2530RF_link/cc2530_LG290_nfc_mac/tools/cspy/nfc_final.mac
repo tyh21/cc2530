@@ -1,0 +1,35 @@
+/*
+ * nfc_final.mac — 拿到 autotune 的最终结论 (XDATA 全局量)
+ *
+ * 关键: 断点回调里读不了 XDATA/IDATA (Operation error), 但 SFR 能读。
+ * 所以改成: 在 autotune 入口断点, 只读 SFR; autotune 返回值在 R1。
+ *
+ * autotune 没有返回值(void), 它写 g_at_* 全局量 (XDATA)。
+ * g_at_ok/g_at_swap/g_at_us/g_at_ver 在 XDATA 0x1C32..0x1C35。
+ *
+ * 办法: 断点设在 autotune 入口 (命中即停), 在回调里
+ *       只记录次序; 真正的 XDATA 读取改用 __readMemory8(addr, "XDATA")
+ *       —— 若报错就说明 CSpyBat 回调上下文禁止访问 XDATA。
+ *
+ * 先验证: 回调里能不能读 XDATA (之前失败是 "XDATA" 字符串).
+ * 试 "XDATA" / "MEM" / 直接数字区域。
+ */
+
+__var n;
+
+execUserSetup()
+{
+  __message ">>> nfc_final.mac: break @ autotune (0x0EA0)\n";
+  __setCodeBreak("0x0EA0", 0, "on_at()", "TRUE", "");
+}
+
+on_at()
+{
+  n = n + 1;
+  __message "[", n, "] autotune hit, PC=0x", #PC:%X, "\n";
+  if(n == 1)
+  {
+    /* 试读 XDATA —— 若成功会打印 0x10 之类 */
+    __message "  try XDATA@0x1C32 = ", __readMemory8(0x1C32, "XDATA"), "\n";
+  }
+}

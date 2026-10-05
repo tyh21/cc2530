@@ -1,0 +1,24 @@
+12[T1] cmd0=0x00 sta=0x00 cmd=0x00 loops=0 t1ok=0
+3 calSpin=0 tickNs=31 calOk=0 cal done
+[VDD] P2.3 held HIGH 30s - measure pin33 / chip VDDEX / 3.3V rail now...
+[VDD] t=0s P2=0x03 bit3=0
+[VDD] t=1s P2=0x03 bit3=0
+[VDD] t=2s P2=0x03 bit3=0
+[VDD] t=3s P2=0x03 bit3=0
+[VDD] t=4s P2=0x03 bit3=0
+[VDD] t=5s P2=0x03 bit3=0
+[VDD] t=6s P2=0x03 bit3=0
+[VDD] t=7s P2=0x03 bit3=0
+[VDD] t=8s P2=0x03 bit3=0
+[VDD] t=9s P2=0x03 bit3=0
+[VDD] t=10s P2=0x03 bit3=0
+[VDD] t=11s P2=0x03 bit3=0
+[VDD] t=12s P2=0x03 bit3=0
+[VDD] t=13s P2=0x03 bit3=0
+[VDD] t=14s P2=0x03 bit3=0
+[VDD] t=15s P2=0x03 bit3=0
+[VDD] t=16s P2=0x03 bit3=0
+[VDD] t=17s P2=0x03 bit3=0
+[VDD] t=18s P2=0x03 bit3=0
+[VDD] t=19s P2=0x03 bit3=0
+[VDD] t=20s P2=0x03 bit3=0

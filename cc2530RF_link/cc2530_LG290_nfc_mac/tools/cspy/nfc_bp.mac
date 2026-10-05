@@ -1,0 +1,48 @@
+/*
+ * nfc_bp.mac — 在 i2c_start 入口设代码断点, 跑到第一次 I2C 通信现场
+ *
+ * 真机(Chipcon driver)不支持 __setSimBreak / __go。
+ * 用 __setCodeBreak 设地址断点即可; CSpyBat 的默认执行策略会跑代码。
+ * i2c_start = 0x25CA (project.map)。
+ */
+
+__var p0, p2, p0dir, p2dir, p0inp, p2inp, p0sel, p2sel, pc;
+__var ok, swp, us, ver;
+
+dump_now(tag)
+{
+  p0    = __readMemory8(0x80, "SFR");
+  p2    = __readMemory8(0xA0, "SFR");
+  p0dir = __readMemory8(0xFD, "SFR");
+  p2dir = __readMemory8(0xFF, "SFR");
+  p0inp = __readMemory8(0x8F, "SFR");
+  p2inp = __readMemory8(0xF7, "SFR");
+  p0sel = __readMemory8(0xF3, "SFR");
+  p2sel = __readMemory8(0xF5, "SFR");
+  pc    = #PC;
+
+  __message "\n";
+  __message "===== BREAK @ ", tag, "  PC=0x", pc:%X, " =====\n";
+  __message "P0    = 0x", p0:%X, "\n";
+  __message "P2    = 0x", p2:%X, "\n";
+  __message "P0DIR = 0x", p0dir:%X, "\n";
+  __message "P2DIR = 0x", p2dir:%X, "\n";
+  __message "P0INP = 0x", p0inp:%X, "\n";
+  __message "P2INP = 0x", p2inp:%X, "\n";
+  __message "P0SEL = 0x", p0sel:%X, "\n";
+  __message "P2SEL = 0x", p2sel:%X, "\n";
+  __message "======================================\n\n";
+}
+
+execUserSetup()
+{
+  __message ">>> nfc_bp.mac: code breakpoint at i2c_start (0x25CA)\n";
+  __setCodeBreak("0x25CA", 0, "hit_i2c()", "TRUE", "");
+  __message ">>> breakpoint armed.\n";
+}
+
+hit_i2c()
+{
+  __message ">>> HIT i2c_start!\n";
+  dump_now("i2c_start");
+}

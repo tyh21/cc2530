@@ -1,0 +1,39 @@
+/*
+ * nfc_ack.mac — 在 i2c_read_ack 抓现场, 看从机到底有没有拉低 SDA
+ *
+ * i2c_read_ack = 0x2670
+ * 流程: sda_input() (SDA 切输入) -> SCL hi -> 读 SDA
+ * 若读到 SDA=0 -> 芯片应答; 若 SDA=1 -> 无应答(芯片不在/没进串行模式)
+ *
+ * 注意: 断点打在函数入口, 此时 sda_input() 还没执行,
+ *       P0DIR.0 可能仍是 1 (输出)。我再打一个在后面一点:
+ *       clock9_kind = 0x26B6 是整段判定结束处。
+ *
+ * 两次采: 入口 + 入口后一段
+ */
+
+__var p0, p0dir, pc, n;
+
+snap(tag)
+{
+  p0    = __readMemory8(0x80, "SFR");
+  p0dir = __readMemory8(0xFD, "SFR");
+  pc    = #PC;
+  __message "  [", tag, "] PC=0x", pc:%X, " P0=0x", p0:%X,
+            " P0DIR=0x", p0dir:%X, " SDA=", (p0 & 0x01)?"1":"0", "\n";
+}
+
+execUserSetup()
+{
+  __message ">>> nfc_ack.mac: break at i2c_read_ack (0x2670)\n";
+  __setCodeBreak("0x2670", 0, "hit_ack()", "TRUE", "");
+}
+
+hit_ack()
+{
+  n = n + 1;
+  if(n <= 6)
+  {
+    snap("i2c_read_ack");
+  }
+}

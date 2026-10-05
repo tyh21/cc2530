@@ -1,0 +1,65 @@
+/*
+ * nfc_watch.mac — 用"寄存器写断点"在 I2C 活动瞬间抓取真实引脚状态
+ *
+ * 思路:
+ *   1. 会话建立后, 在 P0DIR 写入时设一个模拟断点 (命中即暂停)
+ *   2. 让目标 __go() 全速运行
+ *   3. 一旦 i2c_start() 执行 P0DIR |= 0x01 (原厂 ORL P0DIR,#01), 立刻暂停
+ *   4. 此刻 CPU 正处在 I2C 通信现场 —— dump P0/P0DIR/P0INP/P2/P2DIR
+ *      这才是"通信时引脚到底什么样"的判决性读数
+ */
+
+__var p0, p2, p0dir, p2dir, p0inp, p2inp, p0sel, p2sel, pc;
+__var ok, swp, us, ver, extn, offn, hit;
+
+dump_now(tag)
+{
+  p0    = __readMemory8(0x80, "SFR");
+  p2    = __readMemory8(0xA0, "SFR");
+  p0dir = __readMemory8(0xFD, "SFR");
+  p2dir = __readMemory8(0xFF, "SFR");
+  p0inp = __readMemory8(0x8F, "SFR");
+  p2inp = __readMemory8(0xF7, "SFR");
+  p0sel = __readMemory8(0xF3, "SFR");
+  p2sel = __readMemory8(0xF5, "SFR");
+  pc    = #PC;
+
+  ok   = __readMemory8(0x1C32, "XDATA");
+  swp  = __readMemory8(0x1C33, "XDATA");
+  us   = __readMemory8(0x1C34, "XDATA");
+  ver  = __readMemory8(0x1C35, "XDATA");
+
+  __message "\n";
+  __message "===== HIT [", tag, "] PC=0x", pc:%X, " =====\n";
+  __message "P0    = 0x", p0:%X, "   <- bit0=SDA bit1=SCL\n";
+  __message "P2    = 0x", p2:%X, "   <- bit3=VDDEX (期望=1)\n";
+  __message "P0DIR = 0x", p0dir:%X, "   <- bit0/1 期望=1\n";
+  __message "P2DIR = 0x", p2dir:%X, "   <- bit3 期望=1\n";
+  __message "P0INP = 0x", p0inp:%X, "   <- bit0/1 期望=0 (推挽)\n";
+  __message "P2INP = 0x", p2inp:%X, "\n";
+  __message "P0SEL = 0x", p0sel:%X, "   P2SEL = 0x", p2sel:%X, "\n";
+  __message "autotune: ok=", ok, " swap=", swp, " us=", us, " ver=0x", ver:%X, "\n";
+  __message "=====================================\n";
+  __message "\n";
+}
+
+/* P0DIR 写命中处理 */
+on_p0dir_write()
+{
+  if(hit == 0)
+  {
+    hit = 1;
+    __message "\n>>> P0DIR write detected (i2c_start's ORL P0DIR,#01)\n";
+    dump_now("P0DIR write");
+  }
+}
+
+execUserSetup()
+{
+  __message ">>> nfc_watch.mac armed.\n";
+  hit = 0;
+  /* 在 SFR 0xFD (P0DIR) 写入时触发 */
+  __setSimBreak("SFR:0xFD", "W", "on_p0dir_write()");
+  __message ">>> breakpoint on P0DIR write set; running...\n";
+  __go();
+}

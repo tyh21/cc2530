@@ -1,0 +1,2 @@
+execUserSetup() { }
+execUserReset() { __message "v22 downloaded to board OK\n"; }

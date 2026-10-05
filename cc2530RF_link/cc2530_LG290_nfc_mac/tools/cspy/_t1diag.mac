@@ -1,0 +1,7 @@
+execUserSetup() { }
+execUserReset() { __setCodeBreak("0x2388", 0, "at_t1ctl()", "TRUE", ""); }
+at_t1ctl() {
+  __message "REACHED 0x2388 (past CLKCONSTA wait)\n";
+  __message "  CLKCONSTA=0x", __readMemory8(0x9E,"SFR"):%X, "\n";
+  __message "  CLKCONCMD=0x", __readMemory8(0xC6,"SFR"):%X, "\n";
+}

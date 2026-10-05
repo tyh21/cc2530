@@ -1,0 +1,31 @@
+/*
+ * nfc_ack2.mac — 多次命中 i2c_read_ack, 记录 P0/P0DIR, 找出 "SCL高 & SDA低" 的时刻
+ *
+ * 关键判据:
+ *   P0DIR.0 = 0  => SDA 已切输入 (主机已放手, 此时 SDA 的值是"别人"给的)
+ *   P0.1 = 1     => SCL 高 (第 9 个时钟的有效采样窗口)
+ *   P0.0 = 0     => SDA 低 => 从机在应答!
+ *
+ * 所以找 P0DIR 的 bit0=0 (或整体=0x02) 且 P0 的 bit1=1/bit0=0 的时刻。
+ */
+
+__var n, p0, dir;
+
+execUserSetup()
+{
+  __message ">>> nfc_ack2.mac armed (break @ i2c_read_ack 0x2670)\n";
+  __setCodeBreak("0x2670", 0, "on_ack()", "TRUE", "");
+}
+
+on_ack()
+{
+  n = n + 1;
+  if(n <= 40)
+  {
+    p0  = __readMemory8(0x80, "SFR");
+    dir = __readMemory8(0xFD, "SFR");
+    __message "[", n, "] P0=0x", p0:%X, " P0DIR=0x", dir:%X,
+              "  SDA(", (p0&0x01)?1:0, ") SCL(", (p0&0x02)?1:0,
+              ")  SDA_dir(", (dir&0x01)?1:0, ")\n";
+  }
+}

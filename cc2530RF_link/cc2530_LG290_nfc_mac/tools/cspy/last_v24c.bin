@@ -1,0 +1,28 @@
+12[T1] cmd0=0x00 sta=0x00 cmd=0x00 loops=0 t1ok=1
+3 calSpin=12000 tickNs=31 calOk=1 cal done
+
+[tune] sta[10abcdep]
+[11abcdep]
+[12abcdep]
+[13abcdep]
+[14abcdep]
+[15abcdep]
+[16abcdep]
+[17abcdep]
+[00abcdep]
+[01abcdep]
+[02abcdep]
+[03abcdep]
+[04abcdep]
+[05abcdep]
+[06abcdep]
+[07abcdep]
+U64
+[BIT] ==== bit-layer health ====
+[BIT] tickNs=31 bitTick=1289 calOk=1 calT1=54124 calSt=3 forced32=1 sclUs=0[BIT] P2SEL=0x00 P2DIR=0x08 P2INP=0x00  (P2SEL.1 应为0, P2DIR.3 应为1)[P23] out=0 -> P2.3=0  out=1 -> P2.3=0  in(3st)=0  in(pullup)=0  in(pulldn)=0[P24] out=0 -> P2.4=0  out=1 -> P2.4=0  in(pullup)=0[BIT] swap=0 (SDA=P0.0/SCL=P0.1)[BIT]   vddHold(ms)=0 vddHold2=0 vddAlive=0 P2(03)
+[BIT]   idle bus=0x03 (expect 03)
+[BIT]   addr=0x54 kind=LATE s5=00110[BIT]   addr=0x55 kind=NONE  s5=01110[BIT]   addr=0x6B kind=NONE  s5=01110[BIT] swap=1 (SDA=P0.1/SCL=P0.0)[BIT]   vddHold(ms)=0 vddHold2=0 vddAlive=0 P2(03)
+[BIT]   idle bus=0x03 (expect 03)
+[BIT]   addr=0x54 kind=LATE s5=00110[BIT]   addr=0x55 kind=NONE  s5=01110[BIT]   addr=0x6B kind=NONE  s5=01110[BIT] ==== done ====
+5tune sw1 us67 v00 NGext=03 off=03 hold=000sh=0/0 meas=000uus : 250 125 100 067 050 033 025 020 ack: S S S S S S S S scan w=00 r=00--- s0 done ---
+slv=54 r=OKbus=0x03 puOK vdd=LOVer=0xFF Nbr=? Nbw=?NdefLen=65535 AIBwr=0xFFB0: FF FF FF FF FF FF FF FF     FF FF FF FF FF FF FF FFRORF@1F0=0xFF RF-RO!--- s1 done ---

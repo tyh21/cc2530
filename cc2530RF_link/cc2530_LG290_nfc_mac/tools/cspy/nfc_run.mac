@@ -1,0 +1,70 @@
+/*
+ * nfc_run.mac — 让目标跑到 autotune() 之后 (EPD_Init 处) 停下来, 再 dump
+ *
+ * autotune 在 main() 里、EPD_Init() 之前。EPD_Init 地址 = 可在 map 里查,
+ * 但更稳的做法: 在 main 里 EPD_Init 的调用点设断点不方便 (需要行号),
+ * 所以直接用 __runTo / __setCodeBreak 对函数入口。
+ *
+ * autotune = 0x0EA0, 它 return 后回到 main。
+ * 最简做法: 在 epd 的 EPD_Init 入口设断点 -> 跑到那里, autotune 已结束。
+ */
+
+__var p0, p1, p2, p0dir, p1dir, p2dir, p0inp, p2sel, p0sel;
+__var ok, swp, us, ver, extn, offn, meas, scn, swk0, swk1, swk7;
+
+dumpall()
+{
+  p0     = __readMemory8(0x80, "SFR");
+  p1     = __readMemory8(0x90, "SFR");
+  p2     = __readMemory8(0xA0, "SFR");
+  p0dir  = __readMemory8(0xFD, "SFR");
+  p1dir  = __readMemory8(0xFE, "SFR");
+  p2dir  = __readMemory8(0xFF, "SFR");
+  p0inp  = __readMemory8(0x8F, "SFR");
+  p0sel  = __readMemory8(0xF3, "SFR");
+  p2sel  = __readMemory8(0xF5, "SFR");
+
+  ok   = __readMemory8(0x1C32, "XDATA");
+  swp  = __readMemory8(0x1C33, "XDATA");
+  us   = __readMemory8(0x1C34, "XDATA");
+  ver  = __readMemory8(0x1C35, "XDATA");
+  extn = __readMemory8(0x1C1D, "XDATA");
+  offn = __readMemory8(0x1C1E, "XDATA");
+  meas = __readMemory8(0x1C2F, "XDATA");
+  scn  = __readMemory8(0x1C2B, "XDATA");
+  swk0 = __readMemory8(0x1C23, "XDATA");
+  swk1 = __readMemory8(0x1C24, "XDATA");
+  swk7 = __readMemory8(0x1C2A, "XDATA");
+
+  __message "\n";
+  __message "########## NFC LIVE STATE (after autotune) ##########\n";
+  __message "P0    = 0x", p0:%X, "  P1 = 0x", p1:%X, "  P2 = 0x", p2:%X, "\n";
+  __message "P0DIR = 0x", p0dir:%X, "  P1DIR = 0x", p1dir:%X, "  P2DIR = 0x", p2dir:%X, "\n";
+  __message "P0INP = 0x", p0inp:%X, "  P0SEL = 0x", p0sel:%X, "  P2SEL = 0x", p2sel:%X, "\n";
+  __message "------------------------------------------------\n";
+  __message "g_at_ok   = ", ok,  "\n";
+  __message "g_at_swap = ", swp, "\n";
+  __message "g_at_us   = ", us,  "\n";
+  __message "g_at_ver  = 0x", ver:%X, "\n";
+  __message "g_ext_nib = 0x", extn:%X, "   g_off_nib = 0x", offn:%X, "\n";
+  __message "g_meas_us = ", meas, "   g_scn_n = ", scn, "\n";
+  __message "g_swk[0..2] = ", swk0, ",", swk1, ",..", swk7, "\n";
+  __message "####################################################\n";
+}
+
+execUserSetup()
+{
+  __message ">>> nfc_run.mac: waiting for target to reach EPD_Init...\n";
+
+  /* EPD_Init 入口 (从 map 里查；若未命中则退回软延时等待) */
+  /* 这里改用固定 tick 等待: 让 CPU 跑一段时间, autotune 会自己跑完 */
+  __message ">>> running target for a while...\n";
+
+  /* 让目标全速跑 4 秒 (autotune: 2 swap x 8 speed x (30+50ms) ≈ 1.3s, 足够) */
+  __delay(4000);
+
+  /* 停下来 */
+  __stop();
+
+  dumpall();
+}

@@ -1,0 +1,10 @@
+execUserSetup() { }
+execUserReset() { __setCodeBreak("0x236B", 49999, "on_x()", "TRUE", ""); }
+on_x() {
+  __message "=== deep spin snapshot ===\n";
+  __message " SP=", __readMemory8(0x81,"SFR"):%X, "\n";
+  __message " CLKCONCMD=", __readMemory8(0xC6,"SFR"):%X, " CLKCONSTA=", __readMemory8(0x9E,"SFR"):%X, "\n";
+  __message " SLEEPCMD=", __readMemory8(0xBE,"SFR"):%X, " PCON=", __readMemory8(0x87,"SFR"):%X, "\n";
+  __message " T1CTL=", __readMemory8(0xE4,"SFR"):%X, " T1H=", __readMemory8(0xE3,"SFR"):%X, " T1L=", __readMemory8(0xE2,"SFR"):%X, "\n";
+  __message " ST2=", __readMemory8(0x97,"SFR"):%X, " ST1=", __readMemory8(0x96,"SFR"):%X, " ST0=", __readMemory8(0x95,"SFR"):%X, "\n";
+}

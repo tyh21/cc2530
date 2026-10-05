@@ -1,0 +1,5 @@
+/* 单断点 @ main(0x1086) */
+__var c;
+execUserSetup() { __message ">>> main-bp armed\n"; }
+execUserReset() { __setCodeBreak("0x1086", 0, "on_m()", "TRUE", ""); }
+on_m() { c = c + 1; if(c <= 3) __message "MAIN #", c, "\n"; }

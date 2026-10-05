@@ -1,0 +1,9 @@
+execUserSetup() { }
+execUserReset() { __setCodeBreak("0x2382", 0, "at_loop()", "TRUE", ""); }
+at_loop() {
+  __message "IN CLKCONSTA-wait loop:/n";
+  __message "  CLKCONSTA=0x", __readMemory8(0x9E,"SFR"):%X, "\n";
+  __message "  CLKCONCMD=0x", __readMemory8(0xC6,"SFR"):%X, "\n";
+  __message "  T1CTL=0x", __readMemory8(0xE4,"SFR"):%X, "\n";
+  __message "  PCON=0x", __readMemory8(0x87,"SFR"):%X, "\n";
+}

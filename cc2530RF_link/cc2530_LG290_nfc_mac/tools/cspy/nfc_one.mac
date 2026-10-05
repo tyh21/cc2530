@@ -1,0 +1,3 @@
+__var c;
+execUserSetup() { __message ">>> bp 0x0EAB\n"; __setCodeBreak("0x0EAB", 0, "on_x()", "TRUE", ""); }
+on_x() { c = c + 1; if(c <= 8) __message "HIT#0x0EAB #", c, "\n"; }

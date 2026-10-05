@@ -1,0 +1,13 @@
+__var c, p0,p1,p2;
+execUserSetup() { __message ">>> st24 bp\n"; }
+execUserReset() { __setCodeBreak("0x1F64", 0, "on_s()", "TRUE", ""); }
+on_s() {
+  c = c + 1;
+  if(c <= 12) {
+    __message "st#", c, " ST2=", __readMemory8(0x97,"SFR"):%X,
+      " ST1=", __readMemory8(0x96,"SFR"):%X,
+      " ST0=", __readMemory8(0x95,"SFR"):%X,
+      " STLOAD/L=", __readMemory8(0x9D,"SFR"):%X,
+      " PCON=", __readMemory8(0x87,"SFR"):%X, "\n";
+  }
+}

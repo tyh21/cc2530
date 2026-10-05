@@ -1,0 +1,4 @@
+com.example.cc2530nfc.test.app-androidTest-0 C:\Users\tyh21\Desktop\cc2530\cc2530_RF_link\app\app\build\generated\res\resValues\androidTest\debug
+com.example.cc2530nfc.test.app-mergeDebugAndroidTestResources-1 C:\Users\tyh21\Desktop\cc2530\cc2530_RF_link\app\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.example.cc2530nfc.test.app-mergeDebugAndroidTestResources-2 C:\Users\tyh21\Desktop\cc2530\cc2530_RF_link\app\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.example.cc2530nfc.test.app-debugAndroidTest-3 C:\Users\tyh21\Desktop\cc2530\cc2530_RF_link\app\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources

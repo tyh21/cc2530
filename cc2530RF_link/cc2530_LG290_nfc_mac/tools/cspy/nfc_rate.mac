@@ -1,0 +1,15 @@
+/* 用断点条件计数: 只在第 500 次命中时停下, 中途不停 -> 让目标尽量自由跑 */
+__var n;
+execUserSetup() { }
+execUserReset() {
+  n = 0;
+  __setCodeBreak("0x236B", 0, "on_d()", "tick()", "");
+}
+tick() {
+  n = n + 1;
+  return (n >= 500) ? 1 : 0;
+}
+on_d() {
+  __message "reached 500th inner-loop iteration. ST1=", __readMemory8(0x96,"SFR"):%X,
+    " ST0=", __readMemory8(0x95,"SFR"):%X, "\n";
+}

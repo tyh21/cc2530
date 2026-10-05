@@ -1,0 +1,9 @@
+12[T1] cmd0=0x00 sta=0x00 cmd=0x00 loops=0 t1ok=0
+3 calSpin=0 tickNs=31 calOk=0 cal done
+[VDD] P2.3 held HIGH 3s - measure if needed...
+[VDD] t=0s P2=0x03 bit3=0
+[VDD] t=1s P2=0x03 bit3=0
+[VDD] t=2s P2=0x03 bit3=0
+[VDD] window done, continuing normal flow...
+[BF] bf=0x00 st=0  (VDDEX=OFF)
+[BF]   a_allFloat=0x00  b_sdaOnly=0  c_sclOnly=0[BF]   d_pullSDA_seeSCL=0  e_pullSCL_seeSDA=0  f_vddexON=0x00[BF]   g_P23readback=0  h_P23holdMs=0[10ab

@@ -1,0 +1,3 @@
+execUserSetup() { }
+execUserReset() { __setCodeBreak("0x2467", 0, "on_x()", "TRUE", ""); }
+on_x() { __message "msTicks()=", __readMemory8("g_msTicks", ""), "\n"; }

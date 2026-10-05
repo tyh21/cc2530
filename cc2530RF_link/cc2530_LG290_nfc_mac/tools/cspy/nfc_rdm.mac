@@ -1,0 +1,25 @@
+/*
+ * nfc_rdm.mac — 定位 NFC_ReadMem 为什么失败
+ *
+ * NFC_ReadMem = 0x2961, 内部:
+ *   i2c_write_cmd = 0x288F  (失败返回 0)
+ *   i2c_read_cmd  = 0x2906  (失败返回 0)
+ *
+ * 每次进入 write_cmd / read_cmd 都记一次, 看是哪一个失败。
+ * 判据: autotune 每轮 probe 成功后接 1 次 ReadMem
+ *       ReadMem = write_cmd + read_cmd
+ *   若 write_cmd 后没有 read_cmd → write_cmd 失败
+ *   若 write_cmd + read_cmd 都出现 → read_cmd 失败
+ */
+
+__var nw, nr;
+
+execUserSetup()
+{
+  __message ">>> nfc_rdm.mac armed\n";
+  __setCodeBreak("0x288F", 0, "on_wc()", "TRUE", "");
+  __setCodeBreak("0x2906", 0, "on_rc()", "TRUE", "");
+}
+
+on_wc() { nw++; if(nw<=16) __message "write_cmd #", nw, "\n"; }
+on_rc() { nr++; if(nr<=16) __message "  read_cmd #", nr, "\n"; }

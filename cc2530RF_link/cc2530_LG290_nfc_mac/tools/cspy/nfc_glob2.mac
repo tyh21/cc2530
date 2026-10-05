@@ -1,0 +1,9 @@
+execUserSetup() { __message ">>> nfc_glob2\n"; }
+execUserReset() { }
+execUserExit() {
+  __message "--- exit reads ---\n";
+  __message "  g_t1ok (0x1C6A, XDATA) = ", __readMemory8(0x1C6A,"XDATA"), "\n";
+  __message "  g_calOk(0x1C6B, XDATA) = ", __readMemory8(0x1C6B,"XDATA"), "\n";
+  __message "  g_tickNs(0x088F, IDATA)= ", __readMemory8(0x8F,"IDATA"), "\n";
+  __message "done\n";
+}

@@ -1,0 +1,10 @@
+#Sat Oct 03 19:47:30 GMT+08:00 2026
+base.0=C\:\\Users\\tyh21\\Desktop\\cc2530\\cc2530_RF_link\\app\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.1=C\:\\Users\\tyh21\\Desktop\\cc2530\\cc2530_RF_link\\app\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.2=C\:\\Users\\tyh21\\Desktop\\cc2530\\cc2530_RF_link\\app\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\12\\classes.dex
+path.0=classes.dex
+path.1=0/classes.dex
+path.2=12/classes.dex
+renamed.0=classes.dex
+renamed.1=classes2.dex
+renamed.2=classes3.dex

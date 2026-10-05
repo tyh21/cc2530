@@ -1,0 +1,9 @@
+execUserSetup() { __message ">>> idata test\n"; }
+execUserReset() { }
+execUserExit() {
+  __message "  SP(0x81)=", __readMemory8(0x81,"SFR"):%X, "\n";
+  __message "  IDATA 0x8F=", __readMemory8(0x8F,"IDATA"):%X, "\n";
+  __message "  IDATA 0x99=", __readMemory8(0x99,"IDATA"):%X, "\n";
+  __message "  SFR 0xE2 T1L=", __readMemory8(0xE2,"SFR"):%X, "\n";
+  __message "done\n";
+}

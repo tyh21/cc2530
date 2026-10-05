@@ -1,0 +1,8 @@
+/* 停在 main 后, 尝试读 PDATA/XDATA 栈指针 ?PSP 与 ?SP */
+execUserSetup() { }
+execUserReset() { __setCodeBreak("0x1086", 0, "on_m()", "TRUE", ""); }
+on_m() {
+  __message "SP(0x81)=", __readMemory8(0x81,"SFR"):%X, "\n";
+  __message "PSP(?PSP) try PDATA 0x0000..: ";
+  __message __readMemory8(0x00,"PDATA"):%X, " ", __readMemory8(0x01,"PDATA"):%X, "\n";
+}

@@ -1,0 +1,83 @@
+/*
+ * nfc_read.mac — 读 CC2530 的 NFC 相关引脚寄存器 + autotune 结论
+ *
+ * 用法（命令行, 不用 GUI）:
+ *   CSpyBat.exe -f settings/project.Debug.general.xcl ^
+ *       --backend -f settings/project.Debug.driver.xcl ^
+ *       --macro tools/cspy/nfc_read.mac
+ *
+ * execUserSetup 在调试会话建立后、目标停止时被调用一次,
+ * 此时 CPU 停在上电复位处。我们先 __runTo 到 autotune 返回点, 再 dump。
+ */
+
+__var sfr_p0, sfr_p1, sfr_p2;
+__var sfr_p0dir, sfr_p1dir, sfr_p2dir;
+__var sfr_p0inp, sfr_p1inp, sfr_p2inp;
+__var sfr_p0sel, sfr_p2sel;
+__var x_ok, x_swap, x_us, x_ver;
+__var x_ext, x_off, x_meas, x_scn;
+
+dumpsfr()
+{
+  sfr_p0     = __readMemory8(0x80, "SFR");
+  sfr_p1     = __readMemory8(0x90, "SFR");
+  sfr_p2     = __readMemory8(0xA0, "SFR");
+  sfr_p0dir  = __readMemory8(0xFD, "SFR");
+  sfr_p1dir  = __readMemory8(0xFE, "SFR");
+  sfr_p2dir  = __readMemory8(0xFF, "SFR");
+  sfr_p0inp  = __readMemory8(0x8F, "SFR");
+  sfr_p1inp  = __readMemory8(0xF6, "SFR");
+  sfr_p2inp  = __readMemory8(0xF7, "SFR");
+  sfr_p0sel  = __readMemory8(0xF3, "SFR");
+  sfr_p2sel  = __readMemory8(0xF5, "SFR");
+
+  __message "\n";
+  __message "=========== NFC PIN DUMP ===========\n";
+  __message "  P0     = 0x", sfr_p0:%X, "   (bit0=SDA_P0.0 bit1=SCL_P0.1)\n";
+  __message "  P1     = 0x", sfr_p1:%X, "\n";
+  __message "  P2     = 0x", sfr_p2:%X, "   (bit3=VDDEX_P2.3, 期望=1)\n";
+  __message "  P0DIR  = 0x", sfr_p0dir:%X, "   (bit0/bit1 期望=1 输出)\n";
+  __message "  P1DIR  = 0x", sfr_p1dir:%X, "\n";
+  __message "  P2DIR  = 0x", sfr_p2dir:%X, "   (bit3 期望=1)\n";
+  __message "  P0INP  = 0x", sfr_p0inp:%X, "   (bit0/bit1 期望=0 推挽!)\n";
+  __message "  P1INP  = 0x", sfr_p1inp:%X, "\n";
+  __message "  P2INP  = 0x", sfr_p2inp:%X, "\n";
+  __message "  P0SEL  = 0x", sfr_p0sel:%X, "   (bit0/bit1 期望=0 当 GPIO)\n";
+  __message "  P2SEL  = 0x", sfr_p2sel:%X, "\n";
+  __message "------------------------------------\n";
+}
+
+dumpvar()
+{
+  x_ok   = __readMemory8(0x1C32, "XDATA");
+  x_swap = __readMemory8(0x1C33, "XDATA");
+  x_us   = __readMemory8(0x1C34, "XDATA");
+  x_ver  = __readMemory8(0x1C35, "XDATA");
+  x_ext  = __readMemory8(0x1C1D, "XDATA");
+  x_off  = __readMemory8(0x1C1E, "XDATA");
+  x_meas = __readMemory8(0x1C2F, "XDATA");
+  x_scn  = __readMemory8(0x1C2B, "XDATA");
+
+  __message "=========== AUTOTUNE RESULT =========\n";
+  __message "  g_at_ok   = ", x_ok,   "   (1 = 找到能通的组合)\n";
+  __message "  g_at_swap = ", x_swap, "   (0/1)\n";
+  __message "  g_at_us   = ", x_us,   "   (命中的 SCL 整周期 us)\n";
+  __message "  g_at_ver  = 0x", x_ver:%X, "   (必须=0x10 才是合法 Type3)\n";
+  __message "  g_ext_nib = 0x", x_ext:%X, "   (期望=0x03 有外部上拉)\n";
+  __message "  g_off_nib = 0x", x_off:%X, "   (期望=0x00)\n";
+  __message "  g_meas_us = ", x_meas, "\n";
+  __message "  g_scn_n   = ", x_scn, "\n";
+  __message "====================================\n";
+}
+
+execUserSetup()
+{
+  __message ">>> nfc_read.mac: C-SPY session established.\n";
+  dumpsfr();
+}
+
+/* 复位后也会调用（如果目标被复位） */
+execUserReset()
+{
+  __message ">>> target reset\n";
+}

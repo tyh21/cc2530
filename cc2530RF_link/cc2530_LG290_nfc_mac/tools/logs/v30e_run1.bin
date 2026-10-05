@@ -1,0 +1,947 @@
+[RFW] n=40625 nirq=1 P23=1 line=0x03 nHi=40626 nLo=0
+
+===== v30e SEQ-TEST: RF 先到 -> 再开 VDDEX =====
+
+---- [A] 对照组: 不等 RF 场, 上电直接硬拉 P2.3 ----
+
+  >>> SEQ#0 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+
+---- [B] 实验组: 浮空监测, 检测到 RF 场后才拉 P2.3 ----
+现在把手机贴上线圈并保持; 每检测到一次 RF 就跑一轮 SEQ
+
+[RFW] n=0 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=1 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=2 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=3 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=4 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=5 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=6 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=7 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=8 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=9 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=10 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=11 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=12 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=13 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=14 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=15 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=16 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=17 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=18 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=19 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=20 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=21 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=22 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=23 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=24 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=25 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=26 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=27 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=28 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=29 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=30 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=31 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=32 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=33 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=34 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=35 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=36 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=37 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=38 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=39 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=40 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=41 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=42 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=43 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=44 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=45 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=46 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=47 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=48 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=49 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=50 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=51 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=52 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=53 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=54 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=55 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=56 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=57 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=58 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=59 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=60 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=61 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=62 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=63 p23=0 nirq=1 line=0x00 nHi=0 nLo=0 SEQ=0
+[RFW] n=64 p23=1 nirq=1 line=0x00 nHi=1 nLo=0 SEQ=0
+
+  >>> SEQ#1 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=65 p23=0 nirq=1 line=0x00 nHi=1 nLo=0 SEQ=1
+[RFW] n=66 p23=1 nirq=1 line=0x00 nHi=2 nLo=0 SEQ=1
+
+  >>> SEQ#2 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=67 p23=0 nirq=1 line=0x00 nHi=2 nLo=0 SEQ=2
+[RFW] n=68 p23=0 nirq=1 line=0x00 nHi=2 nLo=0 SEQ=2
+[RFW] n=69 p23=0 nirq=1 line=0x00 nHi=2 nLo=0 SEQ=2
+[RFW] n=70 p23=0 nirq=1 line=0x00 nHi=2 nLo=0 SEQ=2
+[RFW] n=71 p23=1 nirq=1 line=0x00 nHi=3 nLo=0 SEQ=2
+
+  >>> SEQ#3 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=72 p23=1 nirq=1 line=0x03 nHi=4 nLo=0 SEQ=3
+[RFW] n=73 p23=1 nirq=1 line=0x03 nHi=5 nLo=0 SEQ=3
+[RFW] n=74 p23=1 nirq=1 line=0x03 nHi=6 nLo=0 SEQ=3
+[RFW] n=75 p23=1 nirq=1 line=0x03 nHi=7 nLo=0 SEQ=3
+[RFW] n=76 p23=1 nirq=1 line=0x03 nHi=8 nLo=0 SEQ=3
+[RFW] n=77 p23=1 nirq=1 line=0x03 nHi=9 nLo=0 SEQ=3
+[RFW] n=78 p23=1 nirq=1 line=0x03 nHi=10 nLo=0 SEQ=3
+[RFW] n=79 p23=1 nirq=1 line=0x03 nHi=11 nLo=0 SEQ=3
+[RFW] n=80 p23=1 nirq=1 line=0x03 nHi=12 nLo=0 SEQ=3
+[RFW] n=81 p23=1 nirq=1 line=0x03 nHi=13 nLo=0 SEQ=3
+[RFW] n=82 p23=1 nirq=1 line=0x03 nHi=14 nLo=0 SEQ=3
+[RFW] n=83 p23=1 nirq=1 line=0x03 nHi=15 nLo=0 SEQ=3
+[RFW] n=84 p23=1 nirq=1 line=0x03 nHi=16 nLo=0 SEQ=3
+
+  >>> SEQ#4 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=85 p23=1 nirq=1 line=0x03 nHi=17 nLo=0 SEQ=4
+[RFW] n=86 p23=1 nirq=1 line=0x03 nHi=18 nLo=0 SEQ=4
+[RFW] n=87 p23=1 nirq=1 line=0x03 nHi=19 nLo=0 SEQ=4
+[RFW] n=88 p23=1 nirq=1 line=0x03 nHi=20 nLo=0 SEQ=4
+[RFW] n=89 p23=1 nirq=1 line=0x03 nHi=21 nLo=0 SEQ=4
+[RFW] n=90 p23=1 nirq=1 line=0x03 nHi=22 nLo=0 SEQ=4
+[RFW] n=91 p23=1 nirq=1 line=0x03 nHi=23 nLo=0 SEQ=4
+[RFW] n=92 p23=1 nirq=1 line=0x03 nHi=24 nLo=0 SEQ=4
+[RFW] n=93 p23=1 nirq=1 line=0x03 nHi=25 nLo=0 SEQ=4
+[RFW] n=94 p23=1 nirq=1 line=0x03 nHi=26 nLo=0 SEQ=4
+[RFW] n=95 p23=1 nirq=1 line=0x03 nHi=27 nLo=0 SEQ=4
+[RFW] n=96 p23=1 nirq=1 line=0x03 nHi=28 nLo=0 SEQ=4
+[RFW] n=97 p23=1 nirq=1 line=0x03 nHi=29 nLo=0 SEQ=4
+
+  >>> SEQ#5 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=98 p23=1 nirq=1 line=0x03 nHi=30 nLo=0 SEQ=5
+[RFW] n=99 p23=1 nirq=1 line=0x03 nHi=31 nLo=0 SEQ=5
+[RFW] n=100 p23=1 nirq=1 line=0x03 nHi=32 nLo=0 SEQ=5
+[RFW] n=101 p23=1 nirq=1 line=0x03 nHi=33 nLo=0 SEQ=5
+[RFW] n=102 p23=1 nirq=1 line=0x03 nHi=34 nLo=0 SEQ=5
+[RFW] n=103 p23=1 nirq=1 line=0x03 nHi=35 nLo=0 SEQ=5
+[RFW] n=104 p23=1 nirq=1 line=0x03 nHi=36 nLo=0 SEQ=5
+[RFW] n=105 p23=1 nirq=1 line=0x03 nHi=37 nLo=0 SEQ=5
+[RFW] n=106 p23=1 nirq=1 line=0x03 nHi=38 nLo=0 SEQ=5
+[RFW] n=107 p23=1 nirq=1 line=0x03 nHi=39 nLo=0 SEQ=5
+[RFW] n=108 p23=1 nirq=1 line=0x03 nHi=40 nLo=0 SEQ=5
+[RFW] n=109 p23=1 nirq=1 line=0x03 nHi=41 nLo=0 SEQ=5
+[RFW] n=110 p23=1 nirq=1 line=0x03 nHi=42 nLo=0 SEQ=5
+
+  >>> SEQ#6 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=111 p23=1 nirq=1 line=0x03 nHi=43 nLo=0 SEQ=6
+[RFW] n=112 p23=1 nirq=1 line=0x03 nHi=44 nLo=0 SEQ=6
+[RFW] n=113 p23=1 nirq=1 line=0x03 nHi=45 nLo=0 SEQ=6
+[RFW] n=114 p23=1 nirq=1 line=0x03 nHi=46 nLo=0 SEQ=6
+[RFW] n=115 p23=1 nirq=1 line=0x03 nHi=47 nLo=0 SEQ=6
+[RFW] n=116 p23=1 nirq=1 line=0x03 nHi=48 nLo=0 SEQ=6
+[RFW] n=117 p23=1 nirq=1 line=0x03 nHi=49 nLo=0 SEQ=6
+[RFW] n=118 p23=1 nirq=1 line=0x03 nHi=50 nLo=0 SEQ=6
+[RFW] n=119 p23=1 nirq=1 line=0x03 nHi=51 nLo=0 SEQ=6
+[RFW] n=120 p23=1 nirq=1 line=0x03 nHi=52 nLo=0 SEQ=6
+[RFW] n=121 p23=1 nirq=1 line=0x03 nHi=53 nLo=0 SEQ=6
+[RFW] n=122 p23=1 nirq=1 line=0x03 nHi=54 nLo=0 SEQ=6
+[RFW] n=123 p23=1 nirq=1 line=0x03 nHi=55 nLo=0 SEQ=6
+
+  >>> SEQ#7 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=124 p23=1 nirq=1 line=0x03 nHi=56 nLo=0 SEQ=7
+[RFW] n=125 p23=1 nirq=1 line=0x03 nHi=57 nLo=0 SEQ=7
+[RFW] n=126 p23=1 nirq=1 line=0x03 nHi=58 nLo=0 SEQ=7
+[RFW] n=127 p23=1 nirq=1 line=0x03 nHi=59 nLo=0 SEQ=7
+[RFW] n=128 p23=1 nirq=1 line=0x03 nHi=60 nLo=0 SEQ=7
+[RFW] n=129 p23=1 nirq=1 line=0x03 nHi=61 nLo=0 SEQ=7
+[RFW] n=130 p23=1 nirq=1 line=0x03 nHi=62 nLo=0 SEQ=7
+[RFW] n=131 p23=1 nirq=1 line=0x03 nHi=63 nLo=0 SEQ=7
+[RFW] n=132 p23=1 nirq=1 line=0x03 nHi=64 nLo=0 SEQ=7
+[RFW] n=133 p23=1 nirq=1 line=0x03 nHi=65 nLo=0 SEQ=7
+[RFW] n=134 p23=1 nirq=1 line=0x03 nHi=66 nLo=0 SEQ=7
+[RFW] n=135 p23=1 nirq=1 line=0x03 nHi=67 nLo=0 SEQ=7
+[RFW] n=136 p23=1 nirq=1 line=0x03 nHi=68 nLo=0 SEQ=7
+
+  >>> SEQ#8 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=137 p23=1 nirq=1 line=0x03 nHi=69 nLo=0 SEQ=8
+[RFW] n=138 p23=1 nirq=1 line=0x03 nHi=70 nLo=0 SEQ=8
+[RFW] n=139 p23=1 nirq=1 line=0x03 nHi=71 nLo=0 SEQ=8
+[RFW] n=140 p23=1 nirq=1 line=0x03 nHi=72 nLo=0 SEQ=8
+[RFW] n=141 p23=0 nirq=1 line=0x00 nHi=72 nLo=0 SEQ=8
+[RFW] n=142 p23=0 nirq=1 line=0x00 nHi=72 nLo=0 SEQ=8
+[RFW] n=143 p23=0 nirq=1 line=0x00 nHi=72 nLo=0 SEQ=8
+[RFW] n=144 p23=0 nirq=1 line=0x00 nHi=72 nLo=0 SEQ=8
+[RFW] n=145 p23=1 nirq=1 line=0x00 nHi=73 nLo=0 SEQ=8
+
+  >>> SEQ#9 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=146 p23=1 nirq=1 line=0x03 nHi=74 nLo=0 SEQ=9
+[RFW] n=147 p23=1 nirq=1 line=0x03 nHi=75 nLo=0 SEQ=9
+[RFW] n=148 p23=1 nirq=1 line=0x03 nHi=76 nLo=0 SEQ=9
+[RFW] n=149 p23=1 nirq=1 line=0x03 nHi=77 nLo=0 SEQ=9
+[RFW] n=150 p23=1 nirq=1 line=0x03 nHi=78 nLo=0 SEQ=9
+[RFW] n=151 p23=1 nirq=1 line=0x03 nHi=79 nLo=0 SEQ=9
+[RFW] n=152 p23=1 nirq=1 line=0x03 nHi=80 nLo=0 SEQ=9
+[RFW] n=153 p23=1 nirq=1 line=0x03 nHi=81 nLo=0 SEQ=9
+[RFW] n=154 p23=1 nirq=1 line=0x03 nHi=82 nLo=0 SEQ=9
+[RFW] n=155 p23=1 nirq=1 line=0x03 nHi=83 nLo=0 SEQ=9
+[RFW] n=156 p23=1 nirq=1 line=0x03 nHi=84 nLo=0 SEQ=9
+[RFW] n=157 p23=1 nirq=1 line=0x03 nHi=85 nLo=0 SEQ=9
+[RFW] n=158 p23=1 nirq=1 line=0x03 nHi=86 nLo=0 SEQ=9
+
+  >>> SEQ#10 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=159 p23=1 nirq=1 line=0x03 nHi=87 nLo=0 SEQ=10
+[RFW] n=160 p23=1 nirq=1 line=0x03 nHi=88 nLo=0 SEQ=10
+[RFW] n=161 p23=1 nirq=1 line=0x03 nHi=89 nLo=0 SEQ=10
+[RFW] n=162 p23=1 nirq=1 line=0x03 nHi=90 nLo=0 SEQ=10
+[RFW] n=163 p23=1 nirq=1 line=0x03 nHi=91 nLo=0 SEQ=10
+[RFW] n=164 p23=1 nirq=1 line=0x03 nHi=92 nLo=0 SEQ=10
+[RFW] n=165 p23=1 nirq=1 line=0x03 nHi=93 nLo=0 SEQ=10
+[RFW] n=166 p23=1 nirq=1 line=0x03 nHi=94 nLo=0 SEQ=10
+[RFW] n=167 p23=1 nirq=1 line=0x03 nHi=95 nLo=0 SEQ=10
+[RFW] n=168 p23=1 nirq=1 line=0x03 nHi=96 nLo=0 SEQ=10
+[RFW] n=169 p23=1 nirq=1 line=0x03 nHi=97 nLo=0 SEQ=10
+[RFW] n=170 p23=1 nirq=1 line=0x03 nHi=98 nLo=0 SEQ=10
+[RFW] n=171 p23=1 nirq=1 line=0x03 nHi=99 nLo=0 SEQ=10
+
+  >>> SEQ#11 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=172 p23=1 nirq=1 line=0x03 nHi=100 nLo=0 SEQ=11
+[RFW] n=173 p23=1 nirq=1 line=0x03 nHi=101 nLo=0 SEQ=11
+[RFW] n=174 p23=1 nirq=1 line=0x03 nHi=102 nLo=0 SEQ=11
+[RFW] n=175 p23=1 nirq=1 line=0x03 nHi=103 nLo=0 SEQ=11
+[RFW] n=176 p23=1 nirq=1 line=0x03 nHi=104 nLo=0 SEQ=11
+[RFW] n=177 p23=1 nirq=1 line=0x03 nHi=105 nLo=0 SEQ=11
+[RFW] n=178 p23=1 nirq=1 line=0x03 nHi=106 nLo=0 SEQ=11
+[RFW] n=179 p23=1 nirq=1 line=0x03 nHi=107 nLo=0 SEQ=11
+[RFW] n=180 p23=1 nirq=1 line=0x03 nHi=108 nLo=0 SEQ=11
+[RFW] n=181 p23=1 nirq=1 line=0x03 nHi=109 nLo=0 SEQ=11
+[RFW] n=182 p23=1 nirq=1 line=0x03 nHi=110 nLo=0 SEQ=11
+[RFW] n=183 p23=1 nirq=1 line=0x03 nHi=111 nLo=0 SEQ=11
+[RFW] n=184 p23=1 nirq=1 line=0x03 nHi=112 nLo=0 SEQ=11
+
+  >>> SEQ#12 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=185 p23=1 nirq=1 line=0x03 nHi=113 nLo=0 SEQ=12
+[RFW] n=186 p23=1 nirq=1 line=0x03 nHi=114 nLo=0 SEQ=12
+[RFW] n=187 p23=1 nirq=1 line=0x03 nHi=115 nLo=0 SEQ=12
+[RFW] n=188 p23=1 nirq=1 line=0x03 nHi=116 nLo=0 SEQ=12
+[RFW] n=189 p23=1 nirq=1 line=0x03 nHi=117 nLo=0 SEQ=12
+[RFW] n=190 p23=1 nirq=1 line=0x03 nHi=118 nLo=0 SEQ=12
+[RFW] n=191 p23=1 nirq=1 line=0x03 nHi=119 nLo=0 SEQ=12
+[RFW] n=192 p23=1 nirq=1 line=0x03 nHi=120 nLo=0 SEQ=12
+[RFW] n=193 p23=1 nirq=1 line=0x03 nHi=121 nLo=0 SEQ=12
+[RFW] n=194 p23=1 nirq=1 line=0x03 nHi=122 nLo=0 SEQ=12
+[RFW] n=195 p23=1 nirq=1 line=0x03 nHi=123 nLo=0 SEQ=12
+[RFW] n=196 p23=1 nirq=1 line=0x03 nHi=124 nLo=0 SEQ=12
+[RFW] n=197 p23=1 nirq=1 line=0x03 nHi=125 nLo=0 SEQ=12
+
+  >>> SEQ#13 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=198 p23=1 nirq=1 line=0x03 nHi=126 nLo=0 SEQ=13
+[RFW] n=199 p23=1 nirq=1 line=0x03 nHi=127 nLo=0 SEQ=13
+[RFW] n=200 p23=1 nirq=1 line=0x03 nHi=128 nLo=0 SEQ=13
+[RFW] n=201 p23=1 nirq=1 line=0x03 nHi=129 nLo=0 SEQ=13
+[RFW] n=202 p23=1 nirq=1 line=0x03 nHi=130 nLo=0 SEQ=13
+[RFW] n=203 p23=1 nirq=1 line=0x03 nHi=131 nLo=0 SEQ=13
+[RFW] n=204 p23=1 nirq=1 line=0x03 nHi=132 nLo=0 SEQ=13
+[RFW] n=205 p23=1 nirq=1 line=0x03 nHi=133 nLo=0 SEQ=13
+[RFW] n=206 p23=1 nirq=1 line=0x03 nHi=134 nLo=0 SEQ=13
+[RFW] n=207 p23=1 nirq=1 line=0x03 nHi=135 nLo=0 SEQ=13
+[RFW] n=208 p23=1 nirq=1 line=0x03 nHi=136 nLo=0 SEQ=13
+[RFW] n=209 p23=1 nirq=1 line=0x03 nHi=137 nLo=0 SEQ=13
+[RFW] n=210 p23=1 nirq=1 line=0x03 nHi=138 nLo=0 SEQ=13
+
+  >>> SEQ#14 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=211 p23=1 nirq=1 line=0x03 nHi=139 nLo=0 SEQ=14
+[RFW] n=212 p23=1 nirq=1 line=0x03 nHi=140 nLo=0 SEQ=14
+[RFW] n=213 p23=1 nirq=1 line=0x03 nHi=141 nLo=0 SEQ=14
+[RFW] n=214 p23=1 nirq=1 line=0x03 nHi=142 nLo=0 SEQ=14
+[RFW] n=215 p23=1 nirq=1 line=0x03 nHi=143 nLo=0 SEQ=14
+[RFW] n=216 p23=1 nirq=1 line=0x03 nHi=144 nLo=0 SEQ=14
+[RFW] n=217 p23=1 nirq=1 line=0x03 nHi=145 nLo=0 SEQ=14
+[RFW] n=218 p23=1 nirq=1 line=0x03 nHi=146 nLo=0 SEQ=14
+[RFW] n=219 p23=1 nirq=1 line=0x03 nHi=147 nLo=0 SEQ=14
+[RFW] n=220 p23=1 nirq=1 line=0x03 nHi=148 nLo=0 SEQ=14
+[RFW] n=221 p23=1 nirq=1 line=0x03 nHi=149 nLo=0 SEQ=14
+[RFW] n=222 p23=1 nirq=1 line=0x03 nHi=150 nLo=0 SEQ=14
+[RFW] n=223 p23=1 nirq=1 line=0x03 nHi=151 nLo=0 SEQ=14
+
+  >>> SEQ#15 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=224 p23=1 nirq=1 line=0x03 nHi=152 nLo=0 SEQ=15
+[RFW] n=225 p23=1 nirq=1 line=0x03 nHi=153 nLo=0 SEQ=15
+[RFW] n=226 p23=1 nirq=1 line=0x03 nHi=154 nLo=0 SEQ=15
+[RFW] n=227 p23=1 nirq=1 line=0x03 nHi=155 nLo=0 SEQ=15
+[RFW] n=228 p23=1 nirq=1 line=0x03 nHi=156 nLo=0 SEQ=15
+[RFW] n=229 p23=1 nirq=1 line=0x03 nHi=157 nLo=0 SEQ=15
+[RFW] n=230 p23=1 nirq=1 line=0x03 nHi=158 nLo=0 SEQ=15
+[RFW] n=231 p23=1 nirq=1 line=0x03 nHi=159 nLo=0 SEQ=15
+[RFW] n=232 p23=1 nirq=1 line=0x03 nHi=160 nLo=0 SEQ=15
+[RFW] n=233 p23=1 nirq=1 line=0x03 nHi=161 nLo=0 SEQ=15
+[RFW] n=234 p23=1 nirq=1 line=0x03 nHi=162 nLo=0 SEQ=15
+[RFW] n=235 p23=1 nirq=1 line=0x03 nHi=163 nLo=0 SEQ=15
+[RFW] n=236 p23=1 nirq=1 line=0x03 nHi=164 nLo=0 SEQ=15
+
+  >>> SEQ#16 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=237 p23=1 nirq=1 line=0x03 nHi=165 nLo=0 SEQ=16
+[RFW] n=238 p23=1 nirq=1 line=0x03 nHi=166 nLo=0 SEQ=16
+[RFW] n=239 p23=1 nirq=1 line=0x03 nHi=167 nLo=0 SEQ=16
+[RFW] n=240 p23=1 nirq=1 line=0x03 nHi=168 nLo=0 SEQ=16
+[RFW] n=241 p23=1 nirq=1 line=0x03 nHi=169 nLo=0 SEQ=16
+[RFW] n=242 p23=1 nirq=1 line=0x03 nHi=170 nLo=0 SEQ=16
+[RFW] n=243 p23=1 nirq=1 line=0x03 nHi=171 nLo=0 SEQ=16
+[RFW] n=244 p23=1 nirq=1 line=0x03 nHi=172 nLo=0 SEQ=16
+[RFW] n=245 p23=1 nirq=1 line=0x03 nHi=173 nLo=0 SEQ=16
+[RFW] n=246 p23=1 nirq=1 line=0x03 nHi=174 nLo=0 SEQ=16
+[RFW] n=247 p23=1 nirq=1 line=0x03 nHi=175 nLo=0 SEQ=16
+[RFW] n=248 p23=1 nirq=1 line=0x03 nHi=176 nLo=0 SEQ=16
+[RFW] n=249 p23=1 nirq=1 line=0x03 nHi=177 nLo=0 SEQ=16
+
+  >>> SEQ#17 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=250 p23=1 nirq=1 line=0x03 nHi=178 nLo=0 SEQ=17
+[RFW] n=251 p23=1 nirq=1 line=0x03 nHi=179 nLo=0 SEQ=17
+[RFW] n=252 p23=1 nirq=1 line=0x03 nHi=180 nLo=0 SEQ=17
+[RFW] n=253 p23=1 nirq=1 line=0x03 nHi=181 nLo=0 SEQ=17
+[RFW] n=254 p23=1 nirq=1 line=0x03 nHi=182 nLo=0 SEQ=17
+[RFW] n=255 p23=1 nirq=1 line=0x03 nHi=183 nLo=0 SEQ=17
+[RFW] n=256 p23=1 nirq=1 line=0x03 nHi=184 nLo=0 SEQ=17
+[RFW] n=257 p23=1 nirq=1 line=0x03 nHi=185 nLo=0 SEQ=17
+[RFW] n=258 p23=1 nirq=1 line=0x03 nHi=186 nLo=0 SEQ=17
+[RFW] n=259 p23=1 nirq=1 line=0x03 nHi=187 nLo=0 SEQ=17
+[RFW] n=260 p23=1 nirq=1 line=0x03 nHi=188 nLo=0 SEQ=17
+[RFW] n=261 p23=1 nirq=1 line=0x03 nHi=189 nLo=0 SEQ=17
+[RFW] n=262 p23=1 nirq=1 line=0x03 nHi=190 nLo=0 SEQ=17
+
+  >>> SEQ#18 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=263 p23=1 nirq=1 line=0x03 nHi=191 nLo=0 SEQ=18
+[RFW] n=264 p23=1 nirq=1 line=0x03 nHi=192 nLo=0 SEQ=18
+[RFW] n=265 p23=1 nirq=1 line=0x03 nHi=193 nLo=0 SEQ=18
+[RFW] n=266 p23=1 nirq=1 line=0x03 nHi=194 nLo=0 SEQ=18
+[RFW] n=267 p23=1 nirq=1 line=0x03 nHi=195 nLo=0 SEQ=18
+[RFW] n=268 p23=1 nirq=1 line=0x03 nHi=196 nLo=0 SEQ=18
+[RFW] n=269 p23=1 nirq=1 line=0x03 nHi=197 nLo=0 SEQ=18
+[RFW] n=270 p23=1 nirq=1 line=0x03 nHi=198 nLo=0 SEQ=18
+[RFW] n=271 p23=1 nirq=1 line=0x03 nHi=199 nLo=0 SEQ=18
+[RFW] n=272 p23=1 nirq=1 line=0x03 nHi=200 nLo=0 SEQ=18
+[RFW] n=273 p23=1 nirq=1 line=0x03 nHi=201 nLo=0 SEQ=18
+[RFW] n=274 p23=1 nirq=1 line=0x03 nHi=202 nLo=0 SEQ=18
+[RFW] n=275 p23=1 nirq=1 line=0x03 nHi=203 nLo=0 SEQ=18
+
+  >>> SEQ#19 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=276 p23=1 nirq=1 line=0x03 nHi=204 nLo=0 SEQ=19
+[RFW] n=277 p23=1 nirq=1 line=0x03 nHi=205 nLo=0 SEQ=19
+[RFW] n=278 p23=1 nirq=1 line=0x03 nHi=206 nLo=0 SEQ=19
+[RFW] n=279 p23=1 nirq=1 line=0x03 nHi=207 nLo=0 SEQ=19
+[RFW] n=280 p23=1 nirq=1 line=0x03 nHi=208 nLo=0 SEQ=19
+[RFW] n=281 p23=1 nirq=1 line=0x03 nHi=209 nLo=0 SEQ=19
+[RFW] n=282 p23=1 nirq=1 line=0x03 nHi=210 nLo=0 SEQ=19
+[RFW] n=283 p23=1 nirq=1 line=0x03 nHi=211 nLo=0 SEQ=19
+[RFW] n=284 p23=1 nirq=1 line=0x03 nHi=212 nLo=0 SEQ=19
+[RFW] n=285 p23=1 nirq=1 line=0x03 nHi=213 nLo=0 SEQ=19
+[RFW] n=286 p23=1 nirq=1 line=0x03 nHi=214 nLo=0 SEQ=19
+[RFW] n=287 p23=1 nirq=1 line=0x03 nHi=215 nLo=0 SEQ=19
+[RFW] n=288 p23=1 nirq=1 line=0x03 nHi=216 nLo=0 SEQ=19
+
+  >>> SEQ#20 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=289 p23=1 nirq=1 line=0x03 nHi=217 nLo=0 SEQ=20
+[RFW] n=290 p23=1 nirq=1 line=0x03 nHi=218 nLo=0 SEQ=20
+[RFW] n=291 p23=1 nirq=1 line=0x03 nHi=219 nLo=0 SEQ=20
+[RFW] n=292 p23=1 nirq=1 line=0x03 nHi=220 nLo=0 SEQ=20
+[RFW] n=293 p23=1 nirq=1 line=0x03 nHi=221 nLo=0 SEQ=20
+[RFW] n=294 p23=1 nirq=1 line=0x03 nHi=222 nLo=0 SEQ=20
+[RFW] n=295 p23=1 nirq=1 line=0x03 nHi=223 nLo=0 SEQ=20
+[RFW] n=296 p23=1 nirq=1 line=0x03 nHi=224 nLo=0 SEQ=20
+[RFW] n=297 p23=1 nirq=1 line=0x03 nHi=225 nLo=0 SEQ=20
+[RFW] n=298 p23=1 nirq=1 line=0x03 nHi=226 nLo=0 SEQ=20
+[RFW] n=299 p23=1 nirq=1 line=0x03 nHi=227 nLo=0 SEQ=20
+[RFW] n=300 p23=1 nirq=1 line=0x03 nHi=228 nLo=0 SEQ=20
+[RFW] n=301 p23=1 nirq=1 line=0x03 nHi=229 nLo=0 SEQ=20
+
+  >>> SEQ#21 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=302 p23=1 nirq=1 line=0x03 nHi=230 nLo=0 SEQ=21
+[RFW] n=303 p23=1 nirq=1 line=0x03 nHi=231 nLo=0 SEQ=21
+[RFW] n=304 p23=1 nirq=1 line=0x03 nHi=232 nLo=0 SEQ=21
+[RFW] n=305 p23=1 nirq=1 line=0x03 nHi=233 nLo=0 SEQ=21
+[RFW] n=306 p23=1 nirq=1 line=0x03 nHi=234 nLo=0 SEQ=21
+[RFW] n=307 p23=1 nirq=1 line=0x03 nHi=235 nLo=0 SEQ=21
+[RFW] n=308 p23=1 nirq=1 line=0x03 nHi=236 nLo=0 SEQ=21
+[RFW] n=309 p23=1 nirq=1 line=0x03 nHi=237 nLo=0 SEQ=21
+[RFW] n=310 p23=1 nirq=1 line=0x03 nHi=238 nLo=0 SEQ=21
+[RFW] n=311 p23=1 nirq=1 line=0x03 nHi=239 nLo=0 SEQ=21
+[RFW] n=312 p23=1 nirq=1 line=0x03 nHi=240 nLo=0 SEQ=21
+[RFW] n=313 p23=1 nirq=1 line=0x03 nHi=241 nLo=0 SEQ=21
+[RFW] n=314 p23=1 nirq=1 line=0x03 nHi=242 nLo=0 SEQ=21
+
+  >>> SEQ#22 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=315 p23=1 nirq=1 line=0x03 nHi=243 nLo=0 SEQ=22
+[RFW] n=316 p23=1 nirq=1 line=0x03 nHi=244 nLo=0 SEQ=22
+[RFW] n=317 p23=1 nirq=1 line=0x03 nHi=245 nLo=0 SEQ=22
+[RFW] n=318 p23=1 nirq=1 line=0x03 nHi=246 nLo=0 SEQ=22
+[RFW] n=319 p23=1 nirq=1 line=0x03 nHi=247 nLo=0 SEQ=22
+[RFW] n=320 p23=1 nirq=1 line=0x03 nHi=248 nLo=0 SEQ=22
+[RFW] n=321 p23=1 nirq=1 line=0x03 nHi=249 nLo=0 SEQ=22
+[RFW] n=322 p23=1 nirq=1 line=0x03 nHi=250 nLo=0 SEQ=22
+[RFW] n=323 p23=1 nirq=1 line=0x03 nHi=251 nLo=0 SEQ=22
+[RFW] n=324 p23=1 nirq=1 line=0x03 nHi=252 nLo=0 SEQ=22
+[RFW] n=325 p23=1 nirq=1 line=0x03 nHi=253 nLo=0 SEQ=22
+[RFW] n=326 p23=1 nirq=1 line=0x03 nHi=254 nLo=0 SEQ=22
+[RFW] n=327 p23=0 nirq=1 line=0x00 nHi=254 nLo=0 SEQ=22
+[RFW] n=328 p23=0 nirq=1 line=0x00 nHi=254 nLo=0 SEQ=22
+[RFW] n=329 p23=0 nirq=1 line=0x00 nHi=254 nLo=0 SEQ=22
+[RFW] n=330 p23=1 nirq=1 line=0x00 nHi=255 nLo=0 SEQ=22
+
+  >>> SEQ#23 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=331 p23=1 nirq=1 line=0x03 nHi=256 nLo=0 SEQ=23
+[RFW] n=332 p23=1 nirq=1 line=0x03 nHi=257 nLo=0 SEQ=23
+[RFW] n=333 p23=1 nirq=1 line=0x03 nHi=258 nLo=0 SEQ=23
+[RFW] n=334 p23=1 nirq=1 line=0x03 nHi=259 nLo=0 SEQ=23
+[RFW] n=335 p23=1 nirq=1 line=0x03 nHi=260 nLo=0 SEQ=23
+[RFW] n=336 p23=1 nirq=1 line=0x03 nHi=261 nLo=0 SEQ=23
+[RFW] n=337 p23=1 nirq=1 line=0x03 nHi=262 nLo=0 SEQ=23
+[RFW] n=338 p23=1 nirq=1 line=0x03 nHi=263 nLo=0 SEQ=23
+[RFW] n=339 p23=1 nirq=1 line=0x03 nHi=264 nLo=0 SEQ=23
+[RFW] n=340 p23=1 nirq=1 line=0x03 nHi=265 nLo=0 SEQ=23
+[RFW] n=341 p23=1 nirq=1 line=0x03 nHi=266 nLo=0 SEQ=23
+[RFW] n=342 p23=1 nirq=1 line=0x03 nHi=267 nLo=0 SEQ=23
+[RFW] n=343 p23=1 nirq=1 line=0x03 nHi=268 nLo=0 SEQ=23
+
+  >>> SEQ#24 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=344 p23=1 nirq=1 line=0x03 nHi=269 nLo=0 SEQ=24
+[RFW] n=345 p23=1 nirq=1 line=0x03 nHi=270 nLo=0 SEQ=24
+[RFW] n=346 p23=1 nirq=1 line=0x03 nHi=271 nLo=0 SEQ=24
+[RFW] n=347 p23=1 nirq=1 line=0x03 nHi=272 nLo=0 SEQ=24
+[RFW] n=348 p23=1 nirq=1 line=0x03 nHi=273 nLo=0 SEQ=24
+[RFW] n=349 p23=1 nirq=1 line=0x03 nHi=274 nLo=0 SEQ=24
+[RFW] n=350 p23=1 nirq=1 line=0x03 nHi=275 nLo=0 SEQ=24
+[RFW] n=351 p23=1 nirq=1 line=0x03 nHi=276 nLo=0 SEQ=24
+[RFW] n=352 p23=1 nirq=1 line=0x03 nHi=277 nLo=0 SEQ=24
+[RFW] n=353 p23=1 nirq=1 line=0x03 nHi=278 nLo=0 SEQ=24
+[RFW] n=354 p23=1 nirq=1 line=0x03 nHi=279 nLo=0 SEQ=24
+[RFW] n=355 p23=1 nirq=1 line=0x03 nHi=280 nLo=0 SEQ=24
+[RFW] n=356 p23=1 nirq=1 line=0x03 nHi=281 nLo=0 SEQ=24
+
+  >>> SEQ#25 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=357 p23=1 nirq=1 line=0x03 nHi=282 nLo=0 SEQ=25
+[RFW] n=358 p23=1 nirq=1 line=0x03 nHi=283 nLo=0 SEQ=25
+[RFW] n=359 p23=1 nirq=1 line=0x03 nHi=284 nLo=0 SEQ=25
+[RFW] n=360 p23=1 nirq=1 line=0x03 nHi=285 nLo=0 SEQ=25
+[RFW] n=361 p23=1 nirq=1 line=0x03 nHi=286 nLo=0 SEQ=25
+[RFW] n=362 p23=1 nirq=1 line=0x03 nHi=287 nLo=0 SEQ=25
+[RFW] n=363 p23=1 nirq=1 line=0x03 nHi=288 nLo=0 SEQ=25
+[RFW] n=364 p23=1 nirq=1 line=0x03 nHi=289 nLo=0 SEQ=25
+[RFW] n=365 p23=1 nirq=1 line=0x03 nHi=290 nLo=0 SEQ=25
+[RFW] n=366 p23=1 nirq=1 line=0x03 nHi=291 nLo=0 SEQ=25
+[RFW] n=367 p23=1 nirq=1 line=0x03 nHi=292 nLo=0 SEQ=25
+[RFW] n=368 p23=1 nirq=1 line=0x03 nHi=293 nLo=0 SEQ=25
+[RFW] n=369 p23=1 nirq=1 line=0x03 nHi=294 nLo=0 SEQ=25
+
+  >>> SEQ#26 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=370 p23=1 nirq=1 line=0x03 nHi=295 nLo=0 SEQ=26
+[RFW] n=371 p23=1 nirq=1 line=0x03 nHi=296 nLo=0 SEQ=26
+[RFW] n=372 p23=1 nirq=1 line=0x03 nHi=297 nLo=0 SEQ=26
+[RFW] n=373 p23=1 nirq=1 line=0x03 nHi=298 nLo=0 SEQ=26
+[RFW] n=374 p23=1 nirq=1 line=0x03 nHi=299 nLo=0 SEQ=26
+[RFW] n=375 p23=1 nirq=1 line=0x03 nHi=300 nLo=0 SEQ=26
+[RFW] n=376 p23=1 nirq=1 line=0x03 nHi=301 nLo=0 SEQ=26
+[RFW] n=377 p23=1 nirq=1 line=0x03 nHi=302 nLo=0 SEQ=26
+[RFW] n=378 p23=1 nirq=1 line=0x03 nHi=303 nLo=0 SEQ=26
+[RFW] n=379 p23=1 nirq=1 line=0x03 nHi=304 nLo=0 SEQ=26
+[RFW] n=380 p23=1 nirq=1 line=0x03 nHi=305 nLo=0 SEQ=26
+[RFW] n=381 p23=1 nirq=1 line=0x03 nHi=306 nLo=0 SEQ=26
+[RFW] n=382 p23=1 nirq=1 line=0x03 nHi=307 nLo=0 SEQ=26
+
+  >>> SEQ#27 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=383 p23=1 nirq=1 line=0x03 nHi=308 nLo=0 SEQ=27
+[RFW] n=384 p23=1 nirq=1 line=0x03 nHi=309 nLo=0 SEQ=27
+[RFW] n=385 p23=1 nirq=1 line=0x03 nHi=310 nLo=0 SEQ=27
+[RFW] n=386 p23=1 nirq=1 line=0x03 nHi=311 nLo=0 SEQ=27
+[RFW] n=387 p23=1 nirq=1 line=0x03 nHi=312 nLo=0 SEQ=27
+[RFW] n=388 p23=1 nirq=1 line=0x03 nHi=313 nLo=0 SEQ=27
+[RFW] n=389 p23=1 nirq=1 line=0x03 nHi=314 nLo=0 SEQ=27
+[RFW] n=390 p23=1 nirq=1 line=0x03 nHi=315 nLo=0 SEQ=27
+[RFW] n=391 p23=1 nirq=1 line=0x03 nHi=316 nLo=0 SEQ=27
+[RFW] n=392 p23=1 nirq=1 line=0x03 nHi=317 nLo=0 SEQ=27
+[RFW] n=393 p23=1 nirq=1 line=0x03 nHi=318 nLo=0 SEQ=27
+[RFW] n=394 p23=1 nirq=1 line=0x03 nHi=319 nLo=0 SEQ=27
+[RFW] n=395 p23=1 nirq=1 line=0x03 nHi=320 nLo=0 SEQ=27
+
+  >>> SEQ#28 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=396 p23=1 nirq=1 line=0x03 nHi=321 nLo=0 SEQ=28
+[RFW] n=397 p23=1 nirq=1 line=0x03 nHi=322 nLo=0 SEQ=28
+[RFW] n=398 p23=1 nirq=1 line=0x03 nHi=323 nLo=0 SEQ=28
+[RFW] n=399 p23=1 nirq=1 line=0x03 nHi=324 nLo=0 SEQ=28
+[RFW] n=400 p23=1 nirq=1 line=0x03 nHi=325 nLo=0 SEQ=28
+[RFW] n=401 p23=1 nirq=1 line=0x03 nHi=326 nLo=0 SEQ=28
+[RFW] n=402 p23=1 nirq=1 line=0x03 nHi=327 nLo=0 SEQ=28
+[RFW] n=403 p23=1 nirq=1 line=0x03 nHi=328 nLo=0 SEQ=28
+[RFW] n=404 p23=1 nirq=1 line=0x03 nHi=329 nLo=0 SEQ=28
+[RFW] n=405 p23=1 nirq=1 line=0x03 nHi=330 nLo=0 SEQ=28
+[RFW] n=406 p23=1 nirq=1 line=0x03 nHi=331 nLo=0 SEQ=28
+[RFW] n=407 p23=1 nirq=1 line=0x03 nHi=332 nLo=0 SEQ=28
+[RFW] n=408 p23=1 nirq=1 line=0x03 nHi=333 nLo=0 SEQ=28
+
+  >>> SEQ#29 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=409 p23=1 nirq=1 line=0x03 nHi=334 nLo=0 SEQ=29
+[RFW] n=410 p23=1 nirq=1 line=0x03 nHi=335 nLo=0 SEQ=29
+[RFW] n=411 p23=1 nirq=1 line=0x03 nHi=336 nLo=0 SEQ=29
+[RFW] n=412 p23=1 nirq=1 line=0x03 nHi=337 nLo=0 SEQ=29
+[RFW] n=413 p23=1 nirq=1 line=0x03 nHi=338 nLo=0 SEQ=29
+[RFW] n=414 p23=1 nirq=1 line=0x03 nHi=339 nLo=0 SEQ=29
+[RFW] n=415 p23=1 nirq=1 line=0x03 nHi=340 nLo=0 SEQ=29
+[RFW] n=416 p23=1 nirq=1 line=0x03 nHi=341 nLo=0 SEQ=29
+[RFW] n=417 p23=1 nirq=1 line=0x03 nHi=342 nLo=0 SEQ=29
+[RFW] n=418 p23=1 nirq=1 line=0x03 nHi=343 nLo=0 SEQ=29
+[RFW] n=419 p23=1 nirq=1 line=0x03 nHi=344 nLo=0 SEQ=29
+[RFW] n=420 p23=1 nirq=1 line=0x03 nHi=345 nLo=0 SEQ=29
+[RFW] n=421 p23=1 nirq=1 line=0x03 nHi=346 nLo=0 SEQ=29
+
+  >>> SEQ#30 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=422 p23=1 nirq=1 line=0x03 nHi=347 nLo=0 SEQ=30
+[RFW] n=423 p23=1 nirq=1 line=0x03 nHi=348 nLo=0 SEQ=30
+[RFW] n=424 p23=1 nirq=1 line=0x03 nHi=349 nLo=0 SEQ=30
+[RFW] n=425 p23=1 nirq=1 line=0x03 nHi=350 nLo=0 SEQ=30
+[RFW] n=426 p23=1 nirq=1 line=0x03 nHi=351 nLo=0 SEQ=30
+[RFW] n=427 p23=1 nirq=1 line=0x03 nHi=352 nLo=0 SEQ=30
+[RFW] n=428 p23=1 nirq=1 line=0x03 nHi=353 nLo=0 SEQ=30
+[RFW] n=429 p23=1 nirq=1 line=0x03 nHi=354 nLo=0 SEQ=30
+[RFW] n=430 p23=1 nirq=1 line=0x03 nHi=355 nLo=0 SEQ=30
+[RFW] n=431 p23=1 nirq=1 line=0x03 nHi=356 nLo=0 SEQ=30
+[RFW] n=432 p23=1 nirq=1 line=0x03 nHi=357 nLo=0 SEQ=30
+[RFW] n=433 p23=1 nirq=1 line=0x03 nHi=358 nLo=0 SEQ=30
+[RFW] n=434 p23=1 nirq=1 line=0x03 nHi=359 nLo=0 SEQ=30
+
+  >>> SEQ#31 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=435 p23=1 nirq=1 line=0x03 nHi=360 nLo=0 SEQ=31
+[RFW] n=436 p23=1 nirq=1 line=0x03 nHi=361 nLo=0 SEQ=31
+[RFW] n=437 p23=1 nirq=1 line=0x03 nHi=362 nLo=0 SEQ=31
+[RFW] n=438 p23=1 nirq=1 line=0x03 nHi=363 nLo=0 SEQ=31
+[RFW] n=439 p23=1 nirq=1 line=0x03 nHi=364 nLo=0 SEQ=31
+[RFW] n=440 p23=1 nirq=1 line=0x03 nHi=365 nLo=0 SEQ=31
+[RFW] n=441 p23=1 nirq=1 line=0x03 nHi=366 nLo=0 SEQ=31
+[RFW] n=442 p23=1 nirq=1 line=0x03 nHi=367 nLo=0 SEQ=31
+[RFW] n=443 p23=1 nirq=1 line=0x03 nHi=368 nLo=0 SEQ=31
+[RFW] n=444 p23=1 nirq=1 line=0x03 nHi=369 nLo=0 SEQ=31
+[RFW] n=445 p23=1 nirq=1 line=0x03 nHi=370 nLo=0 SEQ=31
+[RFW] n=446 p23=1 nirq=1 line=0x03 nHi=371 nLo=0 SEQ=31
+[RFW] n=447 p23=1 nirq=1 line=0x03 nHi=372 nLo=0 SEQ=31
+
+  >>> SEQ#32 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=448 p23=1 nirq=1 line=0x03 nHi=373 nLo=0 SEQ=32
+[RFW] n=449 p23=1 nirq=1 line=0x03 nHi=374 nLo=0 SEQ=32
+[RFW] n=450 p23=1 nirq=1 line=0x03 nHi=375 nLo=0 SEQ=32
+[RFW] n=451 p23=1 nirq=1 line=0x03 nHi=376 nLo=0 SEQ=32
+[RFW] n=452 p23=1 nirq=1 line=0x03 nHi=377 nLo=0 SEQ=32
+[RFW] n=453 p23=1 nirq=1 line=0x03 nHi=378 nLo=0 SEQ=32
+[RFW] n=454 p23=1 nirq=1 line=0x03 nHi=379 nLo=0 SEQ=32
+[RFW] n=455 p23=1 nirq=1 line=0x03 nHi=380 nLo=0 SEQ=32
+[RFW] n=456 p23=1 nirq=1 line=0x03 nHi=381 nLo=0 SEQ=32
+[RFW] n=457 p23=1 nirq=1 line=0x03 nHi=382 nLo=0 SEQ=32
+[RFW] n=458 p23=1 nirq=1 line=0x03 nHi=383 nLo=0 SEQ=32
+[RFW] n=459 p23=1 nirq=1 line=0x03 nHi=384 nLo=0 SEQ=32
+[RFW] n=460 p23=1 nirq=1 line=0x03 nHi=385 nLo=0 SEQ=32
+
+  >>> SEQ#33 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=461 p23=1 nirq=1 line=0x03 nHi=386 nLo=0 SEQ=33
+[RFW] n=462 p23=1 nirq=1 line=0x03 nHi=387 nLo=0 SEQ=33
+[RFW] n=463 p23=1 nirq=1 line=0x03 nHi=388 nLo=0 SEQ=33
+[RFW] n=464 p23=1 nirq=1 line=0x03 nHi=389 nLo=0 SEQ=33
+[RFW] n=465 p23=1 nirq=1 line=0x03 nHi=390 nLo=0 SEQ=33
+[RFW] n=466 p23=1 nirq=1 line=0x03 nHi=391 nLo=0 SEQ=33
+[RFW] n=467 p23=1 nirq=1 line=0x03 nHi=392 nLo=0 SEQ=33
+[RFW] n=468 p23=1 nirq=1 line=0x03 nHi=393 nLo=0 SEQ=33
+[RFW] n=469 p23=1 nirq=1 line=0x03 nHi=394 nLo=0 SEQ=33
+[RFW] n=470 p23=1 nirq=1 line=0x03 nHi=395 nLo=0 SEQ=33
+[RFW] n=471 p23=1 nirq=1 line=0x03 nHi=396 nLo=0 SEQ=33
+[RFW] n=472 p23=1 nirq=1 line=0x03 nHi=397 nLo=0 SEQ=33
+[RFW] n=473 p23=1 nirq=1 line=0x03 nHi=398 nLo=0 SEQ=33
+
+  >>> SEQ#34 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=474 p23=1 nirq=1 line=0x03 nHi=399 nLo=0 SEQ=34
+[RFW] n=475 p23=1 nirq=1 line=0x03 nHi=400 nLo=0 SEQ=34
+[RFW] n=476 p23=1 nirq=1 line=0x03 nHi=401 nLo=0 SEQ=34
+[RFW] n=477 p23=1 nirq=1 line=0x03 nHi=402 nLo=0 SEQ=34
+[RFW] n=478 p23=1 nirq=1 line=0x03 nHi=403 nLo=0 SEQ=34
+[RFW] n=479 p23=1 nirq=1 line=0x03 nHi=404 nLo=0 SEQ=34
+[RFW] n=480 p23=1 nirq=1 line=0x03 nHi=405 nLo=0 SEQ=34
+[RFW] n=481 p23=1 nirq=1 line=0x03 nHi=406 nLo=0 SEQ=34
+[RFW] n=482 p23=1 nirq=1 line=0x03 nHi=407 nLo=0 SEQ=34
+[RFW] n=483 p23=1 nirq=1 line=0x03 nHi=408 nLo=0 SEQ=34
+[RFW] n=484 p23=1 nirq=1 line=0x03 nHi=409 nLo=0 SEQ=34
+[RFW] n=485 p23=1 nirq=1 line=0x03 nHi=410 nLo=0 SEQ=34
+[RFW] n=486 p23=1 nirq=1 line=0x03 nHi=411 nLo=0 SEQ=34
+
+  >>> SEQ#35 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=487 p23=1 nirq=1 line=0x03 nHi=412 nLo=0 SEQ=35
+[RFW] n=488 p23=1 nirq=1 line=0x03 nHi=413 nLo=0 SEQ=35
+[RFW] n=489 p23=1 nirq=1 line=0x03 nHi=414 nLo=0 SEQ=35
+[RFW] n=490 p23=1 nirq=1 line=0x03 nHi=415 nLo=0 SEQ=35
+[RFW] n=491 p23=1 nirq=1 line=0x03 nHi=416 nLo=0 SEQ=35
+[RFW] n=492 p23=1 nirq=1 line=0x03 nHi=417 nLo=0 SEQ=35
+[RFW] n=493 p23=1 nirq=1 line=0x03 nHi=418 nLo=0 SEQ=35
+[RFW] n=494 p23=1 nirq=1 line=0x03 nHi=419 nLo=0 SEQ=35
+[RFW] n=495 p23=1 nirq=1 line=0x03 nHi=420 nLo=0 SEQ=35
+[RFW] n=496 p23=1 nirq=1 line=0x03 nHi=421 nLo=0 SEQ=35
+[RFW] n=497 p23=1 nirq=1 line=0x03 nHi=422 nLo=0 SEQ=35
+[RFW] n=498 p23=1 nirq=1 line=0x03 nHi=423 nLo=0 SEQ=35
+[RFW] n=499 p23=1 nirq=1 line=0x03 nHi=424 nLo=0 SEQ=35
+
+  >>> SEQ#36 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=500 p23=1 nirq=1 line=0x03 nHi=425 nLo=0 SEQ=36
+[RFW] n=501 p23=1 nirq=1 line=0x03 nHi=426 nLo=0 SEQ=36
+[RFW] n=502 p23=1 nirq=1 line=0x03 nHi=427 nLo=0 SEQ=36
+[RFW] n=503 p23=1 nirq=1 line=0x03 nHi=428 nLo=0 SEQ=36
+[RFW] n=504 p23=1 nirq=1 line=0x03 nHi=429 nLo=0 SEQ=36
+[RFW] n=505 p23=1 nirq=1 line=0x03 nHi=430 nLo=0 SEQ=36
+[RFW] n=506 p23=1 nirq=1 line=0x03 nHi=431 nLo=0 SEQ=36
+[RFW] n=507 p23=1 nirq=1 line=0x03 nHi=432 nLo=0 SEQ=36
+[RFW] n=508 p23=1 nirq=1 line=0x03 nHi=433 nLo=0 SEQ=36
+[RFW] n=509 p23=1 nirq=1 line=0x03 nHi=434 nLo=0 SEQ=36
+[RFW] n=510 p23=0 nirq=1 line=0x00 nHi=434 nLo=0 SEQ=36
+[RFW] n=511 p23=0 nirq=1 line=0x00 nHi=434 nLo=0 SEQ=36
+[RFW] n=512 p23=0 nirq=1 line=0x00 nHi=434 nLo=0 SEQ=36
+[RFW] n=513 p23=1 nirq=1 line=0x00 nHi=435 nLo=0 SEQ=36
+
+  >>> SEQ#37 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=514 p23=1 nirq=1 line=0x03 nHi=436 nLo=0 SEQ=37
+[RFW] n=515 p23=1 nirq=1 line=0x03 nHi=437 nLo=0 SEQ=37
+[RFW] n=516 p23=1 nirq=1 line=0x03 nHi=438 nLo=0 SEQ=37
+[RFW] n=517 p23=1 nirq=1 line=0x03 nHi=439 nLo=0 SEQ=37
+[RFW] n=518 p23=1 nirq=1 line=0x03 nHi=440 nLo=0 SEQ=37
+[RFW] n=519 p23=1 nirq=1 line=0x03 nHi=441 nLo=0 SEQ=37
+[RFW] n=520 p23=1 nirq=1 line=0x03 nHi=442 nLo=0 SEQ=37
+[RFW] n=521 p23=1 nirq=1 line=0x03 nHi=443 nLo=0 SEQ=37
+[RFW] n=522 p23=1 nirq=1 line=0x03 nHi=444 nLo=0 SEQ=37
+[RFW] n=523 p23=1 nirq=1 line=0x03 nHi=445 nLo=0 SEQ=37
+[RFW] n=524 p23=1 nirq=1 line=0x03 nHi=446 nLo=0 SEQ=37
+[RFW] n=525 p23=1 nirq=1 line=0x03 nHi=447 nLo=0 SEQ=37
+[RFW] n=526 p23=1 nirq=1 line=0x03 nHi=448 nLo=0 SEQ=37
+
+  >>> SEQ#38 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=527 p23=1 nirq=1 line=0x03 nHi=449 nLo=0 SEQ=38
+[RFW] n=528 p23=1 nirq=1 line=0x03 nHi=450 nLo=0 SEQ=38
+[RFW] n=529 p23=1 nirq=1 line=0x03 nHi=451 nLo=0 SEQ=38
+[RFW] n=530 p23=1 nirq=1 line=0x03 nHi=452 nLo=0 SEQ=38
+[RFW] n=531 p23=1 nirq=1 line=0x03 nHi=453 nLo=0 SEQ=38
+[RFW] n=532 p23=1 nirq=1 line=0x03 nHi=454 nLo=0 SEQ=38
+[RFW] n=533 p23=1 nirq=1 line=0x03 nHi=455 nLo=0 SEQ=38
+[RFW] n=534 p23=1 nirq=1 line=0x03 nHi=456 nLo=0 SEQ=38
+[RFW] n=535 p23=1 nirq=1 line=0x03 nHi=457 nLo=0 SEQ=38
+[RFW] n=536 p23=1 nirq=1 line=0x03 nHi=458 nLo=0 SEQ=38
+[RFW] n=537 p23=1 nirq=1 line=0x03 nHi=459 nLo=0 SEQ=38
+[RFW] n=538 p23=1 nirq=1 line=0x03 nHi=460 nLo=0 SEQ=38
+[RFW] n=539 p23=1 nirq=1 line=0x03 nHi=461 nLo=0 SEQ=38
+
+  >>> SEQ#39 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=540 p23=1 nirq=1 line=0x03 nHi=462 nLo=0 SEQ=39
+[RFW] n=541 p23=1 nirq=1 line=0x03 nHi=463 nLo=0 SEQ=39
+[RFW] n=542 p23=1 nirq=1 line=0x03 nHi=464 nLo=0 SEQ=39
+[RFW] n=543 p23=1 nirq=1 line=0x03 nHi=465 nLo=0 SEQ=39
+[RFW] n=544 p23=1 nirq=1 line=0x03 nHi=466 nLo=0 SEQ=39
+[RFW] n=545 p23=1 nirq=1 line=0x03 nHi=467 nLo=0 SEQ=39
+[RFW] n=546 p23=1 nirq=1 line=0x03 nHi=468 nLo=0 SEQ=39
+[RFW] n=547 p23=1 nirq=1 line=0x03 nHi=469 nLo=0 SEQ=39
+[RFW] n=548 p23=1 nirq=1 line=0x03 nHi=470 nLo=0 SEQ=39
+[RFW] n=549 p23=1 nirq=1 line=0x03 nHi=471 nLo=0 SEQ=39
+[RFW] n=550 p23=1 nirq=1 line=0x03 nHi=472 nLo=0 SEQ=39
+[RFW] n=551 p23=1 nirq=1 line=0x03 nHi=473 nLo=0 SEQ=39
+[RFW] n=552 p23=1 nirq=1 line=0x03 nHi=474 nLo=0 SEQ=39
+
+  >>> SEQ#40 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=553 p23=1 nirq=1 line=0x03 nHi=475 nLo=0 SEQ=40
+[RFW] n=554 p23=1 nirq=1 line=0x03 nHi=476 nLo=0 SEQ=40
+[RFW] n=555 p23=1 nirq=1 line=0x03 nHi=477 nLo=0 SEQ=40
+[RFW] n=556 p23=1 nirq=1 line=0x03 nHi=478 nLo=0 SEQ=40
+[RFW] n=557 p23=1 nirq=1 line=0x03 nHi=479 nLo=0 SEQ=40
+[RFW] n=558 p23=1 nirq=1 line=0x03 nHi=480 nLo=0 SEQ=40
+[RFW] n=559 p23=1 nirq=1 line=0x03 nHi=481 nLo=0 SEQ=40
+[RFW] n=560 p23=1 nirq=1 line=0x03 nHi=482 nLo=0 SEQ=40
+[RFW] n=561 p23=1 nirq=1 line=0x03 nHi=483 nLo=0 SEQ=40
+[RFW] n=562 p23=1 nirq=1 line=0x03 nHi=484 nLo=0 SEQ=40
+[RFW] n=563 p23=1 nirq=1 line=0x03 nHi=485 nLo=0 SEQ=40
+[RFW] n=564 p23=1 nirq=1 line=0x03 nHi=486 nLo=0 SEQ=40
+[RFW] n=565 p23=1 nirq=1 line=0x03 nHi=487 nLo=0 SEQ=40
+
+  >>> SEQ#41 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=566 p23=1 nirq=1 line=0x03 nHi=488 nLo=0 SEQ=41
+[RFW] n=567 p23=1 nirq=1 line=0x03 nHi=489 nLo=0 SEQ=41
+[RFW] n=568 p23=1 nirq=1 line=0x03 nHi=490 nLo=0 SEQ=41
+[RFW] n=569 p23=1 nirq=1 line=0x03 nHi=491 nLo=0 SEQ=41
+[RFW] n=570 p23=1 nirq=1 line=0x03 nHi=492 nLo=0 SEQ=41
+[RFW] n=571 p23=1 nirq=1 line=0x03 nHi=493 nLo=0 SEQ=41
+[RFW] n=572 p23=1 nirq=1 line=0x03 nHi=494 nLo=0 SEQ=41
+[RFW] n=573 p23=1 nirq=1 line=0x03 nHi=495 nLo=0 SEQ=41
+[RFW] n=574 p23=1 nirq=1 line=0x03 nHi=496 nLo=0 SEQ=41
+[RFW] n=575 p23=1 nirq=1 line=0x03 nHi=497 nLo=0 SEQ=41
+[RFW] n=576 p23=1 nirq=1 line=0x03 nHi=498 nLo=0 SEQ=41
+[RFW] n=577 p23=1 nirq=1 line=0x03 nHi=499 nLo=0 SEQ=41
+[RFW] n=578 p23=1 nirq=1 line=0x03 nHi=500 nLo=0 SEQ=41
+
+  >>> SEQ#42 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=579 p23=1 nirq=1 line=0x03 nHi=501 nLo=0 SEQ=42
+[RFW] n=580 p23=1 nirq=1 line=0x03 nHi=502 nLo=0 SEQ=42
+[RFW] n=581 p23=1 nirq=1 line=0x03 nHi=503 nLo=0 SEQ=42
+[RFW] n=582 p23=1 nirq=1 line=0x03 nHi=504 nLo=0 SEQ=42
+[RFW] n=583 p23=1 nirq=1 line=0x03 nHi=505 nLo=0 SEQ=42
+[RFW] n=584 p23=1 nirq=1 line=0x03 nHi=506 nLo=0 SEQ=42
+[RFW] n=585 p23=1 nirq=1 line=0x03 nHi=507 nLo=0 SEQ=42
+[RFW] n=586 p23=1 nirq=1 line=0x03 nHi=508 nLo=0 SEQ=42
+[RFW] n=587 p23=1 nirq=1 line=0x03 nHi=509 nLo=0 SEQ=42
+[RFW] n=588 p23=1 nirq=1 line=0x03 nHi=510 nLo=0 SEQ=42
+[RFW] n=589 p23=1 nirq=1 line=0x03 nHi=511 nLo=0 SEQ=42
+[RFW] n=590 p23=1 nirq=1 line=0x03 nHi=512 nLo=0 SEQ=42
+[RFW] n=591 p23=1 nirq=1 line=0x03 nHi=513 nLo=0 SEQ=42
+
+  >>> SEQ#43 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=592 p23=0 nirq=1 line=0x00 nHi=513 nLo=0 SEQ=43
+[RFW] n=593 p23=0 nirq=1 line=0x00 nHi=513 nLo=0 SEQ=43
+[RFW] n=594 p23=0 nirq=1 line=0x00 nHi=513 nLo=0 SEQ=43
+[RFW] n=595 p23=0 nirq=1 line=0x00 nHi=513 nLo=0 SEQ=43
+[RFW] n=596 p23=0 nirq=1 line=0x00 nHi=513 nLo=0 SEQ=43
+[RFW] n=597 p23=0 nirq=1 line=0x00 nHi=513 nLo=0 SEQ=43
+[RFW] n=598 p23=0 nirq=1 line=0x00 nHi=513 nLo=0 SEQ=43
+[RFW] n=599 p23=1 nirq=1 line=0x00 nHi=514 nLo=0 SEQ=43
+
+  >>> SEQ#44 现在才拉起 P2.3 <<<
+    P2.3 读回 = 1  [OK] VDDEX 维持住高电平(>=VIH 2.3V)
+    Decide9 k=0  s5=00001
+    ReadMem[0] rm=1  (NOACK)
+    ReadMem[1] rm=1  (NOACK)
+    ReadMem[2] rm=1  (NOACK)
+[RFW] n=600 p23=0 nirq=1 line=0x00 nHi=514 nLo=0 SEQ=44
+[RFW] n=601 p23=0 nirq=1 line=0x00 nHi=514 nLo=0 SEQ=44
+[RFW] n=602 p23=0 nirq=1 line=0x00 nHi=514 nLo=0 SEQ=44
+[RFW] n=603 p23=0 nirq=1 line=0x00 nHi=514 nLo=0 SEQ=44
+[RFW] n=604 p23=0 nirq=1 line=0x00 nHi=514 nLo=0 SEQ=44
+[RFW] n=605 p23=0 nirq=1 line=0x00 nHi=514 nLo=0 SEQ=44
+[RFW] n=606 p23=0 nirq=1 line=0x00 nHi=514 nLo=0 SEQ=44
+[RFW] n=607 p23=0 nirq=1 line=0x00 nHi=514 nLo=0 SEQ=44
+[RFW] n=608 p23=0 nirq=1 line=0x00 nHi=514 nLo=0 SEQ=44
+[RFW] n=609 p23=0 nirq=1 line=0x00 nHi=514 nLo=0 SEQ=44
+[RFW] n=610 p23=0 nirq=1 line=0x00 nHi=514 nLo=0 SEQ=44
+[RFW] n=611 p23=0 nirq=1 line=0x00 nHi=514 nLo=0 SEQ=44
+[RFW] n=612 p23=0 nirq=1 line=0x00 nHi=514 nLo=0 SEQ=44
+[RFW] n=613 p23=0 nirq=1 line=0x00 nHi=514 nLo=0 SEQ=44
+[RFW] n=614 p23=0 nirq=1 line=0x00 nHi=514 nLo=0 SEQ=44
+[RFW] n=615 p23=0 nirq=1 line=0x00 nHi=514 nLo=0 SEQ=44
+[RFW] n=616 p23=0 nirq=1 line=0x00 nHi=514 nLo=0 SEQ=44
+[RFW] n=617 p23=0 nirq=1 line=0x00 nHi=514 nLo=0 SEQ=44
+[RFW] n=618 p23=0 nirq=1 line=0x00 nHi=514 nLo=0 SEQ=44
+[RFW] n=619 p23=0 nirq=1 line=0x00 nHi=514 nLo=0 SEQ=44
+[RFW] n=620 p23=0 nirq=1 line=0x00 nHi=514 nLo=0 SEQ=44
+[RFW] n=621 p23=0 nirq=1 line=0x00 nHi=514 nLo=0 SEQ=44
+[RFW] n=622

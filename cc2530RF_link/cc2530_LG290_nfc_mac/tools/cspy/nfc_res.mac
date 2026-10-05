@@ -1,0 +1,26 @@
+/*
+ * nfc_res.mac — 单断点 @ EPD_Init(0x3E49), 在 execUserReset 里 arm
+ * 停在 EPD_Init 时 autotune 已结束, 尝试读 XDATA g_at_* (可能失败, 试一下)
+ */
+__var hit;
+
+execUserSetup()
+{
+  __message ">>> nfc_res.mac setup\n";
+}
+
+execUserReset()
+{
+  __message ">>> reset -> arm bp @EPD_Init(0x3E49)\n";
+  __setCodeBreak("0x3E49", 0, "on_epd()", "TRUE", "");
+}
+
+on_epd()
+{
+  hit = hit + 1;
+  if(hit <= 2)
+  {
+    __message "[epd] hit ", hit, "\n";
+    __message "  try XDATA g_at_ok = ", __readMemory8(0x1C3D, "XDATA"), "\n";
+  }
+}

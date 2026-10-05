@@ -1,0 +1,10 @@
+__var c;
+execUserSetup() { __message ">>> NFC_DelayMs inner loop @0x236B\n"; }
+execUserReset() { __setCodeBreak("0x236B", 0, "on_d()", "TRUE", ""); }
+on_d() {
+  c = c + 1;
+  if(c <= 15) {
+    __message "dly#", c, " ST1=", __readMemory8(0x96,"SFR"):%X,
+      " ST0=", __readMemory8(0x95,"SFR"):%X, "\n";
+  }
+}

@@ -1,0 +1,38 @@
+/*
+ * nfc_glob.mac — 在 NFC_AckProbe 入口多次命中, 每次读 IDATA 全局量
+ *
+ * g_ack_kind = 0x0894 (IDATA/DATA)  —— 上一次 probe 的判定结果
+ * g_status   = 0x0895
+ * g_probe_pre= 0x0897
+ *
+ * 这些是 IDATA, 断点回调里 __readMemory8(addr,"IDATA") 应该可读。
+ * 若不行则退回 "SFR"+偏移(CC2530 的 DATA 0x00-0x7F 与 SFR 0x80-0xFF)。
+ */
+
+__var ak, st, pp, n, pc;
+
+snap(tag)
+{
+  ak = __readMemory8(0x0894, "IDATA");
+  st = __readMemory8(0x0895, "IDATA");
+  pp = __readMemory8(0x0897, "IDATA");
+  pc = #PC;
+  __message "  [", tag, "#", n, "] PC=0x", pc:%X,
+            "  ack_kind=", ak, " (0=REAL 1=LATE 2=NONE 3=STUCK)",
+            "  status=0x", st:%X, "  probe_pre=", pp, "\n";
+}
+
+execUserSetup()
+{
+  __message ">>> nfc_glob.mac: break at NFC_AckProbe (0x27C8)\n";
+  __setCodeBreak("0x27C8", 0, "hit_probe()", "TRUE", "");
+}
+
+hit_probe()
+{
+  n = n + 1;
+  if(n <= 20)
+  {
+    snap("AckProbe");
+  }
+}

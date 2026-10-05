@@ -1,0 +1,29 @@
+/*
+ * nfc_v20.mac — v20 验证 (地址全部用 v20 map 重新取)
+ *
+ *   autotune     = 0x0EAB
+ *   NFC_Probe    = 0x311A
+ *   NFC_ReadMem  = 0x2961
+ *   NFC_PowerUp  = 0x246D
+ *   NFC_SetSwap  = 0x2757
+ *
+ * 期望: autotune 第 1 轮 (swap=1, us=250) 就 probe 成功 + ReadMem OK → 立即 return
+ *       → 只应看到 1 次 PowerUp / 1 次 Probe / 1 次 ReadMem
+ */
+
+__var nauto, npu, np, nrm;
+
+execUserSetup()
+{
+  __message ">>> nfc_v20.mac armed (v20 addresses)\n";
+  __setCodeBreak("0x0EAB", 0, "on_auto()",  "TRUE", "");
+  __setCodeBreak("0x246D", 0, "on_pwrup()", "TRUE", "");
+  __setCodeBreak("0x311A", 0, "on_probe()", "TRUE", "");
+  __setCodeBreak("0x2961", 0, "on_rdmem()", "TRUE", "");
+}
+
+on_auto()  { nauto++; __message "AUTO  #", nauto, "\n"; }
+on_pwrup() { npu++; if(npu<=12) __message "  PowerUp #", npu, "\n"; }
+on_probe() { np++;  if(np<=12)  __message "  >> Probe   #", np, "\n"; }
+on_rdmem() { nrm++; if(nrm<=12) __message "  >> ReadMem #", nrm,
+                                     "  P0DIR=0x", __readMemory8(0xFD,"SFR"):%X, "\n"; }

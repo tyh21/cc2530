@@ -1,0 +1,3248 @@
+################################################################################
+#                                                                              #
+#      IAR Universal Linker V6.5.2.97                                          #
+#                                                                              #
+#           Link time     =  05/Oct/2026  01:56:18                             #
+#           Target CPU    =  x51                                               #
+#           List file     =  C:\Users\tyh21\Desktop\cc2530\cc2530_RF_link\cc25 #
+#                            30_LG290_nfc_mac\Release\List\project.map         #
+#           Output file 1 =  C:\Users\tyh21\Desktop\cc2530\cc2530_RF_link\cc25 #
+#                            30_LG290_nfc_mac\Release\Exe\project.a51          #
+#                            Format: intel-extended                            #
+#           Command line  =  -f C:\Users\tyh21\AppData\Local\Temp\EW9050.tmp   #
+#                            (C:\Users\tyh21\Desktop\cc2530\cc2530_RF_link\cc2 #
+#                            530_LG290_nfc_mac\Release\Obj\epd2in9.r51         #
+#                            C:\Users\tyh21\Desktop\cc2530\cc2530_RF_link\cc25 #
+#                            30_LG290_nfc_mac\Release\Obj\font16.r51           #
+#                            C:\Users\tyh21\Desktop\cc2530\cc2530_RF_link\cc25 #
+#                            30_LG290_nfc_mac\Release\Obj\font24.r51           #
+#                            C:\Users\tyh21\Desktop\cc2530\cc2530_RF_link\cc25 #
+#                            30_LG290_nfc_mac\Release\Obj\font8.r51            #
+#                            C:\Users\tyh21\Desktop\cc2530\cc2530_RF_link\cc25 #
+#                            30_LG290_nfc_mac\Release\Obj\main.r51             #
+#                            C:\Users\tyh21\Desktop\cc2530\cc2530_RF_link\cc25 #
+#                            30_LG290_nfc_mac\Release\Obj\nfc.r51              #
+#                            -o                                                #
+#                            C:\Users\tyh21\Desktop\cc2530\cc2530_RF_link\cc25 #
+#                            30_LG290_nfc_mac\Release\Exe\project.a51          #
+#                            -Fintel-extended -l                               #
+#                            C:\Users\tyh21\Desktop\cc2530\cc2530_RF_link\cc25 #
+#                            30_LG290_nfc_mac\Release\List\project.map         #
+#                            -xms                                              #
+#                            "-IC:/Program Files (x86)\IAR Systems\Embedded Wo #
+#                            rkbench 8.0\8051\LIB\"                            #
+#                            -f                                                #
+#                            "C:/Program Files (x86)\IAR Systems\Embedded Work #
+#                            bench 8.0\8051\config\devices\_generic\lnk51ew_80 #
+#                            52.xcl"                                           #
+#                            (-D_IDATA0_START=0x00 -D_IDATA0_END=0xFF          #
+#                            -D_PDATA0_START=0x0000 -D_PDATA0_END=0x00FF       #
+#                            -D_IXDATA0_START=0x0001 -D_IXDATA0_END=0xFFFF     #
+#                            -D_XDATA0_START=0x0001 -D_XDATA0_END=0xFFFF       #
+#                            -D_CODE0_START=0x0000 -D_CODE0_END=0xFFFF         #
+#                            -D?REGISTER_BANK=0x0 -D_REGISTER_BANK_START=0x0   #
+#                            -D_BREG_START=0x00 -D?VB=0x20                     #
+#                            -Z(BIT)BREG=_BREG_START -Z(BIT)BIT_N=0-7F         #
+#                            -Z(DATA)REGISTERS+8=_REGISTER_BANK_START          #
+#                            -Z(DATA)BDATA_Z,BDATA_N,BDATA_I=20-2F             #
+#                            -Z(DATA)VREG=08-7F -Z(DATA)PSP,XSP=08-7F          #
+#                            -Z(DATA)DOVERLAY=08-7F                            #
+#                            -Z(DATA)DATA_I,DATA_Z,DATA_N=08-7F                #
+#                            -U(IDATA)0-7F=(DATA)0-7F                          #
+#                            -Z(IDATA)IDATA_I,IDATA_Z,IDATA_N=08-_IDATA0_END   #
+#                            -Z(IDATA)ISTACK+_IDATA_STACK_SIZE#08-_IDATA0_END  #
+#                            -Z(IDATA)IOVERLAY=08-FF -Z(CODE)INTVEC=0          #
+#                            -Z(CODE)CSTART=_CODE0_START-_CODE0_END            #
+#                            -Z(CODE)BIT_ID,BDATA_ID,DATA_ID,IDATA_ID,IXDATA_I #
+#                            D,PDATA_ID,XDATA_ID=_CODE0_START-_CODE0_END       #
+#                            -Z(CODE)HUGE_ID=_CODE0_START-_CODE0_END           #
+#                            -Z(CODE)RCODE,DIFUNCT=_CODE0_START-_CODE0_END     #
+#                            -P(CODE)CODE_C,CODE_N,NEAR_CODE=_CODE0_START-_COD #
+#                            E0_END                                            #
+#                            -Z(CODE)CHECKSUM#_CODE0_END                       #
+#                            -Z(XDATA)PDATA_Z,PDATA_I=_PDATA0_START-_PDATA0_EN #
+#                            D                                                 #
+#                            -P(XDATA)PDATA_N=_PDATA0_START-_PDATA0_END        #
+#                            -Z(XDATA)PSTACK+_PDATA_STACK_SIZE=_PDATA0_START-_ #
+#                            PDATA0_END                                        #
+#                            -Z(XDATA)EXT_STACK+_EXTENDED_STACK_SIZE=_EXTENDED #
+#                            _STACK_START                                      #
+#                            -Z(XDATA)XSTACK+_XDATA_STACK_SIZE=_XDATA0_START-_ #
+#                            XDATA0_END                                        #
+#                            -Z(XDATA)IXDATA_I,IXDATA_Z=_IXDATA0_START-_IXDATA #
+#                            0_END                                             #
+#                            -P(XDATA)IXDATA_N=_IXDATA0_START-_IXDATA0_END     #
+#                            -Z(XDATA)XDATA_I,XDATA_Z=_XDATA0_START-_XDATA0_EN #
+#                            D                                                 #
+#                            -P(XDATA)XDATA_N=_XDATA0_START-_XDATA0_END        #
+#                            -Z(XDATA)XDATA_HEAP+_XDATA_HEAP_SIZE=_XDATA0_STAR #
+#                            T-_XDATA0_END                                     #
+#                            -Z(CONST)XDATA_ROM_C=_XDATA0_START-_XDATA0_END    #
+#                            -Z(CODE)FAR22_ID=[_CODE0_START-_CODE0_END]/10000  #
+#                            -Z(CODE)FAR_ID=[_CODE0_START-_CODE0_END]/10000    #
+#                            -cx51) -D_NR_OF_VIRTUAL_REGISTERS=8               #
+#                            -D?PBANK=0xA0 -D?CBANK=0xF0 -D?CBANK_MASK=0x30    #
+#                            -e?BCALL_30=?BCALL -e?BRET_30=?BRET               #
+#                            -e?BDISPATCH_30=?BDISPATCH                        #
+#                            -D_CODEBANK_START=0x8000 -D_CODEBANK_END=0xFFFF   #
+#                            -D_NR_OF_BANKS=0x03                               #
+#                            "-IC:/Program Files (x86)\IAR Systems\Embedded Wo #
+#                            rkbench 8.0\8051\CONFIG\"                         #
+#                            -s __program_start                                #
+#                            "C:/Program Files (x86)\IAR Systems\Embedded Work #
+#                            bench 8.0\8051\LIB\DLIB\dl-pli-nlpd-1e16x01n.r51" #
+#                            -D_IDATA_STACK_SIZE=0x40 -D?ESP=0 -D?ESP_MASK=0   #
+#                            -D_EXTENDED_STACK_START=0                         #
+#                            -D_EXTENDED_STACK_SIZE=0                          #
+#                            -D_PDATA_STACK_SIZE=0x80                          #
+#                            -D_XDATA_STACK_SIZE=0x200                         #
+#                            -D_XDATA_HEAP_SIZE=0xFF -D_FAR_HEAP_SIZE=0xFFF    #
+#                            -D_HUGE_HEAP_SIZE=0xFFF                           #
+#                            -D_FAR22_HEAP_SIZE=0xFFF)                         #
+#                                                                              #
+#                           Copyright (C) 1987-2017 IAR Systems AB.            #
+################################################################################
+
+
+
+
+
+                ****************************************
+                *                                      *
+                *           CROSS REFERENCE            *
+                *                                      *
+                ****************************************
+
+       Program entry at : CODE      00000063  Relocatable, from module : CSTARTUP
+
+
+
+
+                ****************************************
+                *                                      *
+                *            RUNTIME MODEL             *
+                *                                      *
+                ****************************************
+
+  __Heap_Handler             = Basic
+  __SystemLibrary            = DLib
+  __calling_convention       = pdata_reentrant
+  __code_model               = near
+  __core                     = plain
+  __data_model               = large
+  __dlib_file_descriptor     = 0
+  __dlib_full_locale_support = 0
+  __dptr_size                = 16
+  __extended_stack           = disabled
+  __location_for_constants   = data
+  __number_of_dptrs          = 1
+  __register_banks           = *
+  __rt_version               = 1
+
+                ****************************************
+                *                                      *
+                *    AUTOMATIC SYMBOL REDIRECTIONS     *
+                *                                      *
+                ****************************************
+
+                  There are no automatic symbol redirections.
+
+
+
+                ****************************************
+                *                                      *
+                *              MODULE MAP              *
+                *                                      *
+                ****************************************
+
+
+  DEFINED ABSOLUTE ENTRIES
+    *************************************************************************
+
+  DEFINED ABSOLUTE ENTRIES
+  PROGRAM MODULE, NAME : ?ABS_ENTRY_MOD
+
+Absolute parts
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           _FAR22_HEAP_SIZE        00000FFF 
+           _HUGE_HEAP_SIZE         00000FFF 
+           _FAR_HEAP_SIZE          00000FFF 
+           _XDATA_HEAP_SIZE        000000FF 
+           _XDATA_STACK_SIZE       00000200 
+           _PDATA_STACK_SIZE       00000080 
+           _EXTENDED_STACK_SIZE    00000000 
+           _EXTENDED_STACK_START   00000000 
+           ?ESP_MASK               00000000 
+           ?ESP                    00000000 
+           _IDATA_STACK_SIZE       00000040 
+           _NR_OF_BANKS            00000003 
+           _CODEBANK_END           0000FFFF 
+           _CODEBANK_START         00008000 
+           ?CBANK_MASK             00000030 
+           ?CBANK                  000000F0 
+           ?PBANK                  000000A0        ?RESET_PDATA_BANK (CSTARTUP)
+           _NR_OF_VIRTUAL_REGISTERS
+                                   00000008 
+           ?VB                     00000020        ?FUNC_ENTER_PDATA (?FUNC_ENTER_PDATA)
+                                                   ?FUNC_LEAVE_PDATA (?FUNC_LEAVE_PDATA)
+           _BREG_START             00000000 
+           _REGISTER_BANK_START    00000000 
+           ?REGISTER_BANK          00000000        Segment part 6 (CSTARTUP)
+           _CODE0_END              0000FFFF 
+           _CODE0_START            00000000 
+           _XDATA0_END             0000FFFF 
+           _XDATA0_START           00000001 
+           _IXDATA0_END            0000FFFF 
+           _IXDATA0_START          00000001 
+           _PDATA0_END             000000FF 
+           _PDATA0_START           00000000        NFC_ReadMem (nfc)
+                                                   NFC_ReadTextEx (nfc)
+                                                   NFC_WriteMem (nfc)
+                                                   NFC_WriteTextEx (nfc)
+           _IDATA0_END             000000FF 
+           _IDATA0_START           00000000 
+    *************************************************************************
+
+  FILE NAME : C:\Users\tyh21\Desktop\cc2530\cc2530_RF_link\cc2530_LG290_nfc_mac\Release\Obj\epd2in9.r51
+  PROGRAM MODULE, NAME : epd2in9
+
+  SEGMENTS IN THE MODULE
+  ======================
+SFR_AN
+  Relative segment, address: DATA 00000080 - 00000080 (0x1 bytes), align: 0
+  Segment part 1. ROOT        Intra module refs:   EPD_GpioInit
+                                                   EPD_PowerOn
+                                                   EPD_SendByte
+                                                   EPD_SendCommand
+                                                   EPD_SendData
+                                                   NFC_PowerOff (nfc)
+                                                   NFC_PowerUp (nfc)
+                                                   gpio_prep (nfc)
+                                                   scl_hi (nfc)
+                                                   scl_low (nfc)
+                                                   sda_hi (nfc)
+                                                   sda_low (nfc)
+                                                   sda_rd (nfc)
+                                                   sda_rel (nfc)
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           _A_P0                   00000080 
+    -------------------------------------------------------------------------
+SFR_AN
+  Relative segment, address: DATA 00000090 - 00000090 (0x1 bytes), align: 0
+  Segment part 2. ROOT        Intra module refs:   EPD_GpioInit
+                                                   EPD_Reset
+                                                   EPD_WaitBusy
+                                                   NFC_NirqLevel (nfc)
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           _A_P1                   00000090 
+    -------------------------------------------------------------------------
+SFR_AN
+  Relative segment, address: DATA 000000F3 - 000000F3 (0x1 bytes), align: 0
+  Segment part 3. ROOT        Intra module refs:   EPD_GpioInit
+                                                   NFC_PowerOff (nfc)
+                                                   NFC_PowerUp (nfc)
+                                                   gpio_prep (nfc)
+                                                   sda_input (nfc)
+                                                   sda_output (nfc)
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           P0SEL                   000000F3 
+    -------------------------------------------------------------------------
+SFR_AN
+  Relative segment, address: DATA 000000F4 - 000000F4 (0x1 bytes), align: 0
+  Segment part 4. ROOT        Intra module refs:   EPD_GpioInit
+                                                   NFC_NirqLevel (nfc)
+                                                   gpio_prep (nfc)
+                                                   uart_init (main)
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           P1SEL                   000000F4 
+    -------------------------------------------------------------------------
+SFR_AN
+  Relative segment, address: DATA 000000FD - 000000FD (0x1 bytes), align: 0
+  Segment part 5. ROOT        Intra module refs:   EPD_GpioInit
+                                                   NFC_PowerOff (nfc)
+                                                   NFC_PowerUp (nfc)
+                                                   gpio_prep (nfc)
+                                                   scl_hi (nfc)
+                                                   scl_low (nfc)
+                                                   sda_hi (nfc)
+                                                   sda_input (nfc)
+                                                   sda_low (nfc)
+                                                   sda_output (nfc)
+                                                   sda_rel (nfc)
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           P0DIR                   000000FD 
+    -------------------------------------------------------------------------
+SFR_AN
+  Relative segment, address: DATA 000000FE - 000000FE (0x1 bytes), align: 0
+  Segment part 6. ROOT        Intra module refs:   EPD_GpioInit
+                                                   NFC_NirqLevel (nfc)
+                                                   gpio_prep (nfc)
+                                                   uart_init (main)
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           P1DIR                   000000FE 
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00002F0E - 00002F34 (0x27 bytes), align: 0
+  Segment part 18.            Intra module refs:   EPD_Fill
+                                                   EPD_PowerOn
+                                                   EPD_RefreshFull
+                                                   EPD_Reset
+                                                   EPD_WaitBusy
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           EPD_DelayMS             00002F0E 
+               PSTACK = 00000009 ( 00000000 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00002F35 - 00002F47 (0x13 bytes), align: 0
+  Segment part 19.            Intra module refs:   EPD_Init
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           EPD_PowerOn             00002F35 
+               calls direct
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00002F48 - 00002F63 (0x1c bytes), align: 0
+  Segment part 21.            Intra module refs:   EPD_Init
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           EPD_GpioInit            00002F48 
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00002F64 - 00002F7E (0x1b bytes), align: 0
+  Segment part 22.            Intra module refs:   EPD_SendCommand
+                                                   EPD_SendData
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           EPD_SendByte            00002F64 
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00002F7F - 00002F94 (0x16 bytes), align: 0
+  Segment part 23.            Intra module refs:   EPD_Fill
+                                                   EPD_Init
+                                                   EPD_LeavePartial
+                                                   EPD_RefreshFull
+                                                   EPD_SetFullWindow
+                                                   EPD_WaitBusy
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           EPD_SendCommand         00002F7F 
+               calls direct
+               PSTACK = 00000009 ( 00000000 )
+               ISTACK = 00000000 ( 00000001 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00002F95 - 00002FA8 (0x14 bytes), align: 0
+  Segment part 24.            Intra module refs:   EPD_Fill
+                                                   EPD_Init
+                                                   EPD_LeavePartial
+                                                   EPD_RefreshFull
+                                                   EPD_SetFullWindow
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           EPD_SendData            00002F95 
+               calls direct
+               PSTACK = 00000009 ( 00000000 )
+               ISTACK = 00000000 ( 00000001 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00002FA9 - 00002FFC (0x54 bytes), align: 0
+  Segment part 25.            Intra module refs:   EPD_Fill
+                                                   EPD_Init
+                                                   EPD_RefreshFull
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           EPD_WaitBusy            00002FA9 
+               calls direct
+               PSTACK = 00000009 ( 00000007 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00002FFD - 00003029 (0x2d bytes), align: 0
+  Segment part 26.            Intra module refs:   EPD_Init
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           EPD_Reset               00002FFD 
+               calls direct
+               ISTACK = 00000000 ( 00000001 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 0000302A - 00003043 (0x1a bytes), align: 0
+  Segment part 27.            Intra module refs:   EPD_Fill
+                                                   EPD_RefreshFull
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           EPD_LeavePartial        0000302A 
+               calls direct
+               PSTACK = 00000007 ( 00000000 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00003044 - 00003082 (0x3f bytes), align: 0
+  Segment part 28.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           EPD_Init                00003044        main (main)
+               calls direct
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00003083 - 000030C4 (0x42 bytes), align: 0
+  Segment part 29.            Intra module refs:   EPD_Fill
+                                                   EPD_RefreshFull
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           EPD_SetFullWindow       00003083 
+               calls direct
+               PSTACK = 00000007 ( 00000000 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 000030C5 - 00003148 (0x84 bytes), align: 0
+  Segment part 30.            Intra module refs:   EPD_DisplayImage
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           EPD_RefreshFull         000030C5 
+               calls direct
+               PSTACK = 00000000 ( 00000007 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00003149 - 000031AA (0x62 bytes), align: 0
+  Segment part 33.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           EPD_Fill                00003149        main (main)
+               calls direct
+               PSTACK = 00000000 ( 00000006 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 000031AB - 000031AE (0x4 bytes), align: 0
+  Segment part 34.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           EPD_DisplayImage        000031AB        flush (main)
+               calls direct
+    -------------------------------------------------------------------------
+XDATA_Z
+  Relative segment, address: XDATA 0000065C - 000018DB (0x1280 bytes), align: 0
+  Segment part 17.            Intra module refs:   EPD_FrameClear
+                                                   EPD_SetPixel
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           EPD_Frame               0000065C        flush (main)
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 000031AF - 000031D3 (0x25 bytes), align: 0
+  Segment part 39.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           EPD_FrameClear          000031AF        title (main)
+               ISTACK = 00000000 ( 00000001 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 000031D4 - 00003250 (0x7d bytes), align: 0
+  Segment part 40.            Intra module refs:   EPD_DrawChar
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           EPD_SetPixel            000031D4 
+               PSTACK = 00000012 ( 00000000 )
+               ISTACK = 00000000 ( 00000002 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00003251 - 000033D4 (0x184 bytes), align: 0
+  Segment part 47.            Intra module refs:   EPD_DrawString
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           EPD_DrawChar            00003251 
+               calls direct
+               PSTACK = 00000012 ( 00000010 )
+               ISTACK = 00000000 ( 00000001 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 000033D5 - 0000345C (0x88 bytes), align: 0
+  Segment part 48.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           EPD_DrawString          000033D5        row8 (main)
+                                                   title (main)
+               calls direct
+               PSTACK = 00000004 ( 00000012 )
+
+    *************************************************************************
+
+  FILE NAME : C:\Users\tyh21\Desktop\cc2530\cc2530_RF_link\cc2530_LG290_nfc_mac\Release\Obj\font16.r51
+  PROGRAM MODULE, NAME : font16
+
+  SEGMENTS IN THE MODULE
+  ======================
+<CODE_C,NEAR_CODE> 1 (was CODE_C)
+  Relative segment, address: CODE 0000186C - 0000244B (0xbe0 bytes), align: 0
+  Segment part 6.             Intra module refs:   Segment part 8
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           Font16_Table            0000186C 
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000080 - 00000085 (0x6 bytes), align: 0
+  Segment part 7.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           Font16                  00000080        title (main)
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000074 - 00000079 (0x6 bytes), align: 0
+  Segment part 8.             Intra module refs:   Font16
+
+    *************************************************************************
+
+  FILE NAME : C:\Users\tyh21\Desktop\cc2530\cc2530_RF_link\cc2530_LG290_nfc_mac\Release\Obj\font24.r51
+    *************************************************************************
+
+  FILE NAME : C:\Users\tyh21\Desktop\cc2530\cc2530_RF_link\cc2530_LG290_nfc_mac\Release\Obj\font8.r51
+  PROGRAM MODULE, NAME : font8
+
+  SEGMENTS IN THE MODULE
+  ======================
+<CODE_C,NEAR_CODE> 1 (was CODE_C)
+  Relative segment, address: CODE 0000345D - 00003754 (0x2f8 bytes), align: 0
+  Segment part 6.             Intra module refs:   Segment part 8
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           Font8_Table             0000345D 
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000086 - 0000008B (0x6 bytes), align: 0
+  Segment part 7.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           Font8                   00000086        row8 (main)
+                                                   title (main)
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 0000007A - 0000007F (0x6 bytes), align: 0
+  Segment part 8.             Intra module refs:   Font8
+
+    *************************************************************************
+
+  FILE NAME : C:\Users\tyh21\Desktop\cc2530\cc2530_RF_link\cc2530_LG290_nfc_mac\Release\Obj\main.r51
+  PROGRAM MODULE, NAME : main
+
+  SEGMENTS IN THE MODULE
+  ======================
+SFR_AN
+  Relative segment, address: DATA 00000086 - 00000086 (0x1 bytes), align: 0
+  Segment part 1. ROOT        Intra module refs:   uart_init
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           U0CSR                   00000086 
+    -------------------------------------------------------------------------
+SFR_AN
+  Relative segment, address: DATA 0000009E - 0000009E (0x1 bytes), align: 0
+  Segment part 2. ROOT        Intra module refs:   NFC_T1Init (nfc)
+                                                   clock_init
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           CLKCONSTA               0000009E 
+    -------------------------------------------------------------------------
+SFR_AN
+  Relative segment, address: DATA 000000C1 - 000000C1 (0x1 bytes), align: 0
+  Segment part 3. ROOT        Intra module refs:   uputc
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           U0DBUF                  000000C1 
+    -------------------------------------------------------------------------
+SFR_AN
+  Relative segment, address: DATA 000000C2 - 000000C2 (0x1 bytes), align: 0
+  Segment part 4. ROOT        Intra module refs:   uart_init
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           U0BAUD                  000000C2 
+    -------------------------------------------------------------------------
+SFR_AN
+  Relative segment, address: DATA 000000C4 - 000000C4 (0x1 bytes), align: 0
+  Segment part 5. ROOT        Intra module refs:   uart_init
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           U0UCR                   000000C4 
+    -------------------------------------------------------------------------
+SFR_AN
+  Relative segment, address: DATA 000000C5 - 000000C5 (0x1 bytes), align: 0
+  Segment part 6. ROOT        Intra module refs:   uart_init
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           U0GCR                   000000C5 
+    -------------------------------------------------------------------------
+SFR_AN
+  Relative segment, address: DATA 000000C6 - 000000C6 (0x1 bytes), align: 0
+  Segment part 7. ROOT        Intra module refs:   NFC_T1Init (nfc)
+                                                   clock_init
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           CLKCONCMD               000000C6 
+    -------------------------------------------------------------------------
+SFR_AN
+  Relative segment, address: DATA 000000E8 - 000000E8 (0x1 bytes), align: 0
+  Segment part 8. ROOT        Intra module refs:   uart_init
+                                                   uputc
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           _A_IRCON2               000000E8 
+    -------------------------------------------------------------------------
+SFR_AN
+  Relative segment, address: DATA 000000F1 - 000000F1 (0x1 bytes), align: 0
+  Segment part 9. ROOT        Intra module refs:   uart_init
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           PERCFG                  000000F1 
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 0000244C - 00002466 (0x1b bytes), align: 0
+  Segment part 226.           Intra module refs:   main
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           uart_init               0000244C 
+    -------------------------------------------------------------------------
+XDATA_Z
+  Relative segment, address: XDATA 000018DC - 000018DD (0x2 bytes), align: 0
+  Segment part 211.           Intra module refs:   uputc
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00002467 - 00002494 (0x2e bytes), align: 0
+  Segment part 227.           Intra module refs:   uputs
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           uputc                   00002467 
+               PSTACK = 00000006 ( 00000000 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00002495 - 000024BD (0x29 bytes), align: 0
+  Segment part 228.           Intra module refs:   dr
+                                                   main
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           uputs                   00002495 
+               calls direct
+               PSTACK = 00000000 ( 00000006 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 000024BE - 000024CA (0xd bytes), align: 0
+  Segment part 229.           Intra module refs:   main
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           clock_init              000024BE 
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was CODE_C)
+  Relative segment, address: CODE 00003755 - 00003765 (0x11 bytes), align: 0
+  Segment part 212.           Intra module refs:   b_hex8
+    -------------------------------------------------------------------------
+XDATA_Z
+  Relative segment, address: XDATA 000018DE - 0000192D (0x50 bytes), align: 0
+  Segment part 213.           Intra module refs:   b_ch
+                                                   b_reset
+                                                   b_str
+                                                   dr
+    -------------------------------------------------------------------------
+XDATA_Z
+  Relative segment, address: XDATA 0000192E - 0000192E (0x1 bytes), align: 0
+  Segment part 214.           Intra module refs:   b_ch
+                                                   b_reset
+                                                   b_str
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 000024CB - 000024D7 (0xd bytes), align: 0
+  Segment part 230.           Intra module refs:   main
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           b_reset                 000024CB 
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 000024D8 - 00002513 (0x3c bytes), align: 0
+  Segment part 231.           Intra module refs:   b_dig
+                                                   b_hex8
+                                                   b_udec
+                                                   main
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           b_ch                    000024D8 
+               PSTACK = 0000000D ( 00000000 )
+               ISTACK = 00000000 ( 00000001 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00002514 - 0000256F (0x5c bytes), align: 0
+  Segment part 232.           Intra module refs:   b_kind
+                                                   main
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           b_str                   00002514 
+               ISTACK = 00000000 ( 00000001 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00002570 - 000025A5 (0x36 bytes), align: 0
+  Segment part 233.           Intra module refs:   main
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           b_hex8                  00002570 
+               calls direct
+               ISTACK = 00000000 ( 00000001 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 000025A6 - 000025B7 (0x12 bytes), align: 0
+  Segment part 234.           Intra module refs:   main
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           b_dig                   000025A6 
+               calls direct
+               ISTACK = 00000000 ( 00000001 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 000025B8 - 0000263C (0x85 bytes), align: 0
+  Segment part 235.           Intra module refs:   main
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           b_udec                  000025B8 
+               calls direct
+               PSTACK = 00000000 ( 0000000D )
+               ISTACK = 00000000 ( 00000001 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 0000263D - 00002690 (0x54 bytes), align: 0
+  Segment part 236.           Intra module refs:   main
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           b_kind                  0000263D 
+               calls direct
+               ISTACK = 00000000 ( 00000001 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00002691 - 000026E5 (0x55 bytes), align: 0
+  Segment part 237.           Intra module refs:   dr
+                                                   main
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           row8                    00002691 
+               calls direct
+               PSTACK = 00000000 ( 0000000B )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 000026E6 - 00002748 (0x63 bytes), align: 0
+  Segment part 238.           Intra module refs:   main
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           title                   000026E6 
+               calls direct
+               PSTACK = 00000000 ( 0000000F )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00002749 - 00002750 (0x8 bytes), align: 0
+  Segment part 239.           Intra module refs:   main
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           flush                   00002749 
+               calls direct
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00002751 - 00002770 (0x20 bytes), align: 0
+  Segment part 240.           Intra module refs:   main
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           dr                      00002751 
+               calls direct
+               ISTACK = 00000000 ( 00000001 )
+    -------------------------------------------------------------------------
+XDATA_Z
+  Relative segment, address: XDATA 0000192F - 0000193E (0x10 bytes), align: 0
+  Segment part 215.           Intra module refs:   main
+                                                   try_attr
+    -------------------------------------------------------------------------
+XDATA_Z
+  Relative segment, address: XDATA 0000193F - 0000193F (0x1 bytes), align: 0
+  Segment part 216.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_Z
+  Relative segment, address: XDATA 00001940 - 0000197F (0x40 bytes), align: 0
+  Segment part 217.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_Z
+  Relative segment, address: XDATA 00001980 - 00001980 (0x1 bytes), align: 0
+  Segment part 218.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_Z
+  Relative segment, address: XDATA 00001981 - 00001981 (0x1 bytes), align: 0
+  Segment part 219.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_Z
+  Relative segment, address: XDATA 00001982 - 000019C1 (0x40 bytes), align: 0
+  Segment part 220.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_Z
+  Relative segment, address: XDATA 000019C2 - 000019C2 (0x1 bytes), align: 0
+  Segment part 221.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_Z
+  Relative segment, address: XDATA 000019C3 - 000019C3 (0x1 bytes), align: 0
+  Segment part 222.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_Z
+  Relative segment, address: XDATA 000019C4 - 000019C4 (0x1 bytes), align: 0
+  Segment part 223.           Intra module refs:   main
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00002771 - 0000278B (0x1b bytes), align: 0
+  Segment part 241.           Intra module refs:   main
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           power_cycle             00002771 
+               calls direct
+               ISTACK = 00000000 ( 00000001 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 0000278C - 00002810 (0x85 bytes), align: 0
+  Segment part 242.           Intra module refs:   main
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           try_attr                0000278C 
+               calls direct
+               PSTACK = 00000000 ( 0000000B )
+               ISTACK = 00000000 ( 00000001 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00002811 - 00002F0D (0x6fd bytes), align: 0
+  Segment part 243.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           main                    00002811        ?call_main (?cmain)
+               calls direct
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 0000008C - 0000008E (0x3 bytes), align: 0
+  Segment part 17.            Intra module refs:   b_kind
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 0000008F - 00000094 (0x6 bytes), align: 0
+  Segment part 19.            Intra module refs:   b_kind
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000095 - 0000009B (0x7 bytes), align: 0
+  Segment part 21.            Intra module refs:   b_kind
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 0000009C - 000000A0 (0x5 bytes), align: 0
+  Segment part 23.            Intra module refs:   b_kind
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 000000A1 - 000000A6 (0x6 bytes), align: 0
+  Segment part 25.            Intra module refs:   b_kind
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 000000A7 - 000000A8 (0x2 bytes), align: 0
+  Segment part 27.            Intra module refs:   b_kind
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 000000A9 - 000000AB (0x3 bytes), align: 0
+  Segment part 29.            Intra module refs:   dr
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 000000AC - 000000E4 (0x39 bytes), align: 0
+  Segment part 31.            Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 000000E5 - 000000EB (0x7 bytes), align: 0
+  Segment part 33.            Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 000000EC - 00000104 (0x19 bytes), align: 0
+  Segment part 35.            Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000105 - 00000109 (0x5 bytes), align: 0
+  Segment part 37.            Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 0000010A - 0000010E (0x5 bytes), align: 0
+  Segment part 39.            Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 0000010F - 00000112 (0x4 bytes), align: 0
+  Segment part 41.            Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000113 - 00000119 (0x7 bytes), align: 0
+  Segment part 43.            Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 0000011A - 0000011F (0x6 bytes), align: 0
+  Segment part 45.            Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000120 - 00000125 (0x6 bytes), align: 0
+  Segment part 47.            Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000126 - 0000012C (0x7 bytes), align: 0
+  Segment part 49.            Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 0000012D - 00000134 (0x8 bytes), align: 0
+  Segment part 51.            Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000135 - 0000013D (0x9 bytes), align: 0
+  Segment part 53.            Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 0000013E - 00000142 (0x5 bytes), align: 0
+  Segment part 55.            Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000143 - 00000146 (0x4 bytes), align: 0
+  Segment part 57.            Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000147 - 0000014B (0x5 bytes), align: 0
+  Segment part 59.            Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 0000014C - 00000161 (0x16 bytes), align: 0
+  Segment part 61.            Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000162 - 00000172 (0x11 bytes), align: 0
+  Segment part 63.            Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000173 - 00000185 (0x13 bytes), align: 0
+  Segment part 65.            Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000186 - 00000199 (0x14 bytes), align: 0
+  Segment part 67.            Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 0000019A - 000001AE (0x15 bytes), align: 0
+  Segment part 69.            Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 000001AF - 000001BE (0x10 bytes), align: 0
+  Segment part 71.            Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 000001BF - 000001D0 (0x12 bytes), align: 0
+  Segment part 73.            Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 000001D1 - 000001E5 (0x15 bytes), align: 0
+  Segment part 75.            Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 000001E6 - 000001F9 (0x14 bytes), align: 0
+  Segment part 77.            Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 000001FA - 0000020B (0x12 bytes), align: 0
+  Segment part 79.            Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 0000020C - 00000222 (0x17 bytes), align: 0
+  Segment part 81.            Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000223 - 00000236 (0x14 bytes), align: 0
+  Segment part 83.            Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000237 - 00000248 (0x12 bytes), align: 0
+  Segment part 85.            Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000249 - 0000024F (0x7 bytes), align: 0
+  Segment part 87.            Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000250 - 0000026A (0x1b bytes), align: 0
+  Segment part 89.            Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 0000026B - 00000271 (0x7 bytes), align: 0
+  Segment part 91.            Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000272 - 00000277 (0x6 bytes), align: 0
+  Segment part 93.            Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000278 - 0000027E (0x7 bytes), align: 0
+  Segment part 95.            Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 0000027F - 00000293 (0x15 bytes), align: 0
+  Segment part 97.            Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000294 - 0000029F (0xc bytes), align: 0
+  Segment part 99.            Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 000002A0 - 000002B4 (0x15 bytes), align: 0
+  Segment part 101.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 000002B5 - 000002CA (0x16 bytes), align: 0
+  Segment part 103.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 000002CB - 000002DE (0x14 bytes), align: 0
+  Segment part 105.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 000002DF - 000002F3 (0x15 bytes), align: 0
+  Segment part 107.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 000002F4 - 00000307 (0x14 bytes), align: 0
+  Segment part 109.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000308 - 00000313 (0xc bytes), align: 0
+  Segment part 111.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000314 - 00000326 (0x13 bytes), align: 0
+  Segment part 113.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000327 - 0000033B (0x15 bytes), align: 0
+  Segment part 115.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 0000033C - 00000354 (0x19 bytes), align: 0
+  Segment part 117.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000355 - 00000366 (0x12 bytes), align: 0
+  Segment part 119.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000367 - 0000036E (0x8 bytes), align: 0
+  Segment part 121.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 0000036F - 00000389 (0x1b bytes), align: 0
+  Segment part 123.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 0000038A - 00000392 (0x9 bytes), align: 0
+  Segment part 125.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000393 - 00000394 (0x2 bytes), align: 0
+  Segment part 127.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000395 - 000003A6 (0x12 bytes), align: 0
+  Segment part 129.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 000003A7 - 000003B3 (0xd bytes), align: 0
+  Segment part 131.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 000003B4 - 000003C6 (0x13 bytes), align: 0
+  Segment part 133.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 000003C7 - 000003DA (0x14 bytes), align: 0
+  Segment part 135.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 000003DB - 000003E3 (0x9 bytes), align: 0
+  Segment part 137.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 000003E4 - 000003F6 (0x13 bytes), align: 0
+  Segment part 139.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 000003F7 - 0000040B (0x15 bytes), align: 0
+  Segment part 141.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 0000040C - 00000420 (0x15 bytes), align: 0
+  Segment part 143.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000421 - 00000434 (0x14 bytes), align: 0
+  Segment part 145.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000435 - 00000447 (0x13 bytes), align: 0
+  Segment part 147.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000448 - 0000045A (0x13 bytes), align: 0
+  Segment part 149.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 0000045B - 0000046E (0x14 bytes), align: 0
+  Segment part 151.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 0000046F - 00000480 (0x12 bytes), align: 0
+  Segment part 153.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000481 - 00000490 (0x10 bytes), align: 0
+  Segment part 155.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000491 - 0000049F (0xf bytes), align: 0
+  Segment part 157.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 000004A0 - 000004B2 (0x13 bytes), align: 0
+  Segment part 159.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 000004B3 - 000004C0 (0xe bytes), align: 0
+  Segment part 161.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 000004C1 - 000004CF (0xf bytes), align: 0
+  Segment part 163.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 000004D0 - 000004E1 (0x12 bytes), align: 0
+  Segment part 165.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 000004E2 - 000004EA (0x9 bytes), align: 0
+  Segment part 167.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 000004EB - 00000502 (0x18 bytes), align: 0
+  Segment part 169.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000503 - 0000050C (0xa bytes), align: 0
+  Segment part 171.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 0000050D - 00000513 (0x7 bytes), align: 0
+  Segment part 173.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000514 - 0000051A (0x7 bytes), align: 0
+  Segment part 175.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 0000051B - 0000051D (0x3 bytes), align: 0
+  Segment part 177.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 0000051E - 00000523 (0x6 bytes), align: 0
+  Segment part 179.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000524 - 0000053B (0x18 bytes), align: 0
+  Segment part 181.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 0000053C - 0000054C (0x11 bytes), align: 0
+  Segment part 183.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 0000054D - 0000055B (0xf bytes), align: 0
+  Segment part 185.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 0000055C - 0000056F (0x14 bytes), align: 0
+  Segment part 187.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000570 - 00000586 (0x17 bytes), align: 0
+  Segment part 189.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000587 - 0000059C (0x16 bytes), align: 0
+  Segment part 191.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 0000059D - 000005B0 (0x14 bytes), align: 0
+  Segment part 193.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 000005B1 - 000005C3 (0x13 bytes), align: 0
+  Segment part 195.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 000005C4 - 000005D9 (0x16 bytes), align: 0
+  Segment part 197.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 000005DA - 000005F2 (0x19 bytes), align: 0
+  Segment part 199.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 000005F3 - 000005FF (0xd bytes), align: 0
+  Segment part 201.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000600 - 00000604 (0x5 bytes), align: 0
+  Segment part 203.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000605 - 0000060B (0x7 bytes), align: 0
+  Segment part 205.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 0000060C - 0000061D (0x12 bytes), align: 0
+  Segment part 207.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 0000061E - 0000062C (0xf bytes), align: 0
+  Segment part 209.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 0000062D - 0000063A (0xe bytes), align: 0
+  Segment part 224.           Intra module refs:   main
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000080 - 00000082 (0x3 bytes), align: 0
+  Segment part 18.            Intra module refs:   Segment part 17
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000083 - 00000088 (0x6 bytes), align: 0
+  Segment part 20.            Intra module refs:   Segment part 19
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000089 - 0000008F (0x7 bytes), align: 0
+  Segment part 22.            Intra module refs:   Segment part 21
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000090 - 00000094 (0x5 bytes), align: 0
+  Segment part 24.            Intra module refs:   Segment part 23
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000095 - 0000009A (0x6 bytes), align: 0
+  Segment part 26.            Intra module refs:   Segment part 25
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 0000009B - 0000009C (0x2 bytes), align: 0
+  Segment part 28.            Intra module refs:   Segment part 27
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 0000009D - 0000009F (0x3 bytes), align: 0
+  Segment part 30.            Intra module refs:   Segment part 29
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 000000A0 - 000000D8 (0x39 bytes), align: 0
+  Segment part 32.            Intra module refs:   Segment part 31
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 000000D9 - 000000DF (0x7 bytes), align: 0
+  Segment part 34.            Intra module refs:   Segment part 33
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 000000E0 - 000000F8 (0x19 bytes), align: 0
+  Segment part 36.            Intra module refs:   Segment part 35
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 000000F9 - 000000FD (0x5 bytes), align: 0
+  Segment part 38.            Intra module refs:   Segment part 37
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 000000FE - 00000102 (0x5 bytes), align: 0
+  Segment part 40.            Intra module refs:   Segment part 39
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000103 - 00000106 (0x4 bytes), align: 0
+  Segment part 42.            Intra module refs:   Segment part 41
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000107 - 0000010D (0x7 bytes), align: 0
+  Segment part 44.            Intra module refs:   Segment part 43
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 0000010E - 00000113 (0x6 bytes), align: 0
+  Segment part 46.            Intra module refs:   Segment part 45
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000114 - 00000119 (0x6 bytes), align: 0
+  Segment part 48.            Intra module refs:   Segment part 47
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 0000011A - 00000120 (0x7 bytes), align: 0
+  Segment part 50.            Intra module refs:   Segment part 49
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000121 - 00000128 (0x8 bytes), align: 0
+  Segment part 52.            Intra module refs:   Segment part 51
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000129 - 00000131 (0x9 bytes), align: 0
+  Segment part 54.            Intra module refs:   Segment part 53
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000132 - 00000136 (0x5 bytes), align: 0
+  Segment part 56.            Intra module refs:   Segment part 55
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000137 - 0000013A (0x4 bytes), align: 0
+  Segment part 58.            Intra module refs:   Segment part 57
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 0000013B - 0000013F (0x5 bytes), align: 0
+  Segment part 60.            Intra module refs:   Segment part 59
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000140 - 00000155 (0x16 bytes), align: 0
+  Segment part 62.            Intra module refs:   Segment part 61
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000156 - 00000166 (0x11 bytes), align: 0
+  Segment part 64.            Intra module refs:   Segment part 63
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000167 - 00000179 (0x13 bytes), align: 0
+  Segment part 66.            Intra module refs:   Segment part 65
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 0000017A - 0000018D (0x14 bytes), align: 0
+  Segment part 68.            Intra module refs:   Segment part 67
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 0000018E - 000001A2 (0x15 bytes), align: 0
+  Segment part 70.            Intra module refs:   Segment part 69
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 000001A3 - 000001B2 (0x10 bytes), align: 0
+  Segment part 72.            Intra module refs:   Segment part 71
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 000001B3 - 000001C4 (0x12 bytes), align: 0
+  Segment part 74.            Intra module refs:   Segment part 73
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 000001C5 - 000001D9 (0x15 bytes), align: 0
+  Segment part 76.            Intra module refs:   Segment part 75
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 000001DA - 000001ED (0x14 bytes), align: 0
+  Segment part 78.            Intra module refs:   Segment part 77
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 000001EE - 000001FF (0x12 bytes), align: 0
+  Segment part 80.            Intra module refs:   Segment part 79
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000200 - 00000216 (0x17 bytes), align: 0
+  Segment part 82.            Intra module refs:   Segment part 81
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000217 - 0000022A (0x14 bytes), align: 0
+  Segment part 84.            Intra module refs:   Segment part 83
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 0000022B - 0000023C (0x12 bytes), align: 0
+  Segment part 86.            Intra module refs:   Segment part 85
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 0000023D - 00000243 (0x7 bytes), align: 0
+  Segment part 88.            Intra module refs:   Segment part 87
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000244 - 0000025E (0x1b bytes), align: 0
+  Segment part 90.            Intra module refs:   Segment part 89
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 0000025F - 00000265 (0x7 bytes), align: 0
+  Segment part 92.            Intra module refs:   Segment part 91
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000266 - 0000026B (0x6 bytes), align: 0
+  Segment part 94.            Intra module refs:   Segment part 93
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 0000026C - 00000272 (0x7 bytes), align: 0
+  Segment part 96.            Intra module refs:   Segment part 95
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000273 - 00000287 (0x15 bytes), align: 0
+  Segment part 98.            Intra module refs:   Segment part 97
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000288 - 00000293 (0xc bytes), align: 0
+  Segment part 100.           Intra module refs:   Segment part 99
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000294 - 000002A8 (0x15 bytes), align: 0
+  Segment part 102.           Intra module refs:   Segment part 101
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 000002A9 - 000002BE (0x16 bytes), align: 0
+  Segment part 104.           Intra module refs:   Segment part 103
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 000002BF - 000002D2 (0x14 bytes), align: 0
+  Segment part 106.           Intra module refs:   Segment part 105
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 000002D3 - 000002E7 (0x15 bytes), align: 0
+  Segment part 108.           Intra module refs:   Segment part 107
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 000002E8 - 000002FB (0x14 bytes), align: 0
+  Segment part 110.           Intra module refs:   Segment part 109
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 000002FC - 00000307 (0xc bytes), align: 0
+  Segment part 112.           Intra module refs:   Segment part 111
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000308 - 0000031A (0x13 bytes), align: 0
+  Segment part 114.           Intra module refs:   Segment part 113
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 0000031B - 0000032F (0x15 bytes), align: 0
+  Segment part 116.           Intra module refs:   Segment part 115
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000330 - 00000348 (0x19 bytes), align: 0
+  Segment part 118.           Intra module refs:   Segment part 117
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000349 - 0000035A (0x12 bytes), align: 0
+  Segment part 120.           Intra module refs:   Segment part 119
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 0000035B - 00000362 (0x8 bytes), align: 0
+  Segment part 122.           Intra module refs:   Segment part 121
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000363 - 0000037D (0x1b bytes), align: 0
+  Segment part 124.           Intra module refs:   Segment part 123
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 0000037E - 00000386 (0x9 bytes), align: 0
+  Segment part 126.           Intra module refs:   Segment part 125
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000387 - 00000388 (0x2 bytes), align: 0
+  Segment part 128.           Intra module refs:   Segment part 127
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000389 - 0000039A (0x12 bytes), align: 0
+  Segment part 130.           Intra module refs:   Segment part 129
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 0000039B - 000003A7 (0xd bytes), align: 0
+  Segment part 132.           Intra module refs:   Segment part 131
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 000003A8 - 000003BA (0x13 bytes), align: 0
+  Segment part 134.           Intra module refs:   Segment part 133
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 000003BB - 000003CE (0x14 bytes), align: 0
+  Segment part 136.           Intra module refs:   Segment part 135
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 000003CF - 000003D7 (0x9 bytes), align: 0
+  Segment part 138.           Intra module refs:   Segment part 137
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 000003D8 - 000003EA (0x13 bytes), align: 0
+  Segment part 140.           Intra module refs:   Segment part 139
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 000003EB - 000003FF (0x15 bytes), align: 0
+  Segment part 142.           Intra module refs:   Segment part 141
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000400 - 00000414 (0x15 bytes), align: 0
+  Segment part 144.           Intra module refs:   Segment part 143
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000415 - 00000428 (0x14 bytes), align: 0
+  Segment part 146.           Intra module refs:   Segment part 145
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000429 - 0000043B (0x13 bytes), align: 0
+  Segment part 148.           Intra module refs:   Segment part 147
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 0000043C - 0000044E (0x13 bytes), align: 0
+  Segment part 150.           Intra module refs:   Segment part 149
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 0000044F - 00000462 (0x14 bytes), align: 0
+  Segment part 152.           Intra module refs:   Segment part 151
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000463 - 00000474 (0x12 bytes), align: 0
+  Segment part 154.           Intra module refs:   Segment part 153
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000475 - 00000484 (0x10 bytes), align: 0
+  Segment part 156.           Intra module refs:   Segment part 155
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000485 - 00000493 (0xf bytes), align: 0
+  Segment part 158.           Intra module refs:   Segment part 157
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000494 - 000004A6 (0x13 bytes), align: 0
+  Segment part 160.           Intra module refs:   Segment part 159
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 000004A7 - 000004B4 (0xe bytes), align: 0
+  Segment part 162.           Intra module refs:   Segment part 161
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 000004B5 - 000004C3 (0xf bytes), align: 0
+  Segment part 164.           Intra module refs:   Segment part 163
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 000004C4 - 000004D5 (0x12 bytes), align: 0
+  Segment part 166.           Intra module refs:   Segment part 165
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 000004D6 - 000004DE (0x9 bytes), align: 0
+  Segment part 168.           Intra module refs:   Segment part 167
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 000004DF - 000004F6 (0x18 bytes), align: 0
+  Segment part 170.           Intra module refs:   Segment part 169
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 000004F7 - 00000500 (0xa bytes), align: 0
+  Segment part 172.           Intra module refs:   Segment part 171
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000501 - 00000507 (0x7 bytes), align: 0
+  Segment part 174.           Intra module refs:   Segment part 173
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000508 - 0000050E (0x7 bytes), align: 0
+  Segment part 176.           Intra module refs:   Segment part 175
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 0000050F - 00000511 (0x3 bytes), align: 0
+  Segment part 178.           Intra module refs:   Segment part 177
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000512 - 00000517 (0x6 bytes), align: 0
+  Segment part 180.           Intra module refs:   Segment part 179
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000518 - 0000052F (0x18 bytes), align: 0
+  Segment part 182.           Intra module refs:   Segment part 181
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000530 - 00000540 (0x11 bytes), align: 0
+  Segment part 184.           Intra module refs:   Segment part 183
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000541 - 0000054F (0xf bytes), align: 0
+  Segment part 186.           Intra module refs:   Segment part 185
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000550 - 00000563 (0x14 bytes), align: 0
+  Segment part 188.           Intra module refs:   Segment part 187
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000564 - 0000057A (0x17 bytes), align: 0
+  Segment part 190.           Intra module refs:   Segment part 189
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 0000057B - 00000590 (0x16 bytes), align: 0
+  Segment part 192.           Intra module refs:   Segment part 191
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000591 - 000005A4 (0x14 bytes), align: 0
+  Segment part 194.           Intra module refs:   Segment part 193
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 000005A5 - 000005B7 (0x13 bytes), align: 0
+  Segment part 196.           Intra module refs:   Segment part 195
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 000005B8 - 000005CD (0x16 bytes), align: 0
+  Segment part 198.           Intra module refs:   Segment part 197
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 000005CE - 000005E6 (0x19 bytes), align: 0
+  Segment part 200.           Intra module refs:   Segment part 199
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 000005E7 - 000005F3 (0xd bytes), align: 0
+  Segment part 202.           Intra module refs:   Segment part 201
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 000005F4 - 000005F8 (0x5 bytes), align: 0
+  Segment part 204.           Intra module refs:   Segment part 203
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 000005F9 - 000005FF (0x7 bytes), align: 0
+  Segment part 206.           Intra module refs:   Segment part 205
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000600 - 00000611 (0x12 bytes), align: 0
+  Segment part 208.           Intra module refs:   Segment part 207
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000612 - 00000620 (0xf bytes), align: 0
+  Segment part 210.           Intra module refs:   Segment part 209
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000621 - 0000062E (0xe bytes), align: 0
+  Segment part 225.           Intra module refs:   Segment part 224
+
+    *************************************************************************
+
+  FILE NAME : C:\Users\tyh21\Desktop\cc2530\cc2530_RF_link\cc2530_LG290_nfc_mac\Release\Obj\nfc.r51
+  PROGRAM MODULE, NAME : nfc
+
+  SEGMENTS IN THE MODULE
+  ======================
+SFR_AN
+  Relative segment, address: DATA 0000008D - 0000008D (0x1 bytes), align: 0
+  Segment part 2. ROOT        Intra module refs:   NFC_PowerOff
+                                                   gpio_prep
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           P1IEN                   0000008D 
+    -------------------------------------------------------------------------
+SFR_AN
+  Relative segment, address: DATA 0000008F - 0000008F (0x1 bytes), align: 0
+  Segment part 3. ROOT        Intra module refs:   NFC_PowerOff
+                                                   gpio_prep
+                                                   sda_input
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           P0INP                   0000008F 
+    -------------------------------------------------------------------------
+SFR_AN
+  Relative segment, address: DATA 00000095 - 00000095 (0x1 bytes), align: 0
+  Segment part 5. ROOT        Intra module refs:   st24
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ST0                     00000095 
+    -------------------------------------------------------------------------
+SFR_AN
+  Relative segment, address: DATA 00000096 - 00000096 (0x1 bytes), align: 0
+  Segment part 6. ROOT        Intra module refs:   st24
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ST1                     00000096 
+    -------------------------------------------------------------------------
+SFR_AN
+  Relative segment, address: DATA 00000097 - 00000097 (0x1 bytes), align: 0
+  Segment part 7. ROOT        Intra module refs:   st24
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ST2                     00000097 
+    -------------------------------------------------------------------------
+SFR_AN
+  Relative segment, address: DATA 000000A0 - 000000A0 (0x1 bytes), align: 0
+  Segment part 9. ROOT        Intra module refs:   NFC_PowerOff
+                                                   NFC_PowerUp
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           _A_P2                   000000A0 
+    -------------------------------------------------------------------------
+SFR_AN
+  Relative segment, address: DATA 000000AB - 000000AB (0x1 bytes), align: 0
+  Segment part 10. ROOT       Intra module refs:   NFC_PowerOff
+                                                   gpio_prep
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           P0IEN                   000000AB 
+    -------------------------------------------------------------------------
+SFR_AN
+  Relative segment, address: DATA 000000E2 - 000000E2 (0x1 bytes), align: 0
+  Segment part 12. ROOT       Intra module refs:   read_t1
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           T1CNTL                  000000E2 
+    -------------------------------------------------------------------------
+SFR_AN
+  Relative segment, address: DATA 000000E3 - 000000E3 (0x1 bytes), align: 0
+  Segment part 13. ROOT       Intra module refs:   read_t1
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           T1CNTH                  000000E3 
+    -------------------------------------------------------------------------
+SFR_AN
+  Relative segment, address: DATA 000000E4 - 000000E4 (0x1 bytes), align: 0
+  Segment part 14. ROOT       Intra module refs:   NFC_T1Init
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           T1CTL                   000000E4 
+    -------------------------------------------------------------------------
+SFR_AN
+  Relative segment, address: DATA 000000F5 - 000000F5 (0x1 bytes), align: 0
+  Segment part 17. ROOT       Intra module refs:   NFC_PowerUp
+                                                   gpio_prep
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           P2SEL                   000000F5 
+    -------------------------------------------------------------------------
+SFR_AN
+  Relative segment, address: DATA 000000F6 - 000000F6 (0x1 bytes), align: 0
+  Segment part 18. ROOT       Intra module refs:   gpio_prep
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           P1INP                   000000F6 
+    -------------------------------------------------------------------------
+SFR_AN
+  Relative segment, address: DATA 000000F7 - 000000F7 (0x1 bytes), align: 0
+  Segment part 19. ROOT       Intra module refs:   NFC_PowerOff
+                                                   gpio_prep
+                                                   sda_input
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           P2INP                   000000F7 
+    -------------------------------------------------------------------------
+SFR_AN
+  Relative segment, address: DATA 000000FF - 000000FF (0x1 bytes), align: 0
+  Segment part 22. ROOT       Intra module refs:   NFC_PowerUp
+                                                   gpio_prep
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           P2DIR                   000000FF 
+    -------------------------------------------------------------------------
+IDATA_Z
+  Relative segment, address: IDATA 00000013 - 00000013 (0x1 bytes), align: 0
+  Segment part 28.            Intra module refs:   NFC_SetSwap
+                                                   scl_hi
+                                                   scl_low
+                                                   sda_hi
+                                                   sda_input
+                                                   sda_low
+                                                   sda_output
+                                                   sda_rd
+                                                   sda_rel
+    -------------------------------------------------------------------------
+IDATA_I
+  Relative segment, address: IDATA 00000011 - 00000011 (0x1 bytes), align: 0
+  Segment part 29.            Intra module refs:   NFC_SetDrive
+    -------------------------------------------------------------------------
+IDATA_I
+  Relative segment, address: IDATA 00000012 - 00000012 (0x1 bytes), align: 0
+  Segment part 31.            Intra module refs:   NFC_PowerUp
+                                                   NFC_SetOrder
+    -------------------------------------------------------------------------
+IDATA_Z
+  Relative segment, address: IDATA 00000014 - 00000014 (0x1 bytes), align: 0
+  Segment part 33.            Intra module refs:   NFC_PowerUp
+                                                   gpio_prep
+    -------------------------------------------------------------------------
+XDATA_Z
+  Relative segment, address: XDATA 000019C5 - 000019C5 (0x1 bytes), align: 0
+  Segment part 34.            Intra module refs:   NFC_T1Init
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 0000063B - 0000063C (0x2 bytes), align: 0
+  Segment part 35.            Intra module refs:   NFC_TimebaseCal
+    -------------------------------------------------------------------------
+XDATA_Z
+  Relative segment, address: XDATA 000019C6 - 000019C6 (0x1 bytes), align: 0
+  Segment part 37.            Intra module refs:   NFC_TimebaseCal
+    -------------------------------------------------------------------------
+XDATA_Z
+  Relative segment, address: XDATA 000019C7 - 000019C8 (0x2 bytes), align: 0
+  Segment part 38.            Intra module refs:   NFC_TimebaseCal
+    -------------------------------------------------------------------------
+XDATA_Z
+  Relative segment, address: XDATA 000019C9 - 000019CA (0x2 bytes), align: 0
+  Segment part 39.            Intra module refs:   NFC_TimebaseCal
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 0000063D - 0000063E (0x2 bytes), align: 0
+  Segment part 40.            Intra module refs:   NFC_TimebaseCal
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 0000063F - 00000640 (0x2 bytes), align: 0
+  Segment part 42.            Intra module refs:   NFC_TimebaseCal
+                                                   dly_s
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000641 - 00000642 (0x2 bytes), align: 0
+  Segment part 44.            Intra module refs:   NFC_TimebaseCal
+                                                   dly_l
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000643 - 00000644 (0x2 bytes), align: 0
+  Segment part 46.            Intra module refs:   NFC_TimebaseCal
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000645 - 00000646 (0x2 bytes), align: 0
+  Segment part 48.            Intra module refs:   NFC_TimebaseCal
+                                                   dly_i2c
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000647 - 00000647 (0x1 bytes), align: 0
+  Segment part 50.            Intra module refs:   NFC_AckProbe
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           g_ack_kind              00000647 
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000648 - 00000648 (0x1 bytes), align: 0
+  Segment part 52.            Intra module refs:   NFC_AckProbe
+                                                   NFC_ReadMem
+                                                   NFC_WriteMem
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           g_status                00000648 
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000649 - 00000649 (0x1 bytes), align: 0
+  Segment part 54.            Intra module refs:   NFC_WaitNirqLow
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           g_nirq_ms               00000649 
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 0000064A - 0000064A (0x1 bytes), align: 0
+  Segment part 56.            Intra module refs:   NFC_ReadTextEx
+                                                   ndef_find_text
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           g_ndef_at               0000064A 
+    -------------------------------------------------------------------------
+XDATA_Z
+  Relative segment, address: XDATA 000019CB - 000019CC (0x2 bytes), align: 0
+  Segment part 58.            Intra module refs:   NFC_ReadTextEx
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           g_mem_len               000019CB        main (main)
+    -------------------------------------------------------------------------
+XDATA_Z
+  Relative segment, address: XDATA 000019CD - 00001BCC (0x200 bytes), align: 0
+  Segment part 63.            Intra module refs:   NFC_ReadTextEx
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           g_mem                   000019CD 
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 000008D2 - 000008E6 (0x15 bytes), align: 0
+  Segment part 83.            Intra module refs:   NFC_T1Init
+                                                   NFC_TimebaseCal
+                                                   t1_wait_ticks
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           read_t1                 000008D2 
+               PSTACK = 00000013 ( 00000000 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 000008E7 - 00000935 (0x4f bytes), align: 0
+  Segment part 84.            Intra module refs:   NFC_DelayMs
+                                                   NFC_TimebaseCal
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           st24                    000008E7 
+               PSTACK = 00000013 ( 0000000D )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00000936 - 00000969 (0x34 bytes), align: 0
+  Segment part 85.            Intra module refs:   NFC_T1Init
+                                                   dly_i2c
+                                                   dly_l
+                                                   dly_s
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           t1_wait_ticks           00000936 
+               calls direct
+               PSTACK = 0000000D ( 00000009 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 0000096A - 000009B5 (0x4c bytes), align: 0
+  Segment part 86.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           NFC_T1Init              0000096A        main (main)
+               calls direct
+               PSTACK = 00000000 ( 00000007 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 000009B6 - 00000B91 (0x1dc bytes), align: 0
+  Segment part 88.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           NFC_TimebaseCal         000009B6        main (main)
+               calls direct
+               PSTACK = 00000000 ( 00000013 )
+               ISTACK = 00000000 ( 00000002 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00000B92 - 00000B9D (0xc bytes), align: 0
+  Segment part 96.            Intra module refs:   NFC_BusRecover
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           dly_s                   00000B92 
+               calls direct
+               PSTACK = 00000009 ( 00000000 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00000B9E - 00000BA9 (0xc bytes), align: 0
+  Segment part 97.            Intra module refs:   NFC_AckProbe
+                                                   NFC_BusRecover
+                                                   NFC_NirqLevel
+                                                   NFC_PowerUp
+                                                   clock9_kind
+                                                   cmd_send
+                                                   resp_read
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           dly_l                   00000B9E 
+               calls direct
+               PSTACK = 0000000D ( 00000000 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00000BAA - 00000BB5 (0xc bytes), align: 0
+  Segment part 98.            Intra module refs:   NFC_PowerUp
+                                                   i2c_putack
+                                                   i2c_read_ack
+                                                   i2c_rx8
+                                                   i2c_start
+                                                   i2c_stop
+                                                   i2c_tx8
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           dly_i2c                 00000BAA 
+               calls direct
+               PSTACK = 00000006 ( 00000000 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00000BB6 - 00000C00 (0x4b bytes), align: 0
+  Segment part 99.            Intra module refs:   NFC_PowerOff
+                                                   NFC_PowerUp
+                                                   NFC_ReadTextEx
+                                                   NFC_WaitNirqLow
+                                                   NFC_WriteTextEx
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           NFC_DelayMs             00000BB6        main (main)
+                                                   power_cycle (main)
+               calls direct
+               PSTACK = 0000000E ( 0000000D )
+               ISTACK = 00000000 ( 00000002 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00000C01 - 00000C11 (0x11 bytes), align: 0
+  Segment part 100.           Intra module refs:   NFC_BusRecover
+                                                   i2c_putack
+                                                   i2c_rx8
+                                                   i2c_start
+                                                   i2c_stop
+                                                   i2c_tx8
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           sda_low                 00000C01 
+               PSTACK = 0000000D ( 00000000 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00000C12 - 00000C22 (0x11 bytes), align: 0
+  Segment part 101.           Intra module refs:   NFC_BusRecover
+                                                   clock9_kind
+                                                   i2c_putack
+                                                   i2c_read_ack
+                                                   i2c_rx8
+                                                   i2c_stop
+                                                   i2c_tx8
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           scl_low                 00000C12 
+               PSTACK = 0000000D ( 00000000 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00000C23 - 00000C33 (0x11 bytes), align: 0
+  Segment part 102.           Intra module refs:   NFC_PowerUp
+                                                   i2c_putack
+                                                   i2c_read_ack
+                                                   i2c_rx8
+                                                   i2c_stop
+                                                   i2c_tx8
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           sda_hi                  00000C23 
+               PSTACK = 00000006 ( 00000000 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00000C34 - 00000C44 (0x11 bytes), align: 0
+  Segment part 103.           Intra module refs:   NFC_BusRecover
+                                                   NFC_PowerUp
+                                                   clock9_kind
+                                                   i2c_putack
+                                                   i2c_read_ack
+                                                   i2c_rx8
+                                                   i2c_stop
+                                                   i2c_tx8
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           scl_hi                  00000C34 
+               PSTACK = 0000000D ( 00000000 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00000C45 - 00000C63 (0x1f bytes), align: 0
+  Segment part 104.           Intra module refs:   i2c_read_ack
+                                                   i2c_rx8
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           sda_input               00000C45 
+               PSTACK = 00000006 ( 00000000 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00000C64 - 00000C76 (0x13 bytes), align: 0
+  Segment part 105.           Intra module refs:   i2c_read_ack
+                                                   i2c_rx8
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           sda_output              00000C64 
+               PSTACK = 00000006 ( 00000000 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00000C77 - 00000C87 (0x11 bytes), align: 0
+  Segment part 107.           Intra module refs:   NFC_BusRecover
+                                                   clock9_kind
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           sda_rel                 00000C77 
+               PSTACK = 0000000D ( 00000000 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00000C88 - 00000C9C (0x15 bytes), align: 0
+  Segment part 108.           Intra module refs:   clock9_kind
+                                                   i2c_read_ack
+                                                   i2c_rx8
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           sda_rd                  00000C88 
+               PSTACK = 0000000D ( 00000000 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00000C9D - 00000CCF (0x33 bytes), align: 0
+  Segment part 110.           Intra module refs:   NFC_PowerUp
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           gpio_prep               00000C9D 
+               PSTACK = 0000000D ( 00000000 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00000CD0 - 00000D21 (0x52 bytes), align: 0
+  Segment part 111.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           NFC_PowerUp             00000CD0        main (main)
+                                                   power_cycle (main)
+               calls direct
+               ISTACK = 00000000 ( 00000001 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00000D22 - 00000D41 (0x20 bytes), align: 0
+  Segment part 112.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           NFC_PowerOff            00000D22        main (main)
+                                                   power_cycle (main)
+               calls direct
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00000D42 - 00000D50 (0xf bytes), align: 0
+  Segment part 113.           Intra module refs:   NFC_WaitNirqLow
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           NFC_NirqLevel           00000D42 
+               calls direct
+               PSTACK = 0000000B ( 00000000 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00000D51 - 00000D89 (0x39 bytes), align: 0
+  Segment part 116.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           NFC_BusRecover          00000D51        power_cycle (main)
+               calls direct
+               ISTACK = 00000000 ( 00000001 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00000D8A - 00000D90 (0x7 bytes), align: 0
+  Segment part 117.           Intra module refs:   NFC_AckProbe
+                                                   cmd_send
+                                                   resp_read
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           i2c_start               00000D8A 
+               calls direct
+               PSTACK = 00000009 ( 00000000 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00000D91 - 00000DB2 (0x22 bytes), align: 0
+  Segment part 118.           Intra module refs:   NFC_AckProbe
+                                                   cmd_send
+                                                   resp_read
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           i2c_stop                00000D91 
+               calls direct
+               PSTACK = 00000009 ( 00000000 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00000DB3 - 00000DF2 (0x40 bytes), align: 0
+  Segment part 119.           Intra module refs:   tx_byte_ack
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           i2c_tx8                 00000DB3 
+               calls direct
+               PSTACK = 00000007 ( 00000006 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00000DF3 - 00000E38 (0x46 bytes), align: 0
+  Segment part 120.           Intra module refs:   NFC_AckProbe
+                                                   resp_read
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           i2c_rx8                 00000DF3 
+               calls direct
+               PSTACK = 00000009 ( 00000006 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00000E39 - 00000E6E (0x36 bytes), align: 0
+  Segment part 121.           Intra module refs:   tx_byte_ack
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           i2c_read_ack            00000E39 
+               calls direct
+               ISTACK = 00000000 ( 00000001 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00000E6F - 00000E97 (0x29 bytes), align: 0
+  Segment part 122.           Intra module refs:   NFC_AckProbe
+                                                   resp_read
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           i2c_putack              00000E6F 
+               calls direct
+               PSTACK = 00000009 ( 00000000 )
+               ISTACK = 00000000 ( 00000001 )
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 0000064B - 0000064B (0x1 bytes), align: 0
+  Segment part 64.            Intra module refs:   clock9_kind
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           g_probe_pre             0000064B 
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 0000064C - 0000064F (0x4 bytes), align: 0
+  Segment part 69.            Intra module refs:   NFC_DelayMs
+                                                   NFC_TimebaseCal
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           __Constant_21           0000064C 
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000650 - 00000653 (0x4 bytes), align: 0
+  Segment part 71.            Intra module refs:   NFC_TimebaseCal
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           __Constant_4a818        00000650 
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000654 - 00000657 (0x4 bytes), align: 0
+  Segment part 73.            Intra module refs:   NFC_TimebaseCal
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           __Constant_a            00000654 
+    -------------------------------------------------------------------------
+XDATA_I
+  Relative segment, address: XDATA 00000658 - 0000065B (0x4 bytes), align: 0
+  Segment part 75.            Intra module refs:   NFC_TimebaseCal
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           __Constant_3e8          00000658 
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00000E98 - 00000EE8 (0x51 bytes), align: 0
+  Segment part 123.           Intra module refs:   NFC_AckProbe
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           clock9_kind             00000E98 
+               calls direct
+               PSTACK = 00000008 ( 00000006 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00000EE9 - 00000F02 (0x1a bytes), align: 0
+  Segment part 124.           Intra module refs:   NFC_AckProbe
+                                                   cmd_send
+                                                   resp_read
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           tx_byte_ack             00000EE9 
+               calls direct
+               PSTACK = 00000009 ( 00000000 )
+               ISTACK = 00000000 ( 00000001 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00000F03 - 00000F0F (0xd bytes), align: 0
+  Segment part 125.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           NFC_SetSwap             00000F03        main (main)
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00000F10 - 00000F1C (0xd bytes), align: 0
+  Segment part 126.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           NFC_SetDrive            00000F10        main (main)
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00000F1D - 00000F29 (0xd bytes), align: 0
+  Segment part 127.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           NFC_SetOrder            00000F1D        main (main)
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00000F2A - 00000F2A (0x1 bytes), align: 0
+  Segment part 128.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           NFC_SetSdaPP            00000F2A        main (main)
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00000F2B - 00000FBD (0x93 bytes), align: 0
+  Segment part 138.           Intra module refs:   NFC_Probe
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           NFC_AckProbe            00000F2B 
+               calls direct
+               PSTACK = 0000000D ( 00000008 )
+               ISTACK = 00000000 ( 00000001 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00000FBE - 00001020 (0x63 bytes), align: 0
+  Segment part 141.           Intra module refs:   NFC_ReadMem
+                                                   NFC_WriteMem
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           cmd_send                00000FBE 
+               calls direct
+               PSTACK = 0000000E ( 00000008 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00001021 - 000010AB (0x8b bytes), align: 0
+  Segment part 142.           Intra module refs:   NFC_ReadMem
+                                                   NFC_WriteMem
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           resp_read               00001021 
+               calls direct
+               PSTACK = 0000000F ( 00000009 )
+               ISTACK = 00000000 ( 00000001 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 000010AC - 00001103 (0x58 bytes), align: 0
+  Segment part 143.           Intra module refs:   NFC_ReadMem
+                                                   NFC_WriteMem
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           NFC_WaitNirqLow         000010AC 
+               calls direct
+               PSTACK = 0000000E ( 00000008 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00001104 - 000011F0 (0xed bytes), align: 0
+  Segment part 144.           Intra module refs:   NFC_ReadTextEx
+                                                   NFC_WriteTextEx
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           NFC_ReadMem             00001104        try_attr (main)
+               calls direct
+               PSTACK = 00000012 ( 0000000F )
+               ISTACK = 00000000 ( 00000001 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 000011F1 - 000012DA (0xea bytes), align: 0
+  Segment part 145.           Intra module refs:   NFC_WriteTextEx
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           NFC_WriteMem            000011F1 
+               calls direct
+               PSTACK = 00000011 ( 00000008 )
+               ISTACK = 00000000 ( 00000001 )
+    -------------------------------------------------------------------------
+XDATA_Z
+  Relative segment, address: XDATA 00001BCD - 00001CCB (0xff bytes), align: 0
+  Segment part 66.            Intra module refs:   NFC_WriteMem
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 000012DB - 00001545 (0x26b bytes), align: 0
+  Segment part 148.           Intra module refs:   NFC_ReadTextEx
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           ndef_find_text          000012DB 
+               PSTACK = 00000012 ( 0000000F )
+               ISTACK = 00000000 ( 00000001 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00001546 - 00001641 (0xfc bytes), align: 0
+  Segment part 149.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           NFC_ReadTextEx          00001546        main (main)
+               calls direct
+               PSTACK = 00000000 ( 00000012 )
+               ISTACK = 00000000 ( 00000001 )
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00001642 - 00001852 (0x211 bytes), align: 0
+  Segment part 150.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           NFC_WriteTextEx         00001642        main (main)
+               calls direct
+               PSTACK = 00000000 ( 00000012 )
+               ISTACK = 00000000 ( 00000001 )
+    -------------------------------------------------------------------------
+XDATA_Z
+  Relative segment, address: XDATA 00001CCC - 00001CDB (0x10 bytes), align: 0
+  Segment part 67.            Intra module refs:   NFC_WriteTextEx
+    -------------------------------------------------------------------------
+XDATA_Z
+  Relative segment, address: XDATA 00001CDC - 00001CEB (0x10 bytes), align: 0
+  Segment part 68.            Intra module refs:   NFC_WriteTextEx
+    -------------------------------------------------------------------------
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00001853 - 0000186B (0x19 bytes), align: 0
+  Segment part 158.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           NFC_Probe               00001853        main (main)
+               calls direct
+               PSTACK = 00000000 ( 00000006 )
+    -------------------------------------------------------------------------
+IDATA_ID
+  Relative segment, address: CODE 00000072 - 00000072 (0x1 bytes), align: 0
+  Segment part 30.            Intra module refs:   Segment part 29
+    -------------------------------------------------------------------------
+IDATA_ID
+  Relative segment, address: CODE 00000073 - 00000073 (0x1 bytes), align: 0
+  Segment part 32.            Intra module refs:   Segment part 31
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 0000062F - 00000630 (0x2 bytes), align: 0
+  Segment part 36.            Intra module refs:   Segment part 35
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000631 - 00000632 (0x2 bytes), align: 0
+  Segment part 41.            Intra module refs:   Segment part 40
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000633 - 00000634 (0x2 bytes), align: 0
+  Segment part 43.            Intra module refs:   Segment part 42
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000635 - 00000636 (0x2 bytes), align: 0
+  Segment part 45.            Intra module refs:   Segment part 44
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000637 - 00000638 (0x2 bytes), align: 0
+  Segment part 47.            Intra module refs:   Segment part 46
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000639 - 0000063A (0x2 bytes), align: 0
+  Segment part 49.            Intra module refs:   Segment part 48
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 0000063B - 0000063B (0x1 bytes), align: 0
+  Segment part 51.            Intra module refs:   g_ack_kind
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 0000063C - 0000063C (0x1 bytes), align: 0
+  Segment part 53.            Intra module refs:   g_status
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 0000063D - 0000063D (0x1 bytes), align: 0
+  Segment part 55.            Intra module refs:   g_nirq_ms
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 0000063E - 0000063E (0x1 bytes), align: 0
+  Segment part 57.            Intra module refs:   g_ndef_at
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 0000063F - 0000063F (0x1 bytes), align: 0
+  Segment part 65.            Intra module refs:   g_probe_pre
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000640 - 00000643 (0x4 bytes), align: 0
+  Segment part 70.            Intra module refs:   __Constant_21
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000644 - 00000647 (0x4 bytes), align: 0
+  Segment part 72.            Intra module refs:   __Constant_4a818
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 00000648 - 0000064B (0x4 bytes), align: 0
+  Segment part 74.            Intra module refs:   __Constant_a
+    -------------------------------------------------------------------------
+XDATA_ID
+  Relative segment, address: CODE 0000064C - 0000064F (0x4 bytes), align: 0
+  Segment part 76.            Intra module refs:   __Constant_3e8
+
+    *************************************************************************
+
+  FILE NAME : C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\8051\LIB\DLIB\dl-pli-nlpd-1e16x01n.r51
+  LIBRARY MODULE, NAME : ?cexit
+
+  SEGMENTS IN THE MODULE
+  ======================
+CSTART
+  Relative segment, address: CODE 00000003, align: 0
+  Segment part 5.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           _exit                   00000003        exit (?exit)
+               calls direct
+    -------------------------------------------------------------------------
+CSTART
+  Relative segment, address: CODE 00000003 - 00000005 (0x3 bytes), align: 0
+  Segment part 10.            Intra module refs:   _exit
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?cmain
+
+  SEGMENTS IN THE MODULE
+  ======================
+CSTART
+  Relative segment, address: CODE 00000006, align: 0
+  Segment part 5.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?cmain                  00000006        Segment part 13 (CSTARTUP)
+               calls direct
+    -------------------------------------------------------------------------
+CSTART
+  Relative segment, address: CODE 00000006 - 00000013 (0xe bytes), align: 0
+  Segment part 12.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           __INIT_IDATA_Z          00000006        Segment part 28 (nfc)
+                                                   Segment part 33 (nfc)
+    -------------------------------------------------------------------------
+CSTART
+  Relative segment, address: CODE 00000014 - 00000023 (0x10 bytes), align: 0
+  Segment part 16.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           __INIT_XDATA_Z          00000014        EPD_Frame (epd2in9)
+                                                   Segment part 211 (main)
+                                                   Segment part 213 (main)
+                                                   Segment part 214 (main)
+                                                   Segment part 215 (main)
+                                                   Segment part 216 (main)
+                                                   Segment part 217 (main)
+                                                   Segment part 218 (main)
+                                                   Segment part 219 (main)
+                                                   Segment part 220 (main)
+                                                   Segment part 221 (main)
+                                                   Segment part 222 (main)
+                                                   Segment part 223 (main)
+                                                   Segment part 34 (nfc)
+                                                   Segment part 37 (nfc)
+                                                   Segment part 38 (nfc)
+                                                   Segment part 39 (nfc)
+                                                   Segment part 66 (nfc)
+                                                   Segment part 67 (nfc)
+                                                   Segment part 68 (nfc)
+                                                   g_mem (nfc)
+                                                   g_mem_len (nfc)
+    -------------------------------------------------------------------------
+CSTART
+  Relative segment, address: CODE 00000024 - 00000036 (0x13 bytes), align: 0
+  Segment part 27.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           __INIT_IDATA_I          00000024        Segment part 29 (nfc)
+                                                   Segment part 31 (nfc)
+    -------------------------------------------------------------------------
+CSTART
+  Relative segment, address: CODE 00000037 - 0000005C (0x26 bytes), align: 0
+  Segment part 33.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           __INIT_XDATA_I          00000037        Font16 (font16)
+                                                   Font8 (font8)
+                                                   Segment part 101 (main)
+                                                   Segment part 103 (main)
+                                                   Segment part 105 (main)
+                                                   Segment part 107 (main)
+                                                   Segment part 109 (main)
+                                                   Segment part 111 (main)
+                                                   Segment part 113 (main)
+                                                   Segment part 115 (main)
+                                                   Segment part 117 (main)
+                                                   Segment part 119 (main)
+                                                   Segment part 121 (main)
+                                                   Segment part 123 (main)
+                                                   Segment part 125 (main)
+                                                   Segment part 127 (main)
+                                                   Segment part 129 (main)
+                                                   Segment part 131 (main)
+                                                   Segment part 133 (main)
+                                                   Segment part 135 (main)
+                                                   Segment part 137 (main)
+                                                   Segment part 139 (main)
+                                                   Segment part 141 (main)
+                                                   Segment part 143 (main)
+                                                   Segment part 145 (main)
+                                                   Segment part 147 (main)
+                                                   Segment part 149 (main)
+                                                   Segment part 151 (main)
+                                                   Segment part 153 (main)
+                                                   Segment part 155 (main)
+                                                   Segment part 157 (main)
+                                                   Segment part 159 (main)
+                                                   Segment part 161 (main)
+                                                   Segment part 163 (main)
+                                                   Segment part 165 (main)
+                                                   Segment part 167 (main)
+                                                   Segment part 169 (main)
+                                                   Segment part 17 (main)
+                                                   Segment part 171 (main)
+                                                   Segment part 173 (main)
+                                                   Segment part 175 (main)
+                                                   Segment part 177 (main)
+                                                   Segment part 179 (main)
+                                                   Segment part 181 (main)
+                                                   Segment part 183 (main)
+                                                   Segment part 185 (main)
+                                                   Segment part 187 (main)
+                                                   Segment part 189 (main)
+                                                   Segment part 19 (main)
+                                                   Segment part 191 (main)
+                                                   Segment part 193 (main)
+                                                   Segment part 195 (main)
+                                                   Segment part 197 (main)
+                                                   Segment part 199 (main)
+                                                   Segment part 201 (main)
+                                                   Segment part 203 (main)
+                                                   Segment part 205 (main)
+                                                   Segment part 207 (main)
+                                                   Segment part 209 (main)
+                                                   Segment part 21 (main)
+                                                   Segment part 224 (main)
+                                                   Segment part 23 (main)
+                                                   Segment part 25 (main)
+                                                   Segment part 27 (main)
+                                                   Segment part 29 (main)
+                                                   Segment part 31 (main)
+                                                   Segment part 33 (main)
+                                                   Segment part 35 (main)
+                                                   Segment part 35 (nfc)
+                                                   Segment part 37 (main)
+                                                   Segment part 39 (main)
+                                                   Segment part 40 (nfc)
+                                                   Segment part 41 (main)
+                                                   Segment part 42 (nfc)
+                                                   Segment part 43 (main)
+                                                   Segment part 44 (nfc)
+                                                   Segment part 45 (main)
+                                                   Segment part 46 (nfc)
+                                                   Segment part 47 (main)
+                                                   Segment part 48 (nfc)
+                                                   Segment part 49 (main)
+                                                   Segment part 51 (main)
+                                                   Segment part 53 (main)
+                                                   Segment part 55 (main)
+                                                   Segment part 57 (main)
+                                                   Segment part 59 (main)
+                                                   Segment part 61 (main)
+                                                   Segment part 63 (main)
+                                                   Segment part 65 (main)
+                                                   Segment part 67 (main)
+                                                   Segment part 69 (main)
+                                                   Segment part 71 (main)
+                                                   Segment part 73 (main)
+                                                   Segment part 75 (main)
+                                                   Segment part 77 (main)
+                                                   Segment part 79 (main)
+                                                   Segment part 81 (main)
+                                                   Segment part 83 (main)
+                                                   Segment part 85 (main)
+                                                   Segment part 87 (main)
+                                                   Segment part 89 (main)
+                                                   Segment part 91 (main)
+                                                   Segment part 93 (main)
+                                                   Segment part 95 (main)
+                                                   Segment part 97 (main)
+                                                   Segment part 99 (main)
+                                                   __Constant_21 (nfc)
+                                                   __Constant_3e8 (nfc)
+                                                   __Constant_4a818 (nfc)
+                                                   __Constant_a (nfc)
+                                                   g_ack_kind (nfc)
+                                                   g_ndef_at (nfc)
+                                                   g_nirq_ms (nfc)
+                                                   g_probe_pre (nfc)
+                                                   g_status (nfc)
+    -------------------------------------------------------------------------
+DIFUNCT
+  Relative segment, address: CODE 000008D2, align: 0
+  Segment part 38. ROOT 
+    -------------------------------------------------------------------------
+CSTART
+  Relative segment, address: CODE 0000005D - 00000062 (0x6 bytes), align: 0
+  Segment part 40.            Intra module refs:   ?cmain
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?call_main              0000005D 
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : CSTARTUP
+
+  SEGMENTS IN THE MODULE
+  ======================
+REGISTERS
+  Relative segment, address: DATA 00000000, align: 0
+  Segment part 0.             Intra module refs:   Segment part 6
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?REGISTERS              00000000 
+    -------------------------------------------------------------------------
+ISTACK
+  Relative segment, address: IDATA 000000C0, align: 0
+  Segment part 1.             Intra module refs:   Segment part 6
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?ISTACK_START           000000C0 
+    -------------------------------------------------------------------------
+PSTACK
+  Relative segment, address: XDATA 00000000, align: 0
+  Segment part 2.             Intra module refs:   ?RESET_PSP
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?PSTACK_START           00000000 
+    -------------------------------------------------------------------------
+INTVEC
+  Common segment, address: CODE 00000000 - 00000002 (0x3 bytes), align: 0
+  Segment part 5. ROOT        Intra module refs:   Segment part 6
+    -------------------------------------------------------------------------
+CSTART
+  Relative segment, address: CODE 00000063 - 00000068 (0x6 bytes), align: 0
+  Segment part 6. ROOT        Intra module refs:   Segment part 5
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           __program_start         00000063        Absolute parts (?ABS_ENTRY_MOD)
+           ?RESET_SP               00000066 
+    -------------------------------------------------------------------------
+CSTART
+  Relative segment, address: CODE 00000069 - 0000006B (0x3 bytes), align: 0
+  Segment part 7.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?RESET_PSP              00000069        ?PSP (VIRTUAL_REGISTERS)
+    -------------------------------------------------------------------------
+CSTART
+  Relative segment, address: CODE 0000006C - 0000006E (0x3 bytes), align: 0
+  Segment part 11.            Intra module refs:   ?RESET_PSP
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?RESET_PDATA_BANK       0000006C 
+    -------------------------------------------------------------------------
+CSTART
+  Relative segment, address: CODE 0000006F - 00000071 (0x3 bytes), align: 0
+  Segment part 13.            Intra module refs:   Absolute parts
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : VIRTUAL_REGISTERS
+
+  SEGMENTS IN THE MODULE
+  ======================
+BREG
+  Relative segment, address: BIT 00000020.0 - 00000020.7 (0x8 bits), align: 0
+  Segment part 0.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?B0                     00000020.0      Absolute parts (CSTARTUP)
+    -------------------------------------------------------------------------
+VREG
+  Relative segment, address: DATA 00000008 - 00000008 (0x1 bytes), align: 0
+  Segment part 1.             Intra module refs:   ?V1
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?V0                     00000008        ?FUNC_ENTER_PDATA (?FUNC_ENTER_PDATA)
+                                                   ?FUNC_LEAVE_PDATA (?FUNC_LEAVE_PDATA)
+                                                   ?UL_GE_X (?UL_GE_X)
+                                                   EPD_DrawChar (epd2in9)
+                                                   EPD_DrawString (epd2in9)
+                                                   EPD_Fill (epd2in9)
+                                                   EPD_RefreshFull (epd2in9)
+                                                   EPD_WaitBusy (epd2in9)
+                                                   NFC_AckProbe (nfc)
+                                                   NFC_DelayMs (nfc)
+                                                   NFC_Probe (nfc)
+                                                   NFC_ReadMem (nfc)
+                                                   NFC_ReadTextEx (nfc)
+                                                   NFC_T1Init (nfc)
+                                                   NFC_TimebaseCal (nfc)
+                                                   NFC_WaitNirqLow (nfc)
+                                                   NFC_WriteMem (nfc)
+                                                   NFC_WriteTextEx (nfc)
+                                                   b_udec (main)
+                                                   clock9_kind (nfc)
+                                                   cmd_send (nfc)
+                                                   i2c_rx8 (nfc)
+                                                   i2c_tx8 (nfc)
+                                                   main (main)
+                                                   ndef_find_text (nfc)
+                                                   resp_read (nfc)
+                                                   row8 (main)
+                                                   st24 (nfc)
+                                                   t1_wait_ticks (nfc)
+                                                   title (main)
+                                                   try_attr (main)
+                                                   uputs (main)
+    -------------------------------------------------------------------------
+VREG
+  Relative segment, address: DATA 00000009 - 00000009 (0x1 bytes), align: 0
+  Segment part 2.             Intra module refs:   ?V2
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?V1                     00000009        EPD_DrawChar (epd2in9)
+                                                   EPD_DrawString (epd2in9)
+                                                   EPD_RefreshFull (epd2in9)
+                                                   EPD_WaitBusy (epd2in9)
+                                                   NFC_AckProbe (nfc)
+                                                   NFC_DelayMs (nfc)
+                                                   NFC_ReadMem (nfc)
+                                                   NFC_ReadTextEx (nfc)
+                                                   NFC_T1Init (nfc)
+                                                   NFC_TimebaseCal (nfc)
+                                                   NFC_WaitNirqLow (nfc)
+                                                   NFC_WriteTextEx (nfc)
+                                                   b_udec (main)
+                                                   cmd_send (nfc)
+                                                   main (main)
+                                                   ndef_find_text (nfc)
+                                                   row8 (main)
+                                                   st24 (nfc)
+                                                   t1_wait_ticks (nfc)
+                                                   title (main)
+                                                   try_attr (main)
+    -------------------------------------------------------------------------
+VREG
+  Relative segment, address: DATA 0000000A - 0000000A (0x1 bytes), align: 0
+  Segment part 3.             Intra module refs:   ?V3
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?V2                     0000000A        EPD_DrawChar (epd2in9)
+                                                   EPD_DrawString (epd2in9)
+                                                   NFC_AckProbe (nfc)
+                                                   NFC_DelayMs (nfc)
+                                                   NFC_ReadMem (nfc)
+                                                   NFC_ReadTextEx (nfc)
+                                                   NFC_TimebaseCal (nfc)
+                                                   NFC_WaitNirqLow (nfc)
+                                                   NFC_WriteTextEx (nfc)
+                                                   cmd_send (nfc)
+                                                   ndef_find_text (nfc)
+                                                   resp_read (nfc)
+                                                   st24 (nfc)
+                                                   t1_wait_ticks (nfc)
+                                                   title (main)
+    -------------------------------------------------------------------------
+VREG
+  Relative segment, address: DATA 0000000B - 0000000B (0x1 bytes), align: 0
+  Segment part 4.             Intra module refs:   ?V4
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?V3                     0000000B        EPD_DrawChar (epd2in9)
+                                                   EPD_DrawString (epd2in9)
+                                                   NFC_DelayMs (nfc)
+                                                   NFC_ReadMem (nfc)
+                                                   NFC_ReadTextEx (nfc)
+                                                   NFC_TimebaseCal (nfc)
+                                                   NFC_WriteTextEx (nfc)
+                                                   ndef_find_text (nfc)
+                                                   resp_read (nfc)
+                                                   st24 (nfc)
+                                                   t1_wait_ticks (nfc)
+                                                   title (main)
+    -------------------------------------------------------------------------
+VREG
+  Relative segment, address: DATA 0000000C - 0000000C (0x1 bytes), align: 0
+  Segment part 5.             Intra module refs:   ?V5
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?V4                     0000000C        EPD_DrawChar (epd2in9)
+                                                   EPD_DrawString (epd2in9)
+                                                   NFC_DelayMs (nfc)
+                                                   NFC_ReadTextEx (nfc)
+                                                   NFC_TimebaseCal (nfc)
+                                                   NFC_WriteTextEx (nfc)
+                                                   ndef_find_text (nfc)
+                                                   st24 (nfc)
+                                                   title (main)
+    -------------------------------------------------------------------------
+VREG
+  Relative segment, address: DATA 0000000D - 0000000D (0x1 bytes), align: 0
+  Segment part 6.             Intra module refs:   ?V6
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?V5                     0000000D        EPD_DrawChar (epd2in9)
+                                                   EPD_DrawString (epd2in9)
+                                                   NFC_DelayMs (nfc)
+                                                   NFC_ReadTextEx (nfc)
+                                                   NFC_TimebaseCal (nfc)
+                                                   NFC_WriteTextEx (nfc)
+                                                   ndef_find_text (nfc)
+                                                   st24 (nfc)
+                                                   title (main)
+    -------------------------------------------------------------------------
+VREG
+  Relative segment, address: DATA 0000000E - 0000000E (0x1 bytes), align: 0
+  Segment part 7.             Intra module refs:   ?V7
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?V6                     0000000E        EPD_DrawChar (epd2in9)
+                                                   EPD_DrawString (epd2in9)
+                                                   NFC_DelayMs (nfc)
+                                                   NFC_ReadTextEx (nfc)
+                                                   NFC_TimebaseCal (nfc)
+                                                   NFC_WriteTextEx (nfc)
+                                                   ndef_find_text (nfc)
+                                                   st24 (nfc)
+    -------------------------------------------------------------------------
+VREG
+  Relative segment, address: DATA 0000000F - 0000000F (0x1 bytes), align: 0
+  Segment part 8.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?V7                     0000000F        EPD_DrawChar (epd2in9)
+                                                   EPD_DrawString (epd2in9)
+                                                   NFC_DelayMs (nfc)
+                                                   NFC_ReadTextEx (nfc)
+                                                   NFC_TimebaseCal (nfc)
+                                                   NFC_WriteTextEx (nfc)
+                                                   ndef_find_text (nfc)
+                                                   st24 (nfc)
+    -------------------------------------------------------------------------
+PSP
+  Relative segment, address: DATA 00000010 - 00000010 (0x1 bytes), align: 0
+  Segment part 33.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?PSP                    00000010        ?FUNC_ENTER_PDATA (?FUNC_ENTER_PDATA)
+                                                   ?FUNC_LEAVE_PDATA (?FUNC_LEAVE_PDATA)
+                                                   ?PUSH_PSTACK_I (?PUSH_PSTACK_I)
+                                                   ?RESET_PSP (CSTARTUP)
+                                                   EPD_DrawChar (epd2in9)
+                                                   EPD_DrawString (epd2in9)
+                                                   NFC_ReadMem (nfc)
+                                                   NFC_ReadTextEx (nfc)
+                                                   NFC_TimebaseCal (nfc)
+                                                   NFC_WriteMem (nfc)
+                                                   NFC_WriteTextEx (nfc)
+                                                   b_udec (main)
+                                                   ndef_find_text (nfc)
+                                                   resp_read (nfc)
+                                                   row8 (main)
+                                                   title (main)
+                                                   try_attr (main)
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?exit
+
+  SEGMENTS IN THE MODULE
+  ======================
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 00003766 - 00003769 (0x4 bytes), align: 0
+  Segment part 6.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           exit                    00003766        ?call_main (?cmain)
+               calls direct
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?UL_GT
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address: CODE 00000650 - 0000065F (0x10 bytes), align: 0
+  Segment part 1.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?UL_GT                  00000650        NFC_TimebaseCal (nfc)
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?UL_GE_X
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address: CODE 00000660 - 0000067E (0x1f bytes), align: 0
+  Segment part 1.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?UL_GE_X                00000660        NFC_DelayMs (nfc)
+                                                   NFC_TimebaseCal (nfc)
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?L_MUL
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address: CODE 0000067F - 00000681 (0x3 bytes), align: 0
+  Segment part 0.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?L_MUL                  0000067F        NFC_TimebaseCal (nfc)
+    -------------------------------------------------------------------------
+RCODE
+  Relative segment, address: CODE 00000682 - 000006FE (0x7d bytes), align: 0
+  Segment part 1.             Intra module refs:   ?L_MUL
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?L_MUL_REW              00000682 
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?UL_DIV_MOD
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address: CODE 000006FF - 0000076D (0x6f bytes), align: 0
+  Segment part 1.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?UL_DIV_MOD             000006FF        NFC_TimebaseCal (nfc)
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?L_SHL
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address: CODE 0000076E - 00000773 (0x6 bytes), align: 0
+  Segment part 0.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?L_SHL                  0000076E        st24 (nfc)
+    -------------------------------------------------------------------------
+RCODE
+  Relative segment, address: CODE 00000774 - 00000778 (0x5 bytes), align: 0
+  Segment part 1.             Intra module refs:   Segment part 2
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?L_SHL_REW              00000774 
+    -------------------------------------------------------------------------
+RCODE
+  Relative segment, address: CODE 00000779 - 0000078C (0x14 bytes), align: 0
+  Segment part 2.             Intra module refs:   ?L_SHL
+                                                   ?L_SHL_REW
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?L_SUB
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address: CODE 0000078D - 000007A0 (0x14 bytes), align: 0
+  Segment part 1.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?L_SUB                  0000078D        NFC_DelayMs (nfc)
+                                                   NFC_TimebaseCal (nfc)
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?L_SUB_PX
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address: CODE 000007A1 - 000007B8 (0x18 bytes), align: 0
+  Segment part 1.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?L_SUB_PX               000007A1        NFC_TimebaseCal (nfc)
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?L_IOR
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address: CODE 000007B9 - 000007CB (0x13 bytes), align: 0
+  Segment part 1.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?L_IOR                  000007B9        st24 (nfc)
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?L_MOV_X
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address: CODE 000007CC - 000007DA (0xf bytes), align: 0
+  Segment part 0.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?L_MOV_X                000007CC        NFC_TimebaseCal (nfc)
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?L_MOV_TO_PX_A
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address: CODE 000007DB - 000007EF (0x15 bytes), align: 0
+  Segment part 0.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?L_MOV_TO_PX_A          000007DB        NFC_TimebaseCal (nfc)
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?MOVE_LONG8_PDATA_IDATA
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address: CODE 000007F0 - 000007FC (0xd bytes), align: 0
+  Segment part 0.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?MOVE_LONG8_PDATA_IDATA
+                                   000007F0        ?PUSH_PSTACK_I (?PUSH_PSTACK_I)
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?S_DIV_MOD
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address: CODE 000007FD - 00000855 (0x59 bytes), align: 0
+  Segment part 1.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?US_DIV_MOD             000007FD        EPD_WaitBusy (epd2in9)
+                                                   NFC_TimebaseCal (nfc)
+                                                   b_udec (main)
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?US_SHR
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address: CODE 00000856 - 00000858 (0x3 bytes), align: 0
+  Segment part 1.             Intra module refs:   Segment part 2
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?US_SHR                 00000856        EPD_DrawChar (epd2in9)
+                                                   NFC_WriteTextEx (nfc)
+    -------------------------------------------------------------------------
+RCODE
+  Relative segment, address: CODE 00000859 - 00000864 (0xc bytes), align: 0
+  Segment part 2.             Intra module refs:   ?US_SHR
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?FUNC_ENTER_PDATA
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address: CODE 00000865 - 00000895 (0x31 bytes), align: 0
+  Segment part 0.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?FUNC_ENTER_PDATA       00000865        EPD_DrawChar (epd2in9)
+                                                   EPD_DrawString (epd2in9)
+                                                   EPD_Fill (epd2in9)
+                                                   EPD_RefreshFull (epd2in9)
+                                                   EPD_WaitBusy (epd2in9)
+                                                   NFC_AckProbe (nfc)
+                                                   NFC_DelayMs (nfc)
+                                                   NFC_Probe (nfc)
+                                                   NFC_ReadMem (nfc)
+                                                   NFC_ReadTextEx (nfc)
+                                                   NFC_T1Init (nfc)
+                                                   NFC_TimebaseCal (nfc)
+                                                   NFC_WaitNirqLow (nfc)
+                                                   NFC_WriteMem (nfc)
+                                                   NFC_WriteTextEx (nfc)
+                                                   b_udec (main)
+                                                   clock9_kind (nfc)
+                                                   cmd_send (nfc)
+                                                   i2c_rx8 (nfc)
+                                                   i2c_tx8 (nfc)
+                                                   ndef_find_text (nfc)
+                                                   resp_read (nfc)
+                                                   row8 (main)
+                                                   st24 (nfc)
+                                                   t1_wait_ticks (nfc)
+                                                   title (main)
+                                                   try_attr (main)
+                                                   uputs (main)
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?FUNC_LEAVE_PDATA
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address: CODE 00000896 - 000008BA (0x25 bytes), align: 0
+  Segment part 0.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?FUNC_LEAVE_PDATA       00000896        EPD_DrawChar (epd2in9)
+                                                   EPD_DrawString (epd2in9)
+                                                   EPD_Fill (epd2in9)
+                                                   EPD_RefreshFull (epd2in9)
+                                                   EPD_WaitBusy (epd2in9)
+                                                   NFC_AckProbe (nfc)
+                                                   NFC_DelayMs (nfc)
+                                                   NFC_Probe (nfc)
+                                                   NFC_ReadMem (nfc)
+                                                   NFC_ReadTextEx (nfc)
+                                                   NFC_T1Init (nfc)
+                                                   NFC_TimebaseCal (nfc)
+                                                   NFC_WaitNirqLow (nfc)
+                                                   NFC_WriteMem (nfc)
+                                                   NFC_WriteTextEx (nfc)
+                                                   b_udec (main)
+                                                   clock9_kind (nfc)
+                                                   cmd_send (nfc)
+                                                   i2c_rx8 (nfc)
+                                                   i2c_tx8 (nfc)
+                                                   ndef_find_text (nfc)
+                                                   resp_read (nfc)
+                                                   row8 (main)
+                                                   st24 (nfc)
+                                                   t1_wait_ticks (nfc)
+                                                   title (main)
+                                                   try_attr (main)
+                                                   uputs (main)
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?PUSH_PSTACK_I
+
+  SEGMENTS IN THE MODULE
+  ======================
+RCODE
+  Relative segment, address: CODE 000008BB - 000008BE (0x4 bytes), align: 0
+  Segment part 3.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?PUSH_PSTACK_I_TWO      000008BB        EPD_DrawString (epd2in9)
+                                                   NFC_ReadTextEx (nfc)
+                                                   NFC_WriteTextEx (nfc)
+                                                   row8 (main)
+                                                   title (main)
+                                                   try_attr (main)
+    -------------------------------------------------------------------------
+RCODE
+  Relative segment, address: CODE 000008BF - 000008C0 (0x2 bytes), align: 0
+  Segment part 4.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?PUSH_PSTACK_I_ONE      000008BF        EPD_DrawString (epd2in9)
+                                                   NFC_ReadMem (nfc)
+                                                   NFC_WriteMem (nfc)
+                                                   NFC_WriteTextEx (nfc)
+    -------------------------------------------------------------------------
+RCODE
+  Relative segment, address: CODE 000008C1 - 000008D1 (0x11 bytes), align: 0
+  Segment part 5.             Intra module refs:   ?PUSH_PSTACK_I_ONE
+                                                   ?PUSH_PSTACK_I_TWO
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?PUSH_PSTACK_I          000008C1 
+
+    -------------------------------------------------------------------------
+  LIBRARY MODULE, NAME : ?__exit
+
+  SEGMENTS IN THE MODULE
+  ======================
+<CODE_C,NEAR_CODE> 1 (was NEAR_CODE)
+  Relative segment, address: CODE 0000376A - 0000376B (0x2 bytes), align: 0
+  Segment part 6.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           __exit                  0000376A        Segment part 10 (?cexit)
+
+
+
+
+                ****************************************
+                *                                      *
+                *      SEGMENTS IN ADDRESS ORDER       *
+                *                                      *
+                ****************************************
+
+
+SEGMENT              SPACE    START ADDRESS   END ADDRESS     SIZE  TYPE  ALIGN
+=======              =====    =============   ===========     ====  ====  =====
+INTVEC               CODE          00000000 - 00000002           3   com    0
+CSTART               CODE          00000003 - 00000071          6F   rel    0
+BIT_ID               CODE               00000072                     dse    0
+DATA_ID              CODE               00000072                     dse    0
+BDATA_ID             CODE               00000072                     dse    0
+IDATA_ID             CODE          00000072 - 00000073           2   rel    0
+PDATA_ID             CODE               00000074                     dse    0
+IXDATA_ID            CODE               00000074                     dse    0
+XDATA_ID             CODE          00000074 - 0000064F         5DC   rel    0
+RCODE                CODE          00000650 - 000008D1         282   rel    0
+DIFUNCT              CODE               000008D2                     rel    0
+<CODE_C,NEAR_CODE> 1
+                     CODE          000008D2 - 0000376B        2E9A   rel    0
+REGISTERS            DATA          00000000 - 00000007           8   rel    0
+VREG                 DATA          00000008 - 0000000F           8   rel    0
+PSP                  DATA          00000010 - 00000010           1   rel    0
+BREG                 BIT        00000020.0  -  00000020.7        8   rel    0
+SFR_AN               DATA          00000080 - 00000080           1   rel    0
+                     DATA          00000086 - 00000086           1 
+                     DATA          0000008D - 0000008D           1 
+                     DATA          0000008F - 00000090           2 
+                     DATA          00000095 - 00000097           3 
+                     DATA          0000009E - 0000009E           1 
+                     DATA          000000A0 - 000000A0           1 
+                     DATA          000000AB - 000000AB           1 
+                     DATA          000000C1 - 000000C2           2 
+                     DATA          000000C4 - 000000C6           3 
+                     DATA          000000E2 - 000000E4           3 
+                     DATA          000000E8 - 000000E8           1 
+                     DATA          000000F1 - 000000F1           1 
+                     DATA          000000F3 - 000000F7           5 
+                     DATA          000000FD - 000000FF           3 
+PDATA_Z              XDATA              00000000                     dse    0
+PSTACK               XDATA         00000000 - 0000007F          80   rel    0
+XDATA_I              XDATA         00000080 - 0000065B         5DC   rel    0
+XDATA_Z              XDATA         0000065C - 00001CEB        1690   rel    0
+IDATA_I              IDATA         00000011 - 00000012           2   rel    0
+IDATA_Z              IDATA         00000013 - 00000014           2   rel    0
+ISTACK               IDATA         000000C0 - 000000FF          40   rel    0
+
+                ****************************************
+                *                                      *
+                *        END OF CROSS REFERENCE        *
+                *                                      *
+                ****************************************
+
+ 14 188 bytes of CODE  memory
+     17 bytes of DATA  memory (+ 29 absolute )
+  7 404 bytes of XDATA memory
+     68 bytes of IDATA memory
+      8 bits  of BIT   memory
+
+Errors: none
+Warnings: none
+

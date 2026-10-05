@@ -1,0 +1,147 @@
+[std] sw0 0x54 W:R 08:n aH:n aL:n ln:n nirq=255 R:R st=0xFF res=1
+[fac] sw0 0x54 W:R B:n R:R res=6
+[prb] sw0 0x55 k=R
+
+===== v45 wake test: clean VDDEX + 8-way proto =====
+[tb] tickNs=62 calOk=1 bitUs=66
+[crash] WDT fired! frozen at step 111 wdtN=19712 T1prev=63464 last=64351 tov=60215
+
+[seq 1] mode 0 single-rise
+[seq] step1 discharged 100ms
+[dead] 0x54 k=L s5=00111
+[dead] 0x55 k=L s5=00111
+[dead] 0x6B k=L s5=00111
+[seq] step3 tBoot done: p23=1 nirq=1 line=0x03
+[seq] step4 bus takeover
+[st] 0x54 ack=R st=0xFF CMD_RES=?
+[st] 0x55 ack=R st=0xFF CMD_RES=?
+[prb] sw0 0x54 k=R
+[std] sw0 0x54 W:R 08:n aH:n aL:n ln:n nirq=255 R:R st=0xFF res=1
+[fac] sw0 0x54 W:R B:n R:R res=6
+[prb] sw0 0x55 k=R
+[std] sw0 0x55 W:R 08:n aH:n aL:n ln:n nirq=255 R:R st=0xFF res=1
+[fac] sw0 0x55 W:R B:n R:R res=6
+[prb] sw1 0x54 k=n
+[prb] sw1 0x55 k=n
+[spd] 0x54 bit=50us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[spd] 0x54 bit=33us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[spd] 0x54 bit=25us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[spd] 0x54 bit=20us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[spd] 0x55 bit=50us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[spd] 0x55 bit=33us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[spd] 0x55 bit=25us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[spd] 0x55 bit=20us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[verdict] addr ACK but no data path - see [std]/[fac] lines
+[rfirq] rf 150/150 nirqLo 0
+
+[seq 2] *RF* mode 1 factory-pulse
+[seq] step1 discharged 100ms
+[dead] 0x54 k=S s5=00000
+[dead] 0x55 k=S s5=00000
+[dead] 0x6B k=S s5=00000
+[seq] step3 tBoot done: p23=1 nirq=1 line=0x03
+[seq] step4 bus takeover
+[st] 0x54 ack=n st=0xFF CMD_RES=?
+[st] 0x55 ack=n st=0xFF CMD_RES=?
+[prb] sw0 0x54 k=R
+[std] sw0 0x54 W:R 08:n aH:n aL:n ln:n nirq=255 R:R st=0xFF res=1
+[fac] sw0 0x54 W:R B:n R:R res=6
+[prb] sw0 0x55 k=R
+[std] sw0 0x55 W:R 08:n aH:n aL:n ln:n nirq=255 R:R st=0xFF res=1
+[fac] sw0 0x55 W:R B:n R:R res=6
+[prb] sw1 0x54 k=n
+[prb] sw1 0x55 k=n
+[spd] 0x54 bit=50us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[spd] 0x54 bit=33us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[spd] 0x54 bit=25us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[spd] 0x54 bit=20us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[spd] 0x55 bit=50us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[spd] 0x55 bit=33us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[spd] 0x55 bit=25us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[spd] 0x55 bit=20us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[verdict] addr ACK but no data path - see [std]/[fac] lines
+[rfirq] rf 150/150 nirqLo 0
+
+[seq 3] *RF* mode 0 single-rise
+[seq] step1 discharged 100ms
+[dead] 0x54 k=L s5=00111
+[dead] 0x55 k=L s5=00111
+[dead] 0x6B k=L s5=00111
+[seq] step3 tBoot done: p23=1 nirq=1 line=0x03
+[seq] step4 bus takeover
+[st] 0x54 ack=n st=0xFF CMD_RES=?
+[st] 0x55 ack=n st=0xFF CMD_RES=?
+[prb] sw0 0x54 k=R
+[std] sw0 0x54 W:R 08:n aH:n aL:n ln:n nirq=255 R:R st=0xFF res=1
+[fac] sw0 0x54 W:R B:n R:R res=6
+[prb] sw0 0x55 k=R
+[std] sw0 0x55 W:R 08:n aH:n aL:n ln:n nirq=255 R:R st=0xFF res=1
+[fac] sw0 0x55 W:R B:n R:R res=6
+[prb] sw1 0x54 k=n
+[prb] sw1 0x55 k=n
+[spd] 0x54 bit=50us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[spd] 0x54 bit=33us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[spd] 0x54 bit=25us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[spd] 0x54 bit=20us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[spd] 0x55 bit=50us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[spd] 0x55 bit=33us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[spd] 0x55 bit=25us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[spd] 0x55 bit=20us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[verdict] addr ACK but no data path - see [std]/[fac] lines
+[rfirq] rf 150/150 nirqLo 0
+
+[seq 4] *RF* mode 1 factory-pulse
+[seq] step1 discharged 100ms
+[dead] 0x54 k=L s5=00111
+[dead] 0x55 k=L s5=00111
+[dead] 0x6B k=L s5=00111
+[seq] step3 tBoot done: p23=1 nirq=1 line=0x03
+[seq] step4 bus takeover
+[st] 0x54 ack=n st=0xFF CMD_RES=?
+[st] 0x55 ack=n st=0xFF CMD_RES=?
+[prb] sw0 0x54 k=R
+[std] sw0 0x54 W:R 08:n aH:n aL:n ln:n nirq=255 R:R st=0xFF res=1
+[fac] sw0 0x54 W:R B:n R:R res=6
+[prb] sw0 0x55 k=R
+[std] sw0 0x55 W:R 08:n aH:n aL:n ln:n nirq=255 R:R st=0xFF res=1
+[fac] sw0 0x55 W:R B:n R:R res=6
+[prb] sw1 0x54 k=n
+[prb] sw1 0x55 k=n
+[spd] 0x54 bit=50us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[spd] 0x54 bit=33us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[spd] 0x54 bit=25us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[spd] 0x54 bit=20us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[spd] 0x55 bit=50us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[spd] 0x55 bit=33us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[spd] 0x55 bit=25us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[spd] 0x55 bit=20us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[verdict] addr ACK but no data path - see [std]/[fac] lines
+[rfirq] rf 150/150 nirqLo 0
+
+[seq 5] *RF* mode 0 single-rise
+[seq] step1 discharged 100ms
+[dead] 0x54 k=L s5=00111
+[dead] 0x55 k=L s5=00111
+[dead] 0x6B k=L s5=00111
+[seq] step3 tBoot done: p23=1 nirq=1 line=0x03
+[seq] step4 bus takeover
+[st] 0x54 ack=n st=0xFF CMD_RES=?
+[st] 0x55 ack=n st=0xFF CMD_RES=?
+[prb] sw0 0x54 k=R
+[std] sw0 0x54 W:R 08:n aH:n aL:n ln:n nirq=255 R:R st=0xFF res=1
+[fac] sw0 0x54 W:R B:n R:R res=6
+[prb] sw0 0x55 k=R
+[std] sw0 0x55 W:R 08:n aH:n aL:n ln:n nirq=255 R:R st=0xFF res=1
+[fac] sw0 0x55 W:R B:n R:R res=6
+[prb] sw1 0x54 k=n
+[prb] sw1 0x55 k=n
+[spd] 0x54 bit=50us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[spd] 0x54 bit=33us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[spd] 0x54 bit=25us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[spd] 0x54 bit=20us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[spd] 0x55 bit=50us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[spd] 0x55 bit=33us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[spd] 0x55 bit=25us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[spd] 0x55 bit=20us W:n 08:n aH:n aL:n ln:n nirq=255 R:n st=0xFF res=1
+[verdict] addr ACK but no data path - see [std]/[fac] lines
+

@@ -1,0 +1,8 @@
+/* 单断点 @ t1_wait_ticks(0x1FB3): 看是否被疯狂调用(说明 T1 死循环) */
+__var c;
+execUserSetup() { __message ">>> t1 bp armed\n"; }
+execUserReset() {
+  __message ">>> arm @t1_wait_ticks(0x1FB3)\n";
+  __setCodeBreak("0x1FB3", 0, "on_t()", "TRUE", "");
+}
+on_t() { c = c + 1; if(c <= 12) __message "T1 #", c, "\n"; }

@@ -1,0 +1,9 @@
+execUserSetup() { }
+execUserReset() {
+  __setCodeBreak("0x236B", 4999, "on_d()", "TRUE", "");
+}
+on_d() {
+  __message "5000th inner-loop hit. ST1=", __readMemory8(0x96,"SFR"):%X,
+    " ST0=", __readMemory8(0x95,"SFR"):%X,
+    " ST2=", __readMemory8(0x97,"SFR"):%X, "\n";
+}

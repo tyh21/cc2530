@@ -1,0 +1,4 @@
+12[T1] cmd0=0x00 sta=0x00 cmd=0x00 loops=0 t1ok=0
+3 calSpin=0 tickNs=31 calOk=0 cal done
+[VDD] P2.3 held HIGH 3s - measure if needed...
+[VDD] t=0s P2=0x03 bit3=0
