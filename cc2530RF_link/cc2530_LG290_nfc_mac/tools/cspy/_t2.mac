@@ -1,7 +1,0 @@
-execUserSetup() { }
-execUserReset() { __setCodeBreak("0x0EE8", 0, "on_h()", "TRUE", ""); }
-on_h() {
-  __message "autotune HIT\n";
-  __message "XDATA 0x1C7A = ", __readMemory8(0x1C7A,"XDATA"):%X, "\n";
-  __message "P2=0x", __readMemory8(0xA0,"SFR"):%X, " T1CTL=", __readMemory8(0xE4,"SFR"):%X, "\n";
-}

@@ -1,7 +1,0 @@
-execUserSetup() { }
-execUserReset() { __setCodeBreak("0x1F64", 499, "on_x()", "TRUE", ""); }  /* st24 第500次进入 */
-on_x() {
-  __message "st24 #500: T1H=", __readMemory8(0xE3,"SFR"):%X, " T1L=", __readMemory8(0xE2,"SFR"):%X,
-   " T1CTL=", __readMemory8(0xE4,"SFR"):%X, " CLKCONSTA=", __readMemory8(0x9E,"SFR"):%X,
-   " SLEEPCMD=", __readMemory8(0xBE,"SFR"):%X, "\n";
-}

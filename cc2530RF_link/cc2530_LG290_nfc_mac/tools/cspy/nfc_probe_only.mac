@@ -1,7 +1,0 @@
-__var c;
-execUserSetup()
-{
-  __message ">>> probe_only armed @0x311A\n";
-  __setCodeBreak("0x311A", 0, "on_pr()", "TRUE", "");
-}
-on_pr() { c = c + 1; if(c <= 10) __message "P#", c, "\n"; }

@@ -1,6 +1,0 @@
-execUserSetup() { }
-execUserReset() { __setCodeBreak("0x2355", 199, "on_d()", "TRUE", ""); }
-on_d() {
-  __message "DelayMs entry #200. SP=", __readMemory8(0x81,"SFR"):%X,
-   " ST1=", __readMemory8(0x96,"SFR"):%X, " ST0=", __readMemory8(0x95,"SFR"):%X, "\n";
-}

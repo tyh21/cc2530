@@ -1,5 +1,0 @@
-execUserSetup() { }
-execUserReset() { }
-execUserExit() {
-  __message "A=", __readRegister("PC"):%X, "\n";
-}

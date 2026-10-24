@@ -1,9 +1,0 @@
-execUserSetup() { }
-execUserReset() {
-  /* 第2参数 = 忽略次数: 前 499 次不停, 第 500 次停 */
-  __setCodeBreak("0x236B", 499, "on_d()", "TRUE", "");
-}
-on_d() {
-  __message "500th inner-loop hit. ST1=", __readMemory8(0x96,"SFR"):%X,
-    " ST0=", __readMemory8(0x95,"SFR"):%X, "\n";
-}

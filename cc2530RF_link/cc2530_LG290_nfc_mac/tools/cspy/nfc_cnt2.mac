@@ -1,5 +1,0 @@
-__var c;
-execUserSetup() { }
-execUserReset() { __setCodeBreak("0x236B", 0, "on_d()", "TRUE", ""); }
-on_d() { c = c + 1; if(c <= 6) { __message "hit#", c, " ST1=", __readMemory8(0x96,"SFR"):%X, " ST0=", __readMemory8(0x95,"SFR"):%X, "\n"; } __setCodeBreak("0x236B", 0, "on_d()", "TRUE", ""); }
-execUserExit() { __message "TOTAL = ", c, "\n"; }

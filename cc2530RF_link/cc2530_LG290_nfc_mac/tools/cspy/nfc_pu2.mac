@@ -1,4 +1,0 @@
-__var c;
-execUserSetup() { }
-execUserReset() { __setCodeBreak("0x246D", 0, "on_p()", "TRUE", ""); }
-on_p() { c = c + 1; if(c <= 3) __message "POWERUP #", c, " ST1=", __readMemory8(0x96,"SFR"):%X, " ST0=", __readMemory8(0x95,"SFR"):%X, "\n"; }
