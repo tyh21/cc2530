@@ -1,0 +1,60 @@
+===== 0x22 发送点完整上下文 =====
+---- 0x0CCE (data=0xB1) ----
+  0CB6: 00           NOP
+  0CB7: 12 0B EE     LCALL 0x0BEE
+  0CBA: 79 3C        MOV R1,#0x3C
+  0CBC: 12 0B C3     LCALL 0x0BC3
+  0CBF: 79 01        MOV R1,#0x01
+  0CC1: 12 0B EE     LCALL 0x0BEE
+  0CC4: 79 18        MOV R1,#0x18
+  0CC6: 12 0B C3     LCALL 0x0BC3
+  0CC9: 79 80        MOV R1,#0x80
+  0CCB: 12 0B EE     LCALL 0x0BEE
+  0CCE: 79 22        MOV R1,#0x22
+  0CD0: 12 0B C3     LCALL 0x0BC3
+  0CD3: 79 B1        MOV R1,#0xB1
+  0CD5: 12 0B EE     LCALL 0x0BEE
+  0CD8: 79 20        MOV R1,#0x20
+  0CDA: 12 0B C3     LCALL 0x0BC3
+  0CDD: D2 87        SETB b
+  0CDF: 12 0B B4     LCALL 0x0BB4
+  0CE2: 79 1B        MOV R1,#0x1B
+  0CE4: 12 0B C3     LCALL 0x0BC3
+  0CE7: 12 0C 15     LCALL 0x0C15
+  0CEA: E9           MOV A,R1
+  0CEB: 90 00 6F     MOV DPTR,#l
+  0CEE: F0           MOVX @DPTR,A
+  0CEF: 12 0C 15     LCALL 0x0C15
+  0CF2: E9           MOV A,R1
+  0CF3: 90 00 70     MOV DPTR,#l
+
+---- 0x0D60 (data=0xC7) ----
+  0D48: 0A           INC R2
+  0D49: 79 72        MOV R1,#0x72
+  0D4B: 12 0B C3     LCALL 0x0BC3
+  0D4E: 79 80        MOV R1,#0x80
+  0D50: 12 0B EE     LCALL 0x0BEE
+  0D53: 79 10        MOV R1,#0x10
+  0D55: 12 0B C3     LCALL 0x0BC3
+  0D58: 79 01        MOV R1,#0x01
+  0D5A: 12 0B EE     LCALL 0x0BEE
+  0D5D: D2 87        SETB b
+  0D5F: 22           RET
+  0D60: 79 22        MOV R1,#0x22
+  0D62: 12 0B C3     LCALL 0x0BC3
+  0D65: 79 C7        MOV R1,#0xC7
+  0D67: 12 0B EE     LCALL 0x0BEE
+  0D6A: 79 20        MOV R1,#0x20
+  0D6C: 12 0B C3     LCALL 0x0BC3
+  0D6F: 7A 01        MOV R2,#0x01
+  0D71: 7B 00        MOV R3,#0x00
+  0D73: 12 55 21     LCALL 0x5521
+  0D76: 12 0B B4     LCALL 0x0BB4
+  0D79: D2 87        SETB b
+  0D7B: 22           RET
+  0D7C: 74 F3        MOV A,#0xF3
+  0D7E: 12 06 D0     LCALL 0x06D0
+  0D81: E5 10        MOV A,d
+  0D83: 24 F2        ADD A,#i
+  0D85: F5 10        MOV d,A
+  0D87: E5 10        MOV A,d

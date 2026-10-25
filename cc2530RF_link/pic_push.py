@@ -110,8 +110,7 @@ class Gateway:
         elif b == 0x0A:
             line = self._log.decode('ascii', 'replace').strip()
             if line:
-                # 网关日志本身已带 [GW] 前缀, 不再重复添加
-                print(f"      {line}")
+                print(f"      [GW] {line}")
             self._log.clear()
         elif b == 0x0D:
             pass

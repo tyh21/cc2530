@@ -1,0 +1,152 @@
+===== 0x0D60 全刷流程 (RF 注释: 0x22 C7 + 0x20) =====
+  0D60: 79 22        MOV R1,#0x22
+  0D62: 12 0B C3     LCALL 0x0BC3
+  0D65: 79 C7        MOV R1,#0xC7
+  0D67: 12 0B EE     LCALL 0x0BEE
+  0D6A: 79 20        MOV R1,#0x20
+  0D6C: 12 0B C3     LCALL 0x0BC3
+  0D6F: 7A 01        MOV R2,#0x01
+  0D71: 7B 00        MOV R3,#0x00
+  0D73: 12 55 21     LCALL 0x5521
+  0D76: 12 0B B4     LCALL 0x0BB4
+  0D79: D2 87        SETB b
+  0D7B: 22           RET
+  0D7C: 74 F3        MOV A,#0xF3
+  0D7E: 12 06 D0     LCALL 0x06D0
+  0D81: E5 10        MOV A,d
+  0D83: 24 F2        ADD A,#i
+  0D85: F5 10        MOV d,A
+  0D87: E5 10        MOV A,d
+  0D89: 24 02        ADD A,#i
+  0D8B: F8           MOV R0,A
+  0D8C: EA           MOV A,R2
+  0D8D: F2           MOVX @R0,A
+  0D8E: 08           INC R0
+  0D8F: EB           MOV A,R3
+  0D90: F2           MOVX @R0,A
+  0D91: E5 10        MOV A,d
+  0D93: 24 08        ADD A,#i
+  0D95: F8           MOV R0,A
+  0D96: EC           MOV A,R4
+  0D97: F2           MOVX @R0,A
+  0D98: 08           INC R0
+  0D99: ED           MOV A,R5
+  0D9A: F2           MOVX @R0,A
+  0D9B: E5 10        MOV A,d
+  0D9D: 24 1B        ADD A,#i
+  0D9F: F8           MOV R0,A
+  0DA0: E2           MOVX A,@R0
+  0DA1: F5 08        MOV d,A
+  0DA3: 08           INC R0
+  0DA4: E2           MOVX A,@R0
+  0DA5: F5 09        MOV d,A
+  0DA7: E5 10        MOV A,d
+  0DA9: 24 1F        ADD A,#i
+  0DAB: F8           MOV R0,A
+  0DAC: E2           MOVX A,@R0
+  0DAD: FA           MOV R2,A
+  0DAE: 08           INC R0
+  0DAF: E2           MOVX A,@R0
+
+===== 0x1316 写 new(0x24) / 0x1377 写 old(0x26) =====
+  1300: 0F           INC R7
+  1301: A1 E5        AJMP a
+  1303: 10 24 0E     JB 0x1314
+  1306: F5 10        MOV d,A
+  1308: 7F 08        MOV R7,#0x08
+  130A: 02 07 01     LJMP 0x0701
+  130D: 74 F9        MOV A,#0xF9
+  130F: 12 06 D0     LCALL 0x06D0
+  1312: EA           MOV A,R2
+  1313: FE           MOV R6,A
+  1314: EB           MOV A,R3
+  1315: FF           MOV R7,A
+  1316: 79 4E        MOV R1,#0x4E
+  1318: 12 0B C3     LCALL 0x0BC3
+  131B: 79 00        MOV R1,#0x00
+  131D: 12 0B EE     LCALL 0x0BEE
+  1320: 79 4F        MOV R1,#0x4F
+  1322: 12 0B C3     LCALL 0x0BC3
+  1325: 79 D3        MOV R1,#0xD3
+  1327: 12 0B EE     LCALL 0x0BEE
+  132A: 79 00        MOV R1,#0x00
+  132C: 12 0B EE     LCALL 0x0BEE
+  132F: 79 24        MOV R1,#0x24
+  1331: 12 0B C3     LCALL 0x0BC3
+  1334: 75 08 00     MOV 0x08,#0x00
+  1337: 75 09 00     MOV 0x09,#0x00
+  133A: 80 1B        SJMP 0x1357
+  133C: EE           MOV A,R6
+  133D: 25 08        ADD A,d
+  133F: F5 82        MOV d,A
+  1341: EF           MOV A,R7
+  1342: 35 09        ADDC A,d
+  1344: F5 83        MOV d,A
+  1346: E0           MOVX A,@DPTR
+  1347: F9           MOV R1,A
+  1348: 12 0B EE     LCALL 0x0BEE
+  134B: E5 08        MOV A,d
+  134D: 24 01        ADD A,#i
+  134F: F5 08        MOV d,A
+  1351: E5 09        MOV A,d
+  1353: 34 00        ADDC A,#i
+  1355: F5 09        MOV d,A
+  1357: C3           CLR C
+  1358: E5 08        MOV A,d
+  135A: 94 C4        SUBB A,#i
+  135C: E5 09        MOV A,d
+  135E: 94 0A        SUBB A,#i
+  1360: 40 DA        JC 0x133C
+  1362: 7A 01        MOV R2,#0x01
+  1364: 7B 00        MOV R3,#0x00
+  1366: 12 55 21     LCALL 0x5521
+  1369: 7F 02        MOV R7,#0x02
+  136B: 02 07 01     LJMP 0x0701
+  136E: 74 F9        MOV A,#0xF9
+  1370: 12 06 D0     LCALL 0x06D0
+  1373: EA           MOV A,R2
+  1374: FE           MOV R6,A
+  1375: EB           MOV A,R3
+  1376: FF           MOV R7,A
+  1377: 79 4E        MOV R1,#0x4E
+  1379: 12 0B C3     LCALL 0x0BC3
+  137C: 79 00        MOV R1,#0x00
+  137E: 12 0B EE     LCALL 0x0BEE
+  1381: 79 4F        MOV R1,#0x4F
+  1383: 12 0B C3     LCALL 0x0BC3
+  1386: 79 D3        MOV R1,#0xD3
+  1388: 12 0B EE     LCALL 0x0BEE
+  138B: 79 00        MOV R1,#0x00
+  138D: 12 0B EE     LCALL 0x0BEE
+  1390: 79 26        MOV R1,#0x26
+  1392: 12 0B C3     LCALL 0x0BC3
+  1395: 75 08 00     MOV 0x08,#0x00
+  1398: 75 09 00     MOV 0x09,#0x00
+  139B: 80 1B        SJMP 0x13B8
+  139D: EE           MOV A,R6
+  139E: 25 08        ADD A,d
+  13A0: F5 82        MOV d,A
+  13A2: EF           MOV A,R7
+  13A3: 35 09        ADDC A,d
+  13A5: F5 83        MOV d,A
+  13A7: E0           MOVX A,@DPTR
+  13A8: F9           MOV R1,A
+  13A9: 12 0B EE     LCALL 0x0BEE
+  13AC: E5 08        MOV A,d
+  13AE: 24 01        ADD A,#i
+  13B0: F5 08        MOV d,A
+  13B2: E5 09        MOV A,d
+  13B4: 34 00        ADDC A,#i
+  13B6: F5 09        MOV d,A
+  13B8: C3           CLR C
+  13B9: E5 08        MOV A,d
+  13BB: 94 C4        SUBB A,#i
+  13BD: E5 09        MOV A,d
+  13BF: 94 0A        SUBB A,#i
+  13C1: 40 DA        JC 0x139D
+  13C3: 7A 01        MOV R2,#0x01
+  13C5: 7B 00        MOV R3,#0x00
+  13C7: 12 55 21     LCALL 0x5521
+  13CA: 7F 02        MOV R7,#0x02
+  13CC: 02 07 01     LJMP 0x0701
+  13CF: 74 F9        MOV A,#0xF9
