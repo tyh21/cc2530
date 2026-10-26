@@ -8,19 +8,22 @@
  *
  * 运行模式 (MAIN_MODE):
  *   0 = 时钟程序 (默认): 上电从 12:34 起软件走时, 每分钟刷新,
- *       显示 "日期 + 中文星期 + 大号数字 HH:MM"; 以后接对时程序即可
+ *       显示 "日期 + 中文星期 + 大号数字 HH:MM"; 已接入 RF 校时
+ *       (PC 上位机 pc_settime.py -> LG213 网关 -> RF -> 本节点)
  *   1 = 原来的 pic_link 组网节点: 收网关推来的图, 全刷显示
  *
  * 屏:  104x212 (13B/行), 横屏 212x104
  * EPD: BUSY=P0.4 RST=P0.5 DC=P0.6 CS=P0.7 SCLK=P1.0 SDI=P1.1 PWR=P0.3
  * LED: P0.0=红 P0.1=蓝 P0.2=绿 (低电平点亮)
- * RF : CC2530 片内 802.15.4, PAN=0xCAFE ch20, 节点地址 0xB290 (仅模式 1)
+ * RF : CC2530 片内 802.15.4, PAN=0xCAFE ch20, 节点地址 0xB290
+ *      模式 0: 只收网关校时包 (PL_R_TIME); 模式 1: 收推图 (PL_R_START/DATA/END)
  */
 #include <ioCC2530.h>
 #include "basic_rf.h"
 #include "pl_node.h"
 #include "epd2in13.h"
 #include "clockface.h"
+#include "pl_time.h"
 
 /* 0 = 时钟程序, 1 = pic_link RF 节点 */
 #define MAIN_MODE       0
@@ -82,6 +85,10 @@ int main(void)
 
 #if MAIN_MODE == 0
     /* ================= 时钟程序 (永不返回) ================= */
+#if CLOCK_USE_RF
+    /* 接入 RF 校时: RF 起不来也照常当独立时钟走 (只是不能校时) */
+    pl_time_init();
+#endif
     clockface_run();
 #else
     /* ================= pic_link RF 节点 ================= */

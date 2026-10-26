@@ -21,6 +21,9 @@
 #include "epd_paint.h"
 #include "clockfont.h"
 #include "hal_mcu.h"
+#if CLOCK_USE_RF
+#include "pl_time.h"
+#endif
 
 /* ---------------- 走时状态 ---------------- */
 uint8  clock_hour = CLOCK_START_HOUR;
@@ -239,6 +242,13 @@ void clockface_run(void)
     for (;;)
     {
         clockface_delay_ms(CLOCK_SECOND_MS);
+
+#if CLOCK_USE_RF
+        /* 每秒轮询一次网关校时包: 收到即已校时并整屏重画, 本轮重新计秒 */
+        if (pl_time_poll())
+            continue;
+#endif
+
         if (!clockface_tick_1s())
             continue;                    /* 还没到下一分钟 */
 

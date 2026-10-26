@@ -46,6 +46,13 @@
  */
 #define CLOCK_SLEEP_AFTER_DRAW  0
 
+/* ---------------- RF 校时 (2026-10-25 接入 pic_link 网关) ----------------
+ * 1 (默认) = 主循环每秒轮询一次网关转发的校时包 (pl_time_poll),
+ *            收到即 clockface_set_time/date + 整屏全刷重画
+ * 0 = 纯独立时钟, 不初始化 / 不轮询 RF
+ */
+#define CLOCK_USE_RF    1
+
 /* ---------------- API ---------------- */
 
 /* 走时状态 (Hour 0-23 / Min 0-59 / Sec 0-59) */

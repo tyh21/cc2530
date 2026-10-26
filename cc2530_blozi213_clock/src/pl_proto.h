@@ -55,6 +55,24 @@
 #define PL_R_DATA       0x12
 #define PL_R_END        0x13
 
+/* ==================== 校时 (PC -> 网关 -> 时钟节点) ====================
+ * [2026-10-25] 时钟节点接入 pic_link RF 校时:
+ *   UART: PC(pc_settime.py) 发 PL_U_TIME, PAYLOAD = Y_H Y_L 月 日 时 分 秒 (7B)
+ *   网关: 校验后原样 RF 转发 PL_R_TIME 给节点, 再回 ACK(0xFFFF)
+ *   RF  : TYPE | SEQ_H SEQ_L | LEN(=7) | Y_H Y_L 月 日 时 分 秒 | CRC_H CRC_L
+ *         年 2 字节大端 (2026 = 0x07EA); 星期不传, 节点按年月日自算
+ * 节点侧收到即整屏重画; 任一分量非法则整包丢弃。
+ */
+#define PL_U_TIME       0x04    /* P: Y_H Y_L 月 日 时 分 秒 (7B) -> ACK(0xFFFF) */
+#define PL_R_TIME       0x14
+#define PL_TIME_LEN     7       /* 校时 payload 长度 */
+
+/* ==================== 版本 ====================
+ * 1.2.0 [2026-10-25] 时钟节点接入 RF 校时 (PC -> 网关 -> RF -> 节点);
+ *                   共享取值: PL_U_TIME=0x04 / PL_R_TIME=0x14 / PL_TIME_LEN=7
+ */
+#define PL_VERSION      "1.2.0"
+
 /* ==================== 网络参数 (三板一致) ==================== */
 #define PL_PAN_ID       0xCAFE
 #define PL_CHANNEL      20          /* 2.4GHz ch20, 避开 WiFi 1/6/11 */
