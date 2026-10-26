@@ -204,9 +204,25 @@ void pl_gateway_run(void)
     uint8  clen, expect;
 
     for (;;) {
-        /* ---- 1. START ---- */
+        /* ---- 0. 校时帧 (时钟节点用): 直接转两节点, 不进推图状态机 ----
+         * PC 侧: python pc_settime.py -> 发 PL_U_TIME
+         * payload = Y_H Y_L 月 日 时 分 秒, 网关原样转发 -> ACK
+         */
         if (!gw_wait_frame(&type, &plen))
             continue;
+
+        if (type == PL_U_TIME) {
+            if (plen != PL_TIME_LEN) {
+                uart0_puts("[GW] bad time len\r\n");
+                continue;
+            }
+            gw_rf_send(PL_R_TIME, 0, paybuf, PL_TIME_LEN);
+            gw_send_ack(0xFFFF);
+            uart0_puts("[GW] TIME -> nodes, ACK\r\n");
+            continue;
+        }
+
+        /* ---- 1. START ---- */
         if (type != PL_U_START || plen != 2) {
             uart0_puts("[GW] want START\r\n");
             continue;

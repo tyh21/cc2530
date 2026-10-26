@@ -16,6 +16,7 @@
 #include <ioCC2530.h>
 #include "basic_rf.h"
 #include "pl_gateway.h"
+#include "pl_proto.h"
 #include "uart0.h"
 #include "epd2in9.h"
 
@@ -36,7 +37,7 @@ int main(void)
 
     /* 串口最先初始化: 之后每一步都能被 PC 侧观察到 */
     uart0_init();
-    uart0_puts("\r\n[GW] LG213 pic_link gateway boot\r\n");
+    uart0_puts("\r\n[GW] LG213 pic_link gateway boot v" PL_VERSION "\r\n");
 
     /* EPD 初始上电白底 (给用户"网关就绪"的直观信号, 阻塞 ~15s) */
     uart0_puts("[GW] EPD white flash (~15s)...\r\n");
