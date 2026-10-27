@@ -78,10 +78,44 @@
  */
 #define EPD_PART_DASTYLE    1
 
-/* ---------------- 局刷触发值 ----------------
- * 0x04 = DA14585 同款 (TurnOnDisplayPart); 若实机显示偏弱改 0xC7 对比
+/* ---------------- 局刷触发值 (0x22) [A/B 开关 1] ----------------
+ * 依据: HINK-E0213A20x 规格书 0x22 表
+ *   合法序列值: 80/01(CK) C0/03(CK+Analog) 91/99(Load LUT M1/M2)
+ *               B1/B9(Load Temp+Load LUT M1/M2) C7/CF(Display M1/M2)
+ *               F7/FF(Load Temp+Display M1/M2)
+ *   位语义: bit3 = 显示模式, 0=Mode1(全刷波形) / 1=Mode2(差分波形)
+ *   0xC7 / 0xF7 = Mode1               -> 全刷 (对照用)
+ *   0x0C / 0xCF / 0xFF = Mode2        -> 差分(局刷)
+ *   0x0C 缺 CK/Analog, 故必须先 0x22=0xC0 上电
+ *        —— EPD_PartEnter() 已做, 顺序与 Waveshare 局刷一致
+ * 历史: 0x04 (原 DA14585 表值) 按规格书 bit3=0 实为 Mode1,
+ *       即此前"局刷"跑的是全刷波形 (与实测 1~3s 等效全刷吻合)
+ * A/B 顺序建议: 0x0C -> 0xCF -> 0xFF -> 0xC7(对照)
  */
-#define EPD_PART_TRIG       0x04
+#define EPD_PART_TRIG       0x0C
+
+/* ---------------- 局刷前置: 边框波形 0x3C [A/B 开关 2] ----------------
+ * 依据: 规格书 0x3C  A[7:6] 选 VBD 档:
+ *         00=GS Transition  01=Fix Level  10=VCOM  11=HiZ[POR]
+ *   0x80 = VBD 固定 VCOM -> 局刷时边框不参与闪烁 (Waveshare 局刷同款)
+ *   0x01 = 边框跟随 LUT1 -> 全刷时与白像素一起闪 (原厂全刷用值)
+ * 1 (本轮) = 局刷触发前补写 0x3C=EPD_PART_BORDER
+ * 0        = 不补 (保持原行为, 对照用)
+ */
+#define EPD_PART_BORDER_EN  1
+#define EPD_PART_BORDER     0x80
+
+/* ---------------- 局刷 RAM Ping-Pong (0x37) 写法 [A/B 开关 3] ----------------
+ * 依据: 规格书 0x37 为 10 字节:
+ *         A | B~E = WS[7:0]~WS[31:24] | F(F[3:0]=WS[35:32] 模式选择,
+ *         F[6] = PingPong for Display Mode 2) | G~J = module ID/waveform ver
+ * 1 (本轮) = 10 字节写法, 0x40 落在 F 字节 = PingPong enable
+ *            (与 Waveshare 2.13_V3 局刷的 0x37 完全一致)
+ * 0        = 原 7 字节写法: 0x40 落在 E 字节 = WS[31:24], PingPong 未使能
+ * 注: PingPong 仅对 Display Mode 2 有效 (规格书原文:
+ *     "RAM Ping-Pong function is not support for Display Mode 1")
+ */
+#define EPD_PART_PP10       1
 
 /* ---------------- 局刷 TP0 的 A 时长 (DA 表原值) ----------------
  * DA14585 原版 0x0A; 黑翻转不够就加大 (0x14/0x1E/0x28), 有残影就减小。

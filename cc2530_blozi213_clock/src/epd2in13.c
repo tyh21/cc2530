@@ -415,7 +415,21 @@ static void EPD_PartEnter(void)
     for (i = 0; i < 70; i++)
         EPD_SendData(EPD_LutPart[i]);
 
-    EPD_SendCommand(0x37);
+    EPD_SendCommand(0x37);             /* Write Register for Display Option */
+#if EPD_PART_PP10
+    /* [开关3] 10 字节写法 (规格书字段序 A,B~E,F,G~J), 0x40 落 F 字节 = PingPong */
+    EPD_SendData(0x00);                /* A: Spare VCOM OTP selection */
+    EPD_SendData(0x00);                /* B: Display Mode for WS[7:0]   */
+    EPD_SendData(0x00);                /* C: Display Mode for WS[15:8]  */
+    EPD_SendData(0x00);                /* D: Display Mode for WS[23:16] */
+    EPD_SendData(0x00);                /* E: Display Mode for WS[31:24] */
+    EPD_SendData(0x40);                /* F: F[6]=1 -> PingPong enable   */
+    EPD_SendData(0x00);                /* G */
+    EPD_SendData(0x00);                /* H */
+    EPD_SendData(0x00);                /* I */
+    EPD_SendData(0x00);                /* J: module ID / waveform version */
+#else
+    /* 原 7 字节写法: 0x40 落 E 字节 (WS[31:24]), PingPong 未使能 (对照用) */
     EPD_SendData(0x00);
     EPD_SendData(0x00);
     EPD_SendData(0x00);
@@ -423,6 +437,13 @@ static void EPD_PartEnter(void)
     EPD_SendData(0x40);
     EPD_SendData(0x00);
     EPD_SendData(0x00);
+#endif
+
+#if EPD_PART_BORDER_EN
+    /* [开关2] 边框波形: 0x80 = VBD 固定 VCOM, 局刷时边框不参与闪烁 */
+    EPD_SendCommand(0x3C);
+    EPD_SendData(EPD_PART_BORDER);
+#endif
 
     EPD_SendCommand(0x22);
     EPD_SendData(0xC0);                /* 上电, 不刷图 */
@@ -680,7 +701,7 @@ void EPD_ShowFramePart(void)
         EPD_SendData(EPD_OldFrame[i]);
 
     EPD_SendCommand(0x22);
-    EPD_SendData(EPD_PART_TRIG);       /* DA14585 同款 0x04; 显示弱可改 0xC7 */
+    EPD_SendData(EPD_PART_TRIG);       /* [开关1] 见 epd2in13.h: 0x0C/0xCF/0xFF=Mode2 差分 */
     EPD_SendCommand(0x20);
     EPD_WaitBusy(10000);
 

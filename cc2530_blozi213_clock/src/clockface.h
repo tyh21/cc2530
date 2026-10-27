@@ -44,7 +44,7 @@
  * 0 = 长期保持唤醒 (bring-up 阶段默认, 最稳, 刷新也快)
  * 1 = 每次刷完 EPD_Sleep(), 省电, 但下次刷新要重新 EPD_Init (多约 1~4s)
  */
-#define CLOCK_SLEEP_AFTER_DRAW  0
+#define CLOCK_SLEEP_AFTER_DRAW  1
 
 /* ---------------- RF 校时 (2026-10-25 接入 pic_link 网关) ----------------
  * 1 (默认) = 主循环每秒轮询一次网关转发的校时包 (pl_time_poll),

@@ -1,9 +1,9 @@
-"C:\Users\tyh21\Desktop\cc2530\213资料\cc2530_blozi213_clock\src\epd2in13.c"
+"C:\Users\tyh21\Documents\GitHub\cc2530\cc2530_blozi213_clock\src\epd2in13.c"
 -std=c99
 -ferror-limit=0
 -fbracket-depth=512
 -I
-C:\Users\tyh21\Desktop\cc2530\213资料\cc2530_blozi213_clock\src\basicrf
+C:\Users\tyh21\Documents\GitHub\cc2530\cc2530_blozi213_clock\src\basicrf
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\8051\inc
 -I
@@ -11,7 +11,7 @@ C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\8051\lib\dlib
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\8051\inc\dlib\c
 -I
-C:\Users\tyh21\Desktop\cc2530\213资料\cc2530_blozi213_clock\src\basicrf
+C:\Users\tyh21\Documents\GitHub\cc2530\cc2530_blozi213_clock\src\basicrf
 -D__CHAR_BITS__=8
 -D__CHAR_MAX__=0xff
 -D__CHAR_MIN__=0

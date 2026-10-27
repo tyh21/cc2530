@@ -45,7 +45,7 @@
 #define LED_GREEN       P0_2
 
 /* 上电点亮哪几路 (1=亮 0=灭) */
-#define LED_BOOT_R      1
+#define LED_BOOT_R      0
 #define LED_BOOT_B      0
 #define LED_BOOT_G      0
 
